@@ -165,6 +165,16 @@ De acordo com [34] a arquitetura do vZ pode ser descrita na imagem XXX, inicialm
 Z3 is available for platforms like C, C ++, Java, .NET and Python, it is possible to download the Z3 with vZ in http://z3.codeplex.com. API in python was used to formulate the optimization problem on the vZ tool. The pseudo code below describes the steps to achieve desired results.
 
 \subsection{Bounded Model Checking with ESBMC}
+
+Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior [3],[4]. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components [10]. Much research has been devoted to mitigate this problem.
+
+Among the recent techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in [10]. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
+
+The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $ M $, a property $ \phi $, and a bound $ K $, BMC unrolls the system  times and translates it into a verification condition (VC) $ \varphi $  such that $ \varphi $   is satisfiable if and only if $ \phi $ has a counterexample of depth $ K $ or less [10]. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in [11], [12], and [13]. 
+
+According to [14] and [15], SMT-based model checking can be used to verify the single- and multi-threaded software. In [16], ESBMC can also be used to model check C++ software based on SMT solvers. In [5] and [6] it was shown that it is possible to use ESBMC, as an optimization tool.
+There are two directives in C/C++ that can be used to guide a model checker to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition or code violation (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
+
 \subsection{Multi-core ESBMC with OpenMP}
 \subsection{Multi-core ESBMC with OpenMP using Binary Search}
 The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  15 AUG 2015 19:19
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  15 AUG 2015 19:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -681,11 +681,57 @@ Overfull \hbox (3.57599pt too wide) in paragraph at lines 159--160
  [][] 
  []
 
+
+! Package inputenc Error: Unicode char \u8:ﬁ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.169 ...ystem to determine if it obeys a speciﬁ
+                                                  cation of its intended beh...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (2.39737pt too wide) in paragraph at lines 169--170
+\OT1/cmr/m/n/10 obeys a speci-ca-tion of its in-tended be-hav-ior [3],[4]. Thes
+e
+ []
+
+
+Overfull \hbox (7.64749pt too wide) in paragraph at lines 169--170
+\OT1/cmr/m/n/10 al-go-rithms can per-form ex-haus-tive ex-plo-ration in a highl
+y
+ []
+
+
+! Package inputenc Error: Unicode char \u8:ﬁ not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.171 ...hat combines model checking with satisﬁ
+                                                  ability solving. This tech...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (2.98068pt too wide) in paragraph at lines 171--172
+\OT1/cmr/m/n/10 bines model check-ing with sati-s-abil-ity solv-ing. This tech-
+
+ []
+
 <Image/esbmc-parallel.png, id=19, 314.6154pt x 253.4268pt>
 File: Image/esbmc-parallel.png Graphic file (type png)
 
 <use Image/esbmc-parallel.png>
-Package pdftex.def Info: Image/esbmc-parallel.png used on input line 175.
+Package pdftex.def Info: Image/esbmc-parallel.png used on input line 185.
 (pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
 
 <Image/esbmc-parallel-Controler.png, id=21, 314.6154pt x 253.4268pt>
@@ -693,39 +739,43 @@ File: Image/esbmc-parallel-Controler.png Graphic file (type png)
 
 <use Image/esbmc-parallel-Controler.png>
 Package pdftex.def Info: Image/esbmc-parallel-Controler.png used on input line 
-184.
+194.
 (pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
 
 <Image/Fig4.png, id=22, 1447.4075pt x 286.06876pt>
 File: Image/Fig4.png Graphic file (type png)
  <use Image/Fig4.png>
-Package pdftex.def Info: Image/Fig4.png used on input line 192.
+Package pdftex.def Info: Image/Fig4.png used on input line 202.
 (pdftex.def)             Requested size: 242.5444pt x 75.27968pt.
 
-Overfull \hbox (3.58023pt too wide) in paragraph at lines 192--193
+Overfull \hbox (3.58023pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
-[3 <./Image/vzArch.png> <./Image/esbmc-parallel.png> <./Image/esbmc-parallel-Co
-ntroler.png>]
-Overfull \hbox (8.98067pt too wide) in paragraph at lines 199--200
+[3 <./Image/vzArch.png>]
+Overfull \hbox (8.98067pt too wide) in paragraph at lines 209--210
 []\OT1/cmr/m/n/10 That said, was im-ple-mented in the con-troller a method
  []
 
-[4 <./Image/Fig4.png>]
-Overfull \hbox (0.14738pt too wide) in paragraph at lines 281--282
+[4 <./Image/esbmc-parallel.png> <./Image/esbmc-parallel-Controler.png> <./Image
+/Fig4.png>]
+Underfull \vbox (badness 4954) has occurred while \output is active []
+
+
+Overfull \hbox (0.14738pt too wide) in paragraph at lines 291--292
 \OT1/cmr/m/n/10 present al-ter-na-tive so-lu-tions to the op-ti-miza-tion of HW
 -
  []
 
 
-Overfull \hbox (3.42398pt too wide) in paragraph at lines 288--289
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+Overfull \hbox (3.42398pt too wide) in paragraph at lines 298--299
 \OT1/cmr/m/n/10 [14] uses the ES-BMC model checker for em-bed-ded ANSI-
  []
 
-[5] [6
-
-] (./template.aux)
+[6] (./template.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -735,10 +785,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5072 strings out of 494985
- 68345 string characters out of 6180356
+ 5073 strings out of 494985
+ 68351 string characters out of 6180356
  171041 words of memory out of 5000000
- 8214 multiletter control sequences out of 15000+600000
+ 8215 multiletter control sequences out of 15000+600000
  11300 words of font info for 41 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,9n,49p,1300b,1755s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -753,7 +803,7 @@ ts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type
 c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmtt8.pfb>
-Output written on template.pdf (6 pages, 375290 bytes).
+Output written on template.pdf (6 pages, 378318 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
