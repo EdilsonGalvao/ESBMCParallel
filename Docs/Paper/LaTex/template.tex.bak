@@ -87,8 +87,21 @@ grestore
 
 \begin{document}
 \title{Applying Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems}
+
 \author{Alessandro Trindade\and Hussama Ismail\and Renato Degelo\and Edilson Galv\~ao\and Lucas Cordeiro}
-\institute{Electronic and Information Research Center\\Federal University of Amazonas, Brazil}
+
+\institute{F. Author \at
+              first address \\
+              Tel.: +123-45-678910\\
+              Fax: +123-45-678910\\
+              \email{fauthor@example.com}           %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+           \and
+           S. Author \at
+              second address
+}
+
+\date{Received: date / Accepted: date}
 \maketitle
 
 \begin{abstract}
@@ -212,10 +225,7 @@ While the step is being executed the algorithm query the controller to check if 
 \section{Mathematical modeling}
 The mathematical modeling was taken from [1], [2].
 \subsection{Informal Model (or Assumptions)}
-The informal model can be described by five characteristics. First, there is only one software context, i.e., there is just one general-purpose processor, and there is only one hardware context. The components of the system must be mapped to either one of these two contexts. Second, the software implementation of a component is associated with a software cost, which is the running time of the component. Third, the hardware implementation of a component has a hardware cost, which can be area, heat dissipation, and energy consumption. Fourth, based on the premise that hardware is significantly faster than software, the running time of the components in hardware is considered as zero. Finally, if two components are mapped to the same context, then there is no overhead of communication between them; otherwise, there is an overhead. The consequence of these assumptions is that scheduling does not need to be addressed in this work. Hardware components do not need scheduling, because the running time is assumed to be zero. Because there is only one processor, software components do not need to be scheduled as well. Therefore, the focus is only on the partitioning problem. That configuration describes a first-generation co-design, where the focus is on bipartitioning [17].
-
 \subsection{Formal Model}
-...
 
 \section{Partitioning problem using ILP-based,Genetic Algorithms}
 \label{ILPGA}
