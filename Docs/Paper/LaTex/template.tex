@@ -45,6 +45,7 @@ grestore
 %
 \smartqed  % flush right qed marks, e.g. at end of proof
 %
+
 \usepackage{booktabs}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc} 
@@ -152,26 +153,46 @@ Vamos otimizar (K+W), com restrições em (K \textless 2) e (W-K \textless 1), o
 
 
 De acordo com [34] a arquitetura do vZ pode ser descrita na imagem XXX, inicialmente as formulas e os objetivos SMT sao reescritos para variaveis do tipo 0-1, posteriormente os objetivos sao convertidos para problemas MaxSAT, se houver muitos objetivos vZ invoca MaxSAT ou OptSMT. Para restricoes sob valores reais usando “Box”, vZ combina todas a aritmetica linear e faz chamada para OptSMT. Quando usamos “soft constrains” no modo “lexicographic” vZ invoca MaxSAT.
-\includegraphics[scale=1]{Image/40548.jpg} 
+
+\begin{figure}[ht]
+	\centering
+  \includegraphics[width=0.49\textwidth, height=95px]{Image/vzArch.png} 
+	\caption{vZ Architecture}
+	\label{fig2}
+\end{figure}
+
 
 Z3 is available for platforms like C, C ++, Java, .NET and Python, it is possible to download the Z3 with vZ in http://z3.codeplex.com. API in python was used to formulate the optimization problem on the vZ tool. The pseudo code below describes the steps to achieve desired results.
 
 \subsection{Bounded Model Checking with ESBMC}
 \subsection{Multi-core ESBMC with OpenMP}
 \subsection{Multi-core ESBMC with OpenMP using Binary Search}
-The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time. 
+The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. 
 
-\includegraphics[scale=1]{Image/40548.jpg} 
-
+Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time.
+\begin{figure}[ht]
+	\centering
+  \includegraphics[scale=0.75]{Image/esbmc-parallel.png} 
+	\caption{gestaucht}
+	\label{fig2}
+\end{figure}
 So the first approach was to remove the Idle time from the parallel loops by creating workers inside the threads to always execute the next step until a violation is find. At first though it seemed to be a great improvement but as ESBMC executes almost the same time the steps, there was almost no optimization. 
 
-The most optimized approach used was to use a parallelized binary search to reduce the complexity of the tasks. So was made a controller to return the best step to execute in order to reduce the domain as maximum as possible. This is done by dividing the domain in chunks and than returning the middle of the biggest chunk existent, and creating two new chunks. 
-
-\includegraphics[scale=1]{Image/40548.jpg} 
+The most optimized approach used was to use a parallelized binary search to reduce the complexity of the tasks. So was made a controller to return the best step to execute in order to reduce the domain as maximum as possible. This is done by dividing the domain in chunks and than returning the middle of the biggest chunk existent, and creating two new chunks.
+\begin{figure}[ht]
+	\centering
+  \includegraphics[scale=0.75]{Image/esbmc-parallel-Controler.png} 
+	\caption{gestaucht}
+	\label{fig2}
+\end{figure}
 
 To exemplify, given a problem of domain 1 to 20, first we create an initial chunk  1 – 20. When the next available core asks for a step to execute, the controller gets the biggest chunk which in this case is 1 – 20, divide it by 2, creates two new chunks and return the middle of the original chunk. So it would be 2 new chunks 1 – 9 and 11 – 20, and the returned step will be 10. Additional checks are needed to avoid the creation of empty or invalid chunks.
-
-\includegraphics[scale=1]{Image/40548.jpg} 
+\begin{figure}[ht]
+	\centering
+  \includegraphics[width=0.49\textwidth, height=75px]{Image/Fig4.png}
+	\caption{gestaucht}
+	\label{fig2}
+\end{figure}
 
 Additionally, since there will be a gap between the steps, produced by the customized binary search algorithm, it is possible that a lot of steps will not be needed to execute. For instance, on the example above, if a step 10 return false, it is obvious that every step after 10 will also be a violation. On the other hand, if the same step was successful, we can assume that every step before 10 will also be a valid. 
 
@@ -223,6 +244,36 @@ The ILP and GA were taken from [5] and [6]. Both use slack variables in order to
 
 \section{Analysis of the partitioning problem using ESBMC}
 \section{Analysis of the partitioning problem using vZ}
+O pseudocódigo abaixo mostra as condições aplicadas em ILP, GA e ESBMC convertida para a ferramenta vZ descrita em [34] e [35]. 
+
+Um contexto do vZ é criado, este recebe as restrições e devolve um modelo caso exista uma solução para o conjunto de restrições.  Posteriormente são declarados a quantidade de nós, quantidade de arestas, o valor de , o custo de hardware, custo de software, custo de comunicação, e a matriz de incidência E.   
+
+As declarações aritméticas descritas nas linhas 10, 11,12 e 13 do pseudocódigo é uma transcrição da formula  descrita na seção III.B, é referente ao custo de software (SF). Observe que na linha 11 uma variável temporária chamada TMP é criada para representar , é aplicado então um produto entre o valor absoluto de TMP com o valor do vetor C declarado na linha 07, logo, gera-se o resultado para o custo de comunicação (CMC). 
+Na linha 13, a declaração Fobj (Função objetivo) é um produto entre o custo de hardware com um vector que contém valores 0 ou 1. Fobj deve ser minimizado para alcançarmos a melhor solução para o hardware.
+
+Duas restrições são impostas, a primeira refere-se à soma entre custo de software com o custo de comunicação, a resultante da soma deve ser menor do que , a segunda restrição diz ao vZ que ele deverá minimizar Fobj. O modelo então é checado, uma vez que há uma solução que obedeça às restrições, o valor da função objetiva é impressa. 
+
+\begin{lstlisting}
+01.#Init Values
+02.  Create vZ context 
+03.  Create binary vector (x)
+04.  Declare number of nodes, edges and S0
+05.  Declare hardware cost of each node as array (h) 
+06.  Declare software cost of each node as array (s)
+07.  Declare communication cost of each edge (c)
+08.  Declare transposed incidence matrix graph G (E)
+09.#Arithmetic
+10.  SF receive s(1-x)
+11.  TMP vector receive E|x| 
+12.  CMC receive c*|EX|
+13.  Fobj receive  x[i] * h[i]
+14.#Asserts
+15.  Add restrictions (SF + CMC <= S0)
+16.  Add restrictions to minimize Fobj
+17.  Check Model
+18.  Print Result
+\end{lstlisting}
+
 \section{Experimental Evaluation}
 
 

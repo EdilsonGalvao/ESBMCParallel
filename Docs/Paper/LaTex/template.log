@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  15 AUG 2015 15:25
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  15 AUG 2015 19:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -529,23 +529,34 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
-) (./template.aux)
+) (./template.aux
+
+LaTeX Warning: Label `fig2' multiply defined.
+
+
+LaTeX Warning: Label `fig2' multiply defined.
+
+
+LaTeX Warning: Label `fig2' multiply defined.
+
+)
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 88.
-LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 89.
+LaTeX Font Info:    ... okay on input line 89.
+
 Unknown journal: specify \journalname{<name of your journal>} in preambel
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
@@ -612,29 +623,29 @@ e
 
 SVJour3 warning: Missing \journalname
 SVJour3 warning: Missing \date
-LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 92.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 93.
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 92.
+(Font)              size <8> substituted on input line 93.
 
 
-Overfull \hbox (1.17505pt too wide) in paragraph at lines 95--96
+Overfull \hbox (1.17505pt too wide) in paragraph at lines 96--97
 \OT1/cmr/m/n/10 pro-ces-sors cores num-bers avail-able to the model checker.
  []
 
 
-Overfull \hbox (1.09181pt too wide) in paragraph at lines 104--105
+Overfull \hbox (1.09181pt too wide) in paragraph at lines 105--106
 \OT1/cmr/m/n/10 core so-lu-tion. How-ever, most ver-i-fi-ca-tion al-go-rithms s
 till
  []
 
 
-Overfull \hbox (2.86852pt too wide) in paragraph at lines 104--105
+Overfull \hbox (2.86852pt too wide) in paragraph at lines 105--106
 \OT1/cmr/m/n/10 dis-re-gard the lim-i-ta-tions of the CMOS tech-nol-ogy, which
  []
 
 
-Overfull \hbox (1.0917pt too wide) in paragraph at lines 104--105
+Overfull \hbox (1.0917pt too wide) in paragraph at lines 105--106
 \OT1/cmr/m/n/10 lim-its the in-crease of the chip's fre-quency af-ter it reache
 s
  []
@@ -643,58 +654,72 @@ s
 
 
 ]
-Overfull \hbox (1.89746pt too wide) in paragraph at lines 108--109
+Overfull \hbox (1.89746pt too wide) in paragraph at lines 109--110
 \OT1/cmr/m/n/10 back-ground on op-ti-miza-tion, model check-ing, and multi-
  []
 
 
-Overfull \hbox (2.21465pt too wide) in paragraph at lines 108--109
+Overfull \hbox (2.21465pt too wide) in paragraph at lines 109--110
 \OT1/cmr/m/n/10 ming and GA al-go-rithms. The SMT-based BMC method
  []
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 142.
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 143.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 142.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 143.
  [2]
-<Image/40548.jpg, id=18, 219.06844pt x 219.82124pt>
-File: Image/40548.jpg Graphic file (type jpg)
- <use Image/40548.jpg>
-Package pdftex.def Info: Image/40548.jpg used on input line 155.
-(pdftex.def)             Requested size: 219.06789pt x 219.8207pt.
-File: Image/40548.jpg Graphic file (type jpg)
+<Image/vzArch.png, id=18, 1191.45125pt x 403.5075pt>
+File: Image/vzArch.png Graphic file (type png)
+ <use Image/vzArch.png>
+Package pdftex.def Info: Image/vzArch.png used on input line 159.
+(pdftex.def)             Requested size: 242.54016pt x 95.35378pt.
 
-<use Image/40548.jpg>
-Package pdftex.def Info: Image/40548.jpg used on input line 164.
-(pdftex.def)             Requested size: 219.06789pt x 219.8207pt.
-File: Image/40548.jpg Graphic file (type jpg)
- <use Image/40548.jpg>
-Package pdftex.def Info: Image/40548.jpg used on input line 170.
-(pdftex.def)             Requested size: 219.06789pt x 219.8207pt.
+Overfull \hbox (3.57599pt too wide) in paragraph at lines 159--160
+ [][] 
+ []
 
-Underfull \vbox (badness 1917) has occurred while \output is active []
+<Image/esbmc-parallel.png, id=19, 314.6154pt x 253.4268pt>
+File: Image/esbmc-parallel.png Graphic file (type png)
 
- [3 <./Image/40548.jpg>]
-File: Image/40548.jpg Graphic file (type jpg)
- <use Image/40548.jpg>
-Package pdftex.def Info: Image/40548.jpg used on input line 174.
-(pdftex.def)             Requested size: 219.06789pt x 219.8207pt.
+<use Image/esbmc-parallel.png>
+Package pdftex.def Info: Image/esbmc-parallel.png used on input line 175.
+(pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
 
-Overfull \hbox (8.98067pt too wide) in paragraph at lines 178--179
+<Image/esbmc-parallel-Controler.png, id=21, 314.6154pt x 253.4268pt>
+File: Image/esbmc-parallel-Controler.png Graphic file (type png)
+
+<use Image/esbmc-parallel-Controler.png>
+Package pdftex.def Info: Image/esbmc-parallel-Controler.png used on input line 
+184.
+(pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
+
+<Image/Fig4.png, id=22, 1447.4075pt x 286.06876pt>
+File: Image/Fig4.png Graphic file (type png)
+ <use Image/Fig4.png>
+Package pdftex.def Info: Image/Fig4.png used on input line 192.
+(pdftex.def)             Requested size: 242.5444pt x 75.27968pt.
+
+Overfull \hbox (3.58023pt too wide) in paragraph at lines 192--193
+ [][] 
+ []
+
+[3 <./Image/vzArch.png> <./Image/esbmc-parallel.png> <./Image/esbmc-parallel-Co
+ntroler.png>]
+Overfull \hbox (8.98067pt too wide) in paragraph at lines 199--200
 []\OT1/cmr/m/n/10 That said, was im-ple-mented in the con-troller a method
  []
 
-[4]
-Overfull \hbox (0.14738pt too wide) in paragraph at lines 230--231
+[4 <./Image/Fig4.png>]
+Overfull \hbox (0.14738pt too wide) in paragraph at lines 281--282
 \OT1/cmr/m/n/10 present al-ter-na-tive so-lu-tions to the op-ti-miza-tion of HW
 -
  []
 
 
-Overfull \hbox (3.42398pt too wide) in paragraph at lines 237--238
+Overfull \hbox (3.42398pt too wide) in paragraph at lines 288--289
 \OT1/cmr/m/n/10 [14] uses the ES-BMC model checker for em-bed-ded ANSI-
  []
 
@@ -705,29 +730,33 @@ Overfull \hbox (3.42398pt too wide) in paragraph at lines 237--238
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 4953 strings out of 494985
- 66930 string characters out of 6180356
+ 5072 strings out of 494985
+ 68345 string characters out of 6180356
  171041 words of memory out of 5000000
- 8099 multiletter control sequences out of 15000+600000
- 10991 words of font info for 40 fonts, out of 8000000 for 9000
+ 8214 multiletter control sequences out of 15000+600000
+ 11300 words of font info for 41 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  38i,9n,49p,1300b,1755s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmtt8.pfb>
-Output written on template.pdf (6 pages, 167046 bytes).
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmtt8.pfb>
+Output written on template.pdf (6 pages, 374146 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 44 compressed objects within 1 object stream
+ 74 PDF objects out of 1000 (max. 8388607)
+ 48 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
