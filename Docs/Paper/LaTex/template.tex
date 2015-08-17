@@ -228,7 +228,7 @@ OpenMP is a standard Application Programming Interface (API) for shared memory p
 Multi-core ESBMC obtains the problem specification represented by a C program, which is violated when the correct optimum value () parameter is reached; Multi-core ESBMC starts a parallel region with  different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig. 2; note that there is no shared-memory (or message-passing) mechanism among the threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread lifecycle: start, running, and dead states, using different  values as condition. After executing  instances, if there is no code violation, then multi-core ESBMC starts  new instances again. During the parallel region execution, if a violation is found in any running thread, then it presents the counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then multi-core ESBMC finishes its execution.
 
 \subsection{\textcolor{Red}{Multi-core ESBMC with OpenMP using Binary Search}}
-The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time.
+\textcolor{Red}{The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time.}
 
 \begin{figure}[ht]
 	\centering
@@ -237,9 +237,9 @@ The original parallelization was made by continuously forking the instances of t
 	\label{fig2}
 \end{figure}
 
-Consequently, the first approach aims to remove the idle time from the parallel loops, by creating workers inside the threads to execute the next step until a violation is found. This approach could potentially lead to a great improvement, but as ESBMC executes the sequential steps almost at the same time, the processor does not remain idle for a longer period and thus there is almost no optimization
+\textcolor{Red}{Consequently, the first approach aims to remove the idle time from the parallel loops, by creating workers inside the threads to execute the next step until a violation is found. This approach could potentially lead to a great improvement, but as ESBMC executes the sequential steps almost at the same time, the processor does not remain idle for a longer period and thus there is almost no optimization.}
 
-The most optimized approach applies a parallelized binary search to reduce the amount of steps executed  in order to find the most optmized solution. As a result, the controller is designed to return the best step to execute so that the number of steps are reduced as maximum as possible. The parallelized binary search accomplishes this by splitting the domain into intervals and then returning the middle of the largest interval, which thus creates two new intervals.
+\textcolor{Red}{The most optimized approach applies a parallelized binary search to reduce the amount of steps executed  in order to find the most optmized solution. As a result, the controller is designed to return the best step to execute so that the number of steps are reduced as maximum as possible. The parallelized binary search accomplishes this by splitting the domain into intervals and then returning the middle of the largest interval, which thus creates two new intervals.}
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel-Controler.png} 
@@ -247,7 +247,7 @@ The most optimized approach applies a parallelized binary search to reduce the a
 	\label{fig2}
 \end{figure}
 
-As example, given a problem of domain 1 to 20, firstly we create an initial interval from 1 to 20. When the next available core asks for a step to execute, the controller gets the biggest interval, which in this case is 1 – 20, divide it by 2, creates two new intervals and return the middle of the original interval. Therefore, there would be 2 new intervals, one from 1 to 9 and another one from 11 to 20, and the returned step would be 10. The controller also checks when an interval has less than two elements to avoid the creation of empty or invalid intervals. 
+\textcolor{Red}{As example, given a problem of domain 1 to 20, firstly we create an initial interval from 1 to 20. When the next available core asks for a step to execute, the controller gets the biggest interval, which in this case is 1 – 20, divide it by 2, creates two new intervals and return the middle of the original interval. Therefore, there would be 2 new intervals, one from 1 to 9 and another one from 11 to 20, and the returned step would be 10. The controller also checks when an interval has less than two elements to avoid the creation of empty or invalid intervals. }
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=0.49\textwidth, height=75px]{Image/Fig4.png}
@@ -255,9 +255,9 @@ As example, given a problem of domain 1 to 20, firstly we create an initial inte
 	\label{fig2}
 \end{figure}
 
-Additionally, since there is a gap between the steps, produced by the customized binary search; in particular, there might be several steps are not executed. For instance, in the example above, if step 10 returns false, then one can conclude that all steps after 10 is false as well. However, if the same step 10 is true, we can assume that all steps before 10 is true as well. 
+\textcolor{Red}{Additionally, since there is a gap between the steps, produced by the customized binary search; in particular, there might be several steps are not executed. For instance, in the example above, if step 10 returns false, then one can conclude that all steps after 10 is false as well. However, if the same step 10 is true, we can assume that all steps before 10 is true as well.}
 
-As a result, a method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
+\textcolor{Red}{As a result, a method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.}
 \begin{lstlisting}
 01. GetNextStep(){
 02.  int largestChunk = -1;
@@ -279,7 +279,7 @@ As a result, a method to remove unnecessary steps is implemented in the controll
 18.   return median;
 19. }
 \end{lstlisting}
-The algorithm above describes how the customized binary search calculates and returns the step to be executed. From line 4 to 9 the algorithm finds the biggest interval. Then from the line 10 the biggest interval is removed and the median is calculated in the line 11. Then 2 new intervals are created, the left side on line 14 and the right side on the line 16. At the end, the median is returned.
+\textcolor{Red}{The algorithm above describes how the customized binary search calculates and returns the step to be executed. From line 4 to 9 the algorithm finds the biggest interval. Then from the line 10 the biggest interval is removed and the median is calculated in the line 11. Then 2 new intervals are created, the left side on line 14 and the right side on the line 16. At the end, the median is returned.}
 
 \begin{lstlisting}
 01. step = controller.GetNextStep();
@@ -289,7 +289,7 @@ The algorithm above describes how the customized binary search calculates and re
 05.    kill(pid);
 06. }     
 \end{lstlisting}
-The algorithm above describes how the worker starts and monitors the ESBMC instances. The algorithm starts by retrieving the step to execute from the controller (line 1) , starts the instance of ESBMC and get the process id from the forked process (line 2). While the step is being executed, the controller checks whether this step is still needed (line 4). If not, then the ESBMC instance is killed (line 5) and the worker is free to initiate another step.
+\textcolor{Red}{The algorithm above describes how the worker starts and monitors the ESBMC instances. The algorithm starts by retrieving the step to execute from the controller (line 1) , starts the instance of ESBMC and get the process id from the forked process (line 2). While the step is being executed, the controller checks whether this step is still needed (line 4). If not, then the ESBMC instance is killed (line 5) and the worker is free to initiate another step.}
 
 \section{Mathematical modeling}
 The mathematical modeling was taken from [1], [2].
@@ -385,7 +385,7 @@ Two restrictions are imposed, the first refers to the sum between the cost of so
 Nice team.
 
 \section{Experimental Evaluation}
-ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver [25] (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used [18]. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software [19] and is widely used by the engineering community [20]. \textcolor{Red}{A ferramenta vZ incorporada ao Z3[34] disponivel gratuitamente também foi usada. uma implementacao paralela do algoritmo ESBMC com busca sequencial ascendente, descrescente e binaria foi implementada em C++1}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
+ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver [25] (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used [18]. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software [19] and is widely used by the engineering community [20]. \textcolor{Red}{The built in Z3 tool vZ [34] available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++11}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
 
 \begin{table}[h]
 \caption {Description of Benchmarks}
@@ -582,7 +582,7 @@ Concerning the comparative tests, with the four techniques presented in this pap
 
 If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC has a BSD-style license and can be downloaded and used for free. Concerning the two versions of ESBMC, it is possible to conclude that Multi-core ESBMC had better performance results than pure ESBMC. Thus, considering that nowadays the processors have more and more cores, when modeling the problem, it is possible to consider multi-core ESBMC as an alternative to solve the partitioning problem. Future work can be done to decrease the processing time of ESBMC (solver included).
 
-Finally, there is an issue about 150 nodes problem, since it seems to be the limit of ESBMC. It really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for bigger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the size of the search space. \textcolor{Red}{Em trabalhos futuros, vamos abordar melhorias na abordagem do ESBMC, esperamos eliminar a camada de paralelismo da arquitetura do ESBMC implementando open MP diretamente em seu nucleo, almejamos assim otimizar o tempo de processamento.}
+Finally, there is an issue about 150 nodes problem, since it seems to be the limit of ESBMC. It really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for bigger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the size of the search space. \textcolor{Red}{On future works we will address improvements in the ESBMC, we hope to remove the parallel layer on top of ESBMC and implement it on it's core, it would optimize the processing time.}
 \section{References}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---- Bibliography ---- %
