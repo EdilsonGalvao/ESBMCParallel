@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  17 AUG 2015 16:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  17 AUG 2015 16:14
 entering extended mode
 **template.tex
 (C:\repository\edilson\ESBMCParallel\Docs\Paper\LaTex\template.tex
@@ -773,114 +773,115 @@ Overfull \hbox (0.95177pt too wide) in paragraph at lines 198--205
 <Image/esbmc-arch-new.pdf, id=24, 257.4974pt x 99.58464pt>
 File: Image/esbmc-arch-new.pdf Graphic file (type pdf)
  <use Image/esbmc-arch-new.pdf>
-Package pdftex.def Info: Image/esbmc-arch-new.pdf used on input line 233.
+Package pdftex.def Info: Image/esbmc-arch-new.pdf used on input line 274.
 (pdftex.def)             Requested size: 231.74551pt x 89.62532pt.
-
-<Image/esbmc-parallel.pdf, id=25, 315.8256pt x 256.0748pt>
+ [4]
+<Image/esbmc-parallel.pdf, id=29, 315.8256pt x 256.0748pt>
 File: Image/esbmc-parallel.pdf Graphic file (type pdf)
  <use Image/esbmc-parallel.pdf>
-Package pdftex.def Info: Image/esbmc-parallel.pdf used on input line 242.
+Package pdftex.def Info: Image/esbmc-parallel.pdf used on input line 283.
 (pdftex.def)             Requested size: 236.86862pt x 192.05562pt.
 
-Overfull \hbox (0.28519pt too wide) in paragraph at lines 239--245
+Overfull \hbox (0.28519pt too wide) in paragraph at lines 280--286
 \OT1/cmr/m/n/10 In-ter-face (API) for shared mem-ory pro-gram-ming, which
  []
 
 
-Overfull \hbox (1.28629pt too wide) in paragraph at lines 239--245
+Overfull \hbox (1.28629pt too wide) in paragraph at lines 280--286
 \OT1/cmr/m/n/10 gram-ming ap-proach to write par-al-lel ver-sions of C/C++
  []
 
 
-Overfull \hbox (3.14627pt too wide) in paragraph at lines 246--247
+Overfull \hbox (3.14627pt too wide) in paragraph at lines 287--288
 []\OT1/cmr/m/n/10 Multi-core ES-BMC ob-tains the prob-lem spe-cification
  []
 
-<Image/esbmc-parallel.png, id=26, 314.6154pt x 253.4268pt>
+<Image/esbmc-parallel.png, id=30, 314.6154pt x 253.4268pt>
 File: Image/esbmc-parallel.png Graphic file (type png)
  <use Image/esbmc-parallel.png>
-Package pdftex.def Info: Image/esbmc-parallel.png used on input line 256.
+Package pdftex.def Info: Image/esbmc-parallel.png used on input line 297.
 (pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
 
-<Image/esbmc-parallel-Controler.png, id=28, 314.6154pt x 253.4268pt>
+<Image/esbmc-parallel-Controler.png, id=32, 314.6154pt x 253.4268pt>
 File: Image/esbmc-parallel-Controler.png Graphic file (type png)
  <use Image/esbmc-parallel-Controler.png>
-Package pdftex.def Info: Image/esbmc-parallel-Controler.png used on input line 266.
+Package pdftex.def Info: Image/esbmc-parallel-Controler.png used on input line 307.
 (pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
- [4 <C:/repository/edilson/ESBMCParallel/Docs/Paper/LaTex/Image/esbmc-arch-new.pdf> <C:/repository/edilson/ESBMCParallel
-/Docs/Paper/LaTex/Image/esbmc-parallel.pdf>] <Image/Fig4.png, id=79, 1447.4075pt x 286.06876pt>
+ [5 <C:/repository/edilson/ESBMCParallel/Docs/Paper/LaTex/Image/esbmc-arch-new.pdf> <C:/repository/edilson/ESBMCParallel
+/Docs/Paper/LaTex/Image/esbmc-parallel.pdf> <C:/repository/edilson/ESBMCParallel/Docs/Paper/LaTex/Image/esbmc-parallel.p
+ng>]
+<Image/Fig4.png, id=84, 1447.4075pt x 286.06876pt>
 File: Image/Fig4.png Graphic file (type png)
  <use Image/Fig4.png>
-Package pdftex.def Info: Image/Fig4.png used on input line 274.
+Package pdftex.def Info: Image/Fig4.png used on input line 315.
 (pdftex.def)             Requested size: 242.5444pt x 75.27968pt.
 
-Overfull \hbox (3.58023pt too wide) in paragraph at lines 274--275
+Overfull \hbox (3.58023pt too wide) in paragraph at lines 315--316
  [][] 
  []
 
 
-Overfull \hbox (7.22963pt too wide) in paragraph at lines 313--314
+Overfull \hbox (7.22963pt too wide) in paragraph at lines 359--360
 \OT1/cmr/m/n/10 and mon-i-tors the ES-BMC in-stances. The al-go-rithm starts
  []
 
-[5 <C:/repository/edilson/ESBMCParallel/Docs/Paper/LaTex/Image/esbmc-parallel.png> <C:/repository/edilson/ESBMCParallel/
-Docs/Paper/LaTex/Image/esbmc-parallel-Controler.png> <C:/repository/edilson/ESBMCParallel/Docs/Paper/LaTex/Image/Fig4.pn
-g>] [6]
-Overfull \hbox (9.60632pt too wide) in paragraph at lines 383--385
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [6 <C:/repository/edilson/ESBMCParallel/Docs/Paper/LaTex/Image/esbmc-parallel-Controler.png> <C:/repository/edilson/ESB
+MCParallel/Docs/Paper/LaTex/Image/Fig4.png>]
+Overfull \hbox (9.60632pt too wide) in paragraph at lines 397--399
 \OT1/cmr/m/n/10 test prob-lem, as fol-lows: $\OML/cmm/m/it/10 esbmc \OMS/cmsy/m/n/10   \OML/cmm/m/it/10 parallel < Filen
 ame:c >
  []
 
 [7]
-Overfull \hbox (5.51102pt too wide) in paragraph at lines 440--440
+Overfull \hbox (5.51102pt too wide) in paragraph at lines 456--456
 []|\OT1/cmr/bx/n/8.5 Nodes| 
  []
 
 
-Overfull \hbox (3.92906pt too wide) in paragraph at lines 440--440
+Overfull \hbox (3.92906pt too wide) in paragraph at lines 456--456
 []|\OT1/cmr/bx/n/8.5 Edges| 
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 443--444
+Underfull \hbox (badness 5245) in paragraph at lines 459--460
 []|\OT1/cmr/m/n/8.5 32-bit cyclic re-dun-dancy
  []
 
 
-Overfull \hbox (2.47774pt too wide) in paragraph at lines 450--450
+Overfull \hbox (2.47774pt too wide) in paragraph at lines 466--466
 []|[]\OT1/cmtt/m/n/8.5 Clustering| 
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 450--451
+Underfull \hbox (badness 1383) in paragraph at lines 466--467
 []|\OT1/cmr/m/n/8.5 Image seg-men-ta-tion al-go-
  []
 
 
-Underfull \hbox (badness 3271) in paragraph at lines 452--453
+Underfull \hbox (badness 3271) in paragraph at lines 468--469
 []|\OT1/cmr/m/n/8.5 RC6 cryp-tog-ra-phy graph
  []
 
 
-Overfull \hbox (5.36006pt too wide) in paragraph at lines 438--460
+Overfull \hbox (5.36006pt too wide) in paragraph at lines 454--476
 [][] 
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Overfull \hbox (5.75853pt too wide) in paragraph at lines 462--463
+Overfull \hbox (5.75853pt too wide) in paragraph at lines 478--479
 \OT1/cmr/m/n/10 lan-guage in-struc-tions. Soft-ware and com-mu-ni-ca-tion costs
  []
 
 
-Overfull \hbox (7.07892pt too wide) in paragraph at lines 462--463
+Overfull \hbox (7.07892pt too wide) in paragraph at lines 478--479
 \OT1/cmr/bx/n/10 acho que esse texto veio daquele ar-tigo ex-pandido.
  []
 
 
-Overfull \hbox (2.50774pt too wide) in paragraph at lines 476--541
+Overfull \hbox (2.50774pt too wide) in paragraph at lines 492--557
 [][] 
  []
 
@@ -888,20 +889,20 @@ Overfull \hbox (2.50774pt too wide) in paragraph at lines 476--541
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Overfull \hbox (1.4882pt too wide) in paragraph at lines 548--612
+Overfull \hbox (1.4882pt too wide) in paragraph at lines 564--628
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-
-Overfull \hbox (0.14738pt too wide) in paragraph at lines 618--619
+[8]
+Overfull \hbox (0.14738pt too wide) in paragraph at lines 636--637
 \OT1/cmr/m/n/10 present al-ter-na-tive so-lu-tions to the op-ti-miza-tion of HW-
  []
 
-[8]
-Overfull \hbox (3.42398pt too wide) in paragraph at lines 625--626
+
+Overfull \hbox (3.42398pt too wide) in paragraph at lines 643--644
 \OT1/cmr/m/n/10 [14] uses the ES-BMC model checker for em-bed-ded ANSI-
  []
 
@@ -917,13 +918,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7174 strings out of 493921
- 96238 string characters out of 3147282
+ 7175 strings out of 493921
+ 96246 string characters out of 3147282
  262318 words of memory out of 3000000
- 10318 multiletter control sequences out of 15000+200000
+ 10319 multiletter control sequences out of 15000+200000
  11952 words of font info for 43 fonts, out of 3000000 for 9000
  878 hyphenation exceptions out of 8191
- 41i,14n,49p,1301b,1124s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,14n,49p,1301b,1505s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:
@@ -933,7 +934,7 @@ ts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cms
 y8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmtt8.pfb>
-Output written on template.pdf (10 pages, 1238801 bytes).
+Output written on template.pdf (10 pages, 1239885 bytes).
 PDF statistics:
  147 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
