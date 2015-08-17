@@ -58,6 +58,10 @@ grestore
 \usepackage{tabularx} % in the preamble
 \usepackage{mathtools} % Serve para as equacoes
 
+\usepackage{hyphenat}
+\usepackage[english]{babel}
+\hyphenation{ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams}
+
 \newcommand{\head}[1]{\textnormal{\textbf{#1}}}
 
 \usepackage{color}
@@ -101,7 +105,19 @@ grestore
 \begin{document}
 \title{Applying Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems}
 \author{Alessandro Trindade\and Hussama Ismail\and Renato Degelo\and Edilson Galv\~ao\and Lucas Cordeiro}
-\institute{Electronic and Information Research Center\\Federal University of Amazonas, Brazil}
+
+\institute{A. Trindade, H. Ismail, R. Degelo, E. Galv\~ao \at
+              Graduate Program in Electrical Engineering, Federal University of Amazonas, Brazil \\
+%              Tel.: +123-45-678910\\
+%              Fax: +123-45-678910\\
+              \email{\{iurybessa, hussamaibrahim\}@ufam.edu.br and\\{\{rdegelo, esj.galvao\}@gmail.com}}          %  \\
+%             \emph{Present address:} of F. Author  %  if needed
+           \and
+           L. Cordeiro \at
+              Electronic and Information Research Center, Federal University of Amazonas, Brazil
+              \email: lucascordeiro@ufam.edu.br           %  \\
+}
+
 \maketitle
 
 \begin{abstract}
@@ -191,7 +207,7 @@ There are two directives in C/C++ that can be used to guide a model checker to s
 \subsection{Multi-core ESBMC with OpenMP}
 Nowadays, although the CPU used to perform tests usually has a modern multi-core architecture, with the ability to run several threads on different processing cores, ESBMC verification runs are still performed only in a single-core. For instance, if the processor has 8 processing cores available, only one is used for the verification and the others remain idle. There is a significant unused hardware resource during this process.
 
-Fig.1 shows the ESBMC architecture, which consists of the C/C++ parser, GOTO Program, GOTO Symex, and SMT solver [16]. In particular, ESBMC compiles the C/C++ code into equivalent GOTO-programs (i.e., control-flow graphs) using a gcc-compliant style. The GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($ C $) and properties ($ P $); finally it generates two sets of equations (i.e.,\:$ C \land \neg P $ ) which are checked by an SMT solver. 
+Fig.1 shows the ESBMC architecture, which consists of the C/C++ parser, GOTO Program, GOTO Symex, and SMT solver [16]. In particular, ESBMC compiles the C/C++ code into equivalent GOTO\hyp{}programs (i.e., control-flow graphs) using a gcc-compliant style. The GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($ C $) and properties ($ P $); finally it generates two sets of equations (i.e.,\:$ C \land \neg P $ ) which are checked by an SMT solver. 
 
 The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3 [24], Boolector [25], MathSAT [26], CVC4 [27], and Yices [28]. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
 \begin{figure}[ht]
@@ -212,18 +228,18 @@ OpenMP is a standard Application Programming Interface (API) for shared memory p
 Multi-core ESBMC obtains the problem specification represented by a C program, which is violated when the correct optimum value () parameter is reached; Multi-core ESBMC starts a parallel region with  different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig. 2; note that there is no shared-memory (or message-passing) mechanism among the threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread lifecycle: start, running, and dead states, using different  values as condition. After executing  instances, if there is no code violation, then multi-core ESBMC starts  new instances again. During the parallel region execution, if a violation is found in any running thread, then it presents the counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then multi-core ESBMC finishes its execution.
 
 \subsection{\textcolor{Red}{Multi-core ESBMC with OpenMP using Binary Search}}
-\textcolor{Red}{The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find.
+The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time.
 
-Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time.}
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel.png} 
 	\caption{gestaucht}
 	\label{fig2}
 \end{figure}
-\textcolor{Red}{Consequently, the first approach aims to remove the idle time from the parallel loops, by creating workers inside the threads to execute the next step until a violation is found. This approach could potentially lead to a great improvement, but as ESBMC executes the sequential steps almost at the same time, the processor does not remain idle for a longer period and thus there is almost no optimization
 
-The most optimized approach applies a parallelized binary search to reduce the amount of steps executed  in order to find the most optmized solution. As a result, the controller is designed to return the best step to execute so that the number of steps are reduced as maximum as possible. The parallelized binary search accomplishes this by splitting the domain into intervals and then returning the middle of the largest interval, which thus creates two new intervals.}
+Consequently, the first approach aims to remove the idle time from the parallel loops, by creating workers inside the threads to execute the next step until a violation is found. This approach could potentially lead to a great improvement, but as ESBMC executes the sequential steps almost at the same time, the processor does not remain idle for a longer period and thus there is almost no optimization
+
+The most optimized approach applies a parallelized binary search to reduce the amount of steps executed  in order to find the most optmized solution. As a result, the controller is designed to return the best step to execute so that the number of steps are reduced as maximum as possible. The parallelized binary search accomplishes this by splitting the domain into intervals and then returning the middle of the largest interval, which thus creates two new intervals.
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel-Controler.png} 
@@ -231,7 +247,7 @@ The most optimized approach applies a parallelized binary search to reduce the a
 	\label{fig2}
 \end{figure}
 
-\textcolor{Red}{As example, given a problem of domain 1 to 20, firstly we create an initial interval from 1 to 20. When the next available core asks for a step to execute, the controller gets the biggest interval, which in this case is 1 – 20, divide it by 2, creates two new intervals and return the middle of the original interval. Therefore, there would be 2 new intervals, one from 1 to 9 and another one from 11 to 20, and the returned step would be 10. The controller also checks when an interval has less than two elements to avoid the creation of empty or invalid intervals. }
+As example, given a problem of domain 1 to 20, firstly we create an initial interval from 1 to 20. When the next available core asks for a step to execute, the controller gets the biggest interval, which in this case is 1 – 20, divide it by 2, creates two new intervals and return the middle of the original interval. Therefore, there would be 2 new intervals, one from 1 to 9 and another one from 11 to 20, and the returned step would be 10. The controller also checks when an interval has less than two elements to avoid the creation of empty or invalid intervals. 
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=0.49\textwidth, height=75px]{Image/Fig4.png}
@@ -239,9 +255,9 @@ The most optimized approach applies a parallelized binary search to reduce the a
 	\label{fig2}
 \end{figure}
 
-\textcolor{Red}{Additionally, since there is a gap between the steps, produced by the customized binary search; in particular, there might be several steps are not executed. For instance, in the example above, if step 10 returns false, then one can conclude that all steps after 10 is false as well. However, if the same step 10 is true, we can assume that all steps before 10 is true as well. 
+Additionally, since there is a gap between the steps, produced by the customized binary search; in particular, there might be several steps are not executed. For instance, in the example above, if step 10 returns false, then one can conclude that all steps after 10 is false as well. However, if the same step 10 is true, we can assume that all steps before 10 is true as well. 
 
-As a result, a method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.}
+As a result, a method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 \begin{lstlisting}
 01. GetNextStep(){
 02.  int largestChunk = -1;
@@ -263,7 +279,7 @@ As a result, a method to remove unnecessary steps is implemented in the controll
 18.   return median;
 19. }
 \end{lstlisting}
-\textcolor{Red}{The algorithm above describes how the customized binary search calculates and returns the step to be executed. From line 4 to 9 the algorithm finds the biggest interval. Then from the line 10 the biggest interval is removed and the median is calculated in the line 11. Then 2 new intervals are created, the left side on line 14 and the right side on the line 16. At the end, the median is returned.}
+The algorithm above describes how the customized binary search calculates and returns the step to be executed. From line 4 to 9 the algorithm finds the biggest interval. Then from the line 10 the biggest interval is removed and the median is calculated in the line 11. Then 2 new intervals are created, the left side on line 14 and the right side on the line 16. At the end, the median is returned.
 
 \begin{lstlisting}
 01. step = controller.GetNextStep();
@@ -273,7 +289,7 @@ As a result, a method to remove unnecessary steps is implemented in the controll
 05.    kill(pid);
 06. }     
 \end{lstlisting}
-\textcolor{Red}{The algorithm above describes how the worker starts and monitors the ESBMC instances. The algorithm starts by retrieving the step to execute from the controller (line 1) , starts the instance of ESBMC and get the process id from the forked process (line 2). While the step is being executed, the controller checks whether this step is still needed (line 4). If not, then the ESBMC instance is killed (line 5) and the worker is free to initiate another step.}
+The algorithm above describes how the worker starts and monitors the ESBMC instances. The algorithm starts by retrieving the step to execute from the controller (line 1) , starts the instance of ESBMC and get the process id from the forked process (line 2). While the step is being executed, the controller checks whether this step is still needed (line 4). If not, then the ESBMC instance is killed (line 5) and the worker is free to initiate another step.
 
 \section{Mathematical modeling}
 The mathematical modeling was taken from [1], [2].
@@ -414,77 +430,143 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 \begin{table}[h]
 \caption {Results of the benchmarks}
 \small
-\begin{tabular}[c]{cc|c|c|c|c|c|c|c}
+\begin{tabular}[c]{m{1.3cm}m{1.20cm}|m{0.85cm}|m{0.85cm}|m{0.85cm}|m{0.85cm}}
   \toprule[1.5pt]
   \head{\begin{turn}{-90}  \end{turn}} &
   \head{\begin{turn}{-90}  \end{turn}} &
   \head{\begin{turn}{-90}CRC32\end{turn}} &
   \head{\begin{turn}{-90}Patricia\end{turn}} &
   \head{\begin{turn}{-90}Dijkstra\end{turn}} &
-  \head{\begin{turn}{-90}Clustering\end{turn}} &
-  \head{\begin{turn}{-90}RC6\end{turn}} &
-  \head{\begin{turn}{-90}Fuzzy\end{turn}} &
-  \head{\begin{turn}{-90}Mars\end{turn}} \\
+  \head{\begin{turn}{-90}Clustering\end{turn}} \\
 
   \midrule
 
-\verb| | & \verb|Nodes| & \verb|25| & \verb|21| & \verb|26| & \verb|150| & \verb|329| & \verb|261|  & \verb|417|\\
-\verb| | &\verb|Edges| & \verb|32| & \verb|48| & \verb|69| & \verb|331| & \verb|448| & \verb|442|  & \verb|600|\\
-\verb| | &\verb|S0| & \verb|20| & \verb|10| & \verb|20| & \verb|50| & \verb|600| & \verb|4578|  & \verb|300|\\
+\verb| | & \verb|Nodes| & \verb|25| & \verb|21| & \verb|26| & \verb|150| \\
+\verb| | &\verb|Edges| & \verb|32| & \verb|48| & \verb|69| & \verb|331| \\
+\verb| | &\verb|S0| & \verb|20| & \verb|10| & \verb|20| & \verb|50| \\
 \bottomrule[1.5pt]
 
 %EXACT Solution
 \rowcolor{DarkGray}
-\verb|Exact| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| & \verb|692|  & \verb|13820| & \verb|876|\\
+\verb|Exact| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| \\
 \rowcolor{DarkGray}
-\verb|Solution| & \verb|Sp| & \verb|19| & \verb|4| & \verb|19| & \verb|46| & \verb|533|  & \verb|4231| & \verb|297|\\
+\verb|Solution| & \verb|Sp| & \verb|19| & \verb|4| & \verb|19| & \verb|46| \\
 
 
 %vZ
-\verb|vZ| & \verb|T(s)| & \verb|0.2| & \verb|0.3| & \verb|0.6| & \verb|109| & \verb|112|  & \verb|TO| & \verb|TO|\\
-\verb|| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| & \verb|241|  & \verb|-| & \verb|-|\\
+\verb|vZ| & \verb|T(s)| & \verb|0.2| & \verb|0.3| & \verb|0.6| & \verb|109|\\
+\verb|| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| \\
 \hline
 
 %ILP
 \rowcolor{Gray}
-\verb|ILP| & \verb|T(s)| & \verb|2| & \verb|1| & \verb|2| & \verb|649| & \verb|1806|  & \verb|TO| & \verb|5.42|\\
+\verb|ILP| & \verb|T(s)| & \verb|2| & \verb|1| & \verb|2| & \verb|649|\\
 \rowcolor{Gray}
-\verb| | & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| & \verb|692|  & \verb|-| & \verb|876|\\
+\verb| | & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241|\\
 \hline
 
 %GA
-\verb|GA| & \verb|T(s)| & \verb|7| & \verb|7| & \verb|9| & \verb|340| & \verb|2050|  & \verb|1.37| & \verb|5000|\\
-\verb| | & \verb|E%| & \verb|13.3| & \verb|0| & \verb|29| & \verb|1.7| & \verb|-6.5|  & \verb|-37.6| & \verb|-27.5|\\
+\verb|GA| & \verb|T(s)| & \verb|7| & \verb|7| & \verb|9| & \verb|340|\\
+\verb| | & \verb|E%| & \verb|13.3| & \verb|0| & \verb|29| & \verb|1.7|\\
 \hline
 
 %ESBMC
 \rowcolor{Gray}
-\verb|ESBMC| & \verb|T(s)| & \verb|31| & \verb|362| & \verb|292| & \verb|3010| & \verb|TO|  & \verb|MO| & \verb|MO|\\
+\verb|ESBMC| & \verb|T(s)| & \verb|31| & \verb|362| & \verb|292| & \verb|3010|\\
 \rowcolor{Gray}
-\verb|| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| & \verb|-|  & \verb|-| & \verb|-|\\
+\verb|| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241|\\
 \hline
 
 %MultiCore ESBMC
-\verb|ESBMC| & \verb|T(s)| & \verb|2| & \verb|6| & \verb|7| & \verb|1615| & \verb|TO|  & \verb|TO| & \verb|TO|\\
-\verb|MC| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| & \verb|-|  & \verb|-| & \verb|-|\\
+\verb|ESBMC| & \verb|T(s)| & \verb|2| & \verb|6| & \verb|7| & \verb|1615|\\
+\verb|MC| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241|\\
 \hline
 
 %ESBMC Parallel sequential
 \rowcolor{Gray}
-\verb|ESBMC| & \verb|T(s)| & \verb|4| & \verb|10| & \verb|11| & \verb|2238| & \verb|TO|  & \verb|MO| & \verb|MO|\\
+\verb|ESBMC| & \verb|T(s)| & \verb|4| & \verb|10| & \verb|11| & \verb|2238|\\
 \rowcolor{Gray}
-\verb|PS| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241| & \verb|-|  & \verb|-| & \verb|-|\\
+\verb|PS| & \verb|Hp| & \verb|15| & \verb|47| & \verb|31| & \verb|241|\\
 \hline
 
 %ESBMC Parallel Binary
-\verb|ESBMC| & \verb|T(s)| & \verb|6| & \verb|5| & \verb|6| & \verb|207| & \verb|TO|  & \verb|MO| & \verb|MO|\\
-\verb|PB| & \verb|Hp| & \verb|15| & \verb|47| & \verb|38| & \verb|241| & \verb|-|  & \verb|-| & \verb|-|\\
+\verb|ESBMC| & \verb|T(s)| & \verb|6| & \verb|5| & \verb|6| & \verb|207|\\
+\verb|PB| & \verb|Hp| & \verb|15| & \verb|47| & \verb|38| & \verb|241|\\
 \bottomrule[1.5pt]
 
 \end{tabular}
 \end{table}
 
 \textcolor{Red}{The table 2 shows the advances in the parallelization of algorithms of partitioning problems, ESBMC had great results when executed in parallel, the vZ and ILP had precise results as ESBMC.} 
+
+\begin{table}[h]
+\caption {Results of the benchmarks}
+\small
+\begin{tabular}[c]{m{1.3cm}m{1.25cm}|m{1.25cm}|m{1.25cm}|m{1.25cm}}
+  \toprule[1.5pt]
+  \head{\begin{turn}{-90}  \end{turn}} &
+  \head{\begin{turn}{-90}  \end{turn}} &
+  \head{\begin{turn}{-90}RC6\end{turn}} &
+  \head{\begin{turn}{-90}Fuzzy\end{turn}} &
+  \head{\begin{turn}{-90}Mars\end{turn}} \\
+
+  \midrule
+
+\verb| | & \verb|Nodes| & \verb|329| & \verb|261|  & \verb|417|\\
+\verb| | &\verb|Edges| &  \verb|448| & \verb|442|  & \verb|600|\\
+\verb| | &\verb|S0| & \verb|600| & \verb|4578|  & \verb|300|\\
+\bottomrule[1.5pt]
+
+%EXACT Solution
+\rowcolor{DarkGray}
+\verb|Exact| & \verb|Hp| & \verb|692|  & \verb|13820| & \verb|876|\\
+\rowcolor{DarkGray}
+\verb|Solution| & \verb|Sp| & \verb|533|  & \verb|4231| & \verb|297|\\
+
+
+%vZ
+\verb|vZ| & \verb|T(s)| & \verb|112|  & \verb|TO| & \verb|TO|\\
+\verb|| & \verb|Hp| & \verb|241|  & \verb|-| & \verb|-|\\
+\hline
+
+%ILP
+\rowcolor{Gray}
+\verb|ILP| & \verb|T(s)| & \verb|1806|  & \verb|TO| & \verb|5.42|\\
+\rowcolor{Gray}
+\verb| | & \verb|Hp| & \verb|692|  & \verb|-| & \verb|876|\\
+\hline
+
+%GA
+\verb|GA| & \verb|T(s)| & \verb|2050|  & \verb|1.37| & \verb|5000|\\
+\verb| | & \verb|E%| &  \verb|-6.5|  & \verb|-37.6| & \verb|-27.5|\\
+\hline
+
+%ESBMC
+\rowcolor{Gray}
+\verb|ESBMC| & \verb|T(s)| &  \verb|TO|  & \verb|MO| & \verb|MO|\\
+\rowcolor{Gray}
+\verb|| & \verb|Hp| & \verb|-|  & \verb|-| & \verb|-|\\
+\hline
+
+%MultiCore ESBMC
+\verb|ESBMC| & \verb|T(s)|  & \verb|TO|  & \verb|TO| & \verb|TO|\\
+\verb|MC| & \verb|Hp| & \verb|-|  & \verb|-| & \verb|-|\\
+\hline
+
+%ESBMC Parallel sequential
+\rowcolor{Gray}
+\verb|ESBMC| & \verb|T(s)| & \verb|TO|  & \verb|MO| & \verb|MO|\\
+\rowcolor{Gray}
+\verb|PS| & \verb|Hp| & \verb|-|  & \verb|-| & \verb|-|\\
+\hline
+
+%ESBMC Parallel Binary
+\verb|ESBMC| & \verb|T(s)| & \verb|TO|  & \verb|MO| & \verb|MO|\\
+\verb|PB| & \verb|Hp| & \verb|-|  & \verb|-| & \verb|-|\\
+\bottomrule[1.5pt]
+
+\end{tabular}
+\end{table}
 
 \section{Related Work}
 Since the second half of the first decade of the 2000s, three main paths have been tracked to improve or to present alternative solutions to the optimization of HW-SW partitioning, i.e., to find the exact solution [2], to use heuristics to speed up performance time [1], and hybrid ones [22].
