@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  16 AUG 2015 23:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  17 AUG 2015 22:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -691,20 +691,20 @@ LaTeX Warning: Label `fig2' multiply defined.
 )
 \openout1 = `template.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 105.
-LaTeX Font Info:    ... okay on input line 105.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 106.
+LaTeX Font Info:    ... okay on input line 106.
 
 Unknown journal: specify \journalname{<name of your journal>} in preambel
 
@@ -772,36 +772,39 @@ e
 
 SVJour3 warning: Missing \journalname
 SVJour3 warning: Missing \date
-LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 121.
+LaTeX Font Info:    Calculating math sizes for size <8.5> on input line 122.
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <8.5> not available
-(Font)              size <8> substituted on input line 121.
+(Font)              size <8> substituted on input line 122.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 121.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 122.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8.5> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 121.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 122.
 
-Overfull \hbox (1.17505pt too wide) in paragraph at lines 124--125
-\OT1/cmr/m/n/10 pro-ces-sors cores num-bers avail-able to the model checker.
+Overfull \hbox (10.22969pt too wide) in paragraph at lines 125--127
+\OT1/cmr/m/n/10 MAT-LAB R2013a da Math-Works[19], Z3 um solu-cionador
  []
 
 
-Overfull \hbox (1.09181pt too wide) in paragraph at lines 133--134
+Underfull \vbox (badness 4391) has occurred while \output is active []
+
+
+Overfull \hbox (1.09181pt too wide) in paragraph at lines 135--136
 \OT1/cmr/m/n/10 core so-lu-tion. How-ever, most veri-fication al-go-rithms stil
 l
  []
 
 
-Overfull \hbox (2.86852pt too wide) in paragraph at lines 133--134
+Overfull \hbox (2.86852pt too wide) in paragraph at lines 135--136
 \OT1/cmr/m/n/10 dis-re-gard the lim-i-ta-tions of the CMOS tech-nol-ogy, which
  []
 
 
-Overfull \hbox (1.0917pt too wide) in paragraph at lines 133--134
+Overfull \hbox (1.0917pt too wide) in paragraph at lines 135--136
 \OT1/cmr/m/n/10 lim-its the in-crease of the chip's fre-quency af-ter it reache
 s
  []
@@ -809,179 +812,157 @@ s
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 171.
+] [2]
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 193.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 171.
- [2]
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 193.
+
 <Image/vzArch.png, id=19, 1191.45125pt x 403.5075pt>
 File: Image/vzArch.png Graphic file (type png)
  <use Image/vzArch.png>
-Package pdftex.def Info: Image/vzArch.png used on input line 186.
+Package pdftex.def Info: Image/vzArch.png used on input line 208.
 (pdftex.def)             Requested size: 242.54016pt x 95.35378pt.
 
-Overfull \hbox (3.57599pt too wide) in paragraph at lines 186--187
+Overfull \hbox (3.57599pt too wide) in paragraph at lines 208--209
  [][] 
  []
 
 
-Overfull \hbox (0.95177pt too wide) in paragraph at lines 183--190
+Overfull \hbox (0.95177pt too wide) in paragraph at lines 205--212
 \OT1/cmr/m/n/10 the SMT ob-jec-tives are con-verted to prob-lems MaxSAT,
  []
 
-<Image/esbmc-arch-new.pdf, id=20, 257.4974pt x 99.58464pt>
+[3 <./Image/vzArch.png>] [4]
+<Image/esbmc-arch-new.pdf, id=29, 257.4974pt x 99.58464pt>
 File: Image/esbmc-arch-new.pdf Graphic file (type pdf)
 
 <use Image/esbmc-arch-new.pdf>
-Package pdftex.def Info: Image/esbmc-arch-new.pdf used on input line 215.
+Package pdftex.def Info: Image/esbmc-arch-new.pdf used on input line 281.
 (pdftex.def)             Requested size: 231.74551pt x 89.62532pt.
- [3 <./Image/vzArch.png>]
-<Image/esbmc-parallel.pdf, id=26, 315.8256pt x 256.0748pt>
+
+<Image/esbmc-parallel.pdf, id=30, 315.8256pt x 256.0748pt>
 File: Image/esbmc-parallel.pdf Graphic file (type pdf)
 
 <use Image/esbmc-parallel.pdf>
-Package pdftex.def Info: Image/esbmc-parallel.pdf used on input line 224.
+Package pdftex.def Info: Image/esbmc-parallel.pdf used on input line 290.
 (pdftex.def)             Requested size: 236.86862pt x 192.05562pt.
 
-Overfull \hbox (0.28519pt too wide) in paragraph at lines 221--227
+Overfull \hbox (0.28519pt too wide) in paragraph at lines 287--293
 \OT1/cmr/m/n/10 In-ter-face (API) for shared mem-ory pro-gram-ming, which
  []
 
 
-Overfull \hbox (1.28629pt too wide) in paragraph at lines 221--227
+Overfull \hbox (1.28629pt too wide) in paragraph at lines 287--293
 \OT1/cmr/m/n/10 gram-ming ap-proach to write par-al-lel ver-sions of C/C++
  []
 
 
-Overfull \hbox (3.14627pt too wide) in paragraph at lines 228--229
+Overfull \hbox (3.14627pt too wide) in paragraph at lines 294--295
 []\OT1/cmr/m/n/10 Multi-core ES-BMC ob-tains the prob-lem spe-cification
  []
 
-
-Underfull \vbox (badness 1642) has occurred while \output is active []
-
-
-<Image/esbmc-parallel.png, id=27, 314.6154pt x 253.4268pt>
+<Image/esbmc-parallel.png, id=31, 314.6154pt x 253.4268pt>
 File: Image/esbmc-parallel.png Graphic file (type png)
 
 <use Image/esbmc-parallel.png>
-Package pdftex.def Info: Image/esbmc-parallel.png used on input line 235.
+Package pdftex.def Info: Image/esbmc-parallel.png used on input line 304.
 (pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
- [4 <./Image/esbmc-arch-new.pdf> <./Image/esbmc-parallel.pdf> <./Image/esbmc-pa
-rallel.png>]
-<Image/esbmc-parallel-Controler.png, id=80, 314.6154pt x 253.4268pt>
+ [5 <./Image/esbmc-arch-new.pdf> <./Image/esbmc-parallel.pdf>]
+<Image/esbmc-parallel-Controler.png, id=83, 314.6154pt x 253.4268pt>
 File: Image/esbmc-parallel-Controler.png Graphic file (type png)
 
 <use Image/esbmc-parallel-Controler.png>
 Package pdftex.def Info: Image/esbmc-parallel-Controler.png used on input line 
-245.
+314.
 (pdftex.def)             Requested size: 235.96097pt x 190.06963pt.
 
-<Image/Fig4.png, id=81, 1447.4075pt x 286.06876pt>
+<Image/Fig4.png, id=84, 1447.4075pt x 286.06876pt>
 File: Image/Fig4.png Graphic file (type png)
  <use Image/Fig4.png>
-Package pdftex.def Info: Image/Fig4.png used on input line 253.
+Package pdftex.def Info: Image/Fig4.png used on input line 322.
 (pdftex.def)             Requested size: 242.5444pt x 75.27968pt.
 
-Overfull \hbox (3.58023pt too wide) in paragraph at lines 253--254
+Overfull \hbox (3.58023pt too wide) in paragraph at lines 322--323
  [][] 
  []
 
 
-Underfull \vbox (badness 3482) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-Overfull \hbox (7.22963pt too wide) in paragraph at lines 292--293
+ [6 <./Image/esbmc-parallel.png> <./Image/esbmc-parallel-Controler.png> <./Imag
+e/Fig4.png>]
+Overfull \hbox (7.22963pt too wide) in paragraph at lines 366--367
 \OT1/cmr/m/n/10 and mon-i-tors the ES-BMC in-stances. The al-go-rithm starts
  []
 
 
-Underfull \vbox (badness 1789) has occurred while \output is active []
-
- [5 <./Image/esbmc-parallel-Controler.png> <./Image/Fig4.png>] [6]
-Overfull \hbox (9.60632pt too wide) in paragraph at lines 346--348
+Overfull \hbox (9.60632pt too wide) in paragraph at lines 404--406
 \OT1/cmr/m/n/10 test prob-lem, as fol-lows: $\OML/cmm/m/it/10 esbmc \OMS/cmsy/m
 /n/10 ^^@ \OML/cmm/m/it/10 parallel < Filename:c >
  []
 
 [7]
-Overfull \hbox (5.51102pt too wide) in paragraph at lines 397--397
+Overfull \hbox (5.51102pt too wide) in paragraph at lines 463--463
 []|\OT1/cmr/bx/n/8.5 Nodes| 
  []
 
 
-Overfull \hbox (3.92906pt too wide) in paragraph at lines 397--397
+Overfull \hbox (3.92906pt too wide) in paragraph at lines 463--463
 []|\OT1/cmr/bx/n/8.5 Edges| 
  []
 
 
-Underfull \hbox (badness 5245) in paragraph at lines 400--401
+Underfull \hbox (badness 5245) in paragraph at lines 466--467
 []|\OT1/cmr/m/n/8.5 32-bit cyclic re-dun-dancy
  []
 
 
-Overfull \hbox (2.47774pt too wide) in paragraph at lines 407--407
+Overfull \hbox (2.47774pt too wide) in paragraph at lines 473--473
 []|[]\OT1/cmtt/m/n/8.5 Clustering| 
  []
 
 
-Underfull \hbox (badness 1383) in paragraph at lines 407--408
+Underfull \hbox (badness 1383) in paragraph at lines 473--474
 []|\OT1/cmr/m/n/8.5 Image seg-men-ta-tion al-go-
  []
 
 
-Underfull \hbox (badness 3271) in paragraph at lines 409--410
+Underfull \hbox (badness 3271) in paragraph at lines 475--476
 []|\OT1/cmr/m/n/8.5 RC6 cryp-tog-ra-phy graph
  []
 
 
-Overfull \hbox (5.36006pt too wide) in paragraph at lines 395--417
+Overfull \hbox (5.36006pt too wide) in paragraph at lines 461--483
+[][] 
+ []
+
+[8]
+Overfull \hbox (2.50774pt too wide) in paragraph at lines 499--564
 [][] 
  []
 
 
-Overfull \hbox (5.75853pt too wide) in paragraph at lines 419--420
-\OT1/cmr/m/n/10 lan-guage in-struc-tions. Soft-ware and com-mu-ni-ca-tion costs
-
- []
-
-
-Overfull \hbox (7.07892pt too wide) in paragraph at lines 419--420
-\OT1/cmr/bx/n/10 acho que esse texto veio daquele ar-tigo ex-pandido.
- []
-
-
-Overfull \hbox (2.50774pt too wide) in paragraph at lines 433--498
+Overfull \hbox (1.4882pt too wide) in paragraph at lines 571--635
 [][] 
  []
 
 
-Underfull \vbox (badness 2245) has occurred while \output is active []
-
- [8]
-Overfull \hbox (1.4882pt too wide) in paragraph at lines 505--569
-[][] 
- []
-
-
-Overfull \hbox (0.14738pt too wide) in paragraph at lines 572--573
+Overfull \hbox (0.14738pt too wide) in paragraph at lines 644--645
 \OT1/cmr/m/n/10 present al-ter-na-tive so-lu-tions to the op-ti-miza-tion of HW
 -
  []
 
-
-Overfull \hbox (3.42398pt too wide) in paragraph at lines 579--580
+[9]
+Overfull \hbox (3.42398pt too wide) in paragraph at lines 651--652
 \OT1/cmr/m/n/10 [14] uses the ES-BMC model checker for em-bed-ded ANSI-
  []
 
-[9] [10
-
-] (./template.aux)
+[10] (./template.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
@@ -991,13 +972,13 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 7730 strings out of 494985
- 105853 string characters out of 6180356
- 250025 words of memory out of 5000000
- 10766 multiletter control sequences out of 15000+600000
+ 7736 strings out of 494985
+ 105899 string characters out of 6180356
+ 242027 words of memory out of 5000000
+ 10772 multiletter control sequences out of 15000+600000
  11952 words of font info for 43 fonts, out of 8000000 for 9000
  73 hyphenation exceptions out of 8191
- 41i,14n,49p,1300b,1761s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,14n,49p,1300b,1779s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/tex
@@ -1011,7 +992,7 @@ ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
 sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pf
 b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on template.pdf (10 pages, 1221633 bytes).
+Output written on template.pdf (10 pages, 1224510 bytes).
 PDF statistics:
  150 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams
