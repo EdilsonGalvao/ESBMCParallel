@@ -565,9 +565,6 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 
 \textcolor{Red}{A tabela 3 é uma extensão da tabela 2. A tabela 3 mostra problemas com uma quantidade maior de nós e arestas, este aumento impacta diretamente no tempo de processamento. RC6 obteve time out para todas as versões do ESBMC, vZ e GA não obtiveram resposta correta, e ILP resolveu corretamente o problema. Fuzzy teve 3 time outs, 3 memory outs, e uma resposta incorreta. ILP foi o unico que conseguiu resolver Mars, GA respondeu incorretamente e todos os outros algoritmos deram TO ou MO.  } 
 
-\textcolor{Red}{Clustering descrito na tabela 2 parece ser o limiar para testar as ferramentas descritas, para nós é importante destacar o numero de nós e arestas processadas, 
-}
-
 \begin{table}[h]
 \caption {Results of the benchmarks}
 \small
@@ -636,6 +633,7 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 
 \end{tabular}
 \end{table}
+\textcolor{Red}{Clustering descrito na tabela 2 parece ser o limiar para testar as ferramentas descritas, é importante destacar o numero de nós, fica evidente que nós superiores a 150 acarretam em TO,MO e respostas erradas por parte das ferramentas. ILP mostrou robustez ao conseguir resultados satisfatorios processando uma grande quantidade de nós e arestas.}
 
 %----------------------------------------------
 \section{Related Work}
