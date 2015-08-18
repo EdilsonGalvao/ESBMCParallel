@@ -123,7 +123,7 @@ grestore
 
 \begin{abstract}
 \textcolor{blue}{Atualizar o abstract para descrever brevemente os novos algoritmos desenvolvidos}
-We present an alternative approach to solve the hardware (HW) and software (SW) partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open MultiProcessing. The multi-core SMT-based BMC approach allows initializing many verification instances based on processors cores numbers available to the model checker. Each instance checks for a different optimum value until the optimization problem is satisfied. The goal is to show that multi-core model-checking techniques can be effective, in particular cases, to find the optimal solution of the HW-SW partitioning problem using an SMT-based BMC approach. \textcolor{Red}{O problema de particionamento de HW-SW foi modelo em diversas plataformas como: MATLAB R2013a da MathWorks[19], Z3 um solucionador de teoremas da Microsoft Research[32] e ESBMC utilizando abordagens single-core e multi-core. Os algoritmos implementados são discutidos e suas particularidades destacadas, por fim, faz-se um comparativos dos resultados obtidos. }
+We present an alternative approach to solve the hardware (HW) and software (SW) partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open MultiProcessing. The multi-core SMT-based BMC approach allows initializing many verification instances based on processors cores numbers available to the model checker. Each instance checks for a different optimum value until the optimization problem is satisfied. The goal is to show that multi-core model-checking techniques can be effective, in particular cases, to find the optimal solution of the HW-SW partitioning problem using an SMT-based BMC approach. \textcolor{Red}{The probem of HW-Sw partitioning was modelled on many platforms such as: MATLAB R2013a by MathWorks[19], Z3 a theorem solver by Microsoft Research[32] and ESBMC using single-core and multi-core approach. The implemented algorithms are discussed and it's main features highlighted, finally, a comparison of the results is made. }
 \keywords{hardware-software co-design \and hardware-software partitioning\and optimization\and model checking\and multi-core\and OpenMP }
 \end{abstract}
 
@@ -138,7 +138,7 @@ In [5] and [6] was shown that it is possible to use Bounded Model Checking (BMC)
 
 \textcolor{Red}{\textcolor{blue}{Descrever brevemente o funcionamento dos algortimos propostos} Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods applied to the HW-SW partition propose are proposed, then the results are compared using ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and the vZ tool that is a state-of-art optimization tool [32].} 
 
-\textcolor{Red}{O algoritmo ILP usa a intlinprog da biblioteca "Optimization Toolbox"[35], sua funcao é procurar o menor valor que satisfaca o problema descrito na Eq.(1). entretanto, para determinados tipos de problema ILP se torna inviavel dado o alto custo computacional, GA é uma forma de otimizar o tempo de processamento em detrimento da precisão, uma vez que GA não garante achar o valor máximo ou minimo para a problema. vZ usa funcoes de otimizacao e reescreve formulas em SMT para achar a solucao ideal, vZ apoia sua solucao em motores(OptSMT, MaxSMT).}
+\textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"[35], it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost, GA is a way to optimize the processing time at the expense of precision, since GA does not guarantee to find the maximum or minimum of the problem. vZ uses optimization functions to rewrite the SMT formulas to find the ideal solution, vZ supports its solution in engines(OptSMT, MaxSMT).}
 
 To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool [14]. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
 
@@ -169,7 +169,7 @@ There is no single method available for solving all optimization problems effici
 
 In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours belerunning before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, e.g., those used in the GA [9]. The only drawback is that the found solution may not be the global minimum or maximum.
 
-\textcolor{red}{Ferramentas como vZ e ESBMC tambem exploram o problema de otimizacao, ambas ferramentas tem como principal finalidade a precisão na resposta, problemas com uma quantidade muito grande de dados torna o tempo um impecilho. as secoes 2.2 e 2.3 demonstram como vZ e ESBMC usam respectivamente suas tecnicas para resolucao dos problemas de particionamento, espera-se destas tecnicas uma resposta exata em um tempo razoavel.}
+\textcolor{red}{Tools such as vZ and ESBMC also explores the optimization problem, both tools have its main purpose the precision, problems with a high quantity of data make the time an obstacle. The sections 2.2 and 2.3 shows how vZ and ESBMC uses its techniques to solve the paritioning problems, from those techniques an exact answer and reasonable time is exprected.}
 
 
 %----------------------------------------------
@@ -330,7 +330,7 @@ Multi-core ESBMC obtains the problem specification represented by a C program, w
 
 \textcolor{blue}{Colocar um caption em todos os algoritmos.}
 
-\begin{lstlisting}[caption=Calculate Steps and Chunks]
+\begin{lstlisting}[caption=Steps Calculation using Intervals]
 01. GetNextStep(){
 02.  int largestChunk = -1;
 03.  chunk largest;
@@ -355,7 +355,7 @@ Multi-core ESBMC obtains the problem specification represented by a C program, w
 
 \textcolor{blue}{Colocar um caption em todos os algoritmos.}
 
-\begin{lstlisting}[caption=Manager Controller]
+\begin{lstlisting}[caption=Worker sample]
 01. step = controller.GetNextStep();
 02. int pid = ExecuteStep(step);
 03. while(isRunning(pid)){
@@ -563,7 +563,7 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 \end{tabular}
 \end{table}
 
-\textcolor{Red}{A tabela 3 é uma extensão da tabela 2. A tabela 3 mostra problemas com uma quantidade maior de nós e arestas, este aumento impacta diretamente no tempo de processamento. RC6 obteve time out para todas as versões do ESBMC, vZ e GA não obtiveram resposta correta, e ILP resolveu corretamente o problema. Fuzzy teve 3 time outs, 3 memory outs, e uma resposta incorreta. ILP foi o unico que conseguiu resolver Mars, GA respondeu incorretamente e todos os outros algoritmos deram TO ou MO.  } 
+\textcolor{Red}{The table 3 is an extenstion of table 2. The table 3 shows the problems with a higher node and edges quantity, this increase impact directly in the processing time. RC6 had time out for all versions of ESBMC, vZ e GA haven't had the right answer, and ILP solved correctly the problem. Fuzzy had 3 time outs, 3 memory outs, e a wrong answer. ILP was the only one that could solve Mars, GA solved incorrectly and all others had TO or MO.} 
 
 \begin{table}[h]
 \caption {Results of the benchmarks}
@@ -633,7 +633,7 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 
 \end{tabular}
 \end{table}
-\textcolor{Red}{Clustering descrito na tabela 2 parece ser o limiar para testar as ferramentas descritas, é importante destacar o numero de nós, fica evidente que nós superiores a 150 acarretam em TO,MO e respostas erradas por parte das ferramentas. ILP mostrou robustez ao conseguir resultados satisfatorios processando uma grande quantidade de nós e arestas.}
+\textcolor{Red}{Clustering described in the table 2 seems to be the limit to test the described tools, its important highlight that the number of nodes higher than 150 lead on TM or MO and wrong answers. ILP showed robustness, getting good results processing a high amount of ndoes and edges.}
 
 %----------------------------------------------
 \section{Related Work}
