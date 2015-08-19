@@ -123,13 +123,9 @@ grestore
 \maketitle
 
 \begin{abstract}
-<<<<<<< HEAD
 We present an alternative approach to solve the hardware (HW) and software (SW) partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open MultiProcessing. The multi-core SMT-based BMC approach allows initializing many verification instances based on processors cores numbers available to the model checker. Each instance checks for a different optimum value until the optimization problem is satisfied. The goal is to show that multi-core model-checking techniques can be effective, in particular cases, to find the optimal solution of the HW-SW partitioning problem using an SMT-based BMC approach. The probem of HW-Sw partitioning was modelled on many platforms such as: MATLAB R2013a by MathWorks[19], Z3 a theorem solver by Microsoft Research[32] and ESBMC using single-core and multi-core approach. The implemented algorithms are discussed and it's main features highlighted, finally, a comparison of the results is made. 
 \textcolor{Red}{Nenhuma ferramenta resolveu todos os "Benchmarks", entretanto, os experimentos mostraram que Matlab e Z3 são as ferramentas mais robustas para solucionar problemas de particionamento,contudo, ESBMC teve uma melhoria significativa da sua versão sequencial para a paralela, equiparando-se em alguns testes com as ferramentas de estado da arte.}
-=======
-\textcolor{blue}{Atualizar o abstract para descrever brevemente os novos algoritmos desenvolvidos}
-We present an alternative approach to solve the hardware (HW) and software (SW) partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open MultiProcessing. The multi-core SMT-based BMC approach allows initializing many verification instances based on processors cores numbers available to the model checker. Each instance checks for a different optimum value until the optimization problem is satisfied. The goal is to show that multi-core model-checking techniques can be effective, in particular cases, to find the optimal solution of the HW-SW partitioning problem using an SMT-based BMC approach. \textcolor{Red}{The probem of HW-Sw partitioning was modelled on many platforms such as: MATLAB R2013a by MathWorks[19], Z3 a theorem solver by Microsoft Research[32] and ESBMC using single-core and multi-core approach. The implemented algorithms are discussed and it's main features highlighted, finally, a comparison of the results is made. }
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
+
 \keywords{hardware-software co-design \and hardware-software partitioning\and optimization\and model checking\and multi-core\and OpenMP }
 \end{abstract}
 
@@ -144,11 +140,8 @@ In [5] and [6] was shown that it is possible to use Bounded Model Checking (BMC)
 
 \textcolor{Red}{Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods applied to the HW-SW partition propose are proposed, then the results are compared using ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and the vZ tool that is a state-of-art optimization tool [32].} 
 
-<<<<<<< HEAD
 \textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"[35], it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost. GA é uma imitacao do processo evolutivo humano descrito como modelo computacional, sua vantagem é a simplificacao da formulacao de problemas de otimizacao, geralmente é utilizado em problemas com uma quantidade grande de dados(como por exemplo, caixeiro viajante)[37]. Deve-se atentar que GA não garante encontrar o valor máximo ou minimo para a problema, e sim uma aproximacao do resultado ótimo. vZ é uma ferramenta interna ao solucionador Z3, sua principal funcao é checar a satisfabilidade de formulas lógicas de modo otimizado, vZ trás a possibilidade de combinacao de objetivos usando "Pareto-fronts", prioridades "lexicographic" ou otimizacoes de forma independente.}
-=======
-\textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"[35], it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost, GA is a way to optimize the processing time at the expense of precision, since GA does not guarantee to find the maximum or minimum of the problem. vZ uses optimization functions to rewrite the SMT formulas to find the ideal solution, vZ supports its solution in engines(OptSMT, MaxSMT).}
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
+
 
 To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool [14]. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
 
@@ -180,11 +173,8 @@ There is no single method available for solving all optimization problems effici
 
 In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours belerunning before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, e.g., those used in the GA [9]. The only drawback is that the found solution may not be the global minimum or maximum.
 
-<<<<<<< HEAD
+
 \textcolor{red}{Tools such as vZ and ESBMC also explores the optimization problem, both tools have its main purpose the precision, problems with a high quantity of data make the time an obstacle. The sections 2.2 and 2.3 shows how vZ and ESBMC uses its techniques to solve the paritioning problems.}
-=======
-\textcolor{red}{Tools such as vZ and ESBMC also explores the optimization problem, both tools have its main purpose the precision, problems with a high quantity of data make the time an obstacle. The sections 2.2 and 2.3 shows how vZ and ESBMC uses its techniques to solve the paritioning problems, from those techniques an exact answer and reasonable time is exprected.}
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
 
 
 %----------------------------------------------
@@ -207,12 +197,7 @@ the instruction Asser-soft is a restriction to F, if possible add a weight n, th
 
 Lets optimize (K+W), with the restrictions in (K \textless 2) and (W-K \textless 1), the expected result of the optimization described in the code below is 2. the model generated by vZ shows that K = 1 and W = 1.
 
-<<<<<<< HEAD
 \begin{lstlisting}[caption=Code SMT using vZ, label=vZ]
->>>>>>> 5a40677
-=======
-\begin{lstlisting}[caption=Code ``{SMT}'' using vZ, label=vZ]
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
 1. (declare-const K Int) 
 2. (declare-const W Int)
 3. (assert (< K 2)) 
@@ -249,11 +234,6 @@ There are two directives in C/C++ that can be used to guide a model checker to s
 %----------------------------------------------
 \subsection{OpenMP}
 %----------------------------------------------
-
-<<<<<<< HEAD
-
-=======
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
 \textcolor{red}{The OpenMP is a set of directives for parallel programming that augments the C/C++ and Fortran languages. It supports the most processor architectures and operating systems such as Solaris, AIX, HP-UX, Linux, Mac OS X, and Windows. OpenMP uses a portable and very robust model that makes easy for programmers to develop parallel applications for a variety of platforms. OpenMP uses the fork-join model of parallel execution \cite{OpenMP1998}}
 
 \textcolor{red}{The most basic directive of OpenMP is the \#omp pragma parallel for. This directive parallelize the enclosing loop. You can see below an sample of its usage:}
@@ -266,10 +246,7 @@ There are two directives in C/C++ that can be used to guide a model checker to s
 \end{lstlisting}
 
 \textcolor{red}{In the example above, the for loop will be execute in parallel. Each iteration of the loop will be execute in a separated thread.}
-<<<<<<< HEAD
 
-=======
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
 
 %----------------------------------------------
 \section{Mathematical modeling}
@@ -855,136 +832,11 @@ Qawasmeh, A., Malik, A., Chapman, B. ``{OpenMP task scheduling analysis via Open
 \bibitem{Bjorner2014}
 Nikolaj Bjorner and Anh-Dung Phan ``{vZ - Maximal Satisfaction with Z3. SCSS 2014. 6th International Symposium on Symbolic Computation in Software Science.}''
 
-<<<<<<< HEAD
-=======
-
-%6
-\bibitem{Trindade2014}
-Trindade, A., Cordeiro, L. ``{Aplicando Verificação de Modelos para o Particionamento de Hardware/Software. In: Brazilian Symposium on Computing Systems Engineering (SBESC), 2014, Manaus – AM, Brazil. Anais SBESC},'' pp. 1-6 (2014).
-
-%7
-\bibitem{Wu2014}
-Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP. In: International Conference on Software Engineering and Service Science (ICSESS)},'' pp. 921,924, IEEE (2014)
-
-%8
-\bibitem{Tang2009}
-Tang, T., Lin, Y., Ren, X. ``{Mapping OpenMP concepts to the stream programming model. In: Int. Conference on Computer Science Education (ICCSE)},'' pp. 1900-1905, IEEE (2010)
-
-%9
-\bibitem{Rao2009}
-Rao, S. ``{Engineering Optimization: Theory and Practice. 4th edition. John Wiley \& Sons, Hoboken (2009)}''
-
-%10
-\bibitem{Biere2009}
-Biere, A. ``{Bounded model checking. In: Biere, A., Heule, M., van Marren, H., Walsh, T. (org.) Handbook of Satisfiability, IOS Press, pp. 457–481, Amsterdam (2009)}''
-
-%11
-\bibitem{Clarke2004}
-Clarke, E., Kroening, D., Lerda, F. ``{A Tool for Checking ANSI-C Programs. In: Proceedings of the Tools and Algorithms for the Construction and Analysis of Systems (TACAS), LNCS 2988}'', pp. 168-176 (2004)
-
-%12
-\bibitem{Armando2009}
-Armando, A., Mantovani, J., Platania, L. ``{Bounded model checking of software using SMT solvers instead of SAT solvers. In: International Journal on Software Tools for Technology Transfer, Vol. 11, n. 1},'' pp. 69-83 (2009)
-
-%13
-\bibitem{Ganai2006}
-Ganai, M., Gupta, A. ``{Accelerating high-level bounded model checking. In: Proceedings of the IEEE/ACM International Conference on Computer-Aided Design},'' pp. 794–801 (2006)
-
-%14
-\bibitem{Cordeiro2012}
-Cordeiro, L., Fischer, B., Marques-Silva, J. ``{SMT-based bounded model checking for embedded ANSI-C software. In: IEEE Transactions on Software Engineering, vol. 38, ed. 4},'' pp. 957-974 (2012)
-
-%15
-\bibitem{Cordeiro2011}
-Cordeiro, L., Fischer, B. ``{Verifying multi-threaded software using SMT-based context-bounded model checking. In: Proceedings of the 33rd International Conference on Software Engineering},'' pp. 331-340 (2011)
-
-%16
-\bibitem{Ramalho2013}
-Ramalho, M., Freitas, M., Souza, F., Marques, H., Cordeiro, L. ``{SMT-Based Bounded Model Checking of C++ Programs. In: International Conference and Workshops on the Engineering of Computer-Based Systems},'' pp. 147-156, IEEE (2013)
-
-%17
-\bibitem{Teich2012}
-Teich, J. ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future. In: Proceedings of the IEEE, vol. 100},'' pp. 1411-1430 (2012)
-
-%18
-\bibitem{TheMathWorks2013}
-The MathWorks, Inc ``{MATLAB (version R2013a). Natick, MA (2013)}''
-
-%19
-\bibitem{Tranquillo2011}
-Tranquillo, J. ``{Matlab for Engineering and the Life Sciences. Synthesis Lectures on Engineering. Morgan \& Claypool (2011)}''
-
-%20
-\bibitem{Hong2010}
-Hong, L., Cai, J. ``{The application guide of mixed programming between MATLAB and other programming languages. In: Proceedings of the 2nd International Conference on Computer and Automation Engineering (ICCAE)},'' pp. 185-189 (2010)
-
-%21
-\bibitem{Guthaus2001}
-Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. ``{MiBench: a free, commercially representative embedded benchmark suite. In: Proceedings of the IEEE 4th annual workshop on workload characterization},'' pp. 3-14 (2001)
-
-%22
-\bibitem{Arato2005}
-Arat\'o, P., Mann, Z.A., Orb\'an, A. ``{Algorithmic aspects of hardware/software partitioning. In: Association Computing Machinery Transactions on Design Automation of Electronic Systems, vol. 1},'' pp. 136–156 (2005)
-
-%23
-\bibitem{Dagum1998}
-Dagum, L., Menon, R. ``{OpenMP: an industry-standard API for shared-memory programming. In: Computational Science \& Engineering, vol. 5, issue 1},'' pp. 46-55, IEEE (1998)
-
-%24
-\bibitem{DeMoura2008}
-De Moura, L., Bjorner, N. ``{Z3: An Efficient SMT Solver. In: Tools and Algorithms for the Construction and Analysis of Systems (TACAS), LNCS 4963},'' pp. 337–340, Springer (2008) 
-
-%25
-\bibitem{Brummayer2009}
-Brummayer, R., Biere, A. ``{Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays. In: Tools and Algorithms for the Construction and Analysis of Systems (TACAS), LNCS 5505},'' pp. 174–177, Springer (2009)
-
-%26
-\bibitem{Barrett2011}
-Barrett, C., Conway, C. Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A., Tinelli, C. ``{CVC4. In: Computer-Aided Verification (CAV), LNCS 6806},'' pp. 171-177, Springer (2011)
-
-%27
-\bibitem{Bozzano2005}
-Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S., Sebastiani, R. ``{MathSAT: Tight integration of SAT and mathematical decision procedures. In: Journal of Automated Reasoning, Springer (2005)}''
-
-%28
-\bibitem{Dutertre2014}
-Dutertre, B. ``{Yices 2.2. In: Computer-Aided Verification (CAV), LNCS 8559},'' pp. 737–744, Springer (2014)
-
-%29
-\bibitem{Holzmann2011}
-Holzmann, G.J., Joshi, R., Groce, A. ``{Swarm Verification Techniques. In: IEEE Transactions on Software Engineering, vol. 37, issue 6},'' pp. 845, 857, IEEE (2011)
-
-%30
-\bibitem{Holzmann2012}
-Holzmann, G. ``{Parallelizing the spin model checker. In: Proceedings of the 19th International Conference on Model Checking Software (SPIN 2012), LNCS 7385},'' pp. 155-171, Springer (2012)
-
-%31
-\bibitem{Wintersteiger2009}
-Wintersteiger, C., Hamadi, Y., De Moura, L. ``{A Concurrent Portfolio Approach to SMT Solving. In: International Conference on Computer-Aided Verification (CAV), LNCS 5643},'' pp. 715-720, Springer (2009)
-
-%32
-\bibitem{Bjorner2015}
-Bjorner, N., Phan, A-D., Fleckenstein, L. ``{vZ - An Optimizing SMT Solver. In: International Conference on Tools and Algorithms for the Construction and Analysis of Systems (TACAS), LNCS 9035},'' pp. 194-199, Springer (2015)
-
-%33
-\bibitem{Qawasmeh2014}
-Qawasmeh, A., Malik, A., Chapman, B. ``{OpenMP task scheduling analysis via OpenMP runtime API and tool visualization. In: Parallel \& Distributed processing symposium work-shop (IPDPSW), 2014 IEEE International},'' pp. 1049-1058, IEEE (2014)
-
-%34
-\bibitem{Bjorner2014}
-Nikolaj Bjorner and Anh-Dung Phan ``{vZ - Maximal Satisfaction with Z3. SCSS 2014. 6th International Symposium on Symbolic Computation in Software Science.}''
-
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
 %35
 \bibitem{OpenMP1998}
 OpenMP Architecture Review Board, OpenMP C and C++
 Application Pogram Interface, Version 1.0, October 1998.
 http://www.openmp.org
-<<<<<<< HEAD
-=======
-%34
-\bibitem{Bjorner2014}
-Nikolaj Bjorner and Anh-Dung Phan ``{vZ - Maximal Satisfaction with Z3. SCSS 2014. 6th International Symposium on Symbolic Computation in Software Science.}''
 
 %36
 \bibitem{Z3}
@@ -995,8 +847,6 @@ Magellan, ``{Source code and documentation},''
 \bibitem{Z3}
 URFJ, ``{Algoritmos Genéticos: Fundamentos e Aplicações},''
   \url{http://www.nce.ufrj.br/GINAPE/VIDA/alggenet.htm}, Accessed 18 August 2015.
-=======
->>>>>>> a442f5cae20c295c2a530820bd0652fd910e17ce
 
 \end{thebibliography}
 
