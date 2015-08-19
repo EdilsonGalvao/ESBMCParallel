@@ -124,7 +124,7 @@ grestore
 
 \begin{abstract}
 We present an alternative approach to solve the hardware (HW) and software (SW) partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open MultiProcessing. The multi-core SMT-based BMC approach allows initializing many verification instances based on processors cores numbers available to the model checker. Each instance checks for a different optimum value until the optimization problem is satisfied. The goal is to show that multi-core model-checking techniques can be effective, in particular cases, to find the optimal solution of the HW-SW partitioning problem using an SMT-based BMC approach. The probem of HW-Sw partitioning was modelled on many platforms such as: MATLAB R2013a by MathWorks[19], Z3 a theorem solver by Microsoft Research[32] and ESBMC using single-core and multi-core approach. The implemented algorithms are discussed and it's main features highlighted, finally, a comparison of the results is made. 
-\textcolor{Red}{Nenhuma ferramenta resolveu todos os "Benchmarks", entretanto, os experimentos mostraram que Matlab e Z3 são as ferramentas mais robustas para solucionar problemas de particionamento,contudo, ESBMC teve uma melhoria significativa da sua versão sequencial para a paralela, equiparando-se em alguns testes com as ferramentas de estado da arte.}
+\textcolor{Red}{None of the tool solved all "Benchmarks", however, the experiments shows that Matlab and Z3 are the most robust tools to solve partitioning problems, although, ESBMC had a significant improvement from its sequential to parallel version,  compared to some tests made on toold in the state of the art.}
 
 \keywords{hardware-software co-design \and hardware-software partitioning\and optimization\and model checking\and multi-core\and OpenMP }
 \end{abstract}
@@ -140,7 +140,7 @@ In [5] and [6] was shown that it is possible to use Bounded Model Checking (BMC)
 
 \textcolor{Red}{Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods applied to the HW-SW partition propose are proposed, then the results are compared using ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and the vZ tool that is a state-of-art optimization tool [32].} 
 
-\textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"[35], it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost. GA é uma imitacao do processo evolutivo humano descrito como modelo computacional, sua vantagem é a simplificacao da formulacao de problemas de otimizacao, geralmente é utilizado em problemas com uma quantidade grande de dados(como por exemplo, caixeiro viajante)[37]. Deve-se atentar que GA não garante encontrar o valor máximo ou minimo para a problema, e sim uma aproximacao do resultado ótimo. vZ é uma ferramenta interna ao solucionador Z3, sua principal funcao é checar a satisfabilidade de formulas lógicas de modo otimizado, vZ trás a possibilidade de combinacao de objetivos usando "Pareto-fronts", prioridades "lexicographic" ou otimizacoes de forma independente.}
+\textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"[35], it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost. GA é uma imitacao do processo evolutivo humano descrito como modelo computacional, sua vantagem é a simplificacao da formulacao de problemas de otimizacao, geralmente é utilizado em problemas com uma quantidade grande de dados(como por exemplo, caixeiro viajante)[37]. Attention should be paid that GA doesn't guarantee to find the minimum or maximum value of the problem, it finds an aproximate solution of the optimized result. vZ is a built-in tool to Z3 solver, its main function is to check the satisfiability of logic formulas in an optimal way, vZ  brings the possibility to combine objectives using "Pareto-fronts", "lexicographic" priorities or independent optimizations.}
 
 
 To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool [14]. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
@@ -155,7 +155,7 @@ To the best of our knowledge, this is the first work to use a multi-core SMT-bas
 
 \textcolor{blue}{Introduzir uma breve descrição da seção.}
 
-\textcolor{red}{No tópico 2.1 descreve-se algoritmos como ILP e GA, e ferramentas capazes de resolver os problemas de otimizacao. Nas secoes 2.2 e 2.3 relata-se ferramentas apoiadas em SMT e BMC que checam os valores otimos para uma dada restricao, as secoes expoem a teoria por trás dos solucionadores e demonstram de qual forma devem ser feitas as restricoes.}
+\textcolor{red}{ILP, GA and optimization problems solver tools are described in section 2.1. In the sections 2.2 and 2.3 the tools based on SMT and BMC are described, the sections describes the theories under the solvers and shows how the restrictions should be made.}
 %----------------------------------------------
 \subsection{Optimization}
 %----------------------------------------------
@@ -286,13 +286,13 @@ The ILP and GA were taken from [5] and [6]. Both use slack variables in order to
 \section{Analysis of the partitioning problem using ESBMC}
 %----------------------------------------------
 
-\textcolor{blue}{Introducao da secao.}
+\textcolor{red}{Nowadays, although the CPU used to perform tests usually has a modern multi-core architecture, with the ability to run several threads on different processing cores. The objective of this section is to create an parallel approach to optimize the execution of the partitioning problems.}
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP}
 %----------------------------------------------
 
-Nowadays, although the CPU used to perform tests usually has a modern multi-core architecture, with the ability to run several threads on different processing cores, ESBMC verification runs are still performed only in a single-core. For instance, if the processor has 8 processing cores available, only one is used for the verification and the others remain idle. There is a significant unused hardware resource during this process.
+ESBMC verification runs are still performed only in a single-core. For instance, if the processor has 8 processing cores available, only one is used for the verification and the others remain idle. There is a significant unused hardware resource during this process.
 
 Fig.1 shows the ESBMC architecture, which consists of the C/C++ parser, GOTO Program, GOTO Symex, and SMT solver [16]. In particular, ESBMC compiles the C/C++ code into equivalent GOTO\hyp{}programs (i.e., control-flow graphs) using a gcc-compliant style. The GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($ C $) and properties ($ P $); finally it generates two sets of equations (i.e.,\:$ C \land \neg P $ ) which are checked by an SMT solver. 
 
@@ -472,7 +472,7 @@ Nice team.
 \section{Experimental Evaluation}
 %----------------------------------------------
 
-ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver [25] (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used [18]. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software [19] and is widely used by the engineering community [20]. \textcolor{Red}{The built in Z3 tool vZ [34] available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++11}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
+ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver [25] (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used [18]. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software [19] and is widely used by the engineering community [20]. \textcolor{Red}{The vZ is a built-in tool to Z3 and is [34] available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++11}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
 
 \begin{table}[h]
 \caption {Description of Benchmarks}
@@ -582,6 +582,7 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 \bottomrule[1.5pt]
 
 \end{tabular}
+MC = Multi-core, PS = , PB = .
 \end{table}
 
 \textcolor{Red}{The table 3 is an extenstion of table 2. The table 3 shows the problems with a higher node and edges quantity, this increase impact directly in the processing time. RC6 had time out for all versions of ESBMC, vZ e GA haven't had the right answer, and ILP solved correctly the problem. Fuzzy had 3 time outs, 3 memory outs, e a wrong answer. ILP was the only one that could solve Mars, GA solved incorrectly and all others had TO or MO.} 
