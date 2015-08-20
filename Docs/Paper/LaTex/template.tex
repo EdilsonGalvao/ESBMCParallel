@@ -466,7 +466,6 @@ Two restrictions are imposed, the first refers to the sum between the cost of so
 18.  Print Result
 \end{lstlisting}
 
-Nice team.
 
 %----------------------------------------------
 \section{Experimental Evaluation}
@@ -585,6 +584,18 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 MC = Multi-core, PS = Parallel Sequential, PB = Parallel Binary.
 \end{table}
 
+\textcolor{Red}{ESBMC implementa quatros tipos de estrategias sob seu solucionador. ESBMC, ESBMC Multicore(MC), ESBMC Parallel Sequential(PS) e ESBMC Parallel binary(PB).}
+\begin{itemize}
+\item{\textbf{ESBMC}\textcolor{Red}{
+Essa estrategia usa apenas um nucleo para computar o problema de particionamento, seu funcionamento e descrito na secao 2.3}}
+\item{\textbf{ESBMC MC}\textcolor{Red}{
+Usa uma estrategia de verificacao crescente \{1\:,2\:,\:...\:,\:Hmax\}, nao se utiliza controladores paralelos nessa abordagem, descreve-se seu funcionamento na secao 5.1 }}
+\item{\textbf{ESBMC PS}\textcolor{Red}{
+esta versao e similar ao ESBMC MC, contudo, seu processamento utilza controles paralelos, descreve-se seu funcionamento na secao 5.2 }}
+\item{\textbf{ESBMC PB}\textcolor{Red}{
+A abordagem binaria implementa uma versao paralela da busca binaria tradicional, descreve-se seu fucionamento na secao 5.2}}
+\end{itemize}
+
 \textcolor{Red}{The table 3 is an extenstion of table 2. The table 3 shows the problems with a higher node and edges quantity, this increase impact directly in the processing time. RC6 had time out for all versions of ESBMC, vZ e GA haven't had the right answer, and ILP solved correctly the problem. Fuzzy had 3 time outs, 3 memory outs, e a wrong answer. ILP was the only one that could solve Mars, GA solved incorrectly and all others had TO or MO.} 
 
 \begin{table}[h]
@@ -676,9 +687,9 @@ In terms of SMT-based verification, most work is restricted to present the model
 \section{Conclusions}
 %----------------------------------------------
 
-Concerning the comparative tests, with the four techniques presented in this paper to solve HW-SW partitioning, it was evident that none of them is indicated to partition problems with more than 400 nodes. The computing time to solve the optimization problem reached some hours of execution on a standard desktop computer. If we consider less than 400 nodes, then it is possible to use ILP as the best solution provider. If the problem to be solved has 150 nodes or less, then ESBMC represents a feasible alternative. GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. This error may be reduced by changing some parameters.
+\textcolor{Red}{Apos apresentadas as 7 tecnicas e os resultados experimentais para solucao do problema de particao de HW-SW ficou evidenciado que para uma quantidade maior do que 300 nos, a melhor opcao a se escolher e a ILP. abaixo dos 300 nos a melhor opcao se torna o vZ, seu tempo de resposta superior e notorio. ESBMC e uma ferramenta viavel para uma quantidade de nos inferior a 150.}  GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. This error may be reduced by changing some parameters.The computing time to solve the optimization problem reached some hours of execution on a standard desktop computer. 
 
-If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC has a BSD-style license and can be downloaded and used for free. Concerning the two versions of ESBMC, it is possible to conclude that Multi-core ESBMC had better performance results than pure ESBMC. Thus, considering that nowadays the processors have more and more cores, when modeling the problem, it is possible to consider multi-core ESBMC as an alternative to solve the partitioning problem. Future work can be done to decrease the processing time of ESBMC (solver included).
+If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and Vz has BSD-Style license and MIT respectively and can be downloaded and used for free.\textcolor{Red}{ Os resultados dos benchmarks mostraram melhoria de desempenho do ESBMC quando usado de forma paralela, todas as tres tecnicas paralelas citadas ao longo deste trabalho tiveram resultados expressivos. o grande destaque vai para a versao ESMBC PB(Parallel Binary) que se comporta muito bem para um quantidade de nos e arestas intermediaria.}Thus, considering that nowadays the processors have more and more cores, when modeling the problem, it is possible to consider multi-core ESBMC as an alternative to solve the partitioning problem. 
 
 Finally, there is an issue about 150 nodes problem, since it seems to be the limit of ESBMC. It really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for bigger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the size of the search space. \textcolor{Red}{On future works we will address improvements in the ESBMC, we hope to remove the parallel layer on top of ESBMC and implement it on it's core, it would optimize the processing time.}
 \section{References}
