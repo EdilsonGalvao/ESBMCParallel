@@ -132,22 +132,21 @@ The experimental results show that there is no single optimization tool that sol
 
 %---------------------------------
 \section{Introduction}
+\label{Introduction}
 %---------------------------------
 
-Nowadays, with the strong development of embedded systems, the design phase plays an important role. At early stages, the design is split into separated flows: hardware and software. Consequently, the partitioning decision process, which deals with the decisions upon which parts of the application have to be designed in hardware (HW) and which in software (SW), must be supported by any well-structured methodology. If not, this leads to a number of issues (design flow interruptions, redesigns, and undesired iterations) which affects the overall development process, the quality and the lifecycle of the final system. Starting at the 1990s, intensive research was performed, and several approaches proposed, as shown in [1] and [2].
+Nowadays, with the strong development of embedded systems, the design phase plays an important role. At early stages, the design is split into separated flows: hardware and software. Consequently, the partitioning decision process, which deals with the decisions upon which parts of the application have to be designed in hardware (HW) and which in software (SW), must be supported by any well-structured methodology. If not, this leads to a number of issues (design flow interruptions, redesigns, and undesired iterations) which affects the overall development process, the quality and the lifecycle of the final system. Starting at the 1990s, intensive research was performed, and several approaches proposed, as shown in ~\cite{Arato2003} and ~\cite{Mann2007}.
 
-In any HW and SW design of complex systems, more time is spent on verification than on construction [3]. Formal methods based on model checking offer great potential to obtain a more effective and faster verification in the design process. Programs may be viewed as mathematical objects with behavior that is, in principle, well determined. This makes it possible to specify programs using mathematical logic, which constitutes the intended (correct) behavior. Then, one can try to give a formal proof or otherwise establish that the program meets its specification [4]. Research in formal methods has led to the development of very promising verification techniques, which facilitate the early detection of errors. Model-based verification techniques use models that describe the possible system behavior in a mathematically precise and unambiguous manner. The system models are accompanied by algorithms that systematically explore all the states of the system model.
+In any HW and SW design of complex systems, more time is spent on verification than on construction ~\cite{Baier2008}. Formal methods based on model checking offer great potential to obtain a more effective and faster verification in the design process. Programs may be viewed as mathematical objects with behavior that is, in principle, well determined. This makes it possible to specify programs using mathematical logic, which constitutes the intended (correct) behavior. Then, one can try to give a formal proof or otherwise establish that the program meets its specification ~\cite{Clarke2009}. Research in formal methods has led to the development of very promising verification techniques, which facilitate the early detection of errors. Model-based verification techniques use models that describe the possible system behavior in a mathematically precise and unambiguous manner. The system models are accompanied by algorithms that systematically explore all the states of the system model.
 
-In [5] and [6] was shown that it is possible to use Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) to perform HW-SW partitioning in embedded systems. The present work extends those studies since there is a substantial improvement in terms of the genetic algorithm and the SMT-based verification method, which has been extended with a multi-core architecture. Multi-core processors have been used in all segments of industry to implement high-performance computing [7]. In particular, hardware platforms, together with multi-processing platforms, have allowed verification algorithms to distribute tasks executions across multiple processors, which generate an increase in performance if compared to single-core solution. However, most verification algorithms still disregard the limitations of the CMOS technology, which limits the increase of the chip’s frequency after it reaches 4 GHz.
+In ~\cite{Trindade2015} and ~\cite{Trindade2014} was shown that it is possible to use Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) to perform HW-SW partitioning in embedded systems. The present work extends those studies since there is a substantial improvement in terms of the genetic algorithm and the SMT-based verification method, which has been extended with a multi-core architecture. Multi-core processors have been used in all segments of industry to implement high-performance computing ~\cite{Wu2014}. In particular, hardware platforms, together with multi-processing platforms, have allowed verification algorithms to distribute tasks executions across multiple processors, which generate an increase in performance if compared to single-core solution. However, most verification algorithms still disregard the limitations of the CMOS technology, which limits the increase of the chip’s frequency after it reaches 4 GHz.
 
-\textcolor{blue}{Deve-se citar as referencias usando o comando cite do latex}
+\textcolor{Red}{Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods applied to the HW-SW partition propose are proposed, then the results are compared using ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and the vZ tool that is a state-of-art optimization tool ~\cite{Bjorner2015}.} 
 
-\textcolor{Red}{Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods applied to the HW-SW partition propose are proposed, then the results are compared using ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and the vZ tool that is a state-of-art optimization tool [32].} 
-
-\textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"[35], it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost. GA is an imitation of the human evolutionary process described as a computational model, its advantage is the simplification of the optimization problems formulation, usually is used on problems with a large amount of data (as travelling salesman)[37]. Attention should be paid that GA doesn't guarantee to find the minimum or maximum value of the problem, it finds an aproximate solution of the optimized result. vZ is a built-in tool to Z3 solver, its main function is to check the satisfiability of logic formulas in an optimal way, vZ  brings the possibility to combine objectives using "Pareto-fronts", "lexicographic" priorities or independent optimizations.}
+\textcolor{Red}{The ILP algorithm uses intlinprog of the lib "Optimization Toolbox"~\cite{OpenMP1998}, it's function is to search the lower value that satisfies the problem described in Eq.(1). however, for some types of problems is impossible to use ILP due to the high computational cost. GA is an imitation of the human evolutionary process described as a computational model, its advantage is the simplification of the optimization problems formulation, usually is used on problems with a large amount of data (as travelling salesman)~\cite{GA}. Attention should be paid that GA doesn't guarantee to find the minimum or maximum value of the problem, it finds an aproximate solution of the optimized result. vZ is a built-in tool to Z3 solver, its main function is to check the satisfiability of logic formulas in an optimal way, vZ  brings the possibility to combine objectives using "Pareto-fronts", "lexicographic" priorities or independent optimizations.}
 
 
-To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool [14]. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
+To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool ~\cite{Cordeiro2012}. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
 
 \textcolor{blue}{Voces precisam citar as secoes usando o comando ref do latex. Para isso, cada secao deve conter um label.}
 \textcolor{Red}{This article is organized as follows: Section~\ref{background} gives a background on optimization, optimization with vZ, use of BMC technique with ESBMC, multi-cre ESBMC using OpenMP, ESBMC using optimized techniques of search to multiples cores with OpenMP. Section 3 describes the informal and formal mathematical modeling. Section 4 briefly describes th ILP and GA. The BMC method is based on SMT and is presented in section 5. The section 6 presents the paritioning model using vZ. The section 7 presents the experimental evaluation. The Section 8 discusses about the related works. Section 9 presents the conclusions and the future work.}
@@ -156,16 +155,14 @@ To the best of our knowledge, this is the first work to use a multi-core SMT-bas
 \section{Background}
 \label{background}
 %----------------------------------------------
-
-\textcolor{blue}{Introduzir uma breve descrição da seção.}
-
 \textcolor{red}{ILP, GA and optimization problems solver tools are described in section 2.1. In the sections 2.2 and 2.3 the tools based on SMT and BMC are described, the sections describes the theories under the solvers and shows how the restrictions should be made.}
 %----------------------------------------------
 \subsection{Optimization}
+\label{Optimization}
 %----------------------------------------------
-\textcolor{red}{Optimization is the act of obtaining the best result (i.e., the optimal solution) under given circumstances [9]. In the design, construction, and maintenance of any engineering system, engineers have to make many technological and managerial decisions at several stages. The ultimate goal of all such decisions is either to minimize the effort required or to maximize the desired benefit. Because the effort required or the benefit desired in any practical situation can be expressed as a function of certain decision variables, optimization can be defined as the process of finding the conditions that give the maximum or minimum value of a function [9].}
+\textcolor{red}{Optimization is the act of obtaining the best result (i.e., the optimal solution) under given circumstances ~\cite{Rao2009}. In the design, construction, and maintenance of any engineering system, engineers have to make many technological and managerial decisions at several stages. The ultimate goal of all such decisions is either to minimize the effort required or to maximize the desired benefit. Because the effort required or the benefit desired in any practical situation can be expressed as a function of certain decision variables, optimization can be defined as the process of finding the conditions that give the maximum or minimum value of a function ~\cite{Rao2009}.}
 
-There is no single method available for solving all optimization problems efficiently [9]. The most known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq. (1) shows a typical linear programming problem, where  and  are vectors or matrixes that describe the constraints
+There is no single method available for solving all optimization problems efficiently ~\cite{Rao2009}. The most known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq. (1) shows a typical linear programming problem, where  and  are vectors or matrixes that describe the constraints
 \begin{equation}
   minf^t x \: such that  = 
   \begin{cases}
@@ -175,7 +172,7 @@ There is no single method available for solving all optimization problems effici
   \end{cases}
 \end{equation}
 
-In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours belerunning before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, e.g., those used in the GA [9]. The only drawback is that the found solution may not be the global minimum or maximum.
+In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours belerunning before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, e.g., those used in the GA ~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum.
 
 
 \textcolor{red}{Tools such as vZ and ESBMC also explores the optimization problem, both tools have its main purpose the precision, problems with a high quantity of data make the time an obstacle. The sections 2.2 and 2.3 shows how vZ and ESBMC uses its techniques to solve the paritioning problems.}
@@ -183,11 +180,12 @@ In some cases, the time to find a solution using ILP is impractical. Even with t
 
 %----------------------------------------------
 \subsection{\textcolor{Red}{Optimization with Vz}}
+\label{Optimization-with-Vz}
 %----------------------------------------------
 
-A SMT solver is a tool that verifies formula's satisfiability based in a set of rules SMT. Z3 is a SMT solver made by Microsoft Research, freely available to the community, that supports a variety of theories. Z3 brings a solver DPLL together with a correspondence machine for quantifiers. Z3 is implemented in C++.
+A SMT solver is a tool that verifies formula's satisfiability based in a set of rules SMT. Z3 is a SMT solver made by Microsoft Research, freely available to the community, that supports a variety of theories. Z3 brings a solver DPLL together with a correspondence machine for quantifiers. Z3 is implemented in C++.~\cite{Bjorner2014} 
 vZ is one of the tools implemented on the Z3 solver, it's base function is to optimize objectives within the logic context of constraints, it stands for the functions that make possible formulate optimized criteria.
-vZ includes an incremental version of MaxRes to MaxSAT and a Simplex to solve numbers without defined patterns, in it's core MaxSAT is responsible to the restrictions while OptSMT optimize the linear arithmetic objectives.
+vZ includes an incremental version of MaxRes to MaxSAT and a Simplex to solve numbers without defined patterns, in it's core MaxSAT is responsible to the restrictions while OptSMT optimize the linear arithmetic objectives.~\cite{Bjorner2015} 
 Among all progress of Z3 using vZ the functions hightlights: maximize, minimize e assert-soft.
 
 \begin{itemize}
@@ -211,7 +209,7 @@ Lets optimize (K+W), with the restrictions in (K \textless 2) and (W-K \textless
 \end{lstlisting}
 
 
-Accordingly to [34] the architecture of vZ can be described on the image XXX, initially the formulas and the SMT objectives are converted to problems MaxSAT, if there are many objectives, vZ invokes MaxSAT or OptSAT. To restrictions in real values using “Box”, vZ combines all linear arithmetic and calls the OptSMT. When we use “soft constrains” in the mode “lexicographic” vZ invokes MaxSAT.
+Accordingly to ~\cite{Bjorner2015} the architecture of vZ can be described on the image XXX, initially the formulas and the SMT objectives are converted to problems MaxSAT, if there are many objectives, vZ invokes MaxSAT or OptSAT. To restrictions in real values using “Box”, vZ combines all linear arithmetic and calls the OptSMT. When we use “soft constrains” in the mode “lexicographic” vZ invokes MaxSAT.
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=0.49\textwidth, height=95px]{Image/vzArch.png} 
@@ -219,24 +217,26 @@ Accordingly to [34] the architecture of vZ can be described on the image XXX, in
 	\label{fig2}
 \end{figure}
 
-Z3 is available for platforms like C, C ++, Java, .NET and Python, it is possible to download the Z3 with vZ in [36]. API in python was used to formulate the optimization problem on the vZ tool. 
+Z3 is available for platforms like C, C ++, Java, .NET and Python, it is possible to download the Z3 with vZ in ~\cite{Z3API}. API in python was used to formulate the optimization problem on the vZ tool. 
 
 %----------------------------------------------
 \subsection{Bounded Model Checking with ESBMC}
+\label{Bounded-Model-Checking-with-ESBMC}
 %----------------------------------------------
 
-Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior [3], [4]. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components [10]. Much research has been devoted to mitigate this problem.
+Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior ~\cite{Baier2008}, ~\cite{Clarke2009}. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components ~\cite{Biere2009}. Much research has been devoted to mitigate this problem.
 
-Among the recent techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in [10]. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
+Among the recent techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in ~\cite{Biere2009}. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
 
-The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $ M $, a property $ \phi $, and a bound $ K $, BMC unrolls the system  times and translates it into a verification condition (VC) $ \varphi $  such that $ \varphi $   is satisfiable if and only if $ \phi $ has a counterexample of depth $ K $ or less [10]. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in [11], [12], and [13]. 
+The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $ M $, a property $ \phi $, and a bound $ K $, BMC unrolls the system  times and translates it into a verification condition (VC) $ \varphi $  such that $ \varphi $   is satisfiable if and only if $ \phi $ has a counterexample of depth $ K $ or less ~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in ~\cite{Clarke2004}, ~\cite{Armando2009}, and ~\cite{Ganai2006}. 
 
-According to [14] and [15], SMT-based model checking can be used to verify the single- and multi-threaded software. In [16], ESBMC can also be used to model check C++ software based on SMT solvers. In [5] and [6] it was shown that it is possible to use ESBMC, as an optimization tool.
+According to ~\cite{Cordeiro2012} and ~\cite{Cordeiro2011}, SMT-based model checking can be used to verify the single- and multi-threaded software. In ~\cite{Ramalho2013}, ESBMC can also be used to model check C++ software based on SMT solvers. In ~\cite{Trindade2015} and ~\cite{Trindade2014} it was shown that it is possible to use ESBMC, as an optimization tool.
 
 There are two directives in C/C++ that can be used to guide a model checker to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition or code violation (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
 
 %----------------------------------------------
 \subsection{OpenMP}
+\label{OpenMP}
 %----------------------------------------------
 \textcolor{red}{The OpenMP is a set of directives for parallel programming that augments the C/C++ and Fortran languages. It supports the most processor architectures and operating systems such as Solaris, AIX, HP-UX, Linux, Mac OS X, and Windows. OpenMP uses a portable and very robust model that makes easy for programmers to develop parallel applications for a variety of platforms. OpenMP uses the fork-join model of parallel execution \cite{OpenMP1998}}
 
@@ -254,62 +254,67 @@ There are two directives in C/C++ that can be used to guide a model checker to s
 
 %----------------------------------------------
 \section{Mathematical modeling}
+\label{Mathematical-modeling}
 %----------------------------------------------
 
-The mathematical modeling was taken from [1], [2].
+The mathematical modeling was taken from ~\cite{Arato2003}, ~\cite{Mann2007}.
 
 %----------------------------------------------
 \subsection{Informal Model (or Assumptions)}
+\label{Informal-Model-or-Assumptions}
 %----------------------------------------------
 
-The informal model can be described by five characteristics. First, there is only one software context, i.e., there is just one general-purpose processor, and there is only one hardware context. The components of the system must be mapped to either one of these two contexts. Second, the software implementation of a component is associated with a software cost, which is the running time of the component. Third, the hardware implementation of a component has a hardware cost, which can be area, heat dissipation, and energy consumption. Fourth, based on the premise that hardware is significantly faster than software, the running time of the components in hardware is considered as zero. Finally, if two components are mapped to the same context, then there is no overhead of communication between them; otherwise, there is an overhead. The consequence of these assumptions is that scheduling does not need to be addressed in this work. Hardware components do not need scheduling, because the running time is assumed to be zero. Because there is only one processor, software components do not need to be scheduled as well. Therefore, the focus is only on the partitioning problem. That configuration describes a first-generation co-design, where the focus is on bipartitioning [17].
+The informal model can be described by five characteristics. First, there is only one software context, i.e., there is just one general-purpose processor, and there is only one hardware context. The components of the system must be mapped to either one of these two contexts. Second, the software implementation of a component is associated with a software cost, which is the running time of the component. Third, the hardware implementation of a component has a hardware cost, which can be area, heat dissipation, and energy consumption. Fourth, based on the premise that hardware is significantly faster than software, the running time of the components in hardware is considered as zero. Finally, if two components are mapped to the same context, then there is no overhead of communication between them; otherwise, there is an overhead. The consequence of these assumptions is that scheduling does not need to be addressed in this work. Hardware components do not need scheduling, because the running time is assumed to be zero. Because there is only one processor, software components do not need to be scheduled as well. Therefore, the focus is only on the partitioning problem. That configuration describes a first-generation co-design, where the focus is on bipartitioning ~\cite{Teich2012}.
 
 %----------------------------------------------
 \subsection{Formal Model}
+\label{Formal-Model}
 %----------------------------------------------
 
 The inputs of the problem are: A directed simple graph $ G = (V,E) $, called the task graph of the system, is necessary. The vertices $ V = \{V_1,V_2,\dotso,V_n\} $ represent the nodes that are the components of the system that will be partitioned. The edges $ E $ represent communication between the components. Additionally, each node  $ V_i $ has a cost $ h(V_i) $ (or $ h_i $ of hardware (if implemented in hardware) and a cost $ s(s_i) $ (or $ s_i $ of software (if implemented in software). Finally, $ c(V_i,V_j) $ represents the communication cost between $ V_i $ and $ V_j $ if they are implemented in different contexts (hardware or software).
 
-Based on [1],  is called a hardware-software partition if it is a bipartition of $ V:P = (V_h, V_s) $ , where $ V_h \cup V_s = V $  and $ V_h \cap V_s = 0$  . The crossing $ E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h \;or\; v_i \in V_h, v_j \in V_s $ edges are . The hardware cost of $ P $  is given by Eq. (2), and the software cost of $ P $ (i.e., software cost of the nodes and the communication cost) is given by Eq. (3):
+Based on ~\cite{Arato2003},  is called a hardware-software partition if it is a bipartition of $ V:P = (V_h, V_s) $ , where $ V_h \cup V_s = V $  and $ V_h \cap V_s = 0$  . The crossing $ E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h \;or\; v_i \in V_h, v_j \in V_s $ edges are . The hardware cost of $ P $  is given by Eq. (2), and the software cost of $ P $ (i.e., software cost of the nodes and the communication cost) is given by Eq. (3):
 
 \begin{align}
 \ H_p &= \Sigma (v_i \;\in\; _Vh) H_i\\
   S_p &= \Sigma (v_i \;\in\; _Vs) S_i + \Sigma (_(v_i,v_j) \in\; _Ep)\; C(V_i, V_j)
 \end{align}
 
-Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, i.e., to find a $ P $ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal (system with hard real-time constraints). So, based on Eq. (1) and Eq. (3) the optimization problem’s restrictions can be reformulated as: $ s(1-x) + c|E_x| \leq S_0 $, where $ x $ is the decision variable. Concerning the complexity of this problem, reference [1] demonstrates that it is NP-Hard.
+Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, i.e., to find a $ P $ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal (system with hard real-time constraints). So, based on Eq. (1) and Eq. (3) the optimization problem’s restrictions can be reformulated as: $ s(1-x) + c|E_x| \leq S_0 $, where $ x $ is the decision variable. Concerning the complexity of this problem, reference ~\cite{Arato2003} demonstrates that it is NP-Hard.
 
 %----------------------------------------------
 \section{Partitioning problem using ILP-based,Genetic Algorithms}
 \label{ILPGA}
 %----------------------------------------------
 
-The ILP and GA were taken from [5] and [6]. Both use slack variables in order to be possible to represent the constraints and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to function ga of MATLAB [18]: the population size was set from 300 to 500, the Elite count changed from 2 (default value) to 50, and the number of Generations changed from 100* NumberOfVariables (default) to 75.
+The ILP and GA were taken from ~\cite{Trindade2015} and ~\cite{Trindade2014}. Both use slack variables in order to be possible to represent the constraints and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to function ga of MATLAB ~\cite{TheMathWorks2013}: the population size was set from 300 to 500, the Elite count changed from 2 (default value) to 50, and the number of Generations changed from 100* NumberOfVariables (default) to 75.
 
 %----------------------------------------------
 \section{Analysis of the partitioning problem using ESBMC}
+\label{Analysis-of-the-partitioning-problem-using-ESBMC}
 %----------------------------------------------
 
 \textcolor{red}{Nowadays, although the CPU used to perform tests usually has a modern multi-core architecture, with the ability to run several threads on different processing cores. The objective of this section is to create an parallel approach to optimize the execution of the partitioning problems.}
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP}
+\label{Multi-core-ESBMC-with-OpenMP}
 %----------------------------------------------
 
 ESBMC verification runs are still performed only in a single-core. For instance, if the processor has 8 processing cores available, only one is used for the verification and the others remain idle. There is a significant unused hardware resource during this process.
 
-Fig.1 shows the ESBMC architecture, which consists of the C/C++ parser, GOTO Program, GOTO Symex, and SMT solver [16]. In particular, ESBMC compiles the C/C++ code into equivalent GOTO\hyp{}programs (i.e., control-flow graphs) using a gcc-compliant style. The GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($ C $) and properties ($ P $); finally it generates two sets of equations (i.e.,\:$ C \land \neg P $ ) which are checked by an SMT solver. 
+Fig.1 shows the ESBMC architecture, which consists of the C/C++ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles the C/C++ code into equivalent GOTO\hyp{}programs (i.e., control-flow graphs) using a gcc-compliant style. The GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($ C $) and properties ($ P $); finally it generates two sets of equations (i.e.,\:$ C \land \neg P $ ) which are checked by an SMT solver. 
 
-The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3 [24], Boolector [25], MathSAT [26], CVC4 [27], and Yices [28]. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
+The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3 ~\cite{DeMoura2008}, Boolector ~\cite{Brummayer2009}, MathSAT ~\cite{Barrett2011}, CVC4 ~\cite{Bozzano2005}, and Yices ~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.9]{Image/esbmc-arch-new.pdf} 
 	\caption{ESBMC Architecture}
 \end{figure}
 
-To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library [23] is used in this present work as a front-end for ESBMC.
+To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library ~\cite{Dagum1998} is used in this present work as a front-end for ESBMC.
 
-OpenMP is a standard Application Programming Interface (API) for shared memory programming, which has been very successful for structural parallelism in applications. The API provides a directive-based programming approach to write parallel versions of C/C++ programs [33]. In OpenMP, the implementation is based on the fork-join model. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes (i.e., the API waits until all threads terminate), then the main procedure gets back to the single-threaded execution mode [7]. Fig. 2 shows our approach called “Multi-core ESBMC”.
+OpenMP is a standard Application Programming Interface (API) for shared memory programming, which has been very successful for structural parallelism in applications. The API provides a directive-based programming approach to write parallel versions of C/C++ programs ~\cite{Qawasmeh2014}. In OpenMP, the implementation is based on the fork-join model. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes (i.e., the API waits until all threads terminate), then the main procedure gets back to the single-threaded execution mode ~\cite{Wu2014}. Fig. 2 shows our approach called “Multi-core ESBMC”.
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel.pdf} 
@@ -320,6 +325,7 @@ Multi-core ESBMC obtains the problem specification represented by a C program, w
 
 %----------------------------------------------
 \subsection{\textcolor{Red}{Multi-core ESBMC with OpenMP using Binary Search}}
+\label{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}
 %----------------------------------------------
 
 \textcolor{Red}{The original parallelization was made by continuously forking the instances of the ESBMC until the first violation is find. Since OpenMP only returns from a parallelized loop when every forked thread finishes, some processor could remain idle for some time.}
@@ -353,8 +359,6 @@ Multi-core ESBMC obtains the problem specification represented by a C program, w
 
 \textcolor{Red}{As a result, a method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.}
 
-\textcolor{blue}{Colocar um caption em todos os algoritmos.}
-
 \begin{lstlisting}[caption=Steps Calculation using Intervals]
 01. GetNextStep(){
 02.  int largestChunk = -1;
@@ -378,8 +382,6 @@ Multi-core ESBMC obtains the problem specification represented by a C program, w
 \end{lstlisting}
 \textcolor{Red}{The algorithm above describes how the customized binary search calculates and returns the step to be executed. From line 4 to 9 the algorithm finds the biggest interval. Then from the line 10 the biggest interval is removed and the median is calculated in the line 11. Then 2 new intervals are created, the left side on line 14 and the right side on the line 16. At the end, the median is returned.}
 
-\textcolor{blue}{Colocar um caption em todos os algoritmos.}
-
 \begin{lstlisting}[caption=Worker sample]
 01. step = controller.GetNextStep();
 02. int pid = ExecuteStep(step);
@@ -392,19 +394,18 @@ Multi-core ESBMC obtains the problem specification represented by a C program, w
 
 %----------------------------------------------
 \section{Verification Algorithm using ESBMC}
+\label{Verification-Algorithm-using-ESBMC}
 %----------------------------------------------
 
 ESBMC pseudocode shows the algorithm with the same restrictions and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section III.G. The other is the halting condition (code violation) that stops the algorithm.
 
-The ESBMC algorithm starts with the declarations of hardware, software, and communication costs.  also must be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, the matrices A and b are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in [5] and [6].
+The ESBMC algorithm starts with the declarations of hardware, software, and communication costs.  also must be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, the matrices A and b are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in ~\cite{Trindade2015} and ~\cite{Trindade2014}.
 
 It is possible to tell the ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all the decision variables $ x $ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the restrictions. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of constrains (i.e.,$ A.x \leq b $ ).
 
 A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware. To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an ASSERT statement at the end of the algorithm, a predicate that controls the halt condition (true-false statement). If the predicate is FALSE, then the optimization is finished, i.e., the solution was found. The ASSERT statement tests the objective function, i.e., the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if ASSERT returns a TRUE condition, i.e., the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the ASSERT generates a FALSE condition. When the FALSE condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
 
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables because the modulus operation is kept, which reduces the number of variables to be solved. 
-
-\textcolor{blue}{Colocar um caption em todos os algoritmos.}
 
 \begin{lstlisting}[caption=Pseudocode describing ESBMC]
 01. Initialize Variables 
@@ -435,9 +436,10 @@ Therefore, the algorithm starts  different instances of ESBMC using the differen
 
 %----------------------------------------------
 \section{\textcolor{Red}{Analysis of the partitioning problem using vZ}}
+\label{Analysis-of-the-partitioning-problem-using-vZ}
 %----------------------------------------------
 
-The code below shows the conditions applied on ILP, GA and ESBMC converted to the vZ tool described in [34] and [35]. 
+The code below shows the conditions applied on ILP, GA and ESBMC converted to the vZ tool described in ~\cite{Bjorner2014} and ~\cite{OpenMP1998}. 
 
 A vZ context is created, it receives the restrictions and returns the model if a solution to the set of rectictions exists. Later the number of nodes are declared, number of edges, the number of, the cost of hardware, cost of software, cost of communication and the incidence matrix E.
 
@@ -446,8 +448,6 @@ The arithmetic declarations described on the lines 10, 11,12 e 13 of the code ar
 In the line 13, the Fobj (Objective Function) is declared. It is a product between the cost of hardware with the vector that contains the values 0 and 1. Fobj should be minimized to get the best hardware solution .
 
 Two restrictions are imposed, the first refers to the sum between the cost of software and communication, the result of the sum should be less than , the second restriction tells to vZ that Fobj should be minimized. So the model is checked, once a solution that complains the restrictions, the value of the Fobj is printed.
-
-\textcolor{blue}{Colocar um caption em todos os algoritmos.}
 
 \begin{lstlisting}[caption=Pseudocode describing vZ]
 01.#Init Values
@@ -473,9 +473,10 @@ Two restrictions are imposed, the first refers to the sum between the cost of so
 
 %----------------------------------------------
 \section{Experimental Evaluation}
+\label{Experimental-Evaluation}
 %----------------------------------------------
 
-ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver [25] (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used [18]. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software [19] and is widely used by the engineering community [20]. \textcolor{Red}{The vZ is a built-in tool to Z3 and is [34] available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++11}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
+ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver ~\cite{Brummayer2009} (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used ~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software ~\cite{Tranquillo2011} and is widely used by the engineering community ~\cite{Hong2010}. \textcolor{Red}{The vZ is a built-in tool to Z3 and is ~\cite{Bjorner2014} available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++11}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
 
 \begin{table}[h]
 \caption {Description of Benchmarks}
@@ -487,12 +488,12 @@ ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Ver
   \head{Name} & \head{Nodes} & \head{Edges} & \head{Description}\\
   \midrule
   
-\verb|CRC32| & \verb|25| & \verb|32| & \rmfamily 32-bit cyclic redundancy check [21]\\
+\verb|CRC32| & \verb|25| & \verb|32| & \rmfamily 32-bit cyclic redundancy check ~\cite{Guthaus2001}\\
 \hline
-\verb|Patricia| & \verb|21| & \verb|48| & \rmfamily Routine to insert values in Patricia Tree [21]\\
+\verb|Patricia| & \verb|21| & \verb|48| & \rmfamily Routine to insert values in Patricia Tree ~\cite{Guthaus2001}\\
 \hline
 
-\verb|Dijkstra| & \verb|26| & \verb|69| & \rmfamily Computer shortest paths in a graph [21]\\
+\verb|Dijkstra| & \verb|26| & \verb|69| & \rmfamily Computer shortest paths in a graph ~\cite{Guthaus2001}\\
 \hline
 \verb|Clustering| & \verb|150| & \verb|331| & \rmfamily Image segmentation algorithm in a medical application\\
 \hline
@@ -674,21 +675,23 @@ The binary approach uses a parallel binary search, it is described in the sectio
 
 %----------------------------------------------
 \section{Related Work}
+\label{Related-Work}
 %----------------------------------------------
 
 \textcolor{blue}{Descrever mais dois ou três trabalhos relacionados, em especial, os artigos do vZ.}
 
-Since the second half of the first decade of the 2000s, three main paths have been tracked to improve or to present alternative solutions to the optimization of HW-SW partitioning, i.e., to find the exact solution [2], to use heuristics to speed up performance time [1], and hybrid ones [22].
+Since the second half of the first decade of the 2000s, three main paths have been tracked to improve or to present alternative solutions to the optimization of HW-SW partitioning, i.e., to find the exact solution ~\cite{Mann2007}, to use heuristics to speed up performance time ~\cite{Arato2003}, and hybrid ones ~\cite{Arato2005}.
 
 In the first group, the exact solution to the HW-SW partitioning problem is found. The use of SMT-based verification presented in this paper can be grouped into this category, because the exact solution is found with the given algorithm. The difference is based only in terms of the technique chosen to solve the problem.
 Another path followed in past initiatives and which has had more studies is the creation of heuristics to speed up the running time of the solution. The difference between this kind of solutions and SMT-based verification is based on two facts: ESBMC is guaranteed to find the exact solution, but the heuristics are faster when the complexity is greater.
 
 Finally, there are approaches that mixes heuristics with exact solution tools. The idea is to use a heuristic to speed up some phase of an exact solution tool. It worth mentioning that the final solution is not necessarily an optimal global solution. Only the SMT-based verification is guaranteed to find the exact solution, but hybrid algorithms are faster when complexity rises.
 
-In terms of SMT-based verification, most work is restricted to present the model, its modification to programming languages (e.g., C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In [16] it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and [14] uses the ESBMC model checker for embedded ANSI-C software. In [5] and [6] it was proven that it is possible to use ESBMC to solve HW-SW partitioning, but in a single core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification [29], and modifications of internal search engines to support parallelism [30], but there is still the need for initiatives related to parallel SMT solvers [31]. Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories [32].
+In terms of SMT-based verification, most work is restricted to present the model, its modification to programming languages (e.g., C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In ~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and ~\cite{Cordeiro2012} uses the ESBMC model checker for embedded ANSI-C software. In ~\cite{Trindade2015} and ~\cite{Trindade2014} it was proven that it is possible to use ESBMC to solve HW-SW partitioning, but in a single core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to support parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}.
 
 %----------------------------------------------
 \section{Conclusions}
+\label{Conclusions}
 %----------------------------------------------
 
 \textcolor{Red}{After presented the 7 techniques and the experimental results to the partitioning problem solution of HW-SW became evident that for a quantity of nodes bigger than 300, the best option is ILP. Below 300 the best option turns out to be vZ, its response time is superior and notorious. ESBMC is a viable tool for a quantity of nodes lower than 150.}  GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. This error may be reduced by changing some parameters.The computing time to solve the optimization problem reached some hours of execution on a standard desktop computer. 
@@ -696,7 +699,10 @@ In terms of SMT-based verification, most work is restricted to present the model
 If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and Vz has BSD-Style license and MIT respectively and can be downloaded and used for free.\textcolor{Red}{ The benchmarks results shows the improvement of ESBMC when using a parallel approach, all three parallel techniques mentioned in this paper had expressive results. The biggest highlight goes to the ESBMC PB (Parallel Binary) which behaves very well for an intermediate amount of edges and nodes.}Thus, considering that nowadays the processors have more and more cores, when modeling the problem, it is possible to consider multi-core ESBMC as an alternative to solve the partitioning problem. 
 
 Finally, there is an issue about 150 nodes problem, since it seems to be the limit of ESBMC. It really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for bigger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the size of the search space. \textcolor{Red}{On future works we will address improvements in the ESBMC, we hope to remove the parallel layer on top of ESBMC and implement it on it's core, it would optimize the processing time.}
+%----------------------------------------------
 \section{References}
+\label{References}
+%----------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---- Bibliography ---- %
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -855,13 +861,13 @@ Application Pogram Interface, Version 1.0, October 1998.
 http://www.openmp.org
 
 %36
-\bibitem{Z3}
+\bibitem{Z3API}
 Magellan, ``{Source code and documentation},''
   \url{https://github.com/Z3Prover/z3}, Accessed 18 August 2015.
   
 %37
-\bibitem{Z3}
-URFJ, ``{Algoritmos Genéticos: Fundamentos e Aplicações},''
+\bibitem{GA}
+URFJ, ``{Algoritmos Genéticos: Fundamentos e Aplicações. Marcio Nunes de Miranda},''
   \url{http://www.nce.ufrj.br/GINAPE/VIDA/alggenet.htm}, Accessed 18 August 2015.
 
 \end{thebibliography}
