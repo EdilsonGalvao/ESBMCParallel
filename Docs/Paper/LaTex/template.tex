@@ -157,9 +157,9 @@ The HW-SW partitioning problem is typically represented as a set of constraints 
 \label{Optimization}
 %----------------------------------------------
 
-\textcolor{red}{Optimization is the act of obtaining the best result (i.e., the optimal solution) under given circumstances ~\cite{Rao2009}. In the design, construction, and maintenance of any engineering system, engineers have to make many technological and managerial decisions at several stages. The ultimate goal of all such decisions is either to minimize the effort required or to maximize the desired benefit. Because the effort required or the benefit desired in any practical situation can be expressed as a function of certain decision variables, optimization can be defined as the process of finding the conditions that give the maximum or minimum value of a function ~\cite{Rao2009}.}
+Optimization is the act of obtaining the best result (i.e., the optimal solution) under given circumstances~\cite{Rao2009}. In the design, construction, and maintenance of any engineering system, engineers have to make many technological and managerial decisions at several stages. The ultimate goal of all such decisions is either to minimize the effort required or to maximize the desired benefit. Because the effort required or the benefit desired in any practical situation can be expressed as a function of certain decision variables, optimization can be defined as the process of finding the conditions that give the maximum or minimum value of a function~\cite{Rao2009}.
 
-There is no single method available for solving all optimization problems efficiently ~\cite{Rao2009}. The most known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq. (1) shows a typical linear programming problem, where  and  are vectors or matrixes that describe the constraints
+There is no single method available for solving all optimization problems efficiently~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq. (1) shows a typical linear programming problem, where $A$ and $b$ are vectors or matrixes that describe the constraints
 \begin{equation}
   minf^t x \: such that  = 
   \begin{cases}
@@ -169,10 +169,7 @@ There is no single method available for solving all optimization problems effici
   \end{cases}
 \end{equation}
 
-In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours belerunning before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, e.g., those used in the GA ~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum.
-
-
-\textcolor{red}{Tools such as vZ and ESBMC also explores the optimization problem, both tools have its main purpose the precision, problems with a high quantity of data make the time an obstacle. The sections 2.2 and 2.3 shows how vZ and ESBMC uses its techniques to solve the paritioning problems.}
+In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, e.g., those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as vZ and ESBMC can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of vZ and ESBMC tools.
 
 
 %----------------------------------------------
