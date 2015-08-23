@@ -61,7 +61,7 @@ grestore
 
 \usepackage{hyphenat}
 \usepackage[english]{babel}
-\hyphenation{ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams}
+\hyphenation{ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams }
 
 \newcommand{\head}[1]{\textnormal{\textbf{#1}}}
 \renewcommand{\lstlistingname}{Algorithm}
@@ -290,7 +290,7 @@ Three different optimization and decision problems can be defined. In this paper
 s\left(1-x\right) + c|E_x| \leq S_0, 
 \end{align}
 %
-\noindent where $x$ represents the decision variable. Concerning the complexity of this problem, Arat\'o {\it et al.}~\cite{Arato2003} demonstrate that it is NP-Hard \textcolor{blue}{citar referencia do livro do Cormen}.
+\noindent where $x$ represents the decision variable. Concerning the complexity of this problem, Arat\'o {\it et al.}~\cite{Arato2003} demonstrate that it is NP-Hard \textcolor{red}{\cite[p.~763]{Cormem}}.
 
 %----------------------------------------------
 \section{Partitioning problem using ILP-based,Genetic Algorithms}
@@ -446,6 +446,8 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 
 Note that there might gaps between steps, which are produced by the customized binary search. For instance, in the example shown in~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
+\textcolor{blue}{Precisas descrever no topo do algoritmo as entradas e saidas}
+
 \begin{lstlisting}[caption=Steps Calculation using Intervals,label=Steps-Calculation-using-Intervals]
 01. GetNextStep(){
 02.  int largestChunk = -1;
@@ -487,7 +489,14 @@ Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC
 \label{Experimental-Evaluation}
 %----------------------------------------------
 
-ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver ~\cite{Brummayer2009} (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used ~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software ~\cite{Tranquillo2011} and is widely used by the engineering community ~\cite{Hong2010}. \textcolor{Red}{The vZ is a built-in tool to Z3 and is ~\cite{Bjorner2014} available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
+This section is split into two parts. The setup is described in Section~\ref{Experimental-Setup} while Section~\ref{Experimental-Results} describes a comparison among Matlab~\cite{TheMathWorks2013}, vZ~\cite{Bjorner2015}, and ESBMC~\cite{Trindade2015} using a set of standard HW-SW partitioning benchmarks~\cite{Mann2007}.
+
+%----------------------------------------------
+\subsection{Experimental Setup}
+\label{Experimental-Setup}
+%----------------------------------------------
+
+To perform the experiments, some test vectors provided by Mann {\it et al.}~\cite{Mann2007} are used, as shown in Table~\ref{Description-of-Benchmarks}. The vertices in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy test vectors benchmarks are designed from Mann et al.~\cite{Mann2007} and are significantly larger benchmarks. From the same authors,  very complex benchmarks to test the limits of the applicability of techniques are collected (RC$6$ and Mars).
 
 \begin{table}[h]
 \caption {Description of Benchmarks}
@@ -516,21 +525,48 @@ ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Ver
  
   \bottomrule[1.5pt]
 \end{tabular}
+\label{Description-of-Benchmarks}
 \end{table}
 
-\textcolor{Red}{The results obtained that standout were the ILP and vZ.
-Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC6, the slowest result compared with ILP was Patricia that was 3.33 times faster, vZ returned two TO (time outs) in Fuzzy and Mars.}
+ESBMC $1$.$24$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system was used. A parallel approach of the ESBMC sequential ascending, descending, and binary search are implemented in C++$11$. Version $2$.$0$.$1$ of Boolector SMT-solver~\cite{Brummayer2009} (freely available) was used as the default solver for ESBMC. For ILP and GA formulations, MATLAB R$2013$a from MathWorks with Parallel Computing Toolbox was used~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software~\cite{Tranquillo2011} and is widely used by the engineering community~\cite{Hong2010}. vZ as a built-in tool to Z3 was also used~\cite{Bjorner2014}. 
 
-\textcolor{Red}{In contrast, ILP solved correctly 6 of 7 algorithms, do not had any false positive, the resolution time is bigger compared with vZ and lower compared with ESBMC, it shows that ILP is optimized to solve problems but has an average resolution time.}
+A desktop with $24$GB of RAM and i$7$ ($8$-cores) from Intel with CPU clock of $3$.$40$ GHz was used. Each time was measured $3$ times in GA (average taken) and just once in vZ, ESBMC, and ILP. The reason is that GA times are not so close as ILP, vZ, and ESBMC. A time out condition (TO) is reached when the running time is longer than $7200$ seconds. A memory out (MO) occurs when the tool reaches $24$GB of memory. 
 
-\textcolor{Red}{The only technique aqble to solve all algorithms was GA, however it's precision was not satisfatory, it had error rate between -37.6\% and 29.0\%.}
 
-\textcolor{Red}{All versions of parallel ESBMC got better results compared with the sequential approach, stands out the binary version described on the section 2.5, the performance get better as the number of nodes and edges get bigger. The clustering algorithm when processed by the parallel ESBMC had 3.13 better performance than ILP, it`s time was 207 seconds and is very cloe to the solution of vZ that is 109 seconds.}
+%----------------------------------------------
+\subsection{Experimental Results}
+\label{Experimental-Results}
+%----------------------------------------------
 
-\textcolor{Red}{The table 2 shows the advances in the parallelization of algorithms of partitioning problems, ESBMC had great results when executed in parallel, the vZ and ILP had precise results as ESBMC.} 
+ESBMC implement four approaches: ESBMC, ESBMC Multicore (MC), ESBMC Parallel Sequential (PS), and ESBMC Parallel binary (PB).
+
+\textcolor{blue}{Nao existe uma secao sobre o ESBMC PS. Ela esta misturada na secao do PB. Sugiro criar uma subsecao para o ESBMC PS.}
+
+\begin{itemize}
+\item{\textbf{ESBMC: }\textcolor{Red}{
+This strategy uses only one core to solve the partitioning problem, it is described in the section 2.3.}}
+\item{\textbf{ESBMC MC:  }\textcolor{Red}{
+Uses a sequential strategy \{1\:,2\:,\:...\:, \:Hmax\} , there is not parallel controller in this approach, it is described in the section 5.1.}}
+\item{\textbf{ESBMC PS:  }\textcolor{Red}{
+This approach is similar with ESBMC MC, however it uses a more optimized way to launch the ESBMC instances, it is described in the section 5.2.}}
+\item{\textbf{ESBMC PB:  }\textcolor{Red}{
+The binary approach uses a parallel binary search, it is described in the section 5.2.}}
+\end{itemize}
+
+\textcolor{red}{There is no single tool for solving all benchmarks efficiently. In particular, Vz solves $4$ out of $7$ benchmarks, in the worst case, vZ was more fast than ILP 3.33 times (Patricia code),vZ returned two TO (time outs) in Fuzzy and Mars.}
+
+In contrast to vZ, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than vZ in all benchmarks, which are supported by vZ. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
+
+\textcolor{blue}{Falta descrever os resultados da melhor abordagem do ESBMC quando comparado ao vZ e ILP.}
+
+The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
+
+Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than vZ.
+
+Table~\ref{experimental-results-matlab-vz-esbmc} shows the experimental results using vZ, Matlab (ILP and GA), and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC-PB) tools.
 
 \begin{table}[h]
-\caption {Results of the benchmarks}
+\caption {Experimental results of the simple benchmarks}
 \small
 \begin{tabular}[c]{m{1.3cm}m{1.20cm}|m{0.85cm}|m{0.85cm}|m{0.85cm}|m{0.85cm}}
   \toprule[1.5pt]
@@ -597,25 +633,13 @@ Vz solved correctly 4 of 7 algorithms, got an false positive in the algorithm RC
 \bottomrule[1.5pt]
 
 \end{tabular}
-MC = Multi-core, PS = Parallel Sequential, PB = Parallel Binary.
+\label{experimental-results-matlab-vz-esbmc}
 \end{table}
 
-\textcolor{Red}{ESBMC implement four approach on the solver. ESBMC, ESBMC Multicore(MC), ESBMC Parallel Sequential(PS) and ESBMC Parallel binary(PB).}
-\begin{itemize}
-\item{\textbf{ESBMC  }\textcolor{Red}{
-This strategy uses only one core to solve the partitioning problem, it is described in the section 2.3.}}
-\item{\textbf{ESBMC MC  }\textcolor{Red}{
-Uses a sequential strategy \{1\:,2\:,\:...\:, \:Hmax\} , there is not parallel controller in this approach, it is described in the section 5.1.}}
-\item{\textbf{ESBMC PS  }\textcolor{Red}{
-This approach is similar with ESBMC MC, however it uses a more optimized way to launch the ESBMC instances, it is described in the section 5.2.}}
-\item{\textbf{ESBMC PB  }\textcolor{Red}{
-The binary approach uses a parallel binary search, it is described in the section 5.2.}}
-\end{itemize}
-
-\textcolor{Red}{The table 3 is an extenstion of table 2. The table 3 shows the problems with a higher node and edges quantity, this increase impact directly in the processing time. RC6 had time out for all versions of ESBMC, vZ e GA haven't had the right answer, and ILP solved correctly the problem. Fuzzy had 3 time outs, 3 memory outs, e a wrong answer. ILP was the only one that could solve Mars, GA solved incorrectly and all others had TO or MO.} 
+Table~\ref{Experimental-results-of-the-complex-benchmarks} is an extension of Table~\ref{experimental-results-matlab-vz-esbmc}, where complex benchmarks are used. In particular, Table~\ref{Experimental-results-of-the-complex-benchmarks} shows problems with a higher number of nodes and edges; this increase directly influences the processing time of all tools. RC$6$ produced time out for all versions of ESBMC, vZ e GA did not produce the correct answer, and ILP solves correctly all benchmarks, except one. Fuzzy produced time-outs and memory-outs in all tools. ILP was the only one to solve Mars, while GA solved incorrectly all benchmarks.
 
 \begin{table}[h]
-\caption {Results of the benchmarks}
+\caption{Experimental results of the complex benchmarks}
 \small
 \begin{tabular}[c]{m{1.3cm}m{1.25cm}|m{1.25cm}|m{1.25cm}|m{1.25cm}}
   \toprule[1.5pt]
@@ -681,8 +705,10 @@ The binary approach uses a parallel binary search, it is described in the sectio
 \bottomrule[1.5pt]
 
 \end{tabular}
+\label{Experimental-results-of-the-complex-benchmarks}
 \end{table}
-\textcolor{Red}{Clustering described in the table 2 seems to be the limit to test the described tools, its important highlight that the number of nodes higher than 150 lead on TM or MO and wrong answers. ILP showed robustness, getting good results processing a high amount of ndoes and edges.}
+
+Clustering described in Table~\ref{experimental-results-matlab-vz-esbmc} seems to be the limit to test the described tools, note that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high amount of nodes and edges.
 
 %----------------------------------------------
 \section{Related Work}
@@ -696,7 +722,7 @@ Another path followed in past initiatives and which has had more studies is the 
 
 Finally, there are approaches that mixes heuristics with exact solution tools. The idea is to use a heuristic to speed up some phase of an exact solution tool. It worth mentioning that the final solution is not necessarily an optimal global solution. Only the SMT-based verification is guaranteed to find the exact solution, but hybrid algorithms are faster when complexity rises.
 
-In terms of SMT-based verification, most work is restricted to present the model, its modification to programming languages (e.g., C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In ~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and ~\cite{Cordeiro2012} uses the ESBMC model checker for embedded ANSI-C software. In ~\cite{Trindade2015} and ~\cite{Trindade2014} it was proven that it is possible to use ESBMC to solve HW-SW partitioning, but in a single core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to support parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}.
+In terms of SMT-based verification, most work is restricted to present the model, its modification to programming languages (e.g., C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In ~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and ~\cite{Cordeiro2012} uses the ESBMC model checker for embedded ANSI-C software. In~\cite{Trindade2015} and~\cite{Trindade2014} it was proven that it is possible to use ESBMC to solve HW-SW partitioning, but in a single core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to support parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}.
 
 \textcolor{Red}{A ferramenta vZ ~\cite{Bjorner2014} e ~\cite{Bjorner2015} oferece ganhos substanciais em problemas de otimizacao. O trabalho descrito em ~\cite{Pavlinovic2015} relata erros em compiladores e suas confusas mensagens, a abordagem classica é mostrar ao programador qual o local de erro e um dica sobre o mesmo, entretanto, outras fontes de erros não são consideradas, a abordagem mais indicada seria considerar todas as fontes de erros possiveis. Para modelar o problema são geradas as restricoes usando EasyOCaml, e vZ é responsavel por computar a menor caminho de erros. o Algoritmo descrito em ~\cite{Pavlinovic2015} mostrou-se eficiente frente as outras abordagens.}
 
@@ -750,7 +776,6 @@ Clarke, E., Emerson, E., Sifakis, J. ``{Model checking: algorithmic verification
 %5
 \bibitem{Trindade2015}
 Trindade, A., Cordeiro. L. ``{Applying SMT-based verification to hardware/software partitioning in embedded systems. In: Design Automation for Embedded Systems. Springer, New York (2015)}''
-<<<<<<< HEAD
 
 %6
 \bibitem{Trindade2014}
@@ -883,7 +908,7 @@ Magellan, ``{Source code and documentation},''
 \bibitem{GA}
 URFJ, ``{Algoritmos Genéticos: Fundamentos e Aplicações. Marcio Nunes de Miranda},''
   \url{http://www.nce.ufrj.br/GINAPE/VIDA/alggenet.htm}, Accessed 18 August 2015.
-  
+
 %38
 \bibitem{NarodytskaN}
 Narodytska, N., Bacchus, F. {``Maximum Satisfiability Using Core-Guided MAXSAT Resolution'', Proceedings of the Twenty-Eighth AAAI Conference on Artificial Intelligence.}
@@ -904,6 +929,9 @@ Pseudo-Boolean Optimization.''}, Technical Report MPI-I-95-2-003, Max Plank Inst
 
 %43
 \bibitem{Patrick2015}Sebastiani, R., Trentin, T., {``OptiMathSAT: A Tool for Optimization Modulo Theories''}
+
+%43
+\bibitem{Cormem}Cormem, H., Charles, E., {``Algoritmos, Teoria e Prática''}, Chapter 34, Pag 763.
 
 \end{thebibliography}
 
