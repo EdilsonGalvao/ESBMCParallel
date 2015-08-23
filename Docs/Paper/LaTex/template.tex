@@ -180,7 +180,7 @@ In some cases, the time to find a solution using ILP is impractical. Even with t
 \label{Optimization-with-Vz}
 %----------------------------------------------
 
-An SMT solver is a tool that verifies formula satisfiability based on a set of background theories (e.g., linear arithmetic, bitvectors, and arrays). Z3 is built on top of a Davis–Putnam–Logemann–Loveland solver together with auxiliary algorithms for solving quantifiers formulas~\cite{Bjorner2014}. vZ is one of the tools implemented in the SMT solver Z3; its base function is to optimize objective functions, which formulate optimized criteria, within the logical context of constraints. vZ includes an incremental version of \textcolor{blue}{Expandir sigla MaxRes..} MaxRes \textcolor{blue}{Citar uma referencia para MaxRes} to Maximum Satisfiability (MaxSAT) \textcolor{blue}{Citar uma referencia para MaxSAT} and a Simplex to solve numbers without defined patterns. In Vz, MaxSAT is responsible for the restrictions, while OptSMT optimizes linear arithmetic objectives~\cite{Bjorner2015}. Vz provides functions that extend Z3 for solving optimization problems: \textit{maximize}, \textit{minimize}, and \textit{assert-soft}.
+An SMT solver is a tool that verifies formula satisfiability based on a set of background theories (e.g., linear arithmetic, bitvectors, and arrays). Z3 is built on top of a Davis–Putnam–Logemann–Loveland solver together with auxiliary algorithms for solving quantifiers formulas~\cite{Bjorner2014}. vZ is one of the tools implemented in the SMT solver Z3; its base function is to optimize objective functions, which formulate optimized criteria, within the logical context of constraints.  vZ includes an incremental version of  \textcolor{red}{Maximum Resiliency (MaxRes) ~\cite{Federica2008} to Maximum Satisfiability (MaxSAT)~\cite{NarodytskaN}} and a Simplex to solve numbers without defined patterns. In Vz, MaxSAT is responsible for the restrictions, while OptSMT optimizes linear arithmetic objectives~\cite{Bjorner2015}. Vz provides functions that extend Z3 for solving optimization problems: \textit{maximize}, \textit{minimize}, and \textit{assert-soft}.
 
 \begin{itemize}
 \item{\textbf{maximize(T)}
@@ -202,7 +202,7 @@ As an example, one can optimize $\left(K + W\right)$, with restrictions in $\lef
 6. (check-sat)
 \end{lstlisting}
 
-The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO) \textcolor{blue}{Citar referencia}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. \textcolor{blue}{Esta frase esta sem concordancia... To restrictions in real values using “Box”, vZ combines all linear arithmetic and calls the OptSMT}. When we use ``soft constrains'' in the mode ``lexicographic'' vZ invokes MaxSAT \textcolor{blue}{E qual eh o resultado disso?}.
+The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)\textcolor{red}{~\cite{Vasco2005}~\cite{Barth1995}}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. \textcolor{red}{for box constraints using real values, Vz combines linear arithmetic objectives and uses only one instance of OptSMT. When we use "soft constrains'' in the mode "lexicographic'' vZ invokes MaxSAT using multiple calls for your engine.} 
 %
 \begin{figure}[ht]
 	\centering
@@ -487,7 +487,7 @@ Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC
 \label{Experimental-Evaluation}
 %----------------------------------------------
 
-ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver ~\cite{Brummayer2009} (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used ~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software ~\cite{Tranquillo2011} and is widely used by the engineering community ~\cite{Hong2010}. \textcolor{Red}{The vZ is a built-in tool to Z3 and is ~\cite{Bjorner2014} available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++11}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
+ESBMC 1.24 running on a 64-bit Ubuntu 14.04.1 LTS operating system was used. Version 2.0.1 of Boolector SMT-solver ~\cite{Brummayer2009} (freely available) was used as well. For the ILP and GA formulations, MATLAB R2013a from MathWorks with Parallel Computing Toolbox was used ~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software ~\cite{Tranquillo2011} and is widely used by the engineering community ~\cite{Hong2010}. \textcolor{Red}{The vZ is a built-in tool to Z3 and is ~\cite{Bjorner2014} available freely was also used. A parallel approach of the ESBMC sequential search ascending, descending and binary was implemented in c++}. A desktop with 24GB of RAM and i7 (8-cores) from Intel with clock of 3.40 GHz was used. Each time was measured 3 times in GA (average taken) and just once in ESBMC and ILP. The reason is that GA times are not so close as ESBMC and ILP. A time out condition (TO) is reached when the running time is longer than 7,200 seconds. A memory out (MO) occurs when the tool reaches 24GB of memory. TABLE I. lists the benchmarks1.
 
 \begin{table}[h]
 \caption {Description of Benchmarks}
@@ -602,13 +602,13 @@ MC = Multi-core, PS = Parallel Sequential, PB = Parallel Binary.
 
 \textcolor{Red}{ESBMC implement four approach on the solver. ESBMC, ESBMC Multicore(MC), ESBMC Parallel Sequential(PS) and ESBMC Parallel binary(PB).}
 \begin{itemize}
-\item{\textbf{ESBMC}\textcolor{Red}{
+\item{\textbf{ESBMC  }\textcolor{Red}{
 This strategy uses only one core to solve the partitioning problem, it is described in the section 2.3.}}
-\item{\textbf{ESBMC MC}\textcolor{Red}{
-Uses a sequential strategy \{1\:,2\:,\:...\:,\:Hmax\}, there is not parallel controller in this approach, it is described in the section 5.1.}}
-\item{\textbf{ESBMC PS}\textcolor{Red}{
+\item{\textbf{ESBMC MC  }\textcolor{Red}{
+Uses a sequential strategy \{1\:,2\:,\:...\:, \:Hmax\} , there is not parallel controller in this approach, it is described in the section 5.1.}}
+\item{\textbf{ESBMC PS  }\textcolor{Red}{
 This approach is similar with ESBMC MC, however it uses a more optimized way to launch the ESBMC instances, it is described in the section 5.2.}}
-\item{\textbf{ESBMC PB}\textcolor{Red}{
+\item{\textbf{ESBMC PB  }\textcolor{Red}{
 The binary approach uses a parallel binary search, it is described in the section 5.2.}}
 \end{itemize}
 
@@ -689,8 +689,6 @@ The binary approach uses a parallel binary search, it is described in the sectio
 \label{Related-Work}
 %----------------------------------------------
 
-\textcolor{blue}{Descrever mais dois ou três trabalhos relacionados, em especial, os artigos do vZ.}
-
 Since the second half of the first decade of the 2000s, three main paths have been tracked to improve or to present alternative solutions to the optimization of HW-SW partitioning, i.e., to find the exact solution ~\cite{Mann2007}, to use heuristics to speed up performance time ~\cite{Arato2003}, and hybrid ones ~\cite{Arato2005}.
 
 In the first group, the exact solution to the HW-SW partitioning problem is found. The use of SMT-based verification presented in this paper can be grouped into this category, because the exact solution is found with the given algorithm. The difference is based only in terms of the technique chosen to solve the problem.
@@ -699,6 +697,10 @@ Another path followed in past initiatives and which has had more studies is the 
 Finally, there are approaches that mixes heuristics with exact solution tools. The idea is to use a heuristic to speed up some phase of an exact solution tool. It worth mentioning that the final solution is not necessarily an optimal global solution. Only the SMT-based verification is guaranteed to find the exact solution, but hybrid algorithms are faster when complexity rises.
 
 In terms of SMT-based verification, most work is restricted to present the model, its modification to programming languages (e.g., C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In ~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and ~\cite{Cordeiro2012} uses the ESBMC model checker for embedded ANSI-C software. In ~\cite{Trindade2015} and ~\cite{Trindade2014} it was proven that it is possible to use ESBMC to solve HW-SW partitioning, but in a single core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to support parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}.
+
+\textcolor{Red}{A ferramenta vZ ~\cite{Bjorner2014} e ~\cite{Bjorner2015} oferece ganhos substanciais em problemas de otimizacao. O trabalho descrito em ~\cite{Pavlinovic2015} relata erros em compiladores e suas confusas mensagens, a abordagem classica é mostrar ao programador qual o local de erro e um dica sobre o mesmo, entretanto, outras fontes de erros não são consideradas, a abordagem mais indicada seria considerar todas as fontes de erros possiveis. Para modelar o problema são geradas as restricoes usando EasyOCaml, e vZ é responsavel por computar a menor caminho de erros. o Algoritmo descrito em ~\cite{Pavlinovic2015} mostrou-se eficiente frente as outras abordagens.}
+
+\textcolor{Red}{O problema abordado neste trabalho utiliza objetivo unico, minimizacao da funcao objetivo, em ~\cite{Patrick2015} é comparada as ferramentas OptiMathSAT com vZ para problemas de verificacao de SW. OptiMathSAT usando multiplos objetivos funciona muito melhor do que vZ com mulitplos objetivos, contudo, para problemas com objetivos unicos vZ se comparta melhor do que OptiMathSAT.}
 
 %----------------------------------------------
 \section{Conclusions}
@@ -881,6 +883,27 @@ Magellan, ``{Source code and documentation},''
 \bibitem{GA}
 URFJ, ``{Algoritmos Genéticos: Fundamentos e Aplicações. Marcio Nunes de Miranda},''
   \url{http://www.nce.ufrj.br/GINAPE/VIDA/alggenet.htm}, Accessed 18 August 2015.
+  
+%38
+\bibitem{NarodytskaN}
+Narodytska, N., Bacchus, F. {``Maximum Satisfiability Using Core-Guided MAXSAT Resolution'', Proceedings of the Twenty-Eighth AAAI Conference on Artificial Intelligence.}
+
+%39
+\bibitem{Federica2008}
+Federica, P., Rodolfo, F., Yuqing , S., Elisa, B., {``Authorization and User Failure Resiliency for WS-BPEL business processes''}, Service-Oriented Computing – ICSOC 2008 Lecture Notes in Computer Science, 2008, Volume 5364/2008, 116-131
+
+%40
+\bibitem{Barth1995}Barth, P., Davis-Putnam, A., {``Enumeration Algorithm for Linear
+Pseudo-Boolean Optimization.''}, Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science, 1995.
+
+%41
+\bibitem{Vasco2005}Vasco, M., Marques-Silva, J., {``Effective Lower Bounding Techniques for Pseudo-Boolean Optimization''}, IST/INESC-ID, Technical University of Lisbon, Portugal.
+
+%42
+\bibitem{Pavlinovic2015}Pavlinovic, Z., King, T., Wies, T.,{``Practical SMT-Based Type Error Localization''}, ICFP’15, August 31 – September 2, 2015, Vancouver, BC, Canada c 2015 ACM. 978-1-4503-3669-7/15/08
+
+%43
+\bibitem{Patrick2015}Sebastiani, R., Trentin, T., {``OptiMathSAT: A Tool for Optimization Modulo Theories''}
 
 \end{thebibliography}
 
