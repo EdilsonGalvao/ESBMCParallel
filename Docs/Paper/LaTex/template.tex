@@ -543,17 +543,13 @@ ESBMC implement four approaches: ESBMC, ESBMC Multicore (MC), ESBMC Parallel Seq
 \textcolor{blue}{Nao existe uma secao sobre o ESBMC PS. Ela esta misturada na secao do PB. Sugiro criar uma subsecao para o ESBMC PS.}
 
 \begin{itemize}
-\item{\textbf{ESBMC: }\textcolor{Red}{
-This strategy uses only one core to solve the partitioning problem, it is described in the section 2.3.}}
-\item{\textbf{ESBMC MC:  }\textcolor{Red}{
-Uses a sequential strategy \{1\:,2\:,\:...\:, \:Hmax\} , there is not parallel controller in this approach, it is described in the section 5.1.}}
-\item{\textbf{ESBMC PS:  }\textcolor{Red}{
-This approach is similar with ESBMC MC, however it uses a more optimized way to launch the ESBMC instances, it is described in the section 5.2.}}
-\item{\textbf{ESBMC PB:  }\textcolor{Red}{
-The binary approach uses a parallel binary search, it is described in the section 5.2.}}
+\item{\textbf{ESBMC:} This strategy uses only one core to solve the partitioning problem, as described in Section~\ref{Verification-Algorithm-using-ESBMC}.
+\item{\textbf{ESBMC-MC:} This uses a sequential strategy $\left\{1,2,\ldots, H_{max}\right\}$; there is no parallel controller in this approach, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP}.}
+\item{\textbf{ESBMC-PS:} This approach is similar to ESBMC MC; however, it uses a more optimized way to launch the ESBMC instances, as described Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}.}
+\item{\textbf{ESBMC-PB:} This strategy uses a parallel binary search, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}.}}
 \end{itemize}
 
-\textcolor{red}{There is no single tool for solving all benchmarks efficiently. In particular, Vz solves $4$ out of $7$ benchmarks, in the worst case, vZ was more fast than ILP 3.33 times (Patricia code),vZ returned two TO (time outs) in Fuzzy and Mars.}
+There is no single tool for solving all benchmarks efficiently. In particular, Vz solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; \textcolor{blue}{Nao entendi nada desta frase... the slowest result compared with ILP was Patricia that was 3.33 times faster, vZ returned two TO (time outs) in Fuzzy and Mars.}
 
 In contrast to vZ, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than vZ in all benchmarks, which are supported by vZ. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
 
@@ -563,7 +559,7 @@ The only technique that is able to solve all benchmarks is GA; however, its prec
 
 Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than vZ.
 
-Table~\ref{experimental-results-matlab-vz-esbmc} shows the experimental results using vZ, Matlab (ILP and GA), and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC-PB) tools.
+Table~\ref{experimental-results-matlab-vz-esbmc} shows the experimental results using vZ, Matlab (ILP and GA), and ESBMC (ESBMC-MC, ESBMC-PS, ESBMC-PB) tools.
 
 \begin{table}[h]
 \caption {Experimental results of the simple benchmarks}
