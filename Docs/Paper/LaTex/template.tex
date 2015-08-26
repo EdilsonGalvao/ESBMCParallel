@@ -313,11 +313,11 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
 
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to vZ: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to vZ that \textit{Fobj} should be minimized. Finally, the model is checked by Vz and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
-\begin{lstlisting}[caption=Pseudocode describing vZ,label=vZ-pseudocode]
+\begin{lstlisting}[caption=Pseudocode describing vZ,label=vZ-pseudocode, mathescape]
 01.#Initialize Variables
 02.  Create vZ context 
 03.  Create binary vector (x)
-04.  Declare number of nodes, edges and S0
+04.  Declare number of nodes, edges and $S_{0}$
 05.  Declare hardware cost of each node as array (h) 
 06.  Declare software cost of each node as array (s)
 07.  Declare communication cost of each edge (c)
@@ -327,7 +327,7 @@ The arithmetic expressions from lines $10$ to $12$ represent the constraints des
 11.  CMC = c*|EX|
 12.  Fobj =  x[i] * h[i]
 13.#Assert Constraints
-14.  Add constraints (SF + CMC <= S0)
+14.  Add constraints (SF + CMC <= $S_{0}$)
 15.  Add constraints to minimize Fobj
 16.  Check Model
 17.  Print Result
@@ -357,22 +357,22 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
-\begin{lstlisting}[caption=Pseudocode describing ESBMC]
+\begin{lstlisting}[caption=Pseudocode describing ESBMC, mathescape]
 01. Initialize Variables 
 02. Declare number of nodes and edges
 03. Declare hardware cost of each node as array (h)
 04. Declare software cost of each node as array (s)
 05. Declare communication cost of each edge (c)
-06. Declare the initial software cost of (S0)
+06. Declare the initial software cost of ($S_{0}$)
 07. Declare transposed incidence matrix graph G (E)
-08. Define the solutions variable (Xi) as Boolean
+08. Define the solutions variable ($X_{i}$ ) as Boolean
 09. main {
 10.  for TipH = 0 to Hmax do {
-11.   populate Xi with nondeterministic/test values
-12.   Calculate s(1-x)+c|Ex| and store at variable
-13.   Requirement isured by Assume (Variable <= S0)
-14.   Calculate Hp cost Based on value tested of Xi
-15.   Violation check with Assert(Hp > TipH)
+11.   populate $X_{i}$ with nondeterministic/test values
+12.   Calculate s(1-x)+c|$E_{x}$| and store at variable
+13.   Requirement isued by Assume (Variable <= $S_{0}$)
+14.   Calculate Hp cost Based on value tested of $X_{i}$
+15.   Violation check with Assert($H_{p}$ > TipH)
 16.  }
 17. }
 \end{lstlisting}
@@ -549,8 +549,6 @@ A desktop with $24$GB of RAM and i$7$ ($8$-cores) from Intel with CPU clock of $
 
 ESBMC implement four approaches: ESBMC, ESBMC Multicore (MC), ESBMC Parallel Sequential (PS), and ESBMC Parallel binary (PB).
 
-\textcolor{blue}{Nao existe uma secao sobre o ESBMC PS. Ela esta misturada na secao do PB. Sugiro criar uma subsecao para o ESBMC PS. Feito}
-
 \begin{itemize}
 \item{\textbf{ESBMC:} This strategy uses only one core to solve the partitioning problem, as described in Section~\ref{Verification-Algorithm-using-ESBMC}.
 \item{\textbf{ESBMC-MC:} This uses a sequential strategy \{1 ,2 ,\:...\:, Hmax\}; there is no parallel controller in this approach, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP}.}
@@ -562,11 +560,11 @@ ESBMC implement four approaches: ESBMC, ESBMC Multicore (MC), ESBMC Parallel Seq
 
 In contrast to vZ, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than vZ in all benchmarks, which are supported by vZ. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
 
-\textcolor{blue}{Falta descrever os resultados da melhor abordagem do ESBMC quando comparado ao vZ e ILP.}
+Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than vZ.
+
+\textcolor{red}{A versão PB do ESBMC descrita Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}, demonstra um avanco significativo na ferramenta; quando a quantidade de nós é baixa, em torno de 30, ESBMC-PB não demonstra eficiencia frente as tecnicas usadas em vZ e ILP, contudo, em torno de 150 nós, ESBMC se torna 3 vezes mais rapido do que ILP (A tecnicas mais robusta apresentada aqui). vZ para pequeno nós foi 30 vezes mais rapido (CRC32) do que ESBMC-PB e para nós intermediarios esse valor caiu para aproximadmente 1.9 (Clustering). Quando analisados os algoritmos RC6, Fuzzy e Mars, ESBMC-PB obteve TO ou MO em todos os casos. Os resultados são promissores levando em consideracao que as ferramentas vZ e Matlab são estados da arte em suas respectivas funcoes. }
 
 The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
-
-Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than vZ.
 
 Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using vZ, Matlab (ILP and GA), and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC\hyp{}PB) tools.
 
