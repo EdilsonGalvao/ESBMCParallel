@@ -108,7 +108,9 @@ grestore
 % \journalname{myjournal}
 %
 
-\renewcommand{\baselinestretch}{0.97}
+\renewcommand{\baselinestretch}{0.96}
+
+\newcommand{\comment}[1]{}
 
 \begin{document}
 \title{Applying Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems}
@@ -183,20 +185,37 @@ In some cases, the time to find a solution using ILP is impractical. Even with t
 \label{Bounded-Model-Checking-with-ESBMC}
 %----------------------------------------------
 
+\comment{
 Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior ~\cite{Baier2008}, ~\cite{Clarke2009}. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components ~\cite{Biere2009}. Much research has been devoted to mitigate this problem.
+}
 
-Among the recent techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in ~\cite{Biere2009}. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
+Among the recent model checking techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in~\cite{Biere2009}. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
 
-The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $ M $, a property $ \phi $, and a bound $ K $, BMC unrolls the system  times and translates it into a verification condition (VC) $ \varphi $  such that $ \varphi $   is satisfiable if and only if $ \phi $ has a counterexample of depth $ K $ or less ~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in ~\cite{Clarke2004}, ~\cite{Armando2009}, and ~\cite{Ganai2006}. 
+The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $M$, a property $\phi$, and a bound $k$, BMC unrolls the system $k$ times and translates it into a verification condition (VC) $\psi$  such that $\psi$ is satisfiable if and only if $\phi$ has a counterexample of depth $k$ or less~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in~\cite{Armando2009},\cite{Ganai2006},\cite{Cordeiro2012}. 
 
-According to ~\cite{Cordeiro2012} and ~\cite{Cordeiro2011}, SMT-based model checking can be used to verify the single- and multi-threaded software. In ~\cite{Ramalho2013}, ESBMC can also be used to model check C++ software based on SMT solvers. In ~\cite{Trindade2015} and ~\cite{Trindade2014} it was shown that it is possible to use ESBMC, as an optimization tool.
+In this study, ESBMC has been used as a BMC tool to solve HW-SW partitioning problems~\cite{Cordeiro2012}. According to Cordeiro {\it et al.}~\cite{Cordeiro2012},\cite{Cordeiro2011}, SMT-based model checking can be used to verify single- and multi-threaded software in embedded systems. In Ramalho {\it et al.}~\cite{Ramalho2013}, ESBMC can also be used to model check C$++$ software based on SMT solvers. In Trindade {\it et al.}~\cite{Trindade2015},\cite{Trindade2014}, it was shown that it is possible to use ESBMC also as an optimization tool.
 
-There are two directives in C/C++ that can be used to guide a model checker to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition or code violation (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
+In particular, there are two directives in C/C++ that can be used to guide a model checker to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition or code violation (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
+
+%----------------------------------------------
+\subsubsection{ESBMC Architecture}
+\label{ESBMCArchitecture}
+%----------------------------------------------
+
+Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consists of the C/C$++$ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles C/C$++$ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally it generates two sets of equations (i.e.,\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3~\cite{DeMoura2008}, Boolector~\cite{Brummayer2009}, MathSAT~\cite{Barrett2011}, CVC4~\cite{Bozzano2005}, and Yices~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
+%
+\begin{figure}[ht]
+	\centering
+  \includegraphics[scale=0.9]{Image/esbmc-arch-new.pdf} 
+	\caption{ESBMC Architecture}
+	\label{ESBMC-Architecture}
+\end{figure}
 
 %----------------------------------------------
 \subsection{OpenMP}
 \label{OpenMP}
 %----------------------------------------------
+
 The OpenMP is a set of directives for parallel programming that augments C/C$++$ and Fortran languages. OpenMP supports most processor architectures and operating systems, {\it e.g.}, Solaris, AIX, HP-UX, Linux, Mac OS X, and Windows. OpenMP uses a portable and very robust model that makes easy for programmers to develop parallel applications for a variety of platforms. 
 
 In particular, OpenMP uses the fork-join model of parallel execution ~\cite{OpenMP1998}. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes ({\it i.e.}, the API waits until all threads terminate), then the main procedure returns to the single-threaded execution mode~\cite{Wu2014}.
@@ -385,20 +404,12 @@ In the ESBMC algorithm, which is shown below, it is not necessary to add slack v
 %Therefore, the algorithm starts different ESBMC instances using different optimization values, in ascending order, for $ Hmax $ in order to %find a violation. If all instances finish and no violation is found, then multi-core ESBMC starts new $ N $ instances. When a violation is %found, it reports time and hardware cost. If multi-core ESBMC tests all the possibilities for the hardware cost and has not found a violation, %then it reports: $ Violation not found $.
 
 %----------------------------------------------
-\subsection{Multi-core ESBMC with OpenMP}
+\subsection{Multi-core ESBMC with OpenMP (ESBMC-MC)}
 \label{Multi-core-ESBMC-with-OpenMP}
 %----------------------------------------------
 
 Typically, ESBMC verification runs are performed only in a single-core. If the processor provides $8$ processing cores, only one is used for the verification and the others remain idle. Thus, there is a significant unused hardware resource during this process. 
-Fig.~\ref{ESBMC-Architecture} shows the ESBMC architecture, which consists of the C/C++ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles the C/C++ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. The GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally it generates two sets of equations (i.e.,\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. 
 
-The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3~\cite{DeMoura2008}, Boolector~\cite{Brummayer2009}, MathSAT~\cite{Barrett2011}, CVC4~\cite{Bozzano2005}, and Yices~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
-\begin{figure}[ht]
-	\centering
-  \includegraphics[scale=0.9]{Image/esbmc-arch-new.pdf} 
-	\caption{ESBMC Architecture}
-	\label{ESBMC-Architecture}
-\end{figure}
 
 To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library~\cite{Dagum1998} is used in this present work as a front-end for ESBMC.
 
