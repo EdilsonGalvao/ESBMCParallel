@@ -555,7 +555,7 @@ ESBMC implement four approaches: ESBMC, ESBMC Multicore (MC), ESBMC Parallel Seq
 \item{\textbf{ESBMC-PB:} This strategy uses a parallel binary search, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}.}}
 \end{itemize}
 
-\textcolor{red}{There is no single tool for solving all benchmarks efficiently. In particular, Vz solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; in the worst case, vZ was more fast than ILP 3.33 times (Patricia code),vZ returned two TO (time outs) in Fuzzy and Mars.}
+There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, Vz solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; vZ is typically faster than ILP by approximately $3$ times ({\it e.g.}, Patricia benchmark); however, vZ returns two TOs (time-outs) in Fuzzy and Mars benchmarks.
 
 In contrast to vZ, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than vZ in all benchmarks, which are supported by vZ. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
 
