@@ -454,8 +454,7 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 
 Note that there might gaps between steps, which are produced by the customized binary search. For instance, in the example shown in~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
-\textcolor{blue}{Precisas descrever no topo do algoritmo as entradas e saidas}
-\textcolor{red}{The algorithm below is called from each worker in order to get the next step to execute if it exists, if not, zero or a negative number will be returned.}
+Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 
 \begin{lstlisting}[caption=Steps Calculation using Intervals,label=Steps-Calculation-using-Intervals]
 01. GetNextStep(){
