@@ -425,7 +425,7 @@ Fig.~\ref{ESBMC-Multi-core} shows our first approach called ``Multi-core ESBMC''
 Multi-core ESBMC obtains the problem specification represented by a C program. The HW-SW partitioning is violated, when the correct optimum value (\textit{TipH}) parameter is reached; Multi-core ESBMC starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among the threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread lifecycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then multi-core ESBMC starts new instances again. During the parallel region execution, if a violation is found in any running thread, then it presents the counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then multi-core ESBMC finishes its execution.
 
 %----------------------------------------------
-\subsection{Multi-core ESBMC with OpenMP using Workers}
+\subsection{Multi-core ESBMC with OpenMP using Workers (ESBMC-PS)}
 \label{Multi-core-ESBMC-with-OpenMP-using-workers}
 %----------------------------------------------
 
@@ -441,7 +441,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 Consequently, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available. This approach could potentially lead to great performance improvements, but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
 
 %----------------------------------------------
-\subsection{Multi-core ESBMC with OpenMP using Binary Search}
+\subsection{Multi-core ESBMC with OpenMP using Binary Search (ESBMC-PB)}
 \label{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}
 %----------------------------------------------
 
@@ -629,19 +629,19 @@ Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmark
 \hline
 
 %MultiCore ESBMC
-\multirow{2}{*}{\textbf{ESBMC Multicore}}
+\multirow{2}{*}{\textbf{ESBMC-MC}}
 &  T(s)   &  2   &  6   &  7   &  1615   &  TO    &  TO   &  TO  \\
 &  Hp   &  15   &  47   &  31   &  241   &  -    &  -   &  -  \\
 \hline
 
 %ESBMC Parallel sequential
-\multirow{2}{*}{\textbf{ESBMC Parallel Sequential}}
+\multirow{2}{*}{\textbf{ESBMC-PS}}
 &  T(s) &  4 &  10   &  11   &  2238   &  TO    &  MO   &  MO  \\
 &  Hp   &  15   &  47   &  31   &  241   &  -    &  -   &  -  \\
 \hline
 
 %ESBMC Parallel Binary
-\multirow{2}{*}{\textbf{ESBMC Parallel Binary}}
+\multirow{2}{*}{\textbf{ESBMC-PB}}
 &  T(s)   &  6   &  5   &  6   &  207   &  TO    &  MO   &  MO \\
 &  Hp   &  15   &  47   &  38   &  241   &  -    &  -   &  -  \\
 \bottomrule[1.5pt]
