@@ -261,7 +261,7 @@ As an example, one can optimize $\left(K + W\right)$, with restrictions in $\lef
 6. (check-sat)
 \end{lstlisting}
 
-The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. \textcolor{red}{Qual seria o ``box constraints''?} For box constraints using real values, Vz combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', vZ invokes MaxSAT using multiple calls for its engine. \textcolor{red}{Qual ``engine''?} 
+The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, Vz combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', vZ invokes MaxSAT using multiple calls for its engine. \textcolor{red}{Qual ``engine''?} 
 %
 \begin{figure}[ht]
 	\centering
