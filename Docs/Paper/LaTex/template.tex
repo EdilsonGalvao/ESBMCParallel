@@ -199,7 +199,7 @@ There are two directives in C/C++ that can be used to guide a model checker to s
 %----------------------------------------------
 The OpenMP is a set of directives for parallel programming that augments C/C$++$ and Fortran languages. OpenMP supports most processor architectures and operating systems, {\it e.g.}, Solaris, AIX, HP-UX, Linux, Mac OS X, and Windows. OpenMP uses a portable and very robust model that makes easy for programmers to develop parallel applications for a variety of platforms. 
 
-In particular, OpenMP uses the fork-join model of parallel execution ~\cite{OpenMP1998}. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes ({\it i.e.}, the API waits until all threads terminate), then the main procedure gets back to the single-threaded execution mode~\cite{Wu2014}.
+In particular, OpenMP uses the fork-join model of parallel execution ~\cite{OpenMP1998}. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes ({\it i.e.}, the API waits until all threads terminate), then the main procedure returns to the single-threaded execution mode~\cite{Wu2014}.
 
 The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
@@ -212,9 +212,9 @@ The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which p
 04.      a[i] = 2 * i;
 \end{lstlisting}
 
-In the above example, the for loop is executed in parallel \textcolor{blue}{Como? Cada posicao do array eh executada em um nucleo diferente? Não é garantido que use. Isto depende da afinidade do processo com os cores e tambem da quantidade de cores existentes.}. Each iteration of the loop is executed in a separated thread. \textcolor{red}{Each thread may use an idle processor}.
+In the above example, the for loop is executed in parallel \textcolor{blue}{Como? Cada posicao do array eh executada em um nucleo diferente? Não é garantido que use. Isto depende da afinidade do processo com os cores e tambem da quantidade de cores existentes.}. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor.
 
-There is also a way to specify critical regions, which is a block of code that is guaranteed to be execute by a single thread at a time. To create a critical region   the directive ``\#pragma omp critical'' should be used.
+There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive should be used.
 %----------------------------------------------
 \subsection{Solving Optimization Problems with Vz}
 \label{Optimization-with-Vz}
