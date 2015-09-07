@@ -222,8 +222,6 @@ In particular, OpenMP uses the fork-join model of parallel execution ~\cite{Open
 
 The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
-\textcolor{blue}{Nao existem outras diretivas? Explicar um pouco mais sobre o OpenMP, em especial, tente descrever as funcoes que usamos na nossa solucao. Foi somente o ``\#pragma omp parallel for''??. Professor, usei tambem regiao critica}
-
 \begin{lstlisting}[caption=OpenMP basic sample]
 01.  int i;
 02.  #pragma omp parallel for
@@ -231,9 +229,7 @@ The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which p
 04.      a[i] = 2 * i;
 \end{lstlisting}
 
-In the above example, the for loop is executed in parallel \textcolor{blue}{Como? Cada posicao do array eh executada em um nucleo diferente? Não é garantido que use. Isto depende da afinidade do processo com os cores e tambem da quantidade de cores existentes.}. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor.
-
-There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive should be used.
+In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive should be used.
 %----------------------------------------------
 \subsection{Solving Optimization Problems with Vz}
 \label{Optimization-with-Vz}
@@ -261,7 +257,7 @@ As an example, one can optimize $\left(K + W\right)$, with restrictions in $\lef
 6. (check-sat)
 \end{lstlisting}
 
-The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, Vz combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', vZ invokes MaxSAT using multiple calls for its engine. \textcolor{red}{Qual ``engine''?} 
+The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, Vz combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', vZ invokes MaxSAT using multiple calls for its engine.
 %
 \begin{figure}[ht]
 	\centering
@@ -297,14 +293,15 @@ Based on Arat\'o {\it et al.}~\cite{Arato2003}, is called a hardware-software pa
 %
 \begin{align}
 \label{hardware-costs}
- H_p &= \Sigma_{\left(v_i \;\in\; V_h\right)} h_i,
+H_p  &= \Sigma_{v_i \in V_H} h_i
 \end{align}
 %
 \noindent and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given by Eq.~\ref{software-communication-costs}
 %
+%  S_p &= \Sigma_{\left(v_i \;\in\; V_s\right)} s_i + \Sigma_{(v_i,v_j) \in\; %E_p}\; c(V_i, V_j).
 \begin{align}
 \label{software-communication-costs}
-  S_p &= \Sigma_{\left(v_i \;\in\; V_s\right)} s_i + \Sigma_{(v_i,v_j) \in\; E_p}\; c(V_i, V_j).
+  S_p &= \Sigma_{v_i \in V_s}\:s_i + \Sigma_{(v_i,v_j)\in\:E_p} c(V_i,V_j)
 \end{align}
 
 Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, i.e., to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal ({\it i.e.}, system with hard real-time constraints). Based on Equations~\ref{linear-programming-problem} and~\ref{software-communication-costs}, the constraints can be reformulated as 
@@ -434,7 +431,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel.png} 
-	\caption{ESBMC Multi-core Optimized Sequential Approach. \textcolor{blue}{A fonte desta figura esta diferente da Fig.~\ref{ESBMC-Multi-core}}}
+	\caption{ESBMC Multi-core Optimized Sequential Approach. }
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
 
@@ -572,7 +569,7 @@ In contrast to vZ, ILP solves $6$ out of $7$ benchmarks. When ILP produces a res
 
 Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than vZ.
 
-\textcolor{red}{A versão PB do ESBMC descrita Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}, demonstra um avanco significativo na ferramenta; quando a quantidade de nós é baixa, em torno de 30, ESBMC-PB não demonstra eficiencia frente as tecnicas usadas em vZ e ILP, contudo, em torno de 150 nós, ESBMC se torna 3 vezes mais rapido do que ILP (A tecnicas mais robusta apresentada aqui). vZ para pequeno nós foi 30 vezes mais rapido (CRC32) do que ESBMC-PB e para nós intermediarios esse valor caiu para aproximadmente 1.9 (Clustering). Quando analisados os algoritmos RC6, Fuzzy e Mars, ESBMC-PB obteve TO ou MO em todos os casos. Os resultados são promissores levando em consideracao que as ferramentas vZ e Matlab são estados da arte em suas respectivas funcoes. }
+\textcolor{red}{The PB version of esbmc described in Section 6.4, demonstrates a significant advance in tool; when the quantity of nodes is low, around 30, ESBMC-PB not shows efficiency in front of techniques used in vZ and ILP. however, around 150 nodes, ESBMC becomes 3 times more fast than ILP( the technique more robust in here). vZ using little quantity of nodes was 30 times more fast (CRC32) than ESBMC-PB and for intermediate nodes this value approximately falls to 1.9 (Clustering). When analysed the algorithms: RC6, Fuzzy and Mars, ESBMC-PB obtained TO or MO in all cases. The results are promising taking into consideration that vZ and Matlab tools are art states in their respective functions.}
 
 The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
 
