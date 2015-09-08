@@ -148,10 +148,10 @@ In any HW and SW design of complex systems, more time is spent on verification t
 
 In ~\cite{Trindade2015} and ~\cite{Trindade2014} was shown that it is possible to use Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) to perform HW-SW partitioning in embedded systems. The present work extends those studies since there is a substantial improvement in terms of the genetic algorithm and the SMT-based verification method, which has been extended with a multi-core architecture. Multi-core processors have been used in all segments of industry to implement high-performance computing ~\cite{Wu2014}. In particular, hardware platforms, together with multi-processing platforms, have allowed verification algorithms to distribute tasks executions across multiple processors, which generate an increase in performance if compared to single-core solution. However, most verification algorithms still disregard the limitations of the CMOS technology, which limits the increase of the chip’s frequency after it reaches 4 GHz.
 
-Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods are applied to the HW-SW partition problem and experimental results are compared to ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and also the vZ tool, which is a state-of-art optimization tool based on SMT~\cite{Bjorner2015}. The ILP and GA algorithms are implemented with the Optimization Toolbox of Matlab~\cite{OpenMP1998}, while vZ is a built-in tool to the SMT solver Z3 in which its main function is to check the satisfiability of logical formulas based on objective functions. To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool ~\cite{Cordeiro2012}. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
+Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods are applied to the HW-SW partition problem and experimental results are compared to ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and also the $\nu$Z tool, which is a state-of-art optimization tool based on SMT~\cite{Bjorner2015}. The ILP and GA algorithms are implemented with the Optimization Toolbox of Matlab~\cite{OpenMP1998}, while $\nu$Z is a built-in tool to the SMT solver Z3 in which its main function is to check the satisfiability of logical formulas based on objective functions. To the best of our knowledge, this is the first work to use a multi-core SMT-based verification to solve a HW-SW partitioning problem in embedded systems. We implement our ideas with the Efficient SMT-based Bounded Model Checker (ESBMC) tool ~\cite{Cordeiro2012}. As its main contribution, this paper shows that it is possible to take advantage of an SMT-based BMC tool in a multi-core architecture to solve optimization problems.
 
-This article is organized as follows: Section~\ref{background} gives a background on optimization techniques, vZ, ESBMC, and OpenMP tools. 
-Section~\ref{Mathematical-modeling} describes the informal and formal mathematical modeling. Section~\ref{ILPGA} briefly describes the ILP and GA algorithms, while Section~\ref{Analysis-of-the-partitioning-problem-using-vZ} presents the partitioning model using vZ. The SMT-based BMC method is presented in Section~\ref{Analysis-of-the-partitioning-problem-using-ESBMC}. In Section~\ref{Experimental-Evaluation}, we present the results of our experiments using several embedded systems applications. In Section~\ref{Related-Work}, we discuss the related work and we conclude and describe future work in Section~\ref{Conclusions}.
+This article is organized as follows: Section~\ref{background} gives a background on optimization techniques, $\nu$Z, ESBMC, and OpenMP tools. 
+Section~\ref{Mathematical-modeling} describes the informal and formal mathematical modeling. Section~\ref{ILPGA} briefly describes the ILP and GA algorithms, while Section~\ref{Analysis-of-the-partitioning-problem-using-vZ} presents the partitioning model using $\nu$Z. The SMT-based BMC method is presented in Section~\ref{Analysis-of-the-partitioning-problem-using-ESBMC}. In Section~\ref{Experimental-Evaluation}, we present the results of our experiments using several embedded systems applications. In Section~\ref{Related-Work}, we discuss the related work and we conclude and describe future work in Section~\ref{Conclusions}.
 
 %----------------------------------------------
 \section{Background}
@@ -178,7 +178,7 @@ There is no single method available for solving all optimization problems effici
   \end{cases}
 \end{equation}
 
-In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, {\it e.g.}, those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as vZ and ESBMC can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of vZ and ESBMC tools.
+In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, {\it e.g.}, those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as $\nu$Z and ESBMC can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of $\nu$Z and ESBMC tools.
 
 %----------------------------------------------
 \subsection{Bounded Model Checking with ESBMC}
@@ -231,11 +231,11 @@ The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which p
 
 In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive should be used.
 %----------------------------------------------
-\subsection{Solving Optimization Problems with Vz}
+\subsection{Solving Optimization Problems with $\nu$Z}
 \label{Optimization-with-Vz}
 %----------------------------------------------
 
-SMT decides the satisfiability of first-order formulas using a combination of different background theories and thus generalizes propositional satisfiability by supporting uninterpreted functions, linear and nonlinear arithmetic, bitvectors, tuples, arrays, and other decidable first-order theories. In this study, the SMT solver Z3 is used to check for the satisfiability of formulas generated from the HW-SW partitioning problem~\cite{Bjorner2014}. In particular, we exploit the use of vZ, which is implemented on top of the SMT solver Z3, in order to solve optimization problems; Vz base function is to optimize objective functions, which formulate optimized criteria, within the logical context of constraints.~vZ also includes an incremental version of the Maximum Resiliency (MaxRes) \cite{Federica2008} in order to achieve Maximum Satisfiability (MaxSAT) \cite{NarodytskaN} and a Simplex to solve numbers without defined patterns. In Vz, MaxSAT is responsible for the restrictions, while OptSMT optimizes linear arithmetic objectives~\cite{Bjorner2015}. In summary, Vz provides three main functions that extend Z3 for solving optimization problems, which are: \textit{maximize}, \textit{minimize}, and \textit{assert-soft}.
+SMT decides the satisfiability of first-order formulas using a combination of different background theories and thus generalizes propositional satisfiability by supporting uninterpreted functions, linear and nonlinear arithmetic, bitvectors, tuples, arrays, and other decidable first-order theories. In this study, the SMT solver Z3 is used to check for the satisfiability of formulas generated from the HW-SW partitioning problem~\cite{Bjorner2014}. In particular, we exploit the use of $\nu$Z, which is implemented on top of the SMT solver Z3, in order to solve optimization problems; $\nu$Z base function is to optimize objective functions, which formulate optimized criteria, within the logical context of constraints.~$\nu$Z also includes an incremental version of the Maximum Resiliency (MaxRes) \cite{Federica2008} in order to achieve Maximum Satisfiability (MaxSAT) \cite{NarodytskaN} and a Simplex to solve numbers without defined patterns. In $\nu$Z, MaxSAT is responsible for the restrictions, while OptSMT optimizes linear arithmetic objectives~\cite{Bjorner2015}. In summary, $\nu$Z provides three main functions that extend Z3 for solving optimization problems, which are: \textit{maximize}, \textit{minimize}, and \textit{assert-soft}.
 
 \begin{itemize}
 \item{\textbf{maximize(T)}
@@ -246,9 +246,9 @@ this function informs the solver that a given variable $T$ should be minimized, 
 the function \textit{assert-soft} adds a restriction to $F$, which can also add a weight $n$; the default value is $1$.}
 \end{itemize}
 
-As an example, one can optimize $\left(K + W\right)$, with restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by vZ shows that $K = 1$ and $W = 1$.
+As an example, one can optimize $\left(K + W\right)$, with restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
 
-\begin{lstlisting}[caption=Example of SMT formula using vZ, label=vZ]
+\begin{lstlisting}[caption=Example of SMT formula using $\nu$Z, label=vZ]
 1. (declare-const K Int) 
 2. (declare-const W Int)
 3. (assert (< K 2)) 
@@ -257,16 +257,16 @@ As an example, one can optimize $\left(K + W\right)$, with restrictions in $\lef
 6. (check-sat)
 \end{lstlisting}
 
-The vZ architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, vZ invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, Vz combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', vZ invokes MaxSAT using multiple calls for its engine.
+The $\nu$Z architecture is shown in Fig.~\ref{vZ-Architecture}. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, $\nu$Z invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, $\nu$Z combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', $\nu$Z invokes MaxSAT using multiple calls for its engine.
 %
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=0.49\textwidth, height=95px]{Image/vzArch.png} 
-	\caption{vZ Architecture~\cite{Bjorner2015}}
+	\caption{$\nu$Z Architecture~\cite{Bjorner2015}}
 	\label{vZ-Architecture}
 \end{figure}
 
-Z3 is available for platforms in C, C$++$, Java, .NET, and Python; it is possible to download Z3 with vZ from its github repository~\cite{Z3API}. In this work, the python API is used to formulate HW-SW partitioning problems using the vZ tool. 
+Z3 is available for platforms in C, C$++$, Java, .NET, and Python; it is possible to download Z3 with $\nu$Z from its github repository~\cite{Z3API}. In this work, the python API is used to formulate HW-SW partitioning problems using the $\nu$Z tool. 
 
 %----------------------------------------------
 \section{Mathematical modeling}
@@ -321,15 +321,15 @@ s\left(1-x\right) + c|E_x| \leq S_0,
 The ILP and GA were taken from our previous studies~\cite{Trindade2015,Trindade2014}. Both use slack variables in order to be possible to represent constraints and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$.
 
 %----------------------------------------------
-\section{Analysis of the partitioning problem using vZ}
+\section{Analysis of the partitioning problem using $\nu$Z}
 \label{Analysis-of-the-partitioning-problem-using-vZ}
 %----------------------------------------------
 
-Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using vZ functions~\cite{Bjorner2014}. A vZ logical context must firstly be created (line $02$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
+Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $02$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
 
-The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to vZ: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to vZ that \textit{Fobj} should be minimized. Finally, the model is checked by Vz and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
+The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
-\begin{lstlisting}[caption=Pseudocode describing vZ,label=vZ-pseudocode, mathescape]
+\begin{lstlisting}[caption=Pseudocode describing $\nu$Z,label=vZ-pseudocode, mathescape]
 01.#Initialize Variables
 02.  Create vZ context 
 03.  Create binary vector (x)
@@ -505,7 +505,7 @@ Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC
 \label{Experimental-Evaluation}
 %----------------------------------------------
 
-This section is split into two parts. The setup is described in Section~\ref{Experimental-Setup} while Section~\ref{Experimental-Results} describes a comparison among Matlab~\cite{TheMathWorks2013}, vZ~\cite{Bjorner2015}, and ESBMC~\cite{Trindade2015} using a set of standard HW-SW partitioning benchmarks~\cite{Mann2007}.
+This section is split into two parts. The setup is described in Section~\ref{Experimental-Setup} while Section~\ref{Experimental-Results} describes a comparison among Matlab~\cite{TheMathWorks2013}, $\nu$Z~\cite{Bjorner2015}, and ESBMC~\cite{Trindade2015} using a set of standard HW-SW partitioning benchmarks~\cite{Mann2007}.
 
 %----------------------------------------------
 \subsection{Experimental Setup}
@@ -544,9 +544,9 @@ To perform the experiments, some test vectors provided by Mann {\it et al.}~\cit
 \label{Description-of-Benchmarks}
 \end{table}
 
-ESBMC $1$.$24$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system was used. A parallel approach of the ESBMC sequential ascending, descending, and binary search are implemented in C++$11$. Version $2$.$0$.$1$ of Boolector SMT-solver~\cite{Brummayer2009} (freely available) was used as the default solver for ESBMC. For ILP and GA formulations, MATLAB R$2013$a from MathWorks with Parallel Computing Toolbox was used~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software~\cite{Tranquillo2011} and is widely used by the engineering community~\cite{Hong2010}. vZ as a built-in tool to Z3 was also used~\cite{Bjorner2014}. 
+ESBMC $1$.$24$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system was used. A parallel approach of the ESBMC sequential ascending, descending, and binary search are implemented in C++$11$. Version $2$.$0$.$1$ of Boolector SMT-solver~\cite{Brummayer2009} (freely available) was used as the default solver for ESBMC. For ILP and GA formulations, MATLAB R$2013$a from MathWorks with Parallel Computing Toolbox was used~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language known as the state-of-the-art mathematical software~\cite{Tranquillo2011} and is widely used by the engineering community~\cite{Hong2010}. $\nu$Z as a built-in tool to Z3 was also used~\cite{Bjorner2014}. 
 
-A desktop with $24$GB of RAM and i$7$ ($8$-cores) from Intel with CPU clock of $3$.$40$ GHz was used. Each time was measured $3$ times in GA (average taken) and just once in vZ, ESBMC, and ILP. The reason is that GA times are not so close as ILP, vZ, and ESBMC. A time out condition (TO) is reached when the running time is longer than $7200$ seconds. A memory out (MO) occurs when the tool reaches $24$GB of memory. 
+A desktop with $24$GB of RAM and i$7$ ($8$-cores) from Intel with CPU clock of $3$.$40$ GHz was used. Each time was measured $3$ times in GA (average taken) and just once in $\nu$Z, ESBMC, and ILP. The reason is that GA times are not so close as ILP, $\nu$Z, and ESBMC. A time out condition (TO) is reached when the running time is longer than $7200$ seconds. A memory out (MO) occurs when the tool reaches $24$GB of memory. 
 
 
 %----------------------------------------------
@@ -563,19 +563,19 @@ ESBMC implement four approaches: ESBMC, ESBMC Multicore (MC), ESBMC Parallel Seq
 \item{\textbf{ESBMC-PB:} This strategy uses a parallel binary search, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}.}}
 \end{itemize}
 
-There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, Vz solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; vZ is typically faster than ILP by approximately $3$ times ({\it e.g.}, Patricia benchmark); however, vZ returns two TOs (time-outs) in Fuzzy and Mars benchmarks.
+There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, $\nu$Z solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; $\nu$Z is typically faster than ILP by approximately $3$ times ({\it e.g.}, Patricia benchmark); however, $\nu$Z returns two TOs (time-outs) in Fuzzy and Mars benchmarks.
 
-In contrast to vZ, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than vZ in all benchmarks, which are supported by vZ. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
+In contrast to $\nu$Z, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than $\nu$Z in all benchmarks, which are supported by $\nu$Z. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
 
-Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than vZ.
+Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than $\nu$Z.
 
-\textcolor{red}{The ESBMC-PB implementation described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search} shows a significant performance improvement; when the amount of nodes is around $30$, ESBMC-PB does not outperform the optimization techniques employed by vZ and ILP tools. However, when the amount of nodes is approximately $150$, ESBMC-PB becomes three times faster than ILP, which is the most robust technique. When vZ explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$9$ ({\it e.g.}, Clustering). When analyzing all benchmarks: RC$6$, Fuzzy, and Mars, ESBMC-PB produces TO or MO; however, the results are still promising if we take into consideration that vZ and Matlab are state-of-the-art tools with respect to optimization problems.}
+The ESBMC-PB implementation described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search} shows a significant performance improvement; when the amount of nodes is around $30$, ESBMC-PB does not outperform the optimization techniques employed by $\nu$Z and ILP tools. However, when the amount of nodes is approximately $150$, ESBMC-PB becomes three times faster than ILP, which is the most robust technique. When $\nu$Z explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$9$ ({\it e.g.}, Clustering). When analyzing all benchmarks: RC$6$, Fuzzy, and Mars, ESBMC-PB produces TO or MO; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
 
 The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
 
-Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using vZ, Matlab (ILP and GA), and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC\hyp{}PB) tools.
+Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using $\nu$Z, Matlab (ILP and GA), and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC\hyp{}PB) tools.
 
-RC$6$ produced time out for all versions of ESBMC, vZ e GA did not produce the correct answer, and ILP solves correctly all benchmarks, except one. Fuzzy produced time-outs and memory-outs in all tools. ILP was the only one to solve Mars, while GA solved incorrectly all benchmarks.
+RC$6$ produced time out for all versions of ESBMC, $\nu$Z e GA did not produce the correct answer, and ILP solves correctly all benchmarks, except one. Fuzzy produced time-outs and memory-outs in all tools. ILP was the only one to solve Mars, while GA solved incorrectly all benchmarks.
 
 Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmarks} seems to be the limit to test the described tools, note that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high amount of nodes and edges.
 
@@ -660,20 +660,20 @@ Finally, there are approaches that mixes heuristics with exact solution tools. T
 
 In terms of SMT-based verification, most work is restricted to present the model, its modification to programming languages ({\it e.g.}, C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In ~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and ~\cite{Cordeiro2012} uses the ESBMC model checker for embedded ANSI-C software. In~\cite{Trindade2015} and~\cite{Trindade2014} it was proven that it is possible to use ESBMC to solve HW-SW partitioning, but in a single core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to support parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}.
 
-\textcolor{Red}{The vZ tool ~\cite{Bjorner2014} and ~\cite{Bjorner2015} offer substantial improvements on optimization problems. The work described in ~\cite{Pavlinovic2015} reports compiler errors and its confuse messages, the classic approach is to show to the programmer the error location and a hint about it, however, another error sources are not considered, the most appropriate approach would be to consider all possible error sources. To model the problem the restrictions are generated using EasyOCaml, and vZ is responsible to compute the best error path. The algorithm described in ~\cite{Pavlinovic2015} shows efficient against the other approaches.}
+$\nu$Z tool offers substantial performance improvement in optimization problems~\cite{Bjorner2014,Bjorner2015}. As an application example, Pavlinovic {\it et al.}~\cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed functional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program. The approach described by Pavlinovic {\it et al.}, which uses MaxSMT solver $\nu$Z, shows a significant performance improvement if compared to previous SMT encodings and localization algorithms.
 
-\textcolor{Red}{The problem adressed in this work uses a single objective, minimizing of the objective function, in ~\cite{Patrick2015} is compared the tools  OptiMathSAT and vZ for software optimization problems. OptiMathSAT using multiple objectives works way better than vZ, however, for problems with single objectives vZ behaves better than OptiMathSAT.}
+The problem addressed in this present paper uses a single objective function for minimization. In Partrick {\it et al.}~\cite{Patrick2015},  OptiMathSAT and $\nu$Z are compared for software optimization problems. OptiMathSAT using multiple objective functions works better than $\nu$Z; however, for problems with a single objective function, the performance of $\nu$Z is better than OptiMathSAT.
 
 %----------------------------------------------
 \section{Conclusions}
 \label{Conclusions}
 %----------------------------------------------
 
-We presented four approaches to solve the HW-SW partitioning problem and compared them to other three state-of-the-art techniques. Experimental results showed that for a number of nodes larger than $300$, the best solution for the HW-SW partitioning problem is ILP. Below that, the best option turns out to be vZ since its execution time is faster and notorious. ESBMC is a viable alternative for a number of nodes lower than $150$.  GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. This error may be reduced by changing some parameters. 
+We presented four approaches to solve the HW-SW partitioning problem and compared them to other three state-of-the-art techniques. Experimental results showed that for a number of nodes larger than $300$, the best solution for the HW-SW partitioning problem is ILP. Below that, the best option turns out to be $\nu$Z since its execution time is faster and notorious. ESBMC is a viable alternative for a number of nodes lower than $150$.  GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. This error may be reduced by changing some parameters. 
 
 %The computing time to solve the optimization problem reached some hours of execution on a standard desktop computer. 
 
-If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and Vz have BSD-Style and MIT licenses, respectively and can be downloaded and used for free. Experimental results also pointed to an improvement of ESBMC, when using a parallel approach. In particular, all three parallel approaches described in this paper produced expressive results. The fastest ESBMC approaches is ESBMC-PB (Parallel Binary), which produces good results for an intermediate amount of edges and nodes. Thus, considering that nowadays processors have more and more cores, when modeling the problem, it is possible to consider multi-core model checking as an alternative to solve the HW-SW partitioning problem. 
+If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and $\nu$Z have BSD-Style and MIT licenses, respectively and can be downloaded and used for free. Experimental results also pointed to an improvement of ESBMC, when using a parallel approach. In particular, all three parallel approaches described in this paper produced expressive results. The fastest ESBMC approaches is ESBMC-PB (Parallel Binary), which produces good results for an intermediate amount of edges and nodes. Thus, considering that nowadays processors have more and more cores, when modeling the problem, it is possible to consider multi-core model checking as an alternative to solve the HW-SW partitioning problem. 
 
 Finally, there is an issue about $150$ nodes problem, since it seems to be the limit of ESBMC. It really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for larger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the search space size. In future work, we will address improvements in ESBMC to remove the parallel layer on top of ESBMC and implement it during symbolic execution so that we can optimize the overall verification time.
 
@@ -701,7 +701,7 @@ Arat\'o, P., Juh\'asz, S., Mann, Z.A., Orb\'an, A., Papp, D. (2003), ``{Hardware
 
 %2
 \bibitem{Mann2007}
-Mann, Z.A., Orb\'an, A., Arat\'o, P., ``{Finding optimal hardware/software partitions. In: Formal Methods in System Design},'' v. 31, n. 3 pp. 241--263.
+Mann, Z.A., Orb\'an, A., Arat\'o, P., ``{Finding optimal hardware/software partitions},'' In: Formal Methods in System Design, v. 31, n. 3 pp. 241--263.
 
 %3
 \bibitem{Baier2008}
@@ -709,7 +709,7 @@ Baier, C., Katoen, J-P (2008), ``{Principles of Model Checking}'', The MIT Press
 
 %4
 \bibitem{Clarke2009}
-Clarke, E., Emerson, E., Sifakis, J. (2009), ``{Model checking: algorithmic verification and debugging. In: Communications of the Association Computing Machinery},'' v. 52, n. 11, pp. 74--84.
+Clarke, E., Emerson, E., Sifakis, J. (2009), ``{Model checking: algorithmic verification and debugging},'' In: Communications of the Association Computing Machinery, v. 52, n. 11, pp. 74--84.
 
 %5
 \bibitem{Trindade2015}
@@ -717,15 +717,15 @@ Trindade, A., Cordeiro. L. (2015), ``{Applying SMT-based verification to hardwar
 
 %6
 \bibitem{Trindade2014}
-Trindade, A., Cordeiro, L. (2014), ``{Aplicando Verificação de Modelos para o Particionamento de Hardware/Software. In: Brazilian Symposium on Computing Systems Engineering (SBESC)},'' pp. 1--6.
+Trindade, A., Cordeiro, L. (2014), ``{Aplicando Verificação de Modelos para o Particionamento de Hardware/Software},'' In: Brazilian Symposium on Computing Systems Engineering (SBESC), pp. 1--6.
 
 %7
 \bibitem{Wu2014}
-Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP. In: Proc. of the Intl. Conference on Software Engineering and Service Science},'' pp. 921--924.
+Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conference on Software Engineering and Service Science, pp. 921--924.
 
 %8
 \bibitem{Tang2009}
-Tang, T., Lin, Y., Ren, X. (2010), ``{Mapping OpenMP concepts to the stream programming model. In: Proc. Intl. Conference on Computer Science Education (ICCSE)},'' pp. 1900--1905.
+Tang, T., Lin, Y., Ren, X. (2010), ``{Mapping OpenMP concepts to the stream programming model. In: Proc. of the Intl. Conf. on Computer Science Education (ICCSE)},'' pp. 1900--1905.
 
 %9
 \bibitem{Rao2009}
@@ -737,31 +737,31 @@ Biere, A. (2009), ``{Bounded model checking. In: Biere, A., Heule, M., van Marre
 
 %11
 \bibitem{Clarke2004}
-Clarke, E., Kroening, D., Lerda, F. (2004), ``{A Tool for Checking ANSI-C Programs. In: Proc. of the Tools and Algorithms for the Construction and Analysis of Systems}'', LNCS 2988, pp. 168--176.
+Clarke, E., Kroening, D., Lerda, F. (2004), ``{A Tool for Checking ANSI-C Programs}'', In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 2988, pp. 168--176.
 
 %12
 \bibitem{Armando2009}
-Armando, A., Mantovani, J., Platania, L. (2009), ``{Bounded model checking of software using SMT solvers instead of SAT solvers. In: International Journal on Software Tools for Technology Transfer},'' v. 11, n. 1, pp. 69--83.
+Armando, A., Mantovani, J., Platania, L. (2009), ``{Bounded model checking of software using SMT solvers instead of SAT solvers},'' In: International Journal on Software Tools for Technology Transfer, v. 11, n. 1, pp. 69--83.
 
 %13
 \bibitem{Ganai2006}
-Ganai, M., Gupta, A. (2006), ``{Accelerating high-level bounded model checking. In: Proc. of the IEEE/ACM International Conference on Computer-Aided Design},'' pp. 794-–801.
+Ganai, M., Gupta, A. (2006), ``{Accelerating high-level bounded model checking},'' In: Proc. of the IEEE/ACM International Conference on Computer-Aided Design, pp. 794-–801.
 
 %14
 \bibitem{Cordeiro2012}
-Cordeiro, L., Fischer, B., Marques-Silva, J. (2012), ``{SMT-based bounded model checking for embedded ANSI-C software. In: IEEE Transactions on Software Engineering},'' v. 38, n. 4, pp. 957--974.
+Cordeiro, L., Fischer, B., Marques-Silva, J. (2012), ``{SMT-based bounded model checking for embedded ANSI-C software},'' In: IEEE Transactions on Software Engineering, v. 38, n. 4, pp. 957--974.
 
 %15
 \bibitem{Cordeiro2011}
-Cordeiro, L., Fischer, B. (2011), ``{Verifying multi-threaded software using SMT-based context-bounded model checking. In: Proceedings of the 33rd International Conference on Software Engineering},'' pp. 331--340.
+Cordeiro, L., Fischer, B. (2011), ``{Verifying multi-threaded software using SMT-based context-bounded model checking.},'' In: Proc. of the 33rd Intl Conf. on Software Engineering, pp. 331--340.
 
 %16
 \bibitem{Ramalho2013}
-Ramalho, M., Freitas, M., Souza, F., Marques, H., Cordeiro, L. (2013), ``{SMT-Based Bounded Model Checking of C++ Programs. In: International Conference and Workshops on the Engineering of Computer-Based Systems},'' pp. 147--156.
+Ramalho, M., Freitas, M., Souza, F., Marques, H., Cordeiro, L. (2013), ``{SMT-Based Bounded Model Checking of C++ Programs.},'' In: Intl. Conf. and Workshops on the Engineering of Computer-Based Systems, pp. 147--156.
 
 %17
 \bibitem{Teich2012}
-Teich, J. (2012), ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future. In: Proc. of the IEEE, Special Centennial Issue},''  v. 100, pp. 1411--1430.
+Teich, J. (2012), ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future},'' In: Proc. of the IEEE, Special Centennial Issue, v. 100, pp. 1411--1430.
 
 %18
 \bibitem{TheMathWorks2013}
@@ -773,31 +773,31 @@ Tranquillo, J. (2011), ``{Matlab for Engineering and the Life Sciences}'', Synth
 
 %20
 \bibitem{Hong2010}
-Hong, L., Cai, J. (2010), ``{The application guide of mixed programming between MATLAB and other programming languages. In: Proc. of the 2nd Intl. Conference on Computer and Automation Engineering},'' pp. 185--189.
+Hong, L., Cai, J. (2010), ``{The application guide of mixed programming between MATLAB and other programming languages},'' In: Proc. of the 2nd Intl. Conference on Computer and Automation Engineering, pp. 185--189.
 
 %21
 \bibitem{Guthaus2001}
-Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001), ``{MiBench: a free, commercially representative embedded benchmark suite. In: Proc. of the IEEE 4th annual workshop on workload characterization},'' pp. 3--14.
+Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001), ``{MiBench: a free, commercially representative embedded benchmark suite},'' In: Proc. of the IEEE 4th annual workshop on workload characterization, pp. 3--14.
 
 %22
 \bibitem{Arato2005}
-Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning. In: Association Computing Machinery Transactions on Design Automation of Electronic Systems},'' v. 1, pp. 136–-156.
+Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' In: Proc. of the Association Computing Machinery Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
 
 %23
 \bibitem{Dagum1998}
-Dagum, L., Menon, R. (1998), ``{OpenMP: an industry-standard API for shared-memory programming.},'' In: Computational Science \& Engineering, v. 5, n. 1, pp. 46--55.
+Dagum, L., Menon, R. (1998), ``{OpenMP: an industry-standard API for shared-memory programming.},'' In: Proc. of the Computational Science \& Engineering, v. 5, n. 1, pp. 46--55.
 
 %24
 \bibitem{DeMoura2008}
-De Moura, L., Bjorner, N. (2008), ``{Z3: An Efficient SMT Solver. In: Tools and Algorithms for the Construction and Analysis of Systems},'' LNCS 4963, pp. 337–-340.
+De Moura, L., Bjorner, N. (2008), ``{Z3: An Efficient SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 4963, pp. 337–-340.
 
 %25
 \bibitem{Brummayer2009}
-Brummayer, R., Biere, A. (2009), ``{Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays. In: Tools and Algorithms for the Construction and Analysis of Systems},'' LNCS 5505, pp. 174-–177.
+Brummayer, R., Biere, A. (2009), ``{Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays.},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 5505, pp. 174-–177.
 
 %26
 \bibitem{Barrett2011}
-Barrett, C., Conway, C. Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A., Tinelli, C. (2011), ``{CVC4. In: Computer-Aided Verification},'' LNCS 6806, pp. 171--177.
+Barrett, C., Conway, C. Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A., Tinelli, C. (2011), ``{CVC4},'' In: Proc. of the Computer-Aided Verification, LNCS 6806, pp. 171--177.
 
 %27
 \bibitem{Bozzano2005}
@@ -805,7 +805,7 @@ Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S.,
 
 %28
 \bibitem{Dutertre2014}
-Dutertre, B. (2014), ``{Yices 2.2. In: Computer-Aided Verification (CAV)},'' LNCS 8559, pp. 737–-744.
+Dutertre, B. (2014), ``{Yices 2.2. In: Proc. of the Computer-Aided Verification (CAV)},'' LNCS 8559, pp. 737–-744.
 
 %29
 \bibitem{Holzmann2011}
@@ -813,15 +813,15 @@ Holzmann, G.J., Joshi, R., Groce, A. (2011), ``{Swarm Verification Techniques},'
 
 %30
 \bibitem{Holzmann2012}
-Holzmann, G. (2012), ``{Parallelizing the spin model checker. In: Proc. of the 19th Intl. Conference on Model Checking Software},'' LNCS 7385, pp. 155--171.
+Holzmann, G. (2012), ``{Parallelizing the spin model checker. In: Proc. of the 19th Intl. Conf. on Model Checking Software},'' LNCS 7385, pp. 155--171.
 
 %31
 \bibitem{Wintersteiger2009}
-Wintersteiger, C., Hamadi, Y., De Moura, L. (2009), ``{A Concurrent Portfolio Approach to SMT Solving.},'' In: Proc. of the Intl. Conference on Computer-Aided Verification, LNCS 5643, pp. 715--720.
+Wintersteiger, C., Hamadi, Y., De Moura, L. (2009), ``{A Concurrent Portfolio Approach to SMT Solving.},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 5643, pp. 715--720.
 
 %32
 \bibitem{Bjorner2015}
-Bjorner, N., Phan, A-D., Fleckenstein, L. (2015), ``{vZ - An Optimizing SMT Solver},'' In: Proc. of the International Conference on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 9035, pp. 194--199.
+Bjorner, N., Phan, A-D., Fleckenstein, L. (2015), ``{$\nu$Z - An Optimizing SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 9035, pp. 194--199.
 
 %33
 \bibitem{Qawasmeh2014}
@@ -829,7 +829,7 @@ Qawasmeh, A., Malik, A., Chapman, B. (2014), ``{OpenMP task scheduling analysis 
 
 %34
 \bibitem{Bjorner2014}
-Bjorner, N. and Phan, A. D. (2014), ``{vZ - Maximal Satisfaction with Z3},'' In: Prof. of the 6th Intl. Symposium on Symbolic Computation in Software Science, pp. 1--10.
+Bjorner, N. and Phan, A. D. (2014), ``{$\nu$Z - Maximal Satisfaction with Z3},'' In: Proc. of the 6th Intl. Symposium on Symbolic Computation in Software Science, pp. 1--10.
 
 %35
 \bibitem{OpenMP1998}
@@ -853,7 +853,7 @@ Narodytska, N., Bacchus, F. (2014), {``Maximum Satisfiability Using Core-Guided 
 
 %39
 \bibitem{Federica2008}
-Federica, P., Rodolfo, F., Yuqing , S., Elisa, B. (2008), {``Authorization and User Failure Resiliency for WS-BPEL business processes''}, In: Service-Oriented Computing, LNCS 5364, pp. 116--131
+Federica, P., Rodolfo, F., Yuqing , S., Elisa, B. (2008), {``Authorization and User Failure Resiliency for WS-BPEL business processes''}, In: Proc. of the Service-Oriented Computing, LNCS 5364, pp. 116--131
 
 %40
 \bibitem{Barth1995}
@@ -861,17 +861,20 @@ Barth, P., Davis-Putnam, A. (1995), {``Enumeration Algorithm for Linear
 Pseudo-Boolean Optimization.''}, Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science.
 
 %41
-\bibitem{Vasco2005}Vasco, M., Marques-Silva, J., {``Effective Lower Bounding Techniques for Pseudo-Boolean Optimization''}, IST/INESC-ID, Technical University of Lisbon, Portugal.
+\bibitem{Vasco2005}
+Vasco, M., Marques-Silva, J. (2005), {``Effective Lower Bounding Techniques for Pseudo-Boolean Optimization''}, IST/INESC-ID, Technical University of Lisbon, Portugal.
 
 %42
-\bibitem{Pavlinovic2015}Pavlinovic, Z., King, T., Wies, T.,{``Practical SMT-Based Type Error Localization''}, ICFP’15, August 31 – September 2, 2015, Vancouver, BC, Canada c 2015 ACM. 978-1-4503-3669-7/15/08
+\bibitem{Pavlinovic2015}
+Pavlinovic, Z., King, T., Wies, T. (2015),{``Practical SMT-Based Type Error Localization''}, In: Proc. of the Intl. Conf. on Functional Programming, pp. 412--423.
 
 %43
-\bibitem{Patrick2015}Sebastiani, R., Trentin, T., {``OptiMathSAT: A Tool for Optimization Modulo Theories''}
+\bibitem{Patrick2015}
+Sebastiani, R., Trentin, T. (2015), {``OptiMathSAT: A Tool for Optimization Modulo Theories''}, In: Proc. of the Computer Aided Verification, LNCS 9206, pp. 447--454.
 
 %43
 \bibitem{Cormem}
-Cormen, T., Leiserson, C., Rivest, R., Stein, C. (2009), {``Introduction to Algorithms''}, MIT Press, pp. I-XIX, 1--1292.
+Cormen, T., Leiserson, C., Rivest, R., Stein, C. (2009), {``Introduction to Algorithms''}, MIT Press, pp. I-XIX, pp. 1--1292.
 
 \end{thebibliography}
 
