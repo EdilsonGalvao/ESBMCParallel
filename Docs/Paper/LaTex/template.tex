@@ -158,7 +158,7 @@ Here, we exploit the availability of multi-core processors; in particular, SMT-b
 \textbf{Availability of Data and Tools. }Our experiments are based on a set of publicly available benchmarks. All benchmarks, tools, and results of our evaluation are available on a supplementary web page\footnote{http://esbmc.org/}.
 
 This article is organized as follows: Section~\ref{background} gives a background on optimization techniques, $\nu$Z, ESBMC, and OpenMP tools. 
-Section~\ref{Mathematical-modeling} describes the informal and formal mathematical modeling. Section~\ref{ILPGA} briefly describes the ILP and GA algorithms, while Section~\ref{Analysis-of-the-partitioning-problem-using-vZ} presents the partitioning model using $\nu$Z. The SMT-based BMC method is presented in Section~\ref{Analysis-of-the-partitioning-problem-using-ESBMC}. In Section~\ref{Experimental-Evaluation}, we present the results of our experiments using several embedded systems applications. In Section~\ref{Related-Work}, we discuss the related work and we conclude and describe future work in Section~\ref{Conclusions}.
+Section~\ref{Mathematical-modeling} describes the informal and formal mathematical modeling. The SMT-based BMC method is presented in Section~\ref{Analysis-of-the-partitioning-problem-using-ESBMC}, and in particular, Section~\ref{Analysis-of-the-partitioning-problem-using-vZ} presents the partitioning model using $\nu$Z. In Section~\ref{Experimental-Evaluation}, we show the experimental results using several embedded systems applications. In Section~\ref{Related-Work}, we discuss the related work and we conclude and describe future work in Section~\ref{Conclusions}.
 
 %----------------------------------------------
 \section{Background}
@@ -325,41 +325,14 @@ s\left(1-x\right) + c|E_x| \leq S_0,
 %
 \noindent where $x$ represents the decision variable. Concerning the complexity of this problem, Arat\'o {\it et al.}~\cite{Arato2003} demonstrate that it is NP-Hard~\cite{Cormem}.
 
+\comment{
 %----------------------------------------------
 \section{Partitioning problem using ILP-based,Genetic Algorithms}
 \label{ILPGA}
 %----------------------------------------------
 
 The ILP and GA were taken from our previous studies~\cite{Trindade2015,Trindade2014}. Both use slack variables in order to be possible to represent constraints and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$.
-
-%----------------------------------------------
-\section{Analysis of the partitioning problem using $\nu$Z}
-\label{Analysis-of-the-partitioning-problem-using-vZ}
-%----------------------------------------------
-
-Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $02$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
-
-The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
-
-\begin{lstlisting}[caption=Pseudocode describing $\nu$Z,label=vZ-pseudocode, mathescape]
-01.#Initialize Variables
-02.  Create vZ context 
-03.  Create binary vector (x)
-04.  Declare number of nodes, edges and $S_{0}$
-05.  Declare hardware cost of each node as array (h) 
-06.  Declare software cost of each node as array (s)
-07.  Declare communication cost of each edge (c)
-08.  Declare transposed incidence matrix graph G (E)
-09.#Arithmetic Expressions
-10.  SC = s(1-x)
-11.  CMC = c*|EX|
-12.  Fobj =  x[i] * h[i]
-13.#Assert Constraints
-14.  Add constraints (SF + CMC <= $S_{0}$)
-15.  Add constraints to minimize Fobj
-16.  Check Model
-17.  Print Result
-\end{lstlisting}
+}
 
 %----------------------------------------------
 \section{Analysis of the partitioning problem using ESBMC}
@@ -511,6 +484,35 @@ Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized b
 
 Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
+%----------------------------------------------
+\subsection{Analysis of the partitioning problem using $\nu$Z (ESBMC-$\nu$Z)}
+\label{Analysis-of-the-partitioning-problem-using-vZ}
+%----------------------------------------------
+
+Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $02$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
+
+The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
+
+\begin{lstlisting}[caption=Pseudocode describing $\nu$Z,label=vZ-pseudocode, mathescape]
+01.#Initialize Variables
+02.  Create vZ context 
+03.  Create binary vector (x)
+04.  Declare number of nodes, edges and $S_{0}$
+05.  Declare hardware cost of each node as array (h) 
+06.  Declare software cost of each node as array (s)
+07.  Declare communication cost of each edge (c)
+08.  Declare transposed incidence matrix graph G (E)
+09.#Arithmetic Expressions
+10.  SC = s(1-x)
+11.  CMC = c*|EX|
+12.  Fobj =  x[i] * h[i]
+13.#Assert Constraints
+14.  Add constraints (SF + CMC <= $S_{0}$)
+15.  Add constraints to minimize Fobj
+16.  Check Model
+17.  Print Result
+\end{lstlisting}
+
 
 %----------------------------------------------
 \section{Experimental Evaluation}
@@ -593,7 +595,7 @@ Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmark
 
 \begin{table*}[t]
   \centering
-  \caption{Experimental results of the complex benchmarks}  
+  \caption{Experimental results of the HW-SW partitioning benchmarks}  
   \begin{tabular}{*{9}{cc|c|c|c|c|c|c|c}}
 
  &  & \textbf{CRC32} & \textbf{Patricia} & \textbf{Dijkstra} & \textbf{Clustering} & \textbf{RC6} & \textbf{Fuzzy} & \textbf{Mars} \\[0.15cm]
@@ -611,13 +613,6 @@ Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmark
 &  Hp   &  15   &  47   &  31   &  241   &  692    &  13820   &  876 \\
 &  Sp   &  19   &  4   &  19   &  46   &  533    &  4231   &  297  \\
 
-
-%vZ
-\bottomrule[1.5pt]
-\multirow{2}{*}{\textbf{vZ}}
-&  T(s)   &  0.2   &  0.3   &  0.6   &  109   &  112    &  TO   &  TO  \\
-&  Hp   &  15   &  47   &  31   &  241   &  241    &  -   &  -  \\
-\hline
 
 %ILP
 \multirow{2}{*}{\textbf{ILP}}  
@@ -653,6 +648,13 @@ Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmark
 \multirow{2}{*}{\textbf{ESBMC-PB}}
 &  T(s)   &  6   &  5   &  6   &  207   &  TO    &  MO   &  MO \\
 &  Hp   &  15   &  47   &  38   &  241   &  -    &  -   &  -  \\
+\hline
+
+%vZ
+\multirow{2}{*}{\textbf{ESBMC-$\nu$Z}}
+&  T(s)   &  0.2   &  0.3   &  0.6   &  109   &  112    &  TO   &  TO  \\
+&  Hp   &  15   &  47   &  31   &  241   &  241    &  -   &  -  \\
+
 \bottomrule[1.5pt]
 \end{tabular}
 \label{Experimental-results-of-the-complex-benchmarks}
