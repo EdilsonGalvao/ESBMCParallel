@@ -339,26 +339,26 @@ The ILP and GA were taken from our previous studies~\cite{Trindade2015,Trindade2
 \label{Analysis-of-the-partitioning-problem-using-ESBMC}
 %----------------------------------------------
 
-As computer hardware architecture moves from single- to multi-cores, parallel programming environments should be exploited to take advantage of the ability to run several threads on different processing cores. This section describes the verification algorithm using sequential ESBMC, followerd by three multi-core model checking algorithms, in order to speed up the HW-SW partitioning verification if compared to the sequential solution.
+As computer hardware architecture moves from single- to multi-cores, parallel programming environments should be exploited to take advantage of the ability to run several threads on different processing cores. This section describes the verification algorithm using sequential ESBMC, followed by three multi-core model checking algorithms and the integration of the MaxSMT solver $\nu$Z, in order to speed up the HW-SW partitioning verification.
 
 %----------------------------------------------
 \subsection{Verification Algorithm using Sequential ESBMC}
 \label{Verification-Algorithm-using-ESBMC}
 %----------------------------------------------
 
-ESBMC pseudocode shows the algorithm with the same constraints and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section~\ref{Formal-Model}. The other is the halting condition (code violation) that stops the algorithm.
+Algorithm~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same constraints and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section~\ref{Formal-Model}. The other is the halting condition (code violation) that stops the algorithm.
 
 The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015} and~\cite{Trindade2014}.
 
-It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all the decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of constrains (i.e.,$A.x \leq b$).
+It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of constrains (i.e., $A.x \leq b$).
 
-A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware. To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (\textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
+A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware. To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
 
 The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if \textit{ASSERT} returns a \textit{true} condition, {\it i.e.}, the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the \textit{ASSERT} generates a \textit{false} condition. When the \textit{false} condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
 
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
-\begin{lstlisting}[caption=Pseudocode describing ESBMC, mathescape]
+\begin{lstlisting}[caption=Pseudocode describing sequential ESBMC, label={Pseudocode-describing-ESBMC}, mathescape]
 01. Initialize Variables 
 02. Declare number of nodes and edges
 03. Declare hardware cost of each node as array (h)
@@ -393,18 +393,16 @@ In the ESBMC algorithm, which is shown below, it is not necessary to add slack v
 Typically, ESBMC verification runs are performed only in a single-core. If the processor provides $8$ processing cores, only one is used for the verification and the others remain idle. Thus, there is a significant unused hardware resource during this process. 
 
 
-To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library~\cite{Dagum1998} is used in this present work as a front-end for ESBMC.
-
-Fig.~\ref{ESBMC-Multi-core} shows our first approach called ``Multi-core ESBMC''.
+To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library~\cite{Dagum1998} is used in this present work as a front-end for ESBMC. Fig.~\ref{ESBMC-Multi-core} shows our first approach called ``Multi-core ESBMC''.
 %
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel.pdf} 
-	\caption{ESBMC Multi-core.}
+	\caption{ESBMC-SS Approach.}
 	\label{ESBMC-Multi-core}
 \end{figure}
 
-Multi-core ESBMC obtains the problem specification represented by a C program. The HW-SW partitioning is violated, when the correct optimum value (\textit{TipH}) parameter is reached; Multi-core ESBMC starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among the threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread lifecycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then multi-core ESBMC starts new instances again. During the parallel region execution, if a violation is found in any running thread, then it presents the counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then multi-core ESBMC finishes its execution.
+ESBMC-SS obtains the problem specification represented by a C program. The HW-SW partitioning is violated, when the correct optimum value (\textit{TipH}) parameter is reached; ESBMC-SS starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among the threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread lifecycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then multi-core ESBMC starts new instances again. During the parallel region execution, if a violation is found in any running thread, then it presents a counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then ESBMC-SS finishes its execution.
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP using Workers (ESBMC-PS)}
@@ -416,27 +414,27 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel.png} 
-	\caption{ESBMC Multi-core Optimized Sequential Approach. }
+	\caption{ESBMC-PS Approach. }
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
 
-Consequently, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available. This approach could potentially lead to great performance improvements, but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
+Consequently, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available, as shown in Fig.~\ref{ESBMC-Multi-core-Optimized-Sequential-Approach}. This approach could potentially lead to great performance improvements, but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP using Binary Search (ESBMC-PB)}
 \label{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}
 %----------------------------------------------
 
-The most optimized approach applies a parallelized binary search to reduce the amount of steps to be executed in order to find the optimal solution. A controller is designed to return the step to be executed so that the number of verification runs are substantially reduced as much as possible. The parallelized binary search accomplishes this by splitting the domain of possible values into intervals and then by returning the middle of the largest interval so that two new intervals are created.
+The most optimized approach applies a parallelized binary search to reduce the amount of steps to be executed in order to find the optimal solution. A controller is designed to return the step to be executed so that the number of verification runs are substantially reduced. The parallelized binary search accomplishes this by splitting the domain of possible values into intervals and then by returning the middle of the largest interval so that two new intervals are created.
 %
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel-Controler.png} 
-	\caption{ESBMC Binary Approach}
+	\caption{ESBMC-PB Approach}
 	\label{ESBMC-Binary-Approach}
 \end{figure}
 
-As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-Step-Calculation}), we firstly create an initial interval from $1$ to $20$. When the next available core asks for a step to be executed, the controller obtains the largest interval ({\it i.e.}, $\left[1,20\right]$, divides it by two, which creates two new intervals ({\it i.e.}, $\left[1,9\right]$ and $\left[11,20\right]$), and returns the middle of the original interval ({\it i.e.}, $10$). The controller also checks whether an interval has less than two elements to avoid creating empty or invalid intervals.
+As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-Step-Calculation}), we firstly create an initial interval from $1$ to $20$. When the next available core asks for a step to be executed, the controller obtains the largest interval, {\it i.e.}, $\left[1,20\right]$, divides it by two, which creates two new intervals ({\it i.e.}, $\left[1,9\right]$ and $\left[11,20\right]$), and returns the middle of the original interval ({\it i.e.}, $10$). The controller also checks whether an interval has less than two elements to avoid creating empty or invalid intervals.
 %
 \begin{figure}[ht]
 	\centering
@@ -445,9 +443,9 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 	\label{Binary-Step-Calculation}
 \end{figure}
 
-Note that there might gaps between steps, which are produced by the customized binary search. For instance, in the example shown in~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
+Note that there might gaps between steps, which are produced by the customized binary search. For instance, in the example shown in Fig.~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
-Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
+Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
 \begin{lstlisting}[caption=Steps Calculation using Intervals,label=Steps-Calculation-using-Intervals]
 01. GetNextStep(){
@@ -471,7 +469,8 @@ Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each 
 19. }
 \end{lstlisting}
 
-Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. From lines $4$ to $9$, the algorithm finds the largest interval. Then, from the line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
+Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
+From lines $4$ to $9$, the algorithm finds the largest interval. Then, from the line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
 \begin{lstlisting}[caption=Worker sample,label=worker-sample]
 01. step = controller.GetNextStep();
