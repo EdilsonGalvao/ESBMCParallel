@@ -143,13 +143,13 @@ We present an alternative approach to solve the hardware (HW) and software (SW) 
 
 Nowadays, with the strong development of embedded systems, the design phase plays an important role. At early stages, the design is split into separated flows: hardware and software. The partitioning decision process, which deals with decisions upon which parts of the application have to be designed in hardware (HW) and which in software (SW), must be supported by any well-structured methodology. If not, this leads to a number of issues (design flow interruptions, redesigns, and undesired iterations) which affect the overall development process, the quality, and the lifecycle of the final system.
 
-\comment{In any HW and SW design of complex systems, more time is spent on verification than on construction ~\cite{Baier2008}. Formal methods based on model checking offer great potential to obtain a more effective and faster verification in the design process. Software (and systems) may be viewed as mathematical objects with behavior that is, in principle, well determined. This makes it possible to specify software using mathematical logic, which constitutes the intended (correct) behavior. Then, one can try to give a formal proof or otherwise establish that the software meets its specification ~\cite{Clarke2009}. Research in formal methods has led to the development of very promising verification techniques, which facilitate the early detection of errors. Model-based verification techniques use models that describe the possible system behavior in a mathematically precise and unambiguous manner. The system models are accompanied by algorithms that systematically explore all the states of the system model.}
+\comment{In any HW and SW design of complex systems, more time is spent on verification than on construction~\cite{Baier2008}. Formal methods based on model checking offer great potential to obtain a more effective and faster verification in the design process. Software (and systems) may be viewed as mathematical objects with behavior that is, in principle, well determined. This makes it possible to specify software using mathematical logic, which constitutes the intended (correct) behavior. Then, one can try to give a formal proof or otherwise establish that the software meets its specification ~\cite{Clarke2009}. Research in formal methods has led to the development of very promising verification techniques, which facilitate the early detection of errors. Model-based verification techniques use models that describe the possible system behavior in a mathematically precise and unambiguous manner. The system models are accompanied by algorithms that systematically explore all the states of the system model.}
 
 Starting at the 1990s, intensive research was performed in HW-SW partitioning, and several approaches proposed, as shown in ~\cite{Arato2003} and~\cite{Mann2007}. In~\cite{Trindade2015,Trindade2016} was shown that it is possible to use Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT), implemented in a tool called Efficient SMT-Based Context-Bounded Model Checker (ESBMC), in order to perform HW-SW partitioning in embedded systems. The present work extends those studies since there is a substantial improvement in terms of the SMT-based verification method, which has been extended with a multi-core parallel- and binary-search approaches, as well as, the integration of the Maximum SMT (MaxSMT) solver $\nu$Z into ESBMC, which is a state-of-art optimization tool based on SMT~\cite{Bjorner2015}. 
 
 \comment{Multi-core processors have been used in all segments of industry to implement high-performance computing~\cite{Wu2014}. In particular, hardware platforms, together with multi-processing platforms, have allowed verification algorithms to distribute tasks executions across multiple processors, which generate an increase in performance if compared to single-core solution~\cite{Holzmann11}. However, most algorithms for software verification still disregard the limitations of the CMOS technology and focus their solution on a single-core approach~\cite{Cordeiro2012,Clarke2004,Armando2009,Ganai2006}.}
 
-Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods are applied to the HW-SW partition problem in three different ways using a multi-core ESBMC approach with OpenMP: ESBMC-SS using a sequential-search (SS), ESBMC-PS using a parallel-search (PS), and ESBMC-PB using a binary-search (BS). Experimental results are compared to ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and also to $\nu$Z, which supports only a single-core approach~\cite{Bjorner2015}. The ILP and GA algorithms are implemented with the optimization toolbox of Matlab~\cite{OpenMP1998}, while $\nu$Z is a built-in tool to the SMT solver Z3. All multi-core ESBMC approaches, together with $\nu$Z, are implemented with the Efficient SMT-based Context-Bounded Model Checker (ESBMC) tool~\cite{Cordeiro2012}. 
+Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods are applied to the HW-SW partition problem in three different ways using a multi-core ESBMC approach with OpenMP~\cite{Tang2009}: ESBMC-SS using a sequential-search (SS), ESBMC-PS using a parallel-search (PS), and ESBMC-PB using a binary-search (BS). Experimental results are compared to ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and also to $\nu$Z, which supports only a single-core approach~\cite{Bjorner2015}. The ILP and GA algorithms are implemented with the optimization toolbox of Matlab~\cite{OpenMP1998}, while $\nu$Z is a built-in tool to the SMT solver Z3. All multi-core ESBMC approaches, together with $\nu$Z, are implemented with the Efficient SMT-based Context-Bounded Model Checker (ESBMC) tool~\cite{Cordeiro2012}. 
 
 % in which its main function is to check the satisfiability of logical formulas based on objective functions
 
@@ -193,12 +193,12 @@ In some cases, the time to find a solution using ILP is impractical. Even with t
 %----------------------------------------------
 
 \comment{
-Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior ~\cite{Baier2008}, ~\cite{Clarke2009}. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components ~\cite{Biere2009}. Much research has been devoted to mitigate this problem.
+Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior~\cite{Baier2008}, ~\cite{Clarke2009}. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components ~\cite{Biere2009}. Much research has been devoted to mitigate this problem.
 }
 
 Among the recent model checking techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in~\cite{Biere2009}. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
 
-The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $M$, a property $\phi$, and a bound $k$, BMC unrolls the system $k$ times and translates it into a verification condition (VC) $\psi$  such that $\psi$ is satisfiable if and only if $\phi$ has a counterexample of depth $k$ or less~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in~\cite{Armando2009},\cite{Ganai2006},\cite{Cordeiro2012}. 
+The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $M$, a property $\phi$, and a bound $k$, BMC unrolls the system $k$ times and translates it into a verification condition (VC) $\psi$  such that $\psi$ is satisfiable if and only if $\phi$ has a counterexample of depth $k$ or less~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in~\cite{Cordeiro2012},~\cite{Armando2009},~\cite{Ganai2006}. 
 
 In this study, ESBMC has been used as a BMC tool to solve HW-SW partitioning problems~\cite{Cordeiro2012}. 
 \comment{According to Cordeiro {\it et al.}~\cite{Cordeiro2012},\cite{Cordeiro2011}, SMT-based model checking can be used to verify single- and multi-threaded software in embedded systems. In Ramalho {\it et al.}~\cite{Ramalho2013}, ESBMC can also be used to model check C$++$ software based on SMT solvers. In Trindade {\it et al.}~\cite{Trindade2015},\cite{Trindade2016}, it was shown that it is possible to use ESBMC also as an optimization tool.}
@@ -488,7 +488,7 @@ Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC
 \label{Analysis-of-the-partitioning-problem-using-vZ}
 %----------------------------------------------
 
-Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $02$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
+Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $2$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
 
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
@@ -712,28 +712,30 @@ Arat\'o, P., Juh\'asz, S., Mann, Z.A., Orb\'an, A., Papp, D. (2003), ``{Hardware
 Mann, Z.A., Orb\'an, A., Arat\'o, P., ``{Finding optimal hardware/software partitions},'' In: Formal Methods in System Design, v. 31, n. 3 pp. 241--263.
 
 %3
-\bibitem{Baier2008}
-Baier, C., Katoen, J-P (2008), ``{Principles of Model Checking}'', The MIT Press, London.
-
-%4
-\bibitem{Clarke2009}
-Clarke, E., Emerson, E., Sifakis, J. (2009), ``{Model checking: algorithmic verification and debugging},'' In: Communications of the Association Computing Machinery, v. 52, n. 11, pp. 74--84.
-
-%5
 \bibitem{Trindade2015}
 Trindade, A., Cordeiro. L. (2015), ``{Applying SMT-based verification to hardware/software partitioning in embedded systems,}'' In: Design Automation for Embedded Systems (to appear).
 
-%5
+%4
 \bibitem{Trindade2016}
 Trindade, A. B., Ismail, H. I., Cordeiro, L. C. (2015), ``{Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems (short paper),}'' To appear in V Brazilian Symposium on Computing Systems Engineering (SBESC), pp. 1-4.
 
-%6
-\bibitem{Wu2014}
-Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conf. on Software Engineering and Service Science, pp. 921--924.
+%5
+\bibitem{Bjorner2015}
+Bjorner, N., Phan, A-D., Fleckenstein, L. (2015), ``{$\nu$Z - An Optimizing SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 9035, pp. 194--199.
 
-%8
+%6
 \bibitem{Tang2009}
 Tang, T., Lin, Y., Ren, X. (2010), ``{Mapping OpenMP concepts to the stream programming model. In: Proc. of the Intl. Conf. on Computer Science Education},'' pp. 1900--1905.
+
+%7
+\bibitem{OpenMP1998}
+OpenMP Architecture Review Board, OpenMP C and C++
+Application Pogram Interface, Version 1.0, October 1998.
+http://www.openmp.org
+
+%8
+\bibitem{Cordeiro2012}
+Cordeiro, L., Fischer, B., Marques-Silva, J. (2012), ``{SMT-based Bounded Model Checking for Embedded ANSI-C Software},'' In: IEEE Transactions on Software Engineering, v. 38, n. 4, pp. 957--974.
 
 %9
 \bibitem{Rao2009}
@@ -741,150 +743,131 @@ Rao, S. (2009), ``{Engineering Optimization: Theory and Practice. 4th edition}''
 
 %10
 \bibitem{Biere2009}
-Biere, A. (2009), ``{Bounded model checking. In: Biere, A., Heule, M., van Marren, H., Walsh, T. (org.)}'', Handbook of Satisfiability, IOS Press, pp. 457–-481.
+Biere, A. (2009), ``{Bounded Model Checking. In: Biere, A., Heule, M., van Marren, H., Walsh, T. (org.)}'', Handbook of Satisfiability, IOS Press, pp. 457–-481.
 
 %11
-\bibitem{Clarke2004}
-Clarke, E., Kroening, D., Lerda, F. (2004), ``{A Tool for Checking ANSI-C Programs}'', In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 2988, pp. 168--176.
-
-%12
 \bibitem{Armando2009}
 Armando, A., Mantovani, J., Platania, L. (2009), ``{Bounded model checking of software using SMT solvers instead of SAT solvers},'' In: Intl. Journal on Software Tools for Technology Transfer, v. 11, n. 1, pp. 69--83.
 
-%13
+%12
 \bibitem{Ganai2006}
 Ganai, M., Gupta, A. (2006), ``{Accelerating high-level bounded model checking},'' In: Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design, pp. 794-–801.
 
-%14
-\bibitem{Cordeiro2012}
-Cordeiro, L., Fischer, B., Marques-Silva, J. (2012), ``{SMT-based bounded model checking for embedded ANSI-C software},'' In: IEEE Transactions on Software Engineering, v. 38, n. 4, pp. 957--974.
-
-%15
-\bibitem{Cordeiro2011}
-Cordeiro, L., Fischer, B. (2011), ``{Verifying multi-threaded software using SMT-based context-bounded model checking.},'' In: Proc. of the Intl. Conf. on Software Engineering, pp. 331--340.
-
-%16
+%13
 \bibitem{Ramalho2013}
 Ramalho, M., Freitas, M., Souza, F., Marques, H., Cordeiro, L. (2013), ``{SMT-Based Bounded Model Checking of C++ Programs.},'' In: Intl. Conf. and Workshops on the Engineering of Computer-Based Systems, pp. 147--156.
 
-%17
-\bibitem{Teich2012}
-Teich, J. (2012), ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future},'' In: Proc. of the IEEE, Special Centennial Issue, v. 100, pp. 1411--1430.
-
-%18
-\bibitem{TheMathWorks2013}
-The MathWorks, Inc. (2013), ``{MATLAB (version R2013a)}'', Natick, MA.
-
-%19
-\bibitem{Tranquillo2011}
-Tranquillo, J. (2011), ``{Matlab for Engineering and the Life Sciences}'', Synthesis Lectures on Engineering. Morgan \& Claypool.
-
-%20
-\bibitem{Hong2010}
-Hong, L., Cai, J. (2010), ``{The application guide of mixed programming between MATLAB and other programming languages},'' In: Proc. of the Intl. Conf. on Computer and Automation Engineering, pp. 185--189.
-
-%21
-\bibitem{Guthaus2001}
-Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001), ``{MiBench: a free, commercially representative embedded benchmark suite},'' In: Proc. of the annual workshop on workload characterization, pp. 3--14.
-
-%22
-\bibitem{Arato2005}
-Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
-
-%23
-\bibitem{Dagum1998}
-Dagum, L., Menon, R. (1998), ``{OpenMP: an industry-standard API for shared-memory programming.},'' In: Proc. of the Computational Science \& Engineering, v. 5, n. 1, pp. 46--55.
-
-%24
+%14
 \bibitem{DeMoura2008}
 De Moura, L., Bjorner, N. (2008), ``{Z3: An Efficient SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 4963, pp. 337–-340.
 
-%25
+%15
 \bibitem{Brummayer2009}
 Brummayer, R., Biere, A. (2009), ``{Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays.},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 5505, pp. 174-–177.
 
-%26
+%16
 \bibitem{Barrett2011}
 Barrett, C., Conway, C. Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A., Tinelli, C. (2011), ``{CVC4},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 6806, pp. 171--177.
 
-%27
+%17
 \bibitem{Bozzano2005}
 Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S., Sebastiani, R. (2005), ``{MathSAT: Tight integration of SAT and mathematical decision procedures},'' In: Journal of Automated Reasoning, v. 35, n. 1-3, pp. 265--293.
 
-%28
+%18
 \bibitem{Dutertre2014}
 Dutertre, B. (2014), ``{Yices 2.2. In: Proc. of the Intl. Conf. on Computer-Aided Verification},'' LNCS 8559, pp. 737–-744.
 
-%29
-\bibitem{Holzmann2011}
-Holzmann, G.J., Joshi, R., Groce, A. (2011), ``{Swarm Verification Techniques},'' In: IEEE Transactions on Software Engineering, v. 37, n. 6, pp. 845--857.
+%19
+\bibitem{Wu2014}
+Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conf. on Software Engineering and Service Science, pp. 921--924.
 
-%30
-\bibitem{Holzmann2012}
-Holzmann, G. (2012), ``{Parallelizing the spin model checker. In: Proc. of the Intl. Symp. on Model Checking Software},'' LNCS 7385, pp. 155--171.
-
-%31
-\bibitem{Wintersteiger2009}
-Wintersteiger, C., Hamadi, Y., De Moura, L. (2009), ``{A Concurrent Portfolio Approach to SMT Solving.},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 5643, pp. 715--720.
-
-%32
-\bibitem{Bjorner2015}
-Bjorner, N., Phan, A-D., Fleckenstein, L. (2015), ``{$\nu$Z - An Optimizing SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 9035, pp. 194--199.
-
-%33
-\bibitem{Qawasmeh2014}
-Qawasmeh, A., Malik, A., Chapman, B. (2014), ``{OpenMP task scheduling analysis via OpenMP runtime API and tool visualization.},'' In: Proc. of the Intl. Symp. on Parallel \& Distributed processing, pp. 1049--1058.
-
-%34
+%20
 \bibitem{Bjorner2014}
 Bjorner, N. and Phan, A. D. (2014), ``{$\nu$Z - Maximal Satisfaction with Z3},'' In: Proc. of the Intl. Symp. on Symbolic Computation in Software Science, pp. 1--10.
 
-%35
-\bibitem{OpenMP1998}
-OpenMP Architecture Review Board, OpenMP C and C++
-Application Pogram Interface, Version 1.0, October 1998.
-http://www.openmp.org
-
-%36
-\bibitem{Z3API}
-Magellan, ``{Source code and documentation},''
-  \url{https://github.com/Z3Prover/z3}, Accessed 18th August 2015.
-  
-%37
-\bibitem{GA}
-URFJ, ``{Algoritmos Genéticos: Fundamentos e Aplicações. Marcio Nunes de Miranda},''
-  \url{http://www.nce.ufrj.br/GINAPE/VIDA/alggenet.htm}, Accessed 18th August 2015.
-
-%38
-\bibitem{NarodytskaN}
-Narodytska, N., Bacchus, F. (2014), {``Maximum Satisfiability Using Core-Guided MAXSAT Resolution},'' In: Proc. of the AAAI Conf. on Artificial Intelligence, pp. 2717--2723.
-
-%39
+%21
 \bibitem{Federica2008}
 Federica, P., Rodolfo, F., Yuqing , S., Elisa, B. (2008), {``Authorization and User Failure Resiliency for WS-BPEL business processes''}, In: Proc. of the Intl. Conf. on Service-Oriented Computing, LNCS 5364, pp. 116--131
 
-%40
+%22
+\bibitem{NarodytskaN}
+Narodytska, N., Bacchus, F. (2014), {``Maximum Satisfiability Using Core-Guided MAXSAT Resolution},'' In: Proc. of the AAAI Conf. on Artificial Intelligence, pp. 2717--2723.
+
+%23
 \bibitem{Barth1995}
 Barth, P., Davis-Putnam, A. (1995), {``Enumeration Algorithm for Linear
 Pseudo-Boolean Optimization.''}, Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science.
 
-%41
+%24
 \bibitem{Vasco2005}
 Vasco, M., Marques-Silva, J. (2005), {``Effective Lower Bounding Techniques for Pseudo-Boolean Optimization''}, IST/INESC-ID, Technical University of Lisbon, Portugal.
 
-%42
-\bibitem{Pavlinovic2015}
-Pavlinovic, Z., King, T., Wies, T. (2015),{``Practical SMT-Based Type Error Localization''}, In: Proc. of the Intl. Conf. on Functional Programming, pp. 412--423.
-
-%43
-\bibitem{Patrick2015}
-Sebastiani, R., Trentin, T. (2015), {``OptiMathSAT: A Tool for Optimization Modulo Theories''}, In: Proc. of the Intl. Conf. on Computer Aided Verification, LNCS 9206, pp. 447--454.
-
-%43
+%25
+\bibitem{Z3API}
+Magellan, ``{Source code and documentation},''
+  \url{https://github.com/Z3Prover/z3}, Accessed 18th August 2015.
+  
+%26
 \bibitem{Cormem}
 Cormen, T., Leiserson, C., Rivest, R., Stein, C. (2009), {``Introduction to Algorithms''}, MIT Press, pp. I-XIX, pp. 1--1292.
 
-%44
+%27
+\bibitem{Dagum1998}
+Dagum, L., Menon, R. (1998), ``{OpenMP: An Industry-Standard API for Shared-Memory Programming.},'' In: Proc. of the Intl. Conf. on Computational Science \& Engineering, v. 5, n. 1, pp. 46--55.
+
+%28
+\bibitem{TheMathWorks2013}
+The MathWorks, Inc. (2013), ``{MATLAB (version R2013a)}'', Natick, MA.
+
+%29
+\bibitem{Tranquillo2011}
+Tranquillo, J. (2011), ``{Matlab for Engineering and the Life Sciences}'', Synthesis Lectures on Engineering. Morgan \& Claypool.
+
+%30
+\bibitem{Hong2010}
+Hong, L., Cai, J. (2010), ``{The application guide of mixed programming between MATLAB and other programming languages},'' In: Proc. of the Intl. Conf. on Computer and Automation Engineering, pp. 185--189.
+
+%31
+\bibitem{Cordeiro2011}
+Cordeiro, L., Fischer, B. (2011), ``{Verifying multi-threaded software using SMT-based context-bounded model checking.},'' In: Proc. of the Intl. Conf. on Software Engineering, pp. 331--340.
+
+%32
+\bibitem{Teich2012}
+Teich, J. (2012), ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future},'' In: Proc. of the IEEE, Special Centennial Issue, v. 100, pp. 1411--1430.
+
+%33
+\bibitem{Guthaus2001}
+Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001), ``{MiBench: a free, commercially representative embedded benchmark suite},'' In: Proc. of the annual workshop on workload characterization, pp. 3--14.
+
+%34
+\bibitem{Arato2005}
+Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
+
+%35
+\bibitem{Holzmann2011}
+Holzmann, G.J., Joshi, R., Groce, A. (2011), ``{Swarm Verification Techniques},'' In: IEEE Transactions on Software Engineering, v. 37, n. 6, pp. 845--857.
+
+%36
+\bibitem{Holzmann2012}
+Holzmann, G. (2012), ``{Parallelizing the spin model checker. In: Proc. of the Intl. Symp. on Model Checking Software},'' LNCS 7385, pp. 155--171.
+
+%37
+\bibitem{Wintersteiger2009}
+Wintersteiger, C., Hamadi, Y., De Moura, L. (2009), ``{A Concurrent Portfolio Approach to SMT Solving.},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 5643, pp. 715--720.
+
+%38
+\bibitem{Qawasmeh2014}
+Qawasmeh, A., Malik, A., Chapman, B. (2014), ``{OpenMP task scheduling analysis via OpenMP runtime API and tool visualization.},'' In: Proc. of the Intl. Symp. on Parallel \& Distributed processing, pp. 1049--1058.
+
+%39
+\bibitem{Pavlinovic2015}
+Pavlinovic, Z., King, T., Wies, T. (2015),{``Practical SMT-Based Type Error Localization''}, In: Proc. of the Intl. Conf. on Functional Programming, pp. 412--423.
+
+%40
+\bibitem{Patrick2015}
+Sebastiani, R., Trentin, T. (2015), {``OptiMathSAT: A Tool for Optimization Modulo Theories''}, In: Proc. of the Intl. Conf. on Computer Aided Verification, LNCS 9206, pp. 447--454.
+
+%41
 \bibitem{Holzmann11}
 Gerard J. Holzmann, Rajeev Joshi, Alex Groce (2011), {``Swarm Verification Techniques''}, In: IEEE Trans. Software Eng. v. 37, n. 6, pp. 845--857.
 
