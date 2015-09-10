@@ -145,7 +145,7 @@ Nowadays, with the strong development of embedded systems, the design phase play
 
 \comment{In any HW and SW design of complex systems, more time is spent on verification than on construction ~\cite{Baier2008}. Formal methods based on model checking offer great potential to obtain a more effective and faster verification in the design process. Software (and systems) may be viewed as mathematical objects with behavior that is, in principle, well determined. This makes it possible to specify software using mathematical logic, which constitutes the intended (correct) behavior. Then, one can try to give a formal proof or otherwise establish that the software meets its specification ~\cite{Clarke2009}. Research in formal methods has led to the development of very promising verification techniques, which facilitate the early detection of errors. Model-based verification techniques use models that describe the possible system behavior in a mathematically precise and unambiguous manner. The system models are accompanied by algorithms that systematically explore all the states of the system model.}
 
-Starting at the 1990s, intensive research was performed in HW-SW partitioning, and several approaches proposed, as shown in ~\cite{Arato2003} and~\cite{Mann2007}. In~\cite{Trindade2015,Trindade2016,Trindade2014} was shown that it is possible to use Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT), implemented in a tool called Efficient SMT-Based Context-Bounded Model Checker (ESBMC), in order to perform HW-SW partitioning in embedded systems. The present work extends those studies since there is a substantial improvement in terms of the SMT-based verification method, which has been extended with a multi-core parallel- and binary-search approaches, as well as, the integration of the Maximum SMT (MaxSMT) solver $\nu$Z into ESBMC, which is a state-of-art optimization tool based on SMT~\cite{Bjorner2015}. 
+Starting at the 1990s, intensive research was performed in HW-SW partitioning, and several approaches proposed, as shown in ~\cite{Arato2003} and~\cite{Mann2007}. In~\cite{Trindade2015,Trindade2016} was shown that it is possible to use Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT), implemented in a tool called Efficient SMT-Based Context-Bounded Model Checker (ESBMC), in order to perform HW-SW partitioning in embedded systems. The present work extends those studies since there is a substantial improvement in terms of the SMT-based verification method, which has been extended with a multi-core parallel- and binary-search approaches, as well as, the integration of the Maximum SMT (MaxSMT) solver $\nu$Z into ESBMC, which is a state-of-art optimization tool based on SMT~\cite{Bjorner2015}. 
 
 \comment{Multi-core processors have been used in all segments of industry to implement high-performance computing~\cite{Wu2014}. In particular, hardware platforms, together with multi-processing platforms, have allowed verification algorithms to distribute tasks executions across multiple processors, which generate an increase in performance if compared to single-core solution~\cite{Holzmann11}. However, most algorithms for software verification still disregard the limitations of the CMOS technology and focus their solution on a single-core approach~\cite{Cordeiro2012,Clarke2004,Armando2009,Ganai2006}.}
 
@@ -201,7 +201,7 @@ Among the recent model checking techniques, there is one that combines model che
 The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $M$, a property $\phi$, and a bound $k$, BMC unrolls the system $k$ times and translates it into a verification condition (VC) $\psi$  such that $\psi$ is satisfiable if and only if $\phi$ has a counterexample of depth $k$ or less~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in~\cite{Armando2009},\cite{Ganai2006},\cite{Cordeiro2012}. 
 
 In this study, ESBMC has been used as a BMC tool to solve HW-SW partitioning problems~\cite{Cordeiro2012}. 
-\comment{According to Cordeiro {\it et al.}~\cite{Cordeiro2012},\cite{Cordeiro2011}, SMT-based model checking can be used to verify single- and multi-threaded software in embedded systems. In Ramalho {\it et al.}~\cite{Ramalho2013}, ESBMC can also be used to model check C$++$ software based on SMT solvers. In Trindade {\it et al.}~\cite{Trindade2015},\cite{Trindade2014}, it was shown that it is possible to use ESBMC also as an optimization tool.}
+\comment{According to Cordeiro {\it et al.}~\cite{Cordeiro2012},\cite{Cordeiro2011}, SMT-based model checking can be used to verify single- and multi-threaded software in embedded systems. In Ramalho {\it et al.}~\cite{Ramalho2013}, ESBMC can also be used to model check C$++$ software based on SMT solvers. In Trindade {\it et al.}~\cite{Trindade2015},\cite{Trindade2016}, it was shown that it is possible to use ESBMC also as an optimization tool.}
 In particular, there are two directives in ESBMC that can be used to guide a model checker to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
 
 %----------------------------------------------
@@ -214,7 +214,7 @@ Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consis
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.9]{Image/esbmc-arch-new.pdf} 
-	\caption{ESBMC Architecture}
+	\caption{ESBMC Architecture.}
 	\label{ESBMC-Architecture}
 \end{figure}
 
@@ -229,7 +229,7 @@ In particular, OpenMP uses the fork-join model of parallel execution ~\cite{Open
 
 The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
-\begin{lstlisting}[caption=OpenMP basic sample]
+\begin{lstlisting}[caption=OpenMP basic sample.]
 01.  int i;
 02.  #pragma omp parallel for
 03.  for (i = 0; i < 10; i++)
@@ -260,7 +260,7 @@ the function \textit{assert-soft} adds a restriction to $F$, which can also add 
 
 As an example, one can optimize $\left(K + W\right)$, with restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
 
-\begin{lstlisting}[caption=Example of SMT formula using $\nu$Z, label=vZ]
+\begin{lstlisting}[caption=Example of SMT formula using $\nu$Z., label=vZ]
 1. (declare-const K Int) 
 2. (declare-const W Int)
 3. (assert (< K 2)) 
@@ -274,7 +274,7 @@ Fig.~\ref{vZ-Architecture} shows the $\nu$Z architecture. Initially, the SMT for
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=0.49\textwidth, height=95px]{Image/vzArch.png} 
-	\caption{$\nu$Z Architecture extracted from~\cite{Bjorner2015}}
+	\caption{$\nu$Z Architecture extracted from~\cite{Bjorner2015}.}
 	\label{vZ-Architecture}
 \end{figure}
 
@@ -331,7 +331,7 @@ s\left(1-x\right) + c|E_x| \leq S_0,
 \label{ILPGA}
 %----------------------------------------------
 
-The ILP and GA were taken from our previous studies~\cite{Trindade2015,Trindade2014}. Both use slack variables in order to be possible to represent constraints and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$.
+The ILP and GA were taken from our previous studies~\cite{Trindade2015,Trindade2016}. Both use slack variables in order to be possible to represent constraints and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$.
 }
 
 %----------------------------------------------
@@ -348,7 +348,7 @@ As computer hardware architecture moves from single- to multi-cores, parallel pr
 
 Algorithm~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same constraints and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section~\ref{Formal-Model}. The other is the halting condition (code violation) that stops the algorithm.
 
-The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015} and~\cite{Trindade2014}.
+The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
 It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of constrains (i.e., $A.x \leq b$).
 
@@ -358,7 +358,7 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
-\begin{lstlisting}[caption=Pseudocode describing sequential ESBMC, label={Pseudocode-describing-ESBMC}, mathescape]
+\begin{lstlisting}[caption=Pseudocode describing sequential ESBMC., label={Pseudocode-describing-ESBMC}, mathescape]
 01. Initialize Variables 
 02. Declare number of nodes and edges
 03. Declare hardware cost of each node as array (h)
@@ -430,7 +430,7 @@ The most optimized approach applies a parallelized binary search to reduce the a
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.75]{Image/esbmc-parallel-Controler.png} 
-	\caption{ESBMC-PB Approach}
+	\caption{ESBMC-PB Approach.}
 	\label{ESBMC-Binary-Approach}
 \end{figure}
 
@@ -439,7 +439,7 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 \begin{figure}[ht]
 	\centering
   \includegraphics[width=0.49\textwidth, height=75px]{Image/Fig4.png}
-	\caption{Binary Step Calculation}
+	\caption{Binary Step Calculation.}
 	\label{Binary-Step-Calculation}
 \end{figure}
 
@@ -447,7 +447,7 @@ Note that there might gaps between steps, which are produced by the customized b
 
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
-\begin{lstlisting}[caption=Steps Calculation using Intervals,label=Steps-Calculation-using-Intervals]
+\begin{lstlisting}[caption=Steps Calculation using Intervals.,label=Steps-Calculation-using-Intervals]
 01. GetNextStep(){
 02.  int largestChunk = -1;
 03.  chunk largest;
@@ -472,7 +472,7 @@ Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized b
 Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from the line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
-\begin{lstlisting}[caption=Worker sample,label=worker-sample]
+\begin{lstlisting}[caption=Worker sample.,label=worker-sample]
 01. step = controller.GetNextStep();
 02. int pid = ExecuteStep(step);
 03. while(isRunning(pid)){
@@ -492,7 +492,7 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
 
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
-\begin{lstlisting}[caption=Pseudocode describing $\nu$Z,label=vZ-pseudocode, mathescape]
+\begin{lstlisting}[caption=Pseudocode describing $\nu$Z.,label=vZ-pseudocode, mathescape]
 01.#Initialize Variables
 02.  Create vZ context 
 03.  Create binary vector (x)
@@ -537,7 +537,7 @@ All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-
 To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{Mann2007} were used, as shown in Table~\ref{Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from Mann {\it et al.}~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
 \begin{table}[h]
-\caption {Description of Benchmarks}
+\caption {Description of Benchmarks.}
 \small
 \sffamily\footnotesize
 \tabulinesep=6pt
@@ -590,7 +590,7 @@ The clustering benchmark seems to be the limit to test the ESBMC (described) imp
 
 \begin{table*}[t]
   \centering
-  \caption{Experimental results of the HW-SW partitioning benchmarks}  
+  \caption{Experimental results of the HW-SW partitioning benchmarks.}  
   \begin{tabular}{*{9}{cc|c|c|c|c|c|c|c}}
 
  &  & \textbf{CRC32} & \textbf{Patricia} & \textbf{Dijkstra} & \textbf{Clustering} & \textbf{RC6} & \textbf{Fuzzy} & \textbf{Mars} \\[0.15cm]
@@ -679,13 +679,11 @@ The problem addressed in this present paper uses a single objective function for
 \label{Conclusions}
 %----------------------------------------------
 
-We presented four approaches to solve the HW-SW partitioning problem and compared them to other three state-of-the-art techniques. Experimental results showed that for a number of nodes larger than $300$, the best solution for the HW-SW partitioning problem is ILP. Below that, the best option turns out to be $\nu$Z since its execution time is faster and notorious. ESBMC is a viable alternative for a number of nodes lower than $150$.  GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. This error may be reduced by changing some parameters. 
+We presented five approaches to solve the HW-SW partitioning problem and compared them to other state-of-the-art techniques. Experimental results showed that for a number of nodes larger than $300$, the best solution for the HW-SW partitioning problem is ILP. Below that, the best solution turns out to be ESBMC-$\nu$Z since its execution time is faster and notorious. ESBMC-PB is a viable alternative for a number of nodes lower than $150$. GA had an intermediate result in terms of performance, but the error presented from exact solution made it not acceptable to that kind of application. 
 
-%The computing time to solve the optimization problem reached some hours of execution on a standard desktop computer. 
+If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and $\nu$Z have BSD-Style and MIT licenses, respectively and can be downloaded and used for free. Experimental results also pointed to an improvement of ESBMC, when using a parallel approach. In particular, all three parallel approaches described in this paper produced expressive results. The fastest ESBMC approaches is ESBMC-PB, which produces good results for an intermediate amount of edges and nodes. Thus, considering that nowadays processors have more and more cores, when modeling the problem, it is possible to consider multi-core model checking as an alternative to solve the HW-SW partitioning problem. 
 
-If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and $\nu$Z have BSD-Style and MIT licenses, respectively and can be downloaded and used for free. Experimental results also pointed to an improvement of ESBMC, when using a parallel approach. In particular, all three parallel approaches described in this paper produced expressive results. The fastest ESBMC approaches is ESBMC-PB (Parallel Binary), which produces good results for an intermediate amount of edges and nodes. Thus, considering that nowadays processors have more and more cores, when modeling the problem, it is possible to consider multi-core model checking as an alternative to solve the HW-SW partitioning problem. 
-
-Finally, there is an issue about $150$ nodes problem, since it seems to be the limit of ESBMC. It really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for larger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the search space size. In future work, we will address improvements in ESBMC to remove the parallel layer on top of ESBMC and implement it during symbolic execution so that we can optimize the overall verification time.
+Finally, there is an issue about $150$ nodes problem, since it seems to be the limit of multi-core ESBMC. However, it really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for larger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the search space size. In future work, we will address improvements in ESBMC to remove the parallel layer on top of ESBMC and implement it during symbolic execution so that we can optimize the overall verification time.
 
 %----------------------------------------------
 %\section{References}
@@ -730,16 +728,12 @@ Trindade, A., Cordeiro. L. (2015), ``{Applying SMT-based verification to hardwar
 Trindade, A. B., Ismail, H. I., Cordeiro, L. C. (2015), ``{Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems (short paper),}'' To appear in V Brazilian Symposium on Computing Systems Engineering (SBESC), pp. 1-4.
 
 %6
-\bibitem{Trindade2014}
-Trindade, A., Cordeiro, L. (2014), ``{Aplicando Verificação de Modelos para o Particionamento de Hardware/Software},'' In: Brazilian Symposium on Computing Systems Engineering (SBESC), pp. 1--6.
-
-%7
 \bibitem{Wu2014}
-Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conference on Software Engineering and Service Science, pp. 921--924.
+Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conf. on Software Engineering and Service Science, pp. 921--924.
 
 %8
 \bibitem{Tang2009}
-Tang, T., Lin, Y., Ren, X. (2010), ``{Mapping OpenMP concepts to the stream programming model. In: Proc. of the Intl. Conf. on Computer Science Education (ICCSE)},'' pp. 1900--1905.
+Tang, T., Lin, Y., Ren, X. (2010), ``{Mapping OpenMP concepts to the stream programming model. In: Proc. of the Intl. Conf. on Computer Science Education},'' pp. 1900--1905.
 
 %9
 \bibitem{Rao2009}
@@ -795,7 +789,7 @@ Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001),
 
 %22
 \bibitem{Arato2005}
-Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' In: Proc. of the Association Computing Machinery Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
+Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
 
 %23
 \bibitem{Dagum1998}
