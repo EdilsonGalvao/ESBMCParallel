@@ -571,30 +571,22 @@ To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{
 \label{Experimental-Results}
 %----------------------------------------------
 
-ESBMC implement four approaches: ESBMC, ESBMC-SS, ESBMC-PS, ESBMC-PB, and ESBMC-$\nu$Z.
+Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using Matlab (ILP and GA) and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC\hyp{}PB, ESBMC\hyp{}$\nu$Z) tools.
 
-\begin{itemize}
-\item{\textbf{ESBMC:} This strategy uses only one core to solve the partitioning problem, as described in Section~\ref{Verification-Algorithm-using-ESBMC}.
-\item{\textbf{ESBMC-SS:} This uses a sequential strategy \{1 ,2 ,\:...\:, Hmax\}, where there is no parallel controller, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP}.}
-\item{\textbf{ESBMC-PS:} This approach is similar to ESBMC-SS; however, it uses a more optimized way to launch the ESBMC instances, as described Section~\ref{Multi-core-ESBMC-with-OpenMP-using-workers}.}
-\item{\textbf{ESBMC-PB:} This strategy uses a parallel binary search, as described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}.}}
-\end{itemize}
+There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, the best (proposed) solution is ESBMC-$\nu$Z, which solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; however, ESBMC-$\nu$Z is faster than ILP in all supported benchmarks ({\it i.e.}, CRC$32$, Patricia, Dijkstra, Clustering), but it returns two TOs (time-outs) related to Fuzzy and Mars benchmarks.
 
-There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, $\nu$Z solves $4$ out of $7$ benchmarks, but it does not find the optimal solution for the RC$6$ benchmark; $\nu$Z is typically faster than ILP by approximately $3$ times ({\it e.g.}, Patricia benchmark); however, $\nu$Z returns two TOs (time-outs) in Fuzzy and Mars benchmarks.
+In contrast to ESBMC-$\nu$Z, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it typically provides the optimal solution. On the one hand, ILP execution time is slower than $\nu$Z in all benchmarks, which are supported by $\nu$Z. On the other hand, ILP is faster than ESBMC-SS, ESBMC-PS, and ESBMC-PB in all benchmarks, except for the clustering.
 
-In contrast to $\nu$Z, ILP solves $6$ out of $7$ benchmarks. When ILP produces a result, it always provides the optimal solution. On the one hand, ILP execution time is slower than $\nu$Z in all benchmarks, which are supported by $\nu$Z. On the other hand, ILP is faster than ESBMC in all benchmarks, except for the clustering.
+Note further that all multi-core ESBMC implementations produce better results than the sequential one. In particular, ESBMC-PB implementation outperforms all other multi-core ESBMC approaches, where its performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$ times faster than ILP and $1$.$89$ times slower than ESBMC-$\nu$Z. However, when the amount of nodes is around $30$, ESBMC-PB does not outperform ESBMC-$\nu$Z and ILP tools. When analyzing all benchmarks, ESBMC-PB produces TO or MO for RC$6$, Fuzzy, and Mars; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
 
-Note that all ESBMC parallel versions produce better results than the sequential one. In particular, the ESBMC-PB implementation outperforms all other ESBMC approaches; the ESBMC-PB performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$.$13$ times faster than ILP and $1$.$89$ times slower than $\nu$Z.
+%When ESBMC-$\nu$Z explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$8$ ({\it e.g.}, Clustering). 
 
-The ESBMC-PB implementation described in Section~\ref{Multi-core-ESBMC-with-OpenMP-using-Binary-Search} shows a significant performance improvement; when the amount of nodes is around $30$, ESBMC-PB does not outperform the optimization techniques employed by $\nu$Z and ILP tools. However, when the amount of nodes is approximately $150$, ESBMC-PB becomes three times faster than ILP, which is the most robust technique. When $\nu$Z explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$9$ ({\it e.g.}, Clustering). When analyzing all benchmarks: RC$6$, Fuzzy, and Mars, ESBMC-PB produces TO or MO; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
 
 The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
 
-Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using $\nu$Z, Matlab (ILP and GA), and ESBMC (ESBMC\hyp{}MC, ESBMC\hyp{}PS, ESBMC\hyp{}PB) tools.
+Note that RC$6$ produced time out for all implementations of ESBMC; $\nu$Z e GA did not produce the correct answer, and ILP solves correctly all benchmarks, except for Fuzzy, which produced time-outs and memory-outs in all tools that aim to find the exact solution. ILP was the only one to solve Mars, while GA solved all benchmarks incorrectly.
 
-RC$6$ produced time out for all versions of ESBMC, $\nu$Z e GA did not produce the correct answer, and ILP solves correctly all benchmarks, except one. Fuzzy produced time-outs and memory-outs in all tools. ILP was the only one to solve Mars, while GA solved incorrectly all benchmarks.
-
-Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmarks} seems to be the limit to test the described tools, note that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high amount of nodes and edges.
+The clustering benchmark seems to be the limit to test the ESBMC (described) implementations; note, however, that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high number of nodes and edges.
 
 \begin{table*}[t]
   \centering
@@ -616,7 +608,7 @@ Clustering described in Table~\ref{Experimental-results-of-the-complex-benchmark
 &  Hp   &  15   &  47   &  31   &  241   &  692    &  13820   &  876 \\
 &  Sp   &  19   &  4   &  19   &  46   &  533    &  4231   &  297  \\
 
-
+\bottomrule[1.5pt]
 %ILP
 \multirow{2}{*}{\textbf{ILP}}  
 &  T(s)   &  2   &  1   &  2   &  649   &  1806    &  TO   &  5.42  \\
