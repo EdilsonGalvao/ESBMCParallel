@@ -87,7 +87,7 @@ Lucas Cordeiro\affil{Federal University of Amazonas}
 %       currently affiliated with NASA.
 
 \begin{abstract}
-We present an alternative approach to solve the hardware (HW) and software (SW) partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open Multi-Processing. In a nutshell, the multi-core SMT-based BMC approach allows initializing many verification instances based on the number of available processing cores. Each instance checks for a different optimum value until the optimization problem is satisfied. We implement our algorithms on top of the Efficient SMT-Based Context-Bounded Model Checker (ESBMC) and also integrate the maximum satisfiability solver $\nu$Z tool into ESBMC. We compare all our approaches to another state-of-the-art optimization tool (Matlab). Experimental results show that there is no single optimization tool to solve all HW-SW partitioning benchmarks; however, Matlab and ESBMC-$\nu$Z are the most efficient ones to solve HW-SW partitioning problems, although multi-core ESBMC had a significant performance improvement in particular cases.
+We present an alternative approach to solve the hardware and software partitioning problem, which uses Bounded Model Checking (BMC) based on Satisfiability Modulo Theories (SMT) in conjunction with a multi-core support using Open Multi-Processing. In a nutshell, the multi-core SMT-based BMC approach allows initializing many verification instances based on the number of available processing cores. Each instance checks for a different optimum value until the optimization problem is satisfied. We implement our algorithms on top of the Efficient SMT-Based Context-Bounded Model Checker (ESBMC) and also integrate the maximum satisfiability solver $\nu$Z tool into ESBMC. We compare all our approaches to another state-of-the-art optimization tool (Matlab). Experimental results show that there is no single optimization tool to solve all hardware-software partitioning benchmarks; however, Matlab and ESBMC-$\nu$Z are the most efficient ones to solve hardware-software partitioning problems, although multi-core ESBMC had a significant performance improvement in particular cases.
 \end{abstract}
 
 %
@@ -551,7 +551,7 @@ This section is split into three parts. The setup is described in Section~\ref{E
 
 ESBMC $1$.$24$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system was used. A parallel approach of the ESBMC-SS, ESBMC-PS, ESBMC-PB were implemented in C$++$11. Version $2$.$0$.$1$ of Boolector SMT-solver~\cite{Brummayer2009} (freely available) was used as the default solver for ESBMC. For ILP and GA formulations, MATLAB R$2013$a from MathWorks with Parallel Computing Toolbox was used~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language, known as the state-of-the-art mathematical software~\cite{Tranquillo2011} and is widely used by the engineering community~\cite{Hong2010}. ESBMC-$\nu$Z as a built-in tool to Z3 was also used~\cite{Bjorner2014}. 
 
-All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $24$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times in GA (average taken) and just once in ESBMC, $\nu$Z, and ILP. The reason is that GA times are not so close as ESBMC, $\nu$Z, and ILP. A time out condition (TO) is reached when the verification time is longer than $7200$ seconds. A memory out (MO) occurs when the tool reaches $24$GB of memory. 
+All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $24$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times (average taken). Based on standard deviation and tolerance interval to each set of time sample, it was obtained a statistical confidence of $XX$\% to ESBMC, $92$\% to $\nu$Z, and $YY$\% to ILP. A time out condition (TO) is reached when the verification time is longer than $7200$ seconds. A memory out (MO) occurs when the tool reaches $24$GB of memory. 
 
 %----------------------------------------------
 \subsection{Description of Benchmarks}
@@ -671,8 +671,8 @@ The clustering benchmark seems to be the limit to test the ESBMC (described) imp
 
 %vZ
 \multirow{2}{*}{\textbf{ESBMC-$\nu$Z}}
-&  T(s)   &  0.2   &  0.3   &  0.6   &  109   &  112    &  TO   &  TO  \\
-&  Hp   &  15   &  47   &  31   &  241   &  241    &  -   &  -  \\
+&  T(s)   &  0.3   &  0.3   &  0.7   &  86.4   &  TO    &  TO   &  TO  \\
+&  Hp   &  15   &  47   &  31   &  241   &  -    &  -   &  -  \\
 
 \bottomrule[1.5pt]
 \end{tabular}
