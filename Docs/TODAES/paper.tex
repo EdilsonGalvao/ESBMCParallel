@@ -29,6 +29,8 @@
 \usepackage{cite}
 \usepackage{hyphenat}
 \usepackage[english]{babel}
+\usepackage[skip=\baselineskip]{caption}
+\captionsetup[lstlisting]{font={small,tt}}
 
 \hyphenation{ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams }
 
@@ -201,6 +203,8 @@ Optimization is the act of obtaining the best result ({\it i.e.}, the optimal so
 %In the design, construction, and maintenance of any engineering system, engineers have to make many technological and managerial decisions at several stages. The ultimate goal of all such decisions is either to minimize the effort required or to maximize the desired benefit. Because the effort required or the benefit desired in any practical situation can be expressed as a function of certain decision variables, optimization can be defined as the process of finding the conditions that give the maximum or minimum value of a function~\cite{Rao2009}.
 
 There is no single method available for efficiently solving all optimization problems~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq.~\ref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors or matrixes that describe the constraints
+
+
 \begin{equation}
 \label{linear-programming-problem}
   minf^t x \: such \; that  = 
@@ -211,6 +215,7 @@ There is no single method available for efficiently solving all optimization pro
   \end{cases}
 \end{equation}
 
+\vspace{5 mm}
 In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, {\it e.g.}, those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as $\nu$Z and ESBMC can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of $\nu$Z and ESBMC tools.
 
 %----------------------------------------------
@@ -234,10 +239,10 @@ In particular, there are two directives in ESBMC that can be used to guide a mod
 %----------------------------------------------
 
 Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consists of the C/C$++$ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles C/C$++$ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally, it generates two sets of equations (i.e.,\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3~\cite{DeMoura2008}, Boolector~\cite{Brummayer2009}, MathSAT~\cite{Barrett2011}, CVC4~\cite{Bozzano2005}, and Yices~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
-%
+
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=0.9]{figures/esbmc-arch-new.pdf} 
+  \includegraphics[scale=1.25]{figures/esbmc-arch-new.pdf} 
 	\caption{ESBMC Architecture.}
 	\label{ESBMC-Architecture}
 \end{figure}
@@ -253,13 +258,15 @@ In particular, OpenMP uses the fork-join model of parallel execution ~\cite{Open
 
 The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
-\begin{lstlisting}[caption=OpenMP basic sample.]
+\begin{lstlisting}[caption="OpenMP basic sample."]
+
 01.  int i;
 02.  #pragma omp parallel for
 03.  for (i = 0; i < 10; i++)
 04.      a[i] = 2 * i;
 \end{lstlisting}
 
+\vspace{3 mm}
 In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive is used.
 
 %----------------------------------------------
@@ -285,6 +292,7 @@ the function \textit{assert-soft} adds a restriction to $F$, which can also add 
 As an example, one can optimize $\left(K + W\right)$, with restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
 
 \begin{lstlisting}[caption=Example of SMT formula using $\nu$Z., label=vZ]
+
 1. (declare-const K Int) 
 2. (declare-const W Int)
 3. (assert (< K 2)) 
@@ -293,11 +301,13 @@ As an example, one can optimize $\left(K + W\right)$, with restrictions in $\lef
 6. (check-sat)
 \end{lstlisting}
 
+\vspace{3 mm}
 Fig.~\ref{vZ-Architecture} shows the $\nu$Z architecture. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, $\nu$Z invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, $\nu$Z combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', $\nu$Z invokes MaxSAT using multiple calls for its engine.
-%
+
+
 \begin{figure}[ht]
 	\centering
-  \includegraphics[width=0.49\textwidth, height=95px]{figures/vzArch.png} 
+  \includegraphics[scale=0.3]{figures/vzArch.png} 
 	\caption{$\nu$Z Architecture extracted from~\cite{Bjorner2015}.}
 	\label{vZ-Architecture}
 \end{figure}
@@ -326,27 +336,30 @@ The informal model can be described by five characteristics. First, there is onl
 The inputs of the problem are: a directed simple graph $ G = (V,E) $, called the task graph of the system, is necessary. The vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(s_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).
 
 Based on Arat\'o {\it et al.}~\cite{Arato2003}, is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $v_i \in V_h, v_j \in V_s $. The hardware cost of $P$ is given by Eq.~\ref{hardware-costs}
-%
+
 \begin{align}
 \label{hardware-costs}
 H_p  &= \Sigma_{v_i \in V_H} h_i
 \end{align}
-%
+
+\vspace{3 mm}
 \noindent and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given by Eq.~\ref{software-communication-costs}
-%
+
 %  S_p &= \Sigma_{\left(v_i \;\in\; V_s\right)} s_i + \Sigma_{(v_i,v_j) \in\; %E_p}\; c(V_i, V_j).
 \begin{align}
 \label{software-communication-costs}
   S_p &= \Sigma_{v_i \in V_s}\:s_i + \Sigma_{(v_i,v_j)\in\:E_p} c(V_i,V_j)
 \end{align}
 
+\vspace{3 mm}
 Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, i.e., to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal ({\it i.e.}, system with hard real-time constraints). Based on Equations~\ref{linear-programming-problem} and~\ref{software-communication-costs}, the constraints can be reformulated as 
-%
+
 \begin{align}
 \label{hw-sw-partitioning}
 s\left(1-x\right) + c|E_x| \leq S_0, 
 \end{align}
-%
+
+\vspace{3 mm}
 \noindent where $x$ represents the decision variable. Concerning the complexity of this problem, Arat\'o {\it et al.}~\cite{Arato2003} demonstrate that it is NP-Hard~\cite{Cormem}.
 
 %\comment{
@@ -383,6 +396,7 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
 \begin{lstlisting}[caption=Pseudocode describing sequential ESBMC., label={Pseudocode-describing-ESBMC}, mathescape]
+
 01. Initialize Variables 
 02. Declare number of nodes and edges
 03. Declare hardware cost of each node as array (h)
@@ -416,12 +430,12 @@ In the ESBMC algorithm, which is shown below, it is not necessary to add slack v
 
 Typically, ESBMC verification runs are performed only in a single-core. If the processor provides $8$ processing cores, only one is used for the verification and the others remain idle. Thus, there is a significant unused hardware resource during this process. 
 
-
 To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library~\cite{Dagum1998} is used in this present work as a front-end for ESBMC. Fig.~\ref{ESBMC-Multi-core} shows our first approach called ``Multi-core ESBMC''.
-%
+
+
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=0.75]{figures/esbmc-parallel.pdf} 
+  \includegraphics[scale=1.0]{figures/esbmc-ss.pdf} 
 	\caption{ESBMC-SS Approach.}
 	\label{ESBMC-Multi-core}
 \end{figure}
@@ -437,7 +451,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=0.75]{figures/esbmc-parallel.png} 
+  \includegraphics[scale=1.0]{figures/esbmc-ps.pdf} 
 	\caption{ESBMC-PS Approach. }
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
@@ -450,19 +464,19 @@ Consequently, the second approach aims to remove the idle time from the parallel
 %----------------------------------------------
 
 The most optimized approach applies a parallelized binary search to reduce the amount of steps to be executed in order to find the optimal solution. A controller is designed to return the step to be executed so that the number of verification runs are substantially reduced. The parallelized binary search accomplishes this by splitting the domain of possible values into intervals and then by returning the middle of the largest interval so that two new intervals are created.
-%
+
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=0.75]{figures/esbmc-parallel-Controler.png} 
+  \includegraphics[scale=1.0]{figures/esbmc-pb.pdf} 
 	\caption{ESBMC-PB Approach.}
 	\label{ESBMC-Binary-Approach}
 \end{figure}
 
 As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-Step-Calculation}), we firstly create an initial interval from $1$ to $20$. When the next available core asks for a step to be executed, the controller obtains the largest interval, {\it i.e.}, $\left[1,20\right]$, divides it by two, which creates two new intervals ({\it i.e.}, $\left[1,9\right]$ and $\left[11,20\right]$), and returns the middle of the original interval ({\it i.e.}, $10$). The controller also checks whether an interval has less than two elements to avoid creating empty or invalid intervals.
-%
+
 \begin{figure}[ht]
 	\centering
-  \includegraphics[width=0.49\textwidth, height=75px]{figures/Fig4.png}
+  \includegraphics[scale=1.0, height=75px]{figures/Fig4.png}
 	\caption{Binary Step Calculation.}
 	\label{Binary-Step-Calculation}
 \end{figure}
@@ -472,6 +486,7 @@ Note that there might gaps between steps, which are produced by the customized b
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
 \begin{lstlisting}[caption=Steps Calculation using Intervals.,label=Steps-Calculation-using-Intervals]
+
 01. GetNextStep(){
 02.  int largestChunk = -1;
 03.  chunk largest;
@@ -493,10 +508,12 @@ Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized b
 19. }
 \end{lstlisting}
 
+\vspace{3 mm}
 Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from the line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
 \begin{lstlisting}[caption=Worker sample.,label=worker-sample]
+
 01. step = controller.GetNextStep();
 02. int pid = ExecuteStep(step);
 03. while(isRunning(pid)){
@@ -505,6 +522,7 @@ From lines $4$ to $9$, the algorithm finds the largest interval. Then, from the 
 06. }     
 \end{lstlisting}
 
+\vspace{3 mm}
 Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
 %----------------------------------------------
@@ -517,6 +535,7 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
 \begin{lstlisting}[caption=Pseudocode describing $\nu$Z.,label=vZ-pseudocode, mathescape]
+
 01.#Initialize Variables
 02.  Create vZ context 
 03.  Create binary vector (x)
@@ -535,7 +554,6 @@ The arithmetic expressions from lines $10$ to $12$ represent the constraints des
 16.  Check Model
 17.  Print Result
 \end{lstlisting}
-
 
 %----------------------------------------------
 \section{Experimental Evaluation}
@@ -561,6 +579,7 @@ All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-
 To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{Mann2007} were used, as shown in Table~\ref{Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from Mann {\it et al.}~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
 \begin{table}[h]
+\centering
 \caption {Description of Benchmarks.}
 \small
 \sffamily\footnotesize
@@ -604,7 +623,6 @@ In contrast to ESBMC-$\nu$Z, ILP solves $6$ out of $7$ benchmarks. When ILP prod
 Note further that all multi-core ESBMC implementations produce better results than the sequential one. In particular, ESBMC-PB implementation outperforms all other multi-core ESBMC approaches, where its performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$ times faster than ILP and $1$.$89$ times slower than ESBMC-$\nu$Z. However, when the amount of nodes is around $30$, ESBMC-PB does not outperform ESBMC-$\nu$Z and ILP tools. When analyzing all benchmarks, ESBMC-PB produces TO or MO for RC$6$, Fuzzy, and Mars; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
 
 %When ESBMC-$\nu$Z explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$8$ ({\it e.g.}, Clustering). 
-
 
 The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
 
