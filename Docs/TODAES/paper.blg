@@ -1,0 +1,88 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper.aux
+The style file: ACM-Reference-Format-Journals.bst
+I found no \bibdata command---while reading file paper.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--I didn't find a database entry for "Arato2003"
+Warning--I didn't find a database entry for "Mann2007"
+Warning--I didn't find a database entry for "Trindade2015"
+Warning--I didn't find a database entry for "Trindade2016"
+Warning--I didn't find a database entry for "Bjorner2015"
+Warning--I didn't find a database entry for "Tang2009"
+Warning--I didn't find a database entry for "OpenMP1998"
+Warning--I didn't find a database entry for "Cordeiro2012"
+Warning--I didn't find a database entry for "Rao2009"
+Warning--I didn't find a database entry for "Biere2009"
+Warning--I didn't find a database entry for "Armando2009"
+Warning--I didn't find a database entry for "Ganai2006"
+Warning--I didn't find a database entry for "Ramalho2013"
+Warning--I didn't find a database entry for "DeMoura2008"
+Warning--I didn't find a database entry for "Brummayer2009"
+Warning--I didn't find a database entry for "Barrett2011"
+Warning--I didn't find a database entry for "Bozzano2005"
+Warning--I didn't find a database entry for "Dutertre2014"
+Warning--I didn't find a database entry for "Wu2014"
+Warning--I didn't find a database entry for "Bjorner2014"
+Warning--I didn't find a database entry for "Federica2008"
+Warning--I didn't find a database entry for "NarodytskaN"
+Warning--I didn't find a database entry for "Barth1995"
+Warning--I didn't find a database entry for "Vasco2005"
+Warning--I didn't find a database entry for "Z3API"
+Warning--I didn't find a database entry for "Teich2012"
+Warning--I didn't find a database entry for "Cormem"
+Warning--I didn't find a database entry for "Dagum1998"
+Warning--I didn't find a database entry for "TheMathWorks2013"
+Warning--I didn't find a database entry for "Tranquillo2011"
+Warning--I didn't find a database entry for "Hong2010"
+Warning--I didn't find a database entry for "Guthaus2001"
+Warning--I didn't find a database entry for "Arato2005"
+Warning--I didn't find a database entry for "Holzmann2011"
+Warning--I didn't find a database entry for "Holzmann2012"
+Warning--I didn't find a database entry for "Wintersteiger2009"
+Warning--I didn't find a database entry for "Pavlinovic2015"
+Warning--I didn't find a database entry for "Patrick2015"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 0 entries,
+            5290 wiz_defined-function locations,
+            1294 strings with 14926 characters,
+and the built_in function-call counts, 83 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 0
+:= -- 8
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 1
+empty$ -- 1
+format.name$ -- 0
+if$ -- 2
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 34
+num.names$ -- 0
+pop$ -- 1
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1
+stack$ -- 0
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 0
+width$ -- 0
+write$ -- 33
+(There was 1 error message)
