@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 09:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 09:34
 entering extended mode
 **paper.tex
 ("C:\Users\Lucas\Google Drive\repository\Alessandro\ESBMCParallel\Docs\TODAES\paper.tex"
@@ -785,74 +785,61 @@ File: figures/vzArch.png Graphic file (type png)
 Package pdftex.def Info: figures/vzArch.png used on input line 317.
 (pdftex.def)             Requested size: 357.43813pt x 121.05318pt.
  [5 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/vzArch.png>] [6] [7]
-<figures/esbmc-ss.pdf, id=68, 315.8256pt x 256.0748pt>
+<figures/esbmc-ss.pdf, id=67, 315.8256pt x 256.0748pt>
 File: figures/esbmc-ss.pdf Graphic file (type pdf)
  <use figures/esbmc-ss.pdf>
-Package pdftex.def Info: figures/esbmc-ss.pdf used on input line 443.
+Package pdftex.def Info: figures/esbmc-ss.pdf used on input line 442.
 (pdftex.def)             Requested size: 284.24042pt x 230.46516pt.
  [8 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-ss.pdf>]
 <figures/esbmc-ps.pdf, id=99, 315.17741pt x 247.41946pt>
 File: figures/esbmc-ps.pdf Graphic file (type pdf)
  <use figures/esbmc-ps.pdf>
-Package pdftex.def Info: figures/esbmc-ps.pdf used on input line 459.
+Package pdftex.def Info: figures/esbmc-ps.pdf used on input line 458.
 (pdftex.def)             Requested size: 283.65704pt x 222.67545pt.
-
-<figures/esbmc-pb.pdf, id=100, 315.17741pt x 255.95615pt>
+ [9 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-ps.pdf>]
+<figures/esbmc-pb.pdf, id=124, 315.17741pt x 255.95615pt>
 File: figures/esbmc-pb.pdf Graphic file (type pdf)
  <use figures/esbmc-pb.pdf>
-Package pdftex.def Info: figures/esbmc-pb.pdf used on input line 475.
+Package pdftex.def Info: figures/esbmc-pb.pdf used on input line 474.
 (pdftex.def)             Requested size: 283.65704pt x 230.35838pt.
 
-<figures/Fig4.png, id=101, 1447.4075pt x 286.06876pt>
+<figures/Fig4.png, id=125, 1447.4075pt x 286.06876pt>
 File: figures/Fig4.png Graphic file (type png)
  <use figures/Fig4.png>
-Package pdftex.def Info: figures/Fig4.png used on input line 484.
+Package pdftex.def Info: figures/Fig4.png used on input line 483.
 (pdftex.def)             Requested size: 1447.40399pt x 286.06805pt.
- [9 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-ps.pdf>] [10 <C:/Users/Lu
-cas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-pb.pdf> <C:/Users/Lucas/Google Drive/repo
-sitory/Alessandro/ESBMCParallel/Docs/TODAES/figures/Fig4.png>] [11]
-Overfull \hbox (1.8965pt too wide) in paragraph at lines 592--592
+ [10 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-pb.pdf> <C:/Users/Lucas/
+Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/Fig4.png>] [11] [12]
+Overfull \hbox (1.8965pt too wide) in paragraph at lines 591--591
 []|\OT1/phv/b/n/9 Nodes| 
  []
 
 
-Overfull \hbox (1.49144pt too wide) in paragraph at lines 592--592
+Overfull \hbox (1.49144pt too wide) in paragraph at lines 591--591
 []|\OT1/phv/b/n/9 Edges| 
  []
 
 
-Overfull \hbox (13.34946pt too wide) in paragraph at lines 589--624
+Overfull \hbox (13.34946pt too wide) in paragraph at lines 588--623
  [][] 
  []
 
+[13] [14]
+Underfull \vbox (badness 1789) has occurred while \output is active []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-
-Underfull \vbox (badness 8000) has occurred while \output is active []
-
- [12]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13] [14]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [15]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [16]
+ [15] [16]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17] [18]
 ("C:\Users\Lucas\Google Drive\repository\Alessandro\ESBMCParallel\Docs\TODAES\paper.aux") ) 
 Here is how much of TeX's memory you used:
- 9921 strings out of 493921
- 136616 string characters out of 3147282
- 551443 words of memory out of 3000000
- 13005 multiletter control sequences out of 15000+200000
+ 9922 strings out of 493921
+ 136623 string characters out of 3147282
+ 553239 words of memory out of 3000000
+ 13006 multiletter control sequences out of 15000+200000
  29335 words of font info for 66 fonts, out of 3000000 for 9000
  878 hyphenation exceptions out of 8191
- 53i,13n,92p,1327b,1693s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,13n,92p,1333b,1692s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/
 fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.
@@ -868,7 +855,7 @@ c/amsfonts/cm/cmtt9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uh
 nts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/urw/ncntrsbk/uncb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncr8a.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncri8a.pfb>
-Output written on paper.pdf (18 pages, 1966089 bytes).
+Output written on paper.pdf (18 pages, 1967430 bytes).
 PDF statistics:
  249 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
