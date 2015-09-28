@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 09:34
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 09:42
 entering extended mode
 **paper.tex
 ("C:\Users\Lucas\Google Drive\repository\Alessandro\ESBMCParallel\Docs\TODAES\paper.tex"
@@ -824,7 +824,10 @@ Overfull \hbox (13.34946pt too wide) in paragraph at lines 588--623
  [][] 
  []
 
-[13] [14]
+[13]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [14]
 Underfull \vbox (badness 1789) has occurred while \output is active []
 
  [15] [16]
@@ -835,7 +838,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Here is how much of TeX's memory you used:
  9922 strings out of 493921
  136623 string characters out of 3147282
- 553239 words of memory out of 3000000
+ 551306 words of memory out of 3000000
  13006 multiletter control sequences out of 15000+200000
  29335 words of font info for 66 fonts, out of 3000000 for 9000
  878 hyphenation exceptions out of 8191
@@ -855,7 +858,7 @@ c/amsfonts/cm/cmtt9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uh
 nts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/urw/ncntrsbk/uncb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncr8a.pfb><C:/Progra
 m Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncri8a.pfb>
-Output written on paper.pdf (18 pages, 1967430 bytes).
+Output written on paper.pdf (18 pages, 1967535 bytes).
 PDF statistics:
  249 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
