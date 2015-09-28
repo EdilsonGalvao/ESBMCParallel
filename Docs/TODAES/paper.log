@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 08:29
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 08:40
 entering extended mode
 **paper.tex
 ("C:\Users\Lucas\Google Drive\repository\Alessandro\ESBMCParallel\Docs\TODAES\paper.tex"
@@ -754,13 +754,12 @@ LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <10> not available
  [2]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
 (Font)              Font shape `OT1/phv/m/sl' tried instead on input line 243.
- <figures/esbmc-arch-new.pdf, id=18, 257.4974pt x 99.58464pt>
+ [3] <figures/esbmc-arch-new.pdf, id=26, 257.4974pt x 99.58464pt>
 File: figures/esbmc-arch-new.pdf Graphic file (type pdf)
 
 <use figures/esbmc-arch-new.pdf>
 Package pdftex.def Info: figures/esbmc-arch-new.pdf used on input line 247.
 (pdftex.def)             Requested size: 321.87096pt x 124.48047pt.
- [3]
 LaTeX Font Info:    Try loading font information for OML+pnc on input line 267.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlpnc.fd"
 File: omlpnc.fd 
@@ -860,7 +859,7 @@ pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program
 ic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /urw/ncntrsbk/uncb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncr8a.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/urw/ncntrsbk/uncri8a.pfb>
-Output written on paper.pdf (18 pages, 1943352 bytes).
+Output written on paper.pdf (18 pages, 1943372 bytes).
 PDF statistics:
  241 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
