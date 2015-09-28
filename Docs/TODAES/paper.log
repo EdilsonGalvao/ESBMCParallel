@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 08:40
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.3.29)  28 SEP 2015 09:12
 entering extended mode
 **paper.tex
 ("C:\Users\Lucas\Google Drive\repository\Alessandro\ESBMCParallel\Docs\TODAES\paper.tex"
@@ -18,7 +18,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 ACM, Production Font style: 2010/06/28 by Aptara
 
-Using ACM, TECS option: 2010/05/04 by Aptara
+Using ACM, TODAES option: 2010/05/04 by Aptara
 
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
 Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
@@ -709,39 +709,46 @@ Package caption Warning: \caption will not be redefined since it's already
 See the caption package documentation for explanation.
 
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+lasy on input line 94.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 104.
+ ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ulasy.fd"
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Try loading font information for OMS+pnc on input line 157.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspnc.fd"
+LaTeX Font Info:    Try loading font information for OMS+pnc on input line 167.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omspnc.fd"
 File: omspnc.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pnc/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 157.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 167.
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--162
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--162
+Underfull \hbox (badness 10000) in paragraph at lines 165--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 155--162
+Underfull \hbox (badness 10000) in paragraph at lines 165--172
 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 164.
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--172
+
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 174.
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
 File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 164.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 174.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
-(Font)              Font shape `OT1/phv/b/n' tried instead on input line 168.
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 178.
 
 Overfull \vbox (72.27pt too high) has occurred while \output is active []
 
@@ -750,65 +757,60 @@ Non-PDF special ignored!
 
 ]
 LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <10> not available
-(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 184.
+(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 194.
  [2]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <9> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 243.
- [3] <figures/esbmc-arch-new.pdf, id=26, 257.4974pt x 99.58464pt>
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 248.
+ <figures/esbmc-arch-new.pdf, id=18, 257.4974pt x 99.58464pt>
 File: figures/esbmc-arch-new.pdf Graphic file (type pdf)
 
 <use figures/esbmc-arch-new.pdf>
-Package pdftex.def Info: figures/esbmc-arch-new.pdf used on input line 247.
-(pdftex.def)             Requested size: 321.87096pt x 124.48047pt.
-LaTeX Font Info:    Try loading font information for OML+pnc on input line 267.
+Package pdftex.def Info: figures/esbmc-arch-new.pdf used on input line 254.
+(pdftex.def)             Requested size: 257.49677pt x 99.58438pt.
+ [3]
+LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <9> not available
+(Font)              Font shape `OT1/pnc/b/n' tried instead on input line 271.
+LaTeX Font Info:    Try loading font information for OML+pnc on input line 273.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omlpnc.fd"
 File: omlpnc.fd 
 )
-LaTeX Font Info:    Font shape `OML/pnc/m/n' in size <10> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 267.
-LaTeX Font Info:    Font shape `OMS/pnc/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 268.
+LaTeX Font Info:    Font shape `OML/pnc/m/n' in size <9> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 273.
+LaTeX Font Info:    Font shape `OMS/pnc/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 274.
  [4 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-arch-new.pdf>]
-Underfull \hbox (badness 1067) in paragraph at lines 294--295
-[]\OT1/pnc/m/n/10 As an ex-am-ple, one can op-ti-mize $[]$, with re-stric-tions in $[]$ and
- []
-
-<figures/vzArch.png, id=52, 1191.45125pt x 403.5075pt>
+<figures/vzArch.png, id=53, 1191.45125pt x 403.5075pt>
 File: figures/vzArch.png Graphic file (type png)
  <use figures/vzArch.png>
-Package pdftex.def Info: figures/vzArch.png used on input line 312.
+Package pdftex.def Info: figures/vzArch.png used on input line 317.
 (pdftex.def)             Requested size: 357.43813pt x 121.05318pt.
  [5 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/vzArch.png>] [6] [7]
-<figures/esbmc-ss.pdf, id=66, 315.8256pt x 256.0748pt>
+<figures/esbmc-ss.pdf, id=68, 315.8256pt x 256.0748pt>
 File: figures/esbmc-ss.pdf Graphic file (type pdf)
  <use figures/esbmc-ss.pdf>
-Package pdftex.def Info: figures/esbmc-ss.pdf used on input line 440.
-(pdftex.def)             Requested size: 315.82483pt x 256.07416pt.
+Package pdftex.def Info: figures/esbmc-ss.pdf used on input line 443.
+(pdftex.def)             Requested size: 284.24042pt x 230.46516pt.
  [8 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-ss.pdf>]
-<figures/esbmc-ps.pdf, id=97, 315.17741pt x 247.41946pt>
+<figures/esbmc-ps.pdf, id=99, 315.17741pt x 247.41946pt>
 File: figures/esbmc-ps.pdf Graphic file (type pdf)
  <use figures/esbmc-ps.pdf>
-Package pdftex.def Info: figures/esbmc-ps.pdf used on input line 456.
-(pdftex.def)             Requested size: 315.17664pt x 247.41885pt.
- [9 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-ps.pdf>]
-<figures/esbmc-pb.pdf, id=122, 315.17741pt x 255.95615pt>
+Package pdftex.def Info: figures/esbmc-ps.pdf used on input line 459.
+(pdftex.def)             Requested size: 283.65704pt x 222.67545pt.
+
+<figures/esbmc-pb.pdf, id=100, 315.17741pt x 255.95615pt>
 File: figures/esbmc-pb.pdf Graphic file (type pdf)
  <use figures/esbmc-pb.pdf>
-Package pdftex.def Info: figures/esbmc-pb.pdf used on input line 472.
-(pdftex.def)             Requested size: 315.17664pt x 255.9555pt.
+Package pdftex.def Info: figures/esbmc-pb.pdf used on input line 475.
+(pdftex.def)             Requested size: 283.65704pt x 230.35838pt.
 
-<figures/Fig4.png, id=123, 1447.4075pt x 286.06876pt>
+<figures/Fig4.png, id=101, 1447.4075pt x 286.06876pt>
 File: figures/Fig4.png Graphic file (type png)
  <use figures/Fig4.png>
-Package pdftex.def Info: figures/Fig4.png used on input line 481.
+Package pdftex.def Info: figures/Fig4.png used on input line 484.
 (pdftex.def)             Requested size: 1447.40399pt x 286.06805pt.
- [10 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-pb.pdf> <C:/Users/Lucas/
-Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/Fig4.png>]
-Overfull \hbox (54.00458pt too wide) in paragraph at lines 502--503
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-[11] [12]
+ [9 <C:/Users/Lucas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-ps.pdf>] [10 <C:/Users/Lu
+cas/Google Drive/repository/Alessandro/ESBMCParallel/Docs/TODAES/figures/esbmc-pb.pdf> <C:/Users/Lucas/Google Drive/repo
+sitory/Alessandro/ESBMCParallel/Docs/TODAES/figures/Fig4.png>] [11]
 Overfull \hbox (1.8965pt too wide) in paragraph at lines 592--592
 []|\OT1/phv/b/n/9 Nodes| 
  []
@@ -823,11 +825,17 @@ Overfull \hbox (13.34946pt too wide) in paragraph at lines 589--624
  [][] 
  []
 
-[13]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 8000) has occurred while \output is active []
+
+ [12]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [14]
-Underfull \vbox (badness 1789) has occurred while \output is active []
+ [13] [14]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -838,30 +846,31 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [17] [18]
 ("C:\Users\Lucas\Google Drive\repository\Alessandro\ESBMCParallel\Docs\TODAES\paper.aux") ) 
 Here is how much of TeX's memory you used:
- 9573 strings out of 493921
- 132546 string characters out of 3147282
- 551218 words of memory out of 3000000
- 12665 multiletter control sequences out of 15000+200000
- 26738 words of font info for 62 fonts, out of 3000000 for 9000
+ 9921 strings out of 493921
+ 136616 string characters out of 3147282
+ 551443 words of memory out of 3000000
+ 13005 multiletter control sequences out of 15000+200000
+ 29335 words of font info for 66 fonts, out of 3000000 for 9000
  878 hyphenation exceptions out of 8191
- 53i,13n,92p,1327b,1624s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,13n,92p,1327b,1693s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/
 fonts/enc/dvips/fontname/8r.enc}<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files
 /MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
-c/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2
-.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt9.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvet
-ic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/urw/ncntrsbk/uncb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncr8a.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/urw/ncntrsbk/uncri8a.pfb>
-Output written on paper.pdf (18 pages, 1943372 bytes).
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/cm/cmtt9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/urw/ncntrsbk/uncb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncr8a.pfb><C:/Progra
+m Files/MiKTeX 2.9/fonts/type1/urw/ncntrsbk/uncri8a.pfb>
+Output written on paper.pdf (18 pages, 1966089 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
+ 249 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

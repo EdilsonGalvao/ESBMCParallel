@@ -11,7 +11,7 @@
 %
 % For tracking purposes => this is v1.3 - March 2012
 
-\documentclass[prodmode,acmtecs]{acmsmall} % Aptara syntax
+\documentclass[prodmode,acmtodaes]{acmsmall} % Aptara syntax
 
 \usepackage{color}
 \usepackage{multirow}
@@ -62,6 +62,16 @@
 
 % Document starts
 \begin{document}
+
+\lstset{language=C,basicstyle=\small}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+\lstset{tabsize=2}
+\lstset{firstnumber=1}
+\lstset{frame=single}
+\lstset{
+  language={C},
+  morekeywords={assert,uchar}
+}
 
 % Page heads
 \markboth{A. Trindade et al.}{Multi-Core Model Checking and Maximum Satisfiability Applied to HW/SW Partitioning}
@@ -201,9 +211,7 @@ The HW-SW partitioning problem is typically represented as a set of constraints 
 %----------------------------------------------
 
 Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances~\cite{Rao2009}. 
-
 %In the design, construction, and maintenance of any engineering system, engineers have to make many technological and managerial decisions at several stages. The ultimate goal of all such decisions is either to minimize the effort required or to maximize the desired benefit. Because the effort required or the benefit desired in any practical situation can be expressed as a function of certain decision variables, optimization can be defined as the process of finding the conditions that give the maximum or minimum value of a function~\cite{Rao2009}.
-
 There is no single method available for efficiently solving all optimization problems~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq.~\ref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors or matrixes that describe the constraints
 
 
@@ -218,33 +226,32 @@ There is no single method available for efficiently solving all optimization pro
 \end{equation}
 
 \vspace{5 mm}
-In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, {\it e.g.}, those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as $\nu$Z and ESBMC can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of $\nu$Z and ESBMC tools.
+In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, {\it e.g.}, those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as ESBMC and $\nu$Z can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of ESBMC and $\nu$Z tools.
 
 %----------------------------------------------
 \subsection{Bounded Model Checking with ESBMC}
 \label{Bounded-Model-Checking-with-ESBMC}
 %----------------------------------------------
 
-%Model checking refers to algorithms for exploring the state space of a transition system to determine if it obeys a speciﬁcation of its intended behavior~\cite{Baier2008}, ~\cite{Clarke2009}. These algorithms can perform exhaustive exploration in a highly automatic way and, thus, have attracted much interest in industry. However, model-checking has been held back by the state explosion problem, in which the number of states in a system grows exponentially in the number of system components ~\cite{Biere2009}. Much research has been devoted to mitigate this problem.
-
-Among the recent model checking techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in~\cite{Biere2009}. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem. 
+Among the recent model checking techniques, there is one that combines model checking with satisﬁability solving. This technique, known as bounded model checking (BMC), does a very fast exploration of the state space, and for some types of problems, it offers large performance improvements over previous approaches, as shown in~\cite{Biere2009}. In particular, BMC based on Boolean Satisfiability (SAT) has been introduced as a complementary technique to binary decision diagrams for alleviating the state explosion problem~\cite{Clarke2001}. 
 
 The basic idea of BMC is to check the negation of a given property at a given depth: given a transition system $M$, a property $\phi$, and a bound $k$, BMC unrolls the system $k$ times and translates it into a verification condition (VC) $\psi$  such that $\psi$ is satisfiable if and only if $\phi$ has a counterexample of depth $k$ or less~\cite{Biere2009}. To cope with increasing software complexity, SMT solvers can be used as back-ends for solving the generated VCs, as shown in~\cite{Cordeiro2012},~\cite{Armando2009},~\cite{Ganai2006}. 
 
 In this study, ESBMC has been used as a BMC tool to solve HW-SW partitioning problems~\cite{Cordeiro2012}. 
-%According to Cordeiro {\it et al.}~\cite{Cordeiro2012},\cite{Cordeiro2011}, SMT-based model checking can be used to verify single- and multi-threaded software in embedded systems. In Ramalho {\it et al.}~\cite{Ramalho2013}, ESBMC can also be used to model check C$++$ software based on SMT solvers. In Trindade {\it et al.}~\cite{Trindade2015},\cite{Trindade2016}, it was shown that it is possible to use ESBMC also as an optimization tool.}
-In particular, there are two directives in ESBMC that can be used to guide a model checker to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
+In particular, there are two directives in ESBMC that can be used to guide it to solve an optimization problem: ASSUME and ASSERT. The directive ASSUME is responsible for ensuring the compliance of constraints (software costs), and the directive ASSERT controls the halt condition (minimum hardware cost). Then, with some C/C++ code, it is possible to guide ESBMC to solve optimization problems.
 
 %----------------------------------------------
 \subsubsection{ESBMC Architecture}
 \label{ESBMCArchitecture}
 %----------------------------------------------
 
-Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consists of the C/C$++$ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles C/C$++$ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally, it generates two sets of equations (i.e.,\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. The main factor for ESBMC to use only a single-core relies on its back-end (i.e., SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3~\cite{DeMoura2008}, Boolector~\cite{Brummayer2009}, MathSAT~\cite{Barrett2011}, CVC4~\cite{Bozzano2005}, and Yices~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
+Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consists of the C/C$++$ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles C/C$++$ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally, it generates two sets of equations (i.e.,\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. 
+
+The main factor for ESBMC to use only a single-core relies on its back-end ({\it i.e.}, SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3~\cite{DeMoura2008}, Boolector~\cite{Brummayer2009}, MathSAT~\cite{Barrett2011}, CVC4~\cite{Bozzano2005}, and Yices~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
 
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=1.25]{figures/esbmc-arch-new.pdf} 
+  \includegraphics[scale=1]{figures/esbmc-arch-new.pdf} 
 	\caption{ESBMC Architecture.}
 	\label{ESBMC-Architecture}
 \end{figure}
@@ -254,22 +261,21 @@ Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consis
 \label{OpenMP}
 %----------------------------------------------
 
-The OpenMP is a set of directives for parallel programming that augments C/C$++$ and Fortran languages. OpenMP supports most processor architectures and operating systems, {\it e.g.}, Solaris, AIX, HP-UX, Linux, Mac OS X, and Windows. OpenMP uses a portable and very robust model that makes easy for programmers to develop parallel applications for a variety of platforms. 
+The OpenMP is a set of directives for parallel programming that augments C/C$++$ and Fortran languages~\cite{OpenMP1998}. OpenMP supports most processor architectures and operating systems, {\it e.g.}, Solaris, AIX, HP-UX, Linux, Mac OS X, and Windows. OpenMP uses a portable and very robust model to facilitate the development of parallel applications for a variety of platforms. 
 
-In particular, OpenMP uses the fork-join model of parallel execution ~\cite{OpenMP1998}. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes ({\it i.e.}, the API waits until all threads terminate), then the main procedure returns to the single-threaded execution mode~\cite{Wu2014}.
+In particular, OpenMP uses the \textit{fork-join} model of parallel execution~\cite{OpenMP1998}. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes ({\it i.e.}, the API waits until all threads terminate), then the main procedure returns to the single-threaded execution mode~\cite{Wu2014}.
 
 The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
-\begin{lstlisting}[caption="OpenMP basic sample."]
-
-01.  int i;
-02.  #pragma omp parallel for
-03.  for (i = 0; i < 10; i++)
-04.      a[i] = 2 * i;
+\begin{lstlisting}[caption=OpenMP basic example.]
+int i;
+#pragma omp parallel for
+for (i = 0; i < 10; i++)
+  a[i] = 2 * i;
 \end{lstlisting}
 
 \vspace{3 mm}
-In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive is used.
+In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive is routinely used.
 
 %----------------------------------------------
 \subsection{Solving Optimization Problems with $\nu$Z}
@@ -291,16 +297,15 @@ this function informs the solver that a given variable $T$ should be minimized, 
 the function \textit{assert-soft} adds a restriction to $F$, which can also add a weight $n$; the default value is $1$.}
 \end{itemize}
 
-As an example, one can optimize $\left(K + W\right)$, with restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
+As an example, one can optimize $\left(K + W\right)$, which is subject to restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
 
 \begin{lstlisting}[caption=Example of SMT formula using $\nu$Z., label=vZ]
-
-1. (declare-const K Int) 
-2. (declare-const W Int)
-3. (assert (< K 2)) 
-4. (assert (< (- W K) 1))
-5. (maximize (+ K W)) 
-6. (check-sat)
+(declare-const K Int) 
+(declare-const W Int)
+(assert (< K 2)) 
+(assert (< (- W K) 1))
+(maximize (+ K W)) 
+(check-sat)
 \end{lstlisting}
 
 \vspace{3 mm}
@@ -398,24 +403,23 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
 \begin{lstlisting}[caption=Pseudocode describing sequential ESBMC., label={Pseudocode-describing-ESBMC}, mathescape]
-
-01. Initialize Variables 
-02. Declare number of nodes and edges
-03. Declare hardware cost of each node as array (h)
-04. Declare software cost of each node as array (s)
-05. Declare communication cost of each edge (c)
-06. Declare the initial software cost of ($S_{0}$)
-07. Declare transposed incidence matrix graph G (E)
-08. Define the solutions variable ($X_{i}$ ) as Boolean
-09. main {
-10.  for TipH = 0 to Hmax do {
-11.   populate $X_{i}$ with nondeterministic/test values
-12.   Calculate s(1-x)+c|$E_{x}$| and store at variable
-13.   Requirement isued by Assume (Variable <= $S_{0}$)
-14.   Calculate Hp cost Based on value tested of $X_{i}$
-15.   Violation check with Assert($H_{p}$ > TipH)
-16.  }
-17. }
+ Initialize Variables 
+ Declare number of nodes and edges
+ Declare hardware cost of each node as array (h)
+ Declare software cost of each node as array (s)
+ Declare communication cost of each edge (c)
+ Declare the initial software cost of ($S_{0}$)
+ Declare transposed incidence matrix graph G (E)
+ Define the solutions variable ($X_{i}$ ) as Boolean
+ main {
+  for TipH = 0 to Hmax do {
+   populate $X_{i}$ with nondeterministic/test values
+   Calculate s(1-x)+c|$E_{x}$| and store at variable
+   Requirement isued by Assume (Variable <= $S_{0}$)
+   Calculate Hp cost Based on value tested of $X_{i}$
+   Violation check with Assert($H_{p}$ > TipH)
+  }
+ }
 \end{lstlisting}
 
 %In the multi-core ESBMC algorithm, the only difference is the fact that the value of $ TipH $ and its range is not declared in the algorithm, %as shown in ESBMC Pseudocode. The proposed approach is invoked for each test problem, as follows:
@@ -434,10 +438,9 @@ Typically, ESBMC verification runs are performed only in a single-core. If the p
 
 To optimize the CPU resources utilization without modifying the underlying SMT Solver, the Open Multi-Processing (OpenMP) library~\cite{Dagum1998} is used in this present work as a front-end for ESBMC. Fig.~\ref{ESBMC-Multi-core} shows our first approach called ``Multi-core ESBMC''.
 
-
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=1.0]{figures/esbmc-ss.pdf} 
+  \includegraphics[scale=0.9]{figures/esbmc-ss.pdf} 
 	\caption{ESBMC-SS Approach.}
 	\label{ESBMC-Multi-core}
 \end{figure}
@@ -453,7 +456,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=1.0]{figures/esbmc-ps.pdf} 
+  \includegraphics[scale=0.9]{figures/esbmc-ps.pdf} 
 	\caption{ESBMC-PS Approach. }
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
@@ -469,7 +472,7 @@ The most optimized approach applies a parallelized binary search to reduce the a
 
 \begin{figure}[ht]
 	\centering
-  \includegraphics[scale=1.0]{figures/esbmc-pb.pdf} 
+  \includegraphics[scale=0.9]{figures/esbmc-pb.pdf} 
 	\caption{ESBMC-PB Approach.}
 	\label{ESBMC-Binary-Approach}
 \end{figure}
@@ -488,26 +491,25 @@ Note that there might gaps between steps, which are produced by the customized b
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
 \begin{lstlisting}[caption=Steps Calculation using Intervals.,label=Steps-Calculation-using-Intervals]
-
-01. GetNextStep(){
-02.  int largestChunk = -1;
-03.  chunk largest;
-04.  for each(chunk in chunks){
-05.     if(chunk.right - chunk.left > largestChunk){
-06.           largestChunk = chunk.right - chunk.left;
-07.           largest = chunk;
-08.     }
-09.   }	
-10.   chunks.remove(largest);	
-11.   int median = largest.left + floor((largest.right - largest.left) / 2)
-12.   if(median > 0){
-13.      if(largest.right - largest.left > 1)
-14.         chunks.add(new chunk(largest.left, median - 1));	
-15.      if(largest.right != largest.left)
-16.         chunks.add(new chunk(median + 1, largest.right);
-17.    }
-18.   return median;
-19. }
+ GetNextStep(){
+  int largestChunk = -1;
+  chunk largest;
+  for each(chunk in chunks){
+     if(chunk.right - chunk.left > largestChunk){
+           largestChunk = chunk.right - chunk.left;
+           largest = chunk;
+     }
+   }	
+   chunks.remove(largest);	
+   int median = largest.left + floor((largest.right - largest.left) / 2)
+   if(median > 0){
+      if(largest.right - largest.left > 1)
+         chunks.add(new chunk(largest.left, median - 1));	
+      if(largest.right != largest.left)
+         chunks.add(new chunk(median + 1, largest.right);
+    }
+   return median;
+ }
 \end{lstlisting}
 
 \vspace{3 mm}
@@ -515,13 +517,12 @@ Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each 
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from the line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
 \begin{lstlisting}[caption=Worker sample.,label=worker-sample]
-
-01. step = controller.GetNextStep();
-02. int pid = ExecuteStep(step);
-03. while(isRunning(pid)){
-04.   if(!controller.isNeeded(step))
-05.    kill(pid);
-06. }     
+ step = controller.GetNextStep();
+ int pid = ExecuteStep(step);
+ while(isRunning(pid)){
+   if(!controller.isNeeded(step))
+    kill(pid);
+ }     
 \end{lstlisting}
 
 \vspace{3 mm}
@@ -537,24 +538,23 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to $\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to $\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by $\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
 \begin{lstlisting}[caption=Pseudocode describing $\nu$Z.,label=vZ-pseudocode, mathescape]
-
-01.#Initialize Variables
-02.  Create vZ context 
-03.  Create binary vector (x)
-04.  Declare number of nodes, edges and $S_{0}$
-05.  Declare hardware cost of each node as array (h) 
-06.  Declare software cost of each node as array (s)
-07.  Declare communication cost of each edge (c)
-08.  Declare transposed incidence matrix graph G (E)
-09.#Arithmetic Expressions
-10.  SC = s(1-x)
-11.  CMC = c*|EX|
-12.  Fobj =  x[i] * h[i]
-13.#Assert Constraints
-14.  Add constraints (SF + CMC <= $S_{0}$)
-15.  Add constraints to minimize Fobj
-16.  Check Model
-17.  Print Result
+#Initialize Variables
+  Create vZ context 
+  Create binary vector (x)
+  Declare number of nodes, edges and $S_{0}$
+  Declare hardware cost of each node as array (h) 
+  Declare software cost of each node as array (s)
+  Declare communication cost of each edge (c)
+  Declare transposed incidence matrix graph G (E)
+#Arithmetic Expressions
+  SC = s(1-x)
+  CMC = c*|EX|
+  Fobj =  x[i] * h[i]
+#Assert Constraints
+  Add constraints (SF + CMC <= $S_{0}$)
+  Add constraints to minimize Fobj
+  Check Model
+  Print Result
 \end{lstlisting}
 
 %----------------------------------------------
@@ -821,128 +821,132 @@ Rao, S. (2009), ``{Engineering Optimization: Theory and Practice. 4th edition}''
 Biere, A. (2009), ``{Bounded Model Checking. In: Biere, A., Heule, M., van Marren, H., Walsh, T. (org.)}'', Handbook of Satisfiability, IOS Press, pp. 457–-481.
 
 %11
+\bibitem{Clarke2001}
+E. M. Clarke, A. Biere, R. Raimi, Y. Zhu (2001), ``{Bounded model checking using satisfiability solving}'', Formal Methods in System Design v. 19 n. 1, pp. 7--34.
+
+%12
 \bibitem{Armando2009}
 Armando, A., Mantovani, J., Platania, L. (2009), ``{Bounded model checking of software using SMT solvers instead of SAT solvers},'' In: Intl. Journal on Software Tools for Technology Transfer, v. 11, n. 1, pp. 69--83.
 
-%12
+%13
 \bibitem{Ganai2006}
 Ganai, M., Gupta, A. (2006), ``{Accelerating high-level bounded model checking},'' In: Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design, pp. 794-–801.
 
-%13
+%14
 \bibitem{Ramalho2013}
 Ramalho, M., Freitas, M., Souza, F., Marques, H., Cordeiro, L. (2013), ``{SMT-Based Bounded Model Checking of C++ Programs.},'' In: Intl. Conf. and Workshops on the Engineering of Computer-Based Systems, pp. 147--156.
 
-%14
+%15
 \bibitem{DeMoura2008}
 De Moura, L., Bjorner, N. (2008), ``{Z3: An Efficient SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 4963, pp. 337–-340.
 
-%15
+%16
 \bibitem{Brummayer2009}
 Brummayer, R., Biere, A. (2009), ``{Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays.},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 5505, pp. 174-–177.
 
-%16
+%17
 \bibitem{Barrett2011}
 Barrett, C., Conway, C. Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A., Tinelli, C. (2011), ``{CVC4},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 6806, pp. 171--177.
 
-%17
+%18
 \bibitem{Bozzano2005}
 Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S., Sebastiani, R. (2005), ``{MathSAT: Tight integration of SAT and mathematical decision procedures},'' In: Journal of Automated Reasoning, v. 35, n. 1-3, pp. 265--293.
 
-%18
+%19
 \bibitem{Dutertre2014}
 Dutertre, B. (2014), ``{Yices 2.2. In: Proc. of the Intl. Conf. on Computer-Aided Verification},'' LNCS 8559, pp. 737–-744.
 
-%19
+%20
 \bibitem{Wu2014}
 Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conf. on Software Engineering and Service Science, pp. 921--924.
 
-%20
+%21
 \bibitem{Bjorner2014}
 Bjorner, N. and Phan, A. D. (2014), ``{$\nu$Z - Maximal Satisfaction with Z3},'' In: Proc. of the Intl. Symp. on Symbolic Computation in Software Science, pp. 1--10.
 
-%21
+%22
 \bibitem{Federica2008}
 Federica, P., Rodolfo, F., Yuqing , S., Elisa, B. (2008), {``Authorization and User Failure Resiliency for WS-BPEL business processes''}, In: Proc. of the Intl. Conf. on Service-Oriented Computing, LNCS 5364, pp. 116--131
 
-%22
+%23
 \bibitem{NarodytskaN}
 Narodytska, N., Bacchus, F. (2014), {``Maximum Satisfiability Using Core-Guided MAXSAT Resolution},'' In: Proc. of the AAAI Conf. on Artificial Intelligence, pp. 2717--2723.
 
-%23
+%24
 \bibitem{Barth1995}
 Barth, P., Davis-Putnam, A. (1995), {``Enumeration Algorithm for Linear
 Pseudo-Boolean Optimization.''}, Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science.
 
-%24
+%25
 \bibitem{Vasco2005}
 Vasco, M., Marques-Silva, J. (2005), {``Effective Lower Bounding Techniques for Pseudo-Boolean Optimization''}, IST/INESC-ID, Technical University of Lisbon, Portugal.
 
-%25
+%26
 \bibitem{Z3API}
 Magellan, ``{Source code and documentation},''
   \url{https://github.com/Z3Prover/z3}, Accessed 18th August 2015.
   
-%26
+%27
 \bibitem{Cormem}
 Cormen, T., Leiserson, C., Rivest, R., Stein, C. (2009), {``Introduction to Algorithms''}, MIT Press, pp. I-XIX, pp. 1--1292.
 
-%27
+%28
 \bibitem{Dagum1998}
 Dagum, L., Menon, R. (1998), ``{OpenMP: An Industry-Standard API for Shared-Memory Programming.},'' In: Proc. of the Intl. Conf. on Computational Science \& Engineering, v. 5, n. 1, pp. 46--55.
 
-%28
+%29
 \bibitem{TheMathWorks2013}
 The MathWorks, Inc. (2013), ``{MATLAB (version R2013a)}'', Natick, MA.
 
-%29
+%30
 \bibitem{Tranquillo2011}
 Tranquillo, J. (2011), ``{Matlab for Engineering and the Life Sciences}'', Synthesis Lectures on Engineering. Morgan \& Claypool.
 
-%30
+%31
 \bibitem{Hong2010}
 Hong, L., Cai, J. (2010), ``{The application guide of mixed programming between MATLAB and other programming languages},'' In: Proc. of the Intl. Conf. on Computer and Automation Engineering, pp. 185--189.
 
-%31
+%32
 \bibitem{Cordeiro2011}
 Cordeiro, L., Fischer, B. (2011), ``{Verifying multi-threaded software using SMT-based context-bounded model checking.},'' In: Proc. of the Intl. Conf. on Software Engineering, pp. 331--340.
 
-%32
+%33
 \bibitem{Teich2012}
 Teich, J. (2012), ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future},'' In: Proc. of the IEEE, Special Centennial Issue, v. 100, pp. 1411--1430.
 
-%33
+%34
 \bibitem{Guthaus2001}
 Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001), ``{MiBench: a free, commercially representative embedded benchmark suite},'' In: Proc. of the annual workshop on workload characterization, pp. 3--14.
 
-%34
+%35
 \bibitem{Arato2005}
 Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
 
-%35
+%36
 \bibitem{Holzmann2011}
 Holzmann, G.J., Joshi, R., Groce, A. (2011), ``{Swarm Verification Techniques},'' In: IEEE Transactions on Software Engineering, v. 37, n. 6, pp. 845--857.
 
-%36
+%37
 \bibitem{Holzmann2012}
 Holzmann, G. (2012), ``{Parallelizing the spin model checker. In: Proc. of the Intl. Symp. on Model Checking Software},'' LNCS 7385, pp. 155--171.
 
-%37
+%38
 \bibitem{Wintersteiger2009}
 Wintersteiger, C., Hamadi, Y., De Moura, L. (2009), ``{A Concurrent Portfolio Approach to SMT Solving.},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 5643, pp. 715--720.
 
-%38
+%39
 \bibitem{Qawasmeh2014}
 Qawasmeh, A., Malik, A., Chapman, B. (2014), ``{OpenMP task scheduling analysis via OpenMP runtime API and tool visualization.},'' In: Proc. of the Intl. Symp. on Parallel \& Distributed processing, pp. 1049--1058.
 
-%39
+%40
 \bibitem{Pavlinovic2015}
 Pavlinovic, Z., King, T., Wies, T. (2015),{``Practical SMT-Based Type Error Localization''}, In: Proc. of the Intl. Conf. on Functional Programming, pp. 412--423.
 
-%40
+%41
 \bibitem{Patrick2015}
 Sebastiani, R., Trentin, T. (2015), {``OptiMathSAT: A Tool for Optimization Modulo Theories''}, In: Proc. of the Intl. Conf. on Computer Aided Verification, LNCS 9206, pp. 447--454.
 
-%41
+%42
 \bibitem{Holzmann11}
 Gerard J. Holzmann, Rajeev Joshi, Alex Groce (2011), {``Swarm Verification Techniques''}, In: IEEE Trans. Software Eng. v. 37, n. 6, pp. 845--857.
 
