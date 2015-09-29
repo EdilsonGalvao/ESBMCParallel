@@ -1,0 +1,23 @@
+#!/bin/bash
+TM=7200
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2crc32_parallel.c 1 20 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2crc32_parallel.c 1 20 --method=sequential
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2dijsktra_parallel.c 1 40 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2dijsktra_parallel.c 1 40 --method=sequential
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2modPATRICIA_parallel.c 1 56 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2modPATRICIA_parallel.c 1 56 --method=sequential
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2clustering_parallel.c 1 259 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2clustering_parallel.c 1 259 --method=sequential
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2mars_parallel.c 1 1161 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2mars_parallel.c 1 1161 --method=sequential
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2rc6_parallel.c 1 1133 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2rc6_parallel.c 1 1133 --method=sequential
+
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2fuzzy_parallel.c 1 15105 --method=binary
+timeout $TM ./ESBMCParallel Benchmarks/mainESBMC2fuzzy_parallel.c 1 15105 --method=sequential
