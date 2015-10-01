@@ -32,7 +32,7 @@
 \usepackage[skip=\baselineskip]{caption}
 \captionsetup[lstlisting]{font={normalsize,tt}}
 
-\hyphenation{ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams }
+\hyphenation{par-ti-cu-lar func-tion ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams }
 
 % Package to generate and customize Algorithm as per ACM style
 \usepackage[ruled]{algorithm2e}
@@ -245,14 +245,14 @@ In particular, there are two directives in ESBMC that can be used to guide it to
 \label{ESBMCArchitecture}
 %----------------------------------------------
 
-Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consists of the C/C$++$ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles C/C$++$ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally, it generates two sets of equations (i.e.,\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. 
+Fig.~\ref{ESBMC-Architecture} shows the current ESBMC architecture, which consists of the C/C$++$ parser, GOTO Program, GOTO Symex, and SMT solver ~\cite{Ramalho2013}. In particular, ESBMC compiles C/C$++$ code into equivalent GOTO\hyp{}programs ({\it i.e.}, control-flow graphs) using a gcc-compliant style. GOTO-programs can then be processed by the symbolic execution engine, called GOTO Symex, where two recursive functions compute the constraints ($C$) and properties ($P$); finally, it generates two sets of equations ({\it i.e.},\:$C \land \neg P$ ), which are checked for satisfiability by an SMT solver. 
 
 The main factor for ESBMC to use only a single-core relies on its back-end ({\it i.e.}, SMT Solver). Currently, the SMT solvers supported by ESBMC are: Z3~\cite{DeMoura2008}, Boolector~\cite{Brummayer2009}, MathSAT~\cite{Barrett2011}, CVC4~\cite{Bozzano2005}, and Yices~\cite{Dutertre2014}. Most of them do provide neither multi-threaded support nor a parallel version to solve the generated SMT equations.
 
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=1]{figures/esbmc-arch-new.pdf} 
-	\caption{ESBMC Architecture.}
+	\caption{ESBMC architecture.}
 	\label{ESBMC-Architecture}
 \end{figure}
 
@@ -265,7 +265,7 @@ The OpenMP is a set of directives for parallel programming that augments C/C$++$
 
 In particular, OpenMP uses the \textit{fork-join} model of parallel execution~\cite{OpenMP1998}. The main thread executes the sequential parts of the program; if a parallel region is encountered, then it forks a team of worker threads. After the parallel region finishes ({\it i.e.}, the API waits until all threads terminate), then the main procedure returns to the single-threaded execution mode~\cite{Wu2014}.
 
-The most basic directive of OpenMP is the ``\#pragma omp parallel for'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
+The most basic directive of OpenMP is the ``\textit{\#pragma omp parallel for}'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
 \begin{lstlisting}[caption=OpenMP basic example.]
 int i;
@@ -275,7 +275,7 @@ for (i = 0; i < 10; i++)
 \end{lstlisting}
 
 \vspace{3 mm}
-In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\#pragma omp critical'' directive is routinely used.
+In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\textit{\#pragma omp critical}'' directive is routinely used.
 
 %----------------------------------------------
 \subsection{Solving Optimization Problems with $\nu$Z}
@@ -315,7 +315,7 @@ Fig.~\ref{vZ-Architecture} shows the $\nu$Z architecture. Initially, the SMT for
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.3]{figures/vzArch.png} 
-	\caption{$\nu$Z Architecture extracted from~\cite{Bjorner2015}.}
+	\caption{$\nu$Z architecture extracted from~\cite{Bjorner2015}.}
 	\label{vZ-Architecture}
 \end{figure}
 
@@ -359,7 +359,7 @@ H_p  &= \Sigma_{v_i \in V_H} h_i
 \end{align}
 
 \vspace{3 mm}
-Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, {\it i.e.}, to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related to system with hard real-time constraints. Based on Equations~\ref{linear-programming-problem} and~\ref{software-communication-costs}, the constraints can be reformulated as 
+Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, {\it i.e.}, to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related to system with hard real-time constraints. Based on Eq.~\ref{linear-programming-problem} and~\ref{software-communication-costs}, the constraints can be reformulated as 
 
 \begin{align}
 \label{hw-sw-partitioning}
@@ -393,7 +393,7 @@ Algorithm~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same
 
 The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
-It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of those constrains (i.e., $A.x \leq b$).
+It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of those constrains (\textit{i.e.}, $A.x \leq b$).
 
 A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware. To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
 
@@ -440,11 +440,11 @@ To optimize the CPU resources utilization without modifying the underlying SMT s
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.9]{figures/esbmc-ss.pdf} 
-	\caption{ESBMC-SS Approach.}
+	\caption{ESBMC-SS approach.}
 	\label{ESBMC-Multi-core}
 \end{figure}
 
-ESBMC-SS obtains the problem specification represented by a C program. The HW-SW partitioning is violated, when the correct optimum value (\textit{TipH}) parameter is reached; ESBMC-SS starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread life-cycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then ESBMC-SS starts new instances again; this represents a sequential-search on a multi-core environment. During the parallel region execution, if a violation is found in any running thread, then it presents a counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then ESBMC-SS finishes its execution.
+ESBMC-SS obtains the problem specification represented by a ANSI-C program. The HW-SW partitioning is violated, when the correct optimum value (\textit{TipH}) parameter is reached; ESBMC-SS starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread life-cycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then ESBMC-SS starts new instances again; this represents a sequential-search on a multi-core environment. During the parallel region execution, if a violation is found in any running thread, then it presents a counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then ESBMC-SS finishes its execution.
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP using Workers (ESBMC-PS)}
@@ -456,7 +456,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.9]{figures/esbmc-ps.pdf} 
-	\caption{ESBMC-PS Approach. }
+	\caption{ESBMC-PS approach.}
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
 
@@ -472,7 +472,7 @@ The most optimized approach applies a parallelized binary-search to reduce the a
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=0.9]{figures/esbmc-pb.pdf} 
-	\caption{ESBMC-PB Approach.}
+	\caption{ESBMC-PB approach.}
 	\label{ESBMC-Binary-Approach}
 \end{figure}
 
@@ -481,7 +481,7 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 \begin{figure}[ht]
 	\centering
   \includegraphics[scale=1.0, height=75px]{figures/Fig4.png}
-	\caption{Binary Step Calculation.}
+	\caption{Binary step calculation.}
 	\label{Binary-Step-Calculation}
 \end{figure}
 
@@ -489,7 +489,7 @@ Note that there might gaps between steps, which are produced by the customized b
 
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
-\begin{lstlisting}[caption=Steps Calculation using Intervals.,label=Steps-Calculation-using-Intervals]
+\begin{lstlisting}[caption=Steps calculation using intervals.,label=Steps-Calculation-using-Intervals]
  GetNextStep(){
   int largestChunk = -1;
   chunk largest;
