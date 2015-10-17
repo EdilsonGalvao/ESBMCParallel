@@ -1,0 +1,839 @@
+%%% ====================================================================
+%%%  BibTeX-file{
+%%%     author          = "Gerry Murray",
+%%%     version         = "1.2",
+%%%     date            = "2 April 2012",
+%%%     filename        = "acmsmall-sample-bibfile.bib",
+%%%     address         = "ACM, NY",
+%%%     email           = "murray at hq.acm.org",
+%%%     codetable       = "ISO/ASCII",
+%%%     keywords        = "ACM Reference Format, bibliography, citation, references",
+%%%     supported       = "yes",
+%%%     docstring       = "This BibTeX database file contains 'bibdata' entries
+%%%                        that 'match' the examples provided in the Specifications Document
+%%%                        AND, also, 'legacy'-type bibs. It should assist authors in 
+%%%                        choosing the 'correct' at-bibtype and necessary bib-fields
+%%%                        so as to obtain the appropriate ACM Reference Format output. 
+%%%			   It also contains many 'Standard Abbreviations'. "
+%%%  }
+%%% ====================================================================
+
+% Journals
+
+% First the Full Name is given, then the abbreviation used in the AMS Math
+% Reviews, with an indication if it could not be found there.
+% Note the 2nd overwrites the 1st, so swap them if you want the full name.
+
+ %{AMS}
+ @String{AMSTrans = "American Mathematical Society Translations" }
+ @String{AMSTrans = "Amer. Math. Soc. Transl." }
+ @String{BullAMS = "Bulletin of the American Mathematical Society" }
+ @String{BullAMS = "Bull. Amer. Math. Soc." }
+ @String{ProcAMS = "Proceedings of the American Mathematical Society" }
+ @String{ProcAMS = "Proc. Amer. Math. Soc." }
+ @String{TransAMS = "Transactions of the American Mathematical Society" }
+ @String{TransAMS = "Trans. Amer. Math. Soc." }
+
+ %ACM
+ @String{CACM = "Communications of the {ACM}" }
+ @String{CACM = "Commun. {ACM}" }
+ @String{CompServ = "Comput. Surveys" }
+ @String{JACM = "J. ACM" }
+ @String{ACMMathSoft = "{ACM} Transactions on Mathematical Software" }
+ @String{ACMMathSoft = "{ACM} Trans. Math. Software" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newsletter" }
+ @String{SIGNUM = "{ACM} {SIGNUM} Newslett." }
+
+ @String{AmerSocio = "American Journal of Sociology" }
+ @String{AmerStatAssoc = "Journal of the American Statistical Association" }
+ @String{AmerStatAssoc = "J. Amer. Statist. Assoc." }
+ @String{ApplMathComp = "Applied Mathematics and Computation" }
+ @String{ApplMathComp = "Appl. Math. Comput." }
+ @String{AmerMathMonthly = "American Mathematical Monthly" }
+ @String{AmerMathMonthly = "Amer. Math. Monthly" }
+ @String{BIT = "{BIT}" }
+ @String{BritStatPsych = "British Journal of Mathematical and Statistical
+          Psychology" }
+ @String{BritStatPsych = "Brit. J. Math. Statist. Psych." }
+ @String{CanMathBull = "Canadian Mathematical Bulletin" }
+ @String{CanMathBull = "Canad. Math. Bull." }
+ @String{CompApplMath = "Journal of Computational and Applied Mathematics" }
+ @String{CompApplMath = "J. Comput. Appl. Math." }
+ @String{CompPhys = "Journal of Computational Physics" }
+ @String{CompPhys = "J. Comput. Phys." }
+ @String{CompStruct = "Computers and Structures" }
+ @String{CompStruct = "Comput. \& Structures" }
+ @String{CompJour = "The Computer Journal" }
+ @String{CompJour = "Comput. J." }
+ @String{CompSysSci = "Journal of Computer and System Sciences" }
+ @String{CompSysSci = "J. Comput. System Sci." }
+ @String{Computing = "Computing" }
+ @String{ContempMath = "Contemporary Mathematics" }
+ @String{ContempMath = "Contemp. Math." }
+ @String{Crelle = "Crelle's Journal" }
+ @String{GiornaleMath = "Giornale di Mathematiche" }
+ @String{GiornaleMath = "Giorn. Mat." } % didn't find in AMS MR., ibid.
+
+ %IEEE
+ @String{Computer = "{IEEE} Computer" }
+ @String{IEEETransComp = "{IEEE} Transactions on Computers" }
+ @String{IEEETransComp = "{IEEE} Trans. Comput." }
+ @String{IEEETransAC = "{IEEE} Transactions on Automatic Control" }
+ @String{IEEETransAC = "{IEEE} Trans. Automat. Control" }
+ @String{IEEESpec = "{IEEE} Spectrum" } % didn't find in AMS MR
+ @String{ProcIEEE = "Proceedings of the {IEEE}" }
+ @String{ProcIEEE = "Proc. {IEEE}" } % didn't find in AMS MR
+ @String{IEEETransAeroElec = "{IEEE} Transactions on Aerospace and Electronic
+     Systems" }
+ @String{IEEETransAeroElec = "{IEEE} Trans. Aerospace Electron. Systems" }
+
+ @String{IMANumerAna = "{IMA} Journal of Numerical Analysis" }
+ @String{IMANumerAna = "{IMA} J. Numer. Anal." }
+ @String{InfProcLet = "Information Processing Letters" }
+ @String{InfProcLet = "Inform. Process. Lett." }
+ @String{InstMathApp = "Journal of the Institute of Mathematics and
+     its Applications" }
+ @String{InstMathApp = "J. Inst. Math. Appl." }
+ @String{IntControl = "International Journal of Control" }
+ @String{IntControl = "Internat. J. Control" }
+ @String{IntNumerEng = "International Journal for Numerical Methods in
+     Engineering" }
+ @String{IntNumerEng = "Internat. J. Numer. Methods Engrg." }
+ @String{IntSuper = "International Journal of Supercomputing Applications" }
+ @String{IntSuper = "Internat. J. Supercomputing Applic." } % didn't find
+%% in AMS MR
+ @String{Kibernetika = "Kibernetika" }
+ @String{JResNatBurStand = "Journal of Research of the National Bureau
+     of Standards" }
+ @String{JResNatBurStand = "J. Res. Nat. Bur. Standards" }
+ @String{LinAlgApp = "Linear Algebra and its Applications" }
+ @String{LinAlgApp = "Linear Algebra Appl." }
+ @String{MathAnaAppl = "Journal of Mathematical Analysis and Applications" }
+ @String{MathAnaAppl = "J. Math. Anal. Appl." }
+ @String{MathAnnalen = "Mathematische Annalen" }
+ @String{MathAnnalen = "Math. Ann." }
+ @String{MathPhys = "Journal of Mathematical Physics" }
+ @String{MathPhys = "J. Math. Phys." }
+ @String{MathComp = "Mathematics of Computation" }
+ @String{MathComp = "Math. Comp." }
+ @String{MathScand = "Mathematica Scandinavica" }
+ @String{MathScand = "Math. Scand." }
+ @String{TablesAidsComp = "Mathematical Tables and Other Aids to Computation" }
+ @String{TablesAidsComp = "Math. Tables Aids Comput." }
+ @String{NumerMath = "Numerische Mathematik" }
+ @String{NumerMath = "Numer. Math." }
+ @String{PacificMath = "Pacific Journal of Mathematics" }
+ @String{PacificMath = "Pacific J. Math." }
+ @String{ParDistComp = "Journal of Parallel and Distributed Computing" }
+ @String{ParDistComp = "J. Parallel and Distrib. Comput." } % didn't find
+%% in AMS MR
+ @String{ParComputing = "Parallel Computing" }
+ @String{ParComputing = "Parallel Comput." }
+ @String{PhilMag = "Philosophical Magazine" }
+ @String{PhilMag = "Philos. Mag." }
+ @String{ProcNAS = "Proceedings of the National Academy of Sciences
+                    of the USA" }
+ @String{ProcNAS = "Proc. Nat. Acad. Sci. U. S. A." }
+ @String{Psychometrika = "Psychometrika" }
+ @String{QuartMath = "Quarterly Journal of Mathematics, Oxford, Series (2)" }
+ @String{QuartMath = "Quart. J. Math. Oxford Ser. (2)" }
+ @String{QuartApplMath = "Quarterly of Applied Mathematics" }
+ @String{QuartApplMath = "Quart. Appl. Math." }
+ @String{RevueInstStat = "Review of the International Statisical Institute" }
+ @String{RevueInstStat = "Rev. Inst. Internat. Statist." }
+
+ %SIAM
+ @String{JSIAM = "Journal of the Society for Industrial and Applied
+     Mathematics" }
+ @String{JSIAM = "J. Soc. Indust. Appl. Math." }
+ @String{JSIAMB = "Journal of the Society for Industrial and Applied
+     Mathematics, Series B, Numerical Analysis" }
+ @String{JSIAMB = "J. Soc. Indust. Appl. Math. Ser. B Numer. Anal." }
+ @String{SIAMAlgMeth = "{SIAM} Journal on Algebraic and Discrete Methods" }
+ @String{SIAMAlgMeth = "{SIAM} J. Algebraic Discrete Methods" }
+ @String{SIAMAppMath = "{SIAM} Journal on Applied Mathematics" }
+ @String{SIAMAppMath = "{SIAM} J. Appl. Math." }
+ @String{SIAMComp = "{SIAM} Journal on Computing" }
+ @String{SIAMComp = "{SIAM} J. Comput." }
+ @String{SIAMMatrix = "{SIAM} Journal on Matrix Analysis and Applications" }
+ @String{SIAMMatrix = "{SIAM} J. Matrix Anal. Appl." }
+ @String{SIAMNumAnal = "{SIAM} Journal on Numerical Analysis" }
+ @String{SIAMNumAnal = "{SIAM} J. Numer. Anal." }
+ @String{SIAMReview = "{SIAM} Review" }
+ @String{SIAMReview = "{SIAM} Rev." }
+ @String{SIAMSciStat = "{SIAM} Journal on Scientific and Statistical
+     Computing" }
+ @String{SIAMSciStat = "{SIAM} J. Sci. Statist. Comput." }
+
+ @String{SoftPracExp = "Software Practice and Experience" }
+ @String{SoftPracExp = "Software Prac. Experience" } % didn't find in AMS MR
+ @String{StatScience = "Statistical Science" }
+ @String{StatScience = "Statist. Sci." }
+ @String{Techno = "Technometrics" }
+ @String{USSRCompMathPhys = "{USSR} Computational Mathematics and Mathematical
+     Physics" }
+ @String{USSRCompMathPhys = "{U. S. S. R.} Comput. Math. and Math. Phys." }
+ @String{VLSICompSys = "Journal of {VLSI} and Computer Systems" }
+ @String{VLSICompSys = "J. {VLSI} Comput. Syst." }
+ @String{ZAngewMathMech = "Zeitschrift fur Angewandte Mathematik und
+     Mechanik" }
+ @String{ZAngewMathMech = "Z. Angew. Math. Mech." }
+ @String{ZAngewMathPhys = "Zeitschrift fur Angewandte Mathematik und Physik" }
+ @String{ZAngewMathPhys = "Z. Angew. Math. Phys." }
+
+% Publishers % ================================================= |
+
+ @String{Academic = "Academic Press" }
+ @String{ACMPress = "{ACM} Press" }
+ @String{AdamHilger = "Adam Hilger" }
+ @String{AddisonWesley = "Addison-Wesley" }
+ @String{AllynBacon = "Allyn and Bacon" }
+ @String{AMS = "American Mathematical Society" }
+ @String{Birkhauser = "Birkha{\"u}ser" }
+ @String{CambridgePress = "Cambridge University Press" }
+ @String{Chelsea = "Chelsea" }
+ @String{ClaredonPress = "Claredon Press" }
+ @String{DoverPub = "Dover Publications" }
+ @String{Eyolles = "Eyolles" }
+ @String{HoltRinehartWinston = "Holt, Rinehart and Winston" }
+ @String{Interscience = "Interscience" }
+ @String{JohnsHopkinsPress = "The Johns Hopkins University Press" }
+ @String{JohnWileySons = "John Wiley and Sons" }
+ @String{Macmillan = "Macmillan" }
+ @String{MathWorks = "The Math Works Inc." }
+ @String{McGrawHill = "McGraw-Hill" }
+ @String{NatBurStd = "National Bureau of Standards" }
+ @String{NorthHolland = "North-Holland" }
+ @String{OxfordPress = "Oxford University Press" }  %address Oxford or London?
+ @String{PergamonPress = "Pergamon Press" }
+ @String{PlenumPress = "Plenum Press" }
+ @String{PrenticeHall = "Prentice-Hall" }
+ @String{SIAMPub = "{SIAM} Publications" }
+ @String{Springer = "Springer-Verlag" }
+ @String{TexasPress = "University of Texas Press" }
+ @String{VanNostrand = "Van Nostrand" }
+ @String{WHFreeman = "W. H. Freeman and Co." }
+
+%Entries
+@Article{edilson1,
+author = {Edilson},
+title = {Edilson},
+journal = {•},
+year = {2015},
+OPTkey = {•},
+OPTvolume = {•},
+OPTnumber = {•},
+OPTpages = {•},
+OPTmonth = {•},,
+OPTnote = {•},
+OPTannote = {•}
+}
+
+@Article{{Arato2003,
+author={Arato P., Juhasz S., Mann Z.A., Orban A., Papp D.},
+title={Hardware/software partitioning in embedded system design},
+journal = {•},
+year = {2003},
+OPTkey = {•},
+OPTvolume = {•},
+OPTnumber = {•},
+OPTpages = {192--202},
+OPTmonth = {•},
+OPTnote = {•},
+OPTannote = {•}
+}
+
+@article{Mann2007,
+author={Mann Z.A. , Orban A. and Arato P.,},
+title={Finding optimal hardware/software partitions},
+journal={Formal Methods in System Design},
+volume={31},
+number= {•},
+OPTmonth = {•},
+year= {•},
+pages={241-263},
+doi= { },
+url= {•},
+note= {•},
+}
+
+@article{Trindade2015,
+author={Trindade A., Cordeiro L.},
+title={Applying SMT-based verification to hardware/software partitioning in embedded systems},
+journal={ Design Automation for Embedded Systems (to appear)},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2015},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Trindade2016,
+author={Trindade A., Ismail H. , Cordeiro L.},
+title={Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems (short paper)},
+journal={To appear in V Brazilian Symposium on Computing Systems Engineering (SBESC)},
+year = {2016},
+OPTkey = {•},
+OPTvolume = {•},
+OPTnumber = {•},
+OPTpages = {1--4},
+OPTmonth = {•},
+OPTnote = {•},
+OPTannote = {•}
+}
+
+
+@article{Bjorner2015,
+author={Bjorner N., Phan A-D., Fleckenstein,L. },
+title={vZ - An Optimizing SMT Solver},
+journal={Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2015},
+pages={194--199},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Tang2009,
+author={Tang T., Lin Y., Ren X.},
+title={Mapping OpenMP concepts to the stream programming model},
+journal={ Proc. of the Intl. Conf. on Computer Science Education},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2010},
+pages={1900--1905},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{OpenMP1998,
+author={Open MP},
+title={OpenMP Architecture Review Board, OpenMP C and C++ Application Program Interface, Version 1.0},
+journal={Proc. of the Intl. Conf. on Computer Science Education},
+year = {1998},
+OPTkey = {•},
+OPTvolume = {•},
+OPTnumber = {•},
+OPTpages = {•},
+OPTmonth = {•},
+OPTnote = {www.openmp.org},
+OPTannote = {•}
+}
+
+@article{Cordeiro2012,
+author={Cordeiro L., Fischer B., Marques-Silva J.},
+title={SMT-based Bounded Model Checking for Embedded ANSI-C Software},
+journal={IEEE Transactions on Software Engineering},
+volume={38},
+number={4},
+OPTmonth = {•},
+year={2012},
+pages={957--974},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Rao2009,
+author={Rao S.},
+title={Engineering Optimization: Theory and Practice. 4th edition},
+journal= {•},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2009},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Biere2009,
+author={Biere A.},
+title={Bounded Model Checking.},
+journal={Handbook of Satisfiability},
+year = {•},
+OPTkey = {•},
+OPTvolume = {•},
+OPTnumber = {•},
+OPTpages = {•},
+OPTmonth = {•},
+OPTnote = {•},
+OPTannote = {•}
+}
+
+
+@article{Clarke2001,
+author={E. Clarke, A. Biere, R. Raimi, Y. Zhu},
+title={Bounded model checking using satisfiability solving},
+journal={ Formal Methods in System Design},
+volume={19},
+number={1},
+OPTmonth = {•},
+year={2001},
+pages={7--34},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Armando2009,
+author={Armando A., Mantovani J., Platania L.},
+title={Bounded model checking of software using SMT solvers instead of SAT solvers},
+journal={Intl. Journal on Software Tools for Technology Transfer},
+volume={11},
+number={1},
+OPTmonth = {•},
+year={2009},
+pages={69--83},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Ganai2006,
+author={Ganai M., Gupta A.},
+title={Accelerating high-level bounded model checking},
+journal={Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2006},
+pages={794-–801},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Ramalho2013,
+author={Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L.},
+title={SMT-Based Bounded Model Checking of C++ Programs.},
+journal={Intl. Conf. and Workshops on the Engineering of Computer-Based Systems},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2013},
+pages={147--156},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{DeMoura2008,
+author={De Moura L., Bjorner N.},
+title={Z3: An Efficient SMT Solver},
+journal={Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2008},
+pages={337–-340},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Brummayer2009,
+author={Brummayer R., Biere A.},
+title={Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays.},
+journal={Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2009},
+pages={174-–177},
+doi= {•},
+url= {•},
+note= {•},
+
+}
+
+@article{Barrett2011,
+author={Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C.},
+title={Proc. of the Intl. Conf. on Computer-Aided Verification},
+journal={CVC4},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2011},
+pages={171--177},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Bozzano2005,
+author={Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R.},
+title={MathSAT: Tight integration of SAT and mathematical decision procedures},
+journal={Journal of Automated Reasoning},
+volume={35},
+number={1-3},
+OPTmonth = {•},
+year={2005},
+pages={265--293},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Dutertre2014,
+author={Dutertre B.},
+title={Yices 2.2},
+journal={Proc. of the Intl. Conf. on Computer-Aided Verification},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2014},
+pages={737–-744},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Wu2014,
+author={Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N.},
+title={Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},
+journal={Proc. of the Intl. Conf. on Software Engineering and Service Science},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2014},
+pages={921--924},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Bjorner2014,
+author={Bjorner N. and Phan D.},
+title={vZ - Maximal Satisfaction with Z3},
+journal={Proc. of the Intl. Symp. on Symbolic Computation in Software Science},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2014},
+pages={1--10},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Federica2008,
+author={Federica P., Rodolfo F., Yuqing S., Elisa B.},
+title={Authorization and User Failure Resiliency for WS-BPEL business processes},
+journal={Proc. of the Intl. Conf. on Service-Oriented Computing},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2008},
+pages={116--131},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{NarodytskaN,
+author={Narodytska N., Bacchus F.},
+title={Maximum Satisfiability Using Core-Guided MAXSAT Resolution},
+journal={Proc. of the AAAI Conf. on Artificial Intelligence},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2014},
+pages={2717--2723},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Barth1995,
+author={Barth P., Davis-Putnam A.},
+title={Enumeration Algorithm for Linear Pseudo-Boolean Optimization.},
+journal={Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={1995},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Vasco2005,
+author={Vasco M., Marques-Silva J.},
+title={Effective Lower Bounding Techniques for Pseudo-Boolean Optimization},
+journal={IST/INESC-ID, Technical University of Lisbon, Portugal},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2005},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Z3API,
+author={Magellan},
+title={Z3 API - Source code and documentation},
+journal={Accessed 18th August 2015},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year= {•},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Cormem,
+author={Cormen T., Leiserson C., Rivest R., Stein C.},
+title={Introduction to Algorithms},
+journal={MIT Press},
+volume={I-XIX},
+number= {•},
+OPTmonth = {•},
+year={2009},
+pages={1--1292},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Dagum1998,
+author={Dagum L., Menon R.},
+title={OpenMP: An Industry-Standard API for Shared-Memory Programming.},
+journal={Proc. of the Intl. Conf. on Computational Science Engineering},
+volume={5},
+number={1},
+OPTmonth = {•},
+year={1998},
+pages={46--55},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{TheMathWorks2013,
+author={The MathWorks, Inc.},
+title={MATLAB (version R2013a)},
+journal= {•},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2013},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Tranquillo2011,
+author={Tranquillo J. },
+title={Matlab for Engineering and the Life Sciences},
+journal={Synthesis Lectures on Engineering. Morgan Claypool},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2011},
+pages= {•},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Hong2010,
+author={Hong L., Cai J.},
+title={The application guide of mixed programming between MATLAB and other programming languages},
+journal={Proc. of the Intl. Conf. on Computer and Automation Engineering},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2010},
+pages={185--189},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Cordeiro2011,
+author={Cordeiro L., Fischer B.},
+title={Verifying multi-threaded software using SMT-based context-bounded model checking.},
+journal={Proc. of the Intl. Conf. on Software Engineering},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2011},
+pages={331--340},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Teich2012,
+author={Teich J.},
+title={Hardware/Software Codesign: The Past, the Present, and Predicting the Future},
+journal={Proc. of the IEEE, Special Centennial Issue},
+volume={100},
+number={2012},
+OPTmonth = {•},
+year= {•},
+pages={1411--1430},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Guthaus2001,
+author={Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R. },
+title={MiBench: a free, commercially representative embedded benchmark suite},
+journal={Proc. of the annual workshop on workload characterization},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2001},
+pages={3--14},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Arato2005,
+author={Arato P., Mann Z.A., Orban A.},
+title={Algorithmic aspects of hardware/software partitioning.},
+journal={Transactions on Design Automation of Electronic Systems},
+volume={1},
+number= {•},
+OPTmonth = {•},
+year={2005},
+pages={136–-156},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Holzmann2011,
+author={Holzmann G.J., Joshi R., Groce A.},
+title={Swarm Verification Techniques},
+journal={IEEE Transactions on Software Engineering},
+volume={37},
+number={6},
+OPTmonth = {•},
+year={2011},
+pages={845--857},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Holzmann2012,
+author={Holzmann G.},
+title={Parallelizing the spin model checker.},
+journal={Proc. of the Intl. Symp. on Model Checking Software},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2012},
+pages={155--171},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Wintersteiger2009,
+author={Wintersteiger C., Hamadi Y., De Moura L.},
+title={A Concurrent Portfolio Approach to SMT Solving.},
+journal={Proc. of the Intl. Conf. on Computer-Aided Verification},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2009},
+pages={715--720},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+
+@article{Qawasmeh2014,
+author={Qawasmeh A., Malik A., Chapman B.},
+title={OpenMP task scheduling analysis via OpenMP runtime API and tool visualization.},
+journal={Proc. of the Intl. Symp. on Parallel Distributed processing},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2014},
+pages={1049--1058},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Pavlinovic2015,
+author={Pavlinovic Z., King T., Wies T.},
+title={Practical SMT-Based Type Error Localization},
+journal={Proc. of the Intl. Conf. on Functional Programming},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2015},
+pages={412--423},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Patrick2015,
+author={Sebastiani R., Trentin T.},
+title={OptiMathSAT: A Tool for Optimization Modulo Theories},
+journal={Proc. of the Intl. Conf. on Computer Aided Verification},
+volume= {•},
+number= {•},
+OPTmonth = {•},
+year={2015},
+pages={447--454},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@article{Holzmann11,
+author={Gerard J. Holzmann, Rajeev Joshi, Alex Groce},
+title={warm Verification Techniques},
+journal={IEEE Trans. Software Eng},
+volume={37},
+number={6},
+OPTmonth = {•},
+year={2011},
+pages={845--857},
+doi= {•},
+url= {•},
+note= {•},
+}
+
+@book{hevc,
+author={ISO/IEC 23008-2},
+title={Information technology -- high efficiency coding and media delivery in heterogeneous environments -- part 2: high efficiency video coding},
+year={2015},
+pages= {•},
+publisher={International Organization for Standardization}
+} 

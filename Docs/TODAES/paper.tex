@@ -1,58 +1,75 @@
-% v2-acmsmall-sample.tex, dated March 6 2012
-% This is a sample file for ACM small trim journals
-%
-% Compilation using 'acmsmall.cls' - version 1.3 (March 2012), Aptara Inc.
-% (c) 2010 Association for Computing Machinery (ACM)
-%
-% Questions/Suggestions/Feedback should be addressed to => "acmtexsupport@aptaracorp.com".
-% Users can also go through the FAQs available on the journal's submission webpage.
-%
-% Steps to compile: latex, bibtex, latex latex
-%
-% For tracking purposes => this is v1.3 - March 2012
+\documentclass[prodmode,acmtrets]{acmsmall} % Aptara syntax
 
-\documentclass[prodmode,acmtodaes]{acmsmall} % Aptara syntax
+\usepackage{listings} % Codes
+%\lstset{
+ % language=C,                % choose the language of the code
+ % numbers=left,                   % where to put the line-numbers
+ % stepnumber=1,                   % the step between two line-numbers.        
+ % numbersep=5pt,                  % how far the line-numbers are from the code
+ % backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+ % showspaces=false,               % show spaces adding particular underscores
+ % showstringspaces=false,         % underline spaces within strings
+ % showtabs=false,                 % show tabs within strings adding particular underscores
+ % tabsize=2,                      % sets default tabsize to 2 spaces
+ % captionpos=b,                   % sets the caption-position to bottom
+ % breaklines=true,                % sets automatic line breaking
+ % breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+ % title=\lstname,                 % show the filename of files included with \lstinputlisting;
+%}
 
+\usepackage{mathtools} % Serve para as equacoes
+
+%Montar os Gráficos, cores e divisões.
 \usepackage{color}
 \usepackage{multirow}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 \usepackage{booktabs}
 \usepackage{tabu,xcolor,colortbl}
 \usepackage{rotating}
-\usepackage{amsmath,array}    
-\usepackage[utf8]{inputenc} 
-\DeclareUnicodeCharacter{FB01}{fi} %Caracter especial
-\usepackage{graphicx} %Imagens
-\usepackage{listings} % Codes
+\usepackage{amsmath,array}  
 \usepackage{tabularx} % in the preamble
-\usepackage{mathtools} % Serve para as equacoes
-\usepackage{cite}
-\usepackage{hyphenat}
-\usepackage[english]{babel}
-\usepackage[skip=\baselineskip]{caption}
-\captionsetup[lstlisting]{font={normalsize,tt}}
+\usepackage{graphicx} %Imagens
 
+\usepackage{minted}
+\newcolumntype{C}[1]{>{\Centering}m{#1}}
+\renewcommand\tabularxcolumn[1]{C{#1}}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+
+%\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+%\DeclareUnicodeCharacter{FB01}{fi} %Caracter especial
+
+\usepackage{hyphenat}
 \hyphenation{par-ti-cu-lar func-tion ef-fect-ive consi-de-red demons-trate se-cond veri-fication covera-ge des-cribe reali-zation opera-tor re-pre-sentation methodo-lo-gy di-gi-tal chara-cteristics granu-lar ge-nerally diago-nal para-meters spe-cification re-presentable me-thods ope-rations sche-dule deve-loped des-cribes diffe-rent mo-dels sa-ving ve-rified proper-ties mini-mum mathe-matical tole-rated limi-ted op-tical net-works semi-conduc-tor go-to-pro-grams }
 
 % Package to generate and customize Algorithm as per ACM style
 \usepackage[ruled]{algorithm2e}
 \renewcommand{\algorithmcfname}{ALGORITHM}
-
 \SetAlFnt{\small}
 \SetAlCapFnt{\small}
 \SetAlCapNameFnt{\small}
 \SetAlCapHSkip{0pt}
 \IncMargin{-\parindent}
 
+%\usepackage[skip=\baselineskip]{caption}
+%\captionsetup[lstlisting]{font={small,tt}}
+
+
 % Metadata Information
 \acmVolume{9}
 \acmNumber{4}
 \acmArticle{39}
-\acmYear{2010}
+\acmYear{2015}
 \acmMonth{3}
 
 % Copyright
-\setcopyright{rightsretained}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
 
 % DOI
 \doi{0000001.0000001}
@@ -60,18 +77,10 @@
 %ISSN
 \issn{1234-56789}
 
+
 % Document starts
 \begin{document}
 
-\lstset{language=C,basicstyle=\small}
-\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
-\lstset{tabsize=2}
-\lstset{firstnumber=1}
-\lstset{frame=single}
-\lstset{
-  language={C},
-  morekeywords={assert,uchar}
-}
 
 % Page heads
 \markboth{A. Trindade et al.}{Multi-Core Model Checking and Maximum Satisfiability Applied to HW/SW Partitioning}
@@ -268,12 +277,22 @@ In particular, OpenMP uses the \textit{fork-join} model of parallel execution~\c
 
 The most basic directive of OpenMP is the ``\textit{\#pragma omp parallel for}'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
-\begin{lstlisting}[caption=OpenMP basic example.]
+\begin{listing}[H]
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=7pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{c++}
 int i;
 #pragma omp parallel for
 for (i = 0; i < 10; i++)
-  a[i] = 2 * i;
-\end{lstlisting}
+a[i] = 2 * i;
+\end{minted}
+\caption{OpenMP basic Example.}
+\label{lst:example}
+\end{listing}
+
 
 \vspace{3 mm}
 In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\textit{\#pragma omp critical}'' directive is routinely used.
@@ -300,14 +319,23 @@ the function \textit{assert-soft} adds a restriction to $F$, which can also add 
 
 As an example, one can optimize $\left(K + W\right)$, which is subject to restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
 
-\begin{lstlisting}[caption=Example of SMT formula using $\nu$Z., label=vZ]
-(declare-const K Int) 
-(declare-const W Int)
+\begin{listing}[H]
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=7pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{c++}
+(Declare-Const K Int) 
+(Declare-Const W Int)
 (assert (< K 2)) 
 (assert (< (- W K) 1))
 (maximize (+ K W)) 
 (check-sat)
-\end{lstlisting}
+\end{minted}
+\caption{Example of SMT formula using $\nu$Z.}
+\label{vZ}
+\end{listing}
 
 \vspace{3 mm}
 Fig.~\ref{vZ-Architecture} shows the $\nu$Z architecture. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, $\nu$Z invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, $\nu$Z combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', $\nu$Z invokes MaxSAT using multiple calls for its engine.
@@ -402,25 +430,35 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
-\begin{lstlisting}[caption=Pseudocode describing sequential ESBMC., label={Pseudocode-describing-ESBMC}, mathescape]
+\begin{listing}[H]
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=7pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{c++}
  Initialize Variables 
  Declare number of nodes and edges
  Declare hardware cost of each node as array (h)
  Declare software cost of each node as array (s)
  Declare communication cost of each edge (c)
- Declare the initial software cost of ($S_{0}$)
+ Declare the initial software cost of (S0)
  Declare transposed incidence matrix graph G (E)
- Define the solutions variable ($X_{i}$ ) as Boolean
+ Define the solutions variable (Xi) as Boolean
  main {
-  for TipH = 0 to Hmax do {
-   populate $X_{i}$ with nondeterministic/test values
-   Calculate s(1-x)+c|$E_{x}$| and store at variable
-   Requirement isued by Assume (Variable <= $S_{0}$)
-   Calculate Hp cost Based on value tested of $X_{i}$
-   Violation check with Assert($H_{p}$ > TipH)
+  For TipH = 0 to Hmax Do {
+   populate Xi with nondeterministic/test values
+   Calculate s(1-x)+c|Ex| and store at variable
+   Requirement isued by Assume (Variable <= S0)
+   Calculate Hp cost Based on value tested of Xi
+   Violation check with Assert(Hp > TipH)
   }
  }
-\end{lstlisting}
+\end{minted}
+\caption{Pseudocode describing sequential ESBMC}
+\label{Pseudocode-describing-ESBMC}
+\end{listing}
+
 
 %In the multi-core ESBMC algorithm, the only difference is the fact that the value of $ TipH $ and its range is not declared in the algorithm, %as shown in ESBMC Pseudocode. The proposed approach is invoked for each test problem, as follows:
 %$ esbmc-parallel <Filename.c> \; <hminvalue> \; <Hmax> $
@@ -489,9 +527,14 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 Note that there might gaps between steps, which are produced by the customized binary-search. For instance, in the example shown in Fig.~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
-
-\begin{lstlisting}[caption=Steps calculation using intervals.,label=Steps-Calculation-using-Intervals]
- GetNextStep(){
+\begin{listing}[H]
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=7pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{c++}
+  GetNextStep(){
   int largestChunk = -1;
   chunk largest;
   for each(chunk in chunks){
@@ -510,20 +553,32 @@ Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized b
     }
    return median;
  }
-\end{lstlisting}
+\end{minted}
+\caption{Steps calculation using intervals.}
+\label{Steps-Calculation-using-Intervals}
+\end{listing}
 
 \vspace{3 mm}
 Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
-\begin{lstlisting}[caption=Worker sample.,label=worker-sample]
+\begin{listing}[H]
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=7pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{c++}
  step = controller.GetNextStep();
  int pid = ExecuteStep(step);
  while(isRunning(pid)){
    if(!controller.isNeeded(step))
     kill(pid);
- }     
-\end{lstlisting}
+ }
+\end{minted}
+\caption{Worker sample.}
+\label{worker-sample}
+\end{listing}
 
 \vspace{3 mm}
 Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
@@ -537,25 +592,34 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
 
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
-\begin{lstlisting}[caption=Pseudocode describing ESBMC-$\nu$Z.,label=vZ-pseudocode, mathescape]
-#Initialize Variables
+\begin{listing}[H]
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=7pt,
+               gobble=0,
+               frame=lines,
+               framesep=2mm]{c++}
+--Initialize Variables
   Create vZ context 
   Create binary vector (x)
-  Declare number of nodes, edges and $S_{0}$
+  Declare number of nodes, edges and S0
   Declare hardware cost of each node as array (h) 
   Declare software cost of each node as array (s)
   Declare communication cost of each edge (c)
   Declare transposed incidence matrix graph G (E)
-#Arithmetic Expressions
+--Arithmetic Expressions
   SC = s(1-x)
   CMC = c*|EX|
   Fobj =  x[i] * h[i]
-#Assert Constraints
-  Add constraints (SF + CMC <= $S_{0}$)
+--Assert Constraints
+  Add constraints (SF + CMC <= S0)
   Add constraints to minimize Fobj
   Check Model
   Print Result
-\end{lstlisting}
+\end{minted}
+\caption{Pseudocode describing ESBMC-$\nu$Z.}
+\label{vZ-pseudocode}
+\end{listing}
 
 %----------------------------------------------
 \section{Experimental Evaluation}
@@ -580,13 +644,13 @@ All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-
 
 To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{Mann2007} were used, as shown in Table~\ref{Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from Mann {\it et al.}~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
-\begin{table}[h]
+\begin{minipage}{\linewidth}
 \centering
-\caption {Description of Benchmarks.}
 \small
 \sffamily\small
 \tabulinesep=6pt
-\begin{tabular}[c]{m{1.9cm}m{0.9cm}m{0.9cm}m{9.0cm}}
+\captionof{table}{Description of Benchmarks.} \label{tab:Description-of-Benchmarks} 
+\begin{tabular}[c]{m{1.8cm}m{0.9cm}m{0.9cm}m{8.2cm}}
 \\
 \toprule[1.5pt]
 \textbf{Name} & \textbf{Nodes} & \textbf{Edges} & \textbf{Description}\\
@@ -619,9 +683,21 @@ To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{
 \verb|Mars| & \verb|417| & \verb|600| & \rmfamily MARS cipher from IBM algorithm\\
 \\
 \bottomrule[1.5pt]
-\end{tabular}
-\label{Description-of-Benchmarks}
-\end{table}
+\end{tabular}\par
+\bigskip
+\end{minipage}
+
+
+%\begin{table}[h]
+%\centering
+%\caption {Description of Benchmarks.}
+%\small
+%\sffamily\small
+%\tabulinesep=6pt
+
+
+%\label{Description-of-Benchmarks}
+%\end{table}
 
 %----------------------------------------------
 \subsection{Experimental Results}
@@ -757,272 +833,12 @@ If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpl
 
 Finally, there is an issue about $150$ nodes problem, since it seems to be the limit of multi-core ESBMC. However, it really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for larger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the search space size. In future work, we will address improvements in ESBMC to remove the parallel layer on top of ESBMC and implement it during symbolic execution so that we can optimize the overall verification time.
 
-%----------------------------------------------
-%\section{References}
-%\label{References}
-%----------------------------------------------
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---- Bibliography ---- %
-%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Bibliography
-\begin{thebibliography}{5}
-
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{{#1}}
-\providecommand{\urlprefix}{URL }
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
-  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
-  \urlstyle{rm}\Url}\fi
-\providecommand{\eprint}[2][]{\url{#2}}
 \bibliographystyle{ACM-Reference-Format-Journals}
-
-%1
-\bibitem{Arato2003}
-Arat\'o, P., Juh\'asz, S., Mann, Z.A., Orb\'an, A., Papp, D. (2003), ``{Hardware/software partitioning in embedded system design},'' In: Proc. of the Intl. Symp. of Intelligent Signal Processing, pp. 192--202.
-
-%2
-\bibitem{Mann2007}
-Mann, Z.A., Orb\'an, A., Arat\'o, P., ``{Finding optimal hardware/software partitions},'' In: Formal Methods in System Design, v. 31, n. 3 pp. 241--263.
-
-%3
-\bibitem{Trindade2015}
-Trindade, A., Cordeiro. L. (2015), ``{Applying SMT-based verification to hardware/software partitioning in embedded systems,}'' In: Design Automation for Embedded Systems (to appear).
-
-%4
-\bibitem{Trindade2016}
-Trindade, A. B., Ismail, H. I., Cordeiro, L. C. (2015), ``{Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems (short paper),}'' To appear in V Brazilian Symposium on Computing Systems Engineering (SBESC), pp. 1-4.
-
-%5
-\bibitem{Bjorner2015}
-Bjorner, N., Phan, A-D., Fleckenstein, L. (2015), ``{$\nu$Z - An Optimizing SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 9035, pp. 194--199.
-
-%6
-\bibitem{Tang2009}
-Tang, T., Lin, Y., Ren, X. (2010), ``{Mapping OpenMP concepts to the stream programming model. In: Proc. of the Intl. Conf. on Computer Science Education},'' pp. 1900--1905.
-
-%7
-\bibitem{OpenMP1998}
-OpenMP Architecture Review Board, OpenMP C and C++
-Application Pogram Interface, Version 1.0, October 1998.
-http://www.openmp.org%
-
-%8
-\bibitem{Cordeiro2012}
-Cordeiro, L., Fischer, B., Marques-Silva, J. (2012), ``{SMT-based Bounded Model Checking for Embedded ANSI-C Software},'' In: IEEE Transactions on Software Engineering, v. 38, n. 4, pp. 957--974.
-
-%9
-\bibitem{Rao2009}
-Rao, S. (2009), ``{Engineering Optimization: Theory and Practice. 4th edition}'', John Wiley \& Sons, Hoboken.
-
-%10
-\bibitem{Biere2009}
-Biere, A. (2009), ``{Bounded Model Checking. In: Biere, A., Heule, M., van Marren, H., Walsh, T. (org.)}'', Handbook of Satisfiability, IOS Press, pp. 457–-481.
-
-%11
-\bibitem{Clarke2001}
-E. M. Clarke, A. Biere, R. Raimi, Y. Zhu (2001), ``{Bounded model checking using satisfiability solving}'', Formal Methods in System Design v. 19 n. 1, pp. 7--34.
-
-%12
-\bibitem{Armando2009}
-Armando, A., Mantovani, J., Platania, L. (2009), ``{Bounded model checking of software using SMT solvers instead of SAT solvers},'' In: Intl. Journal on Software Tools for Technology Transfer, v. 11, n. 1, pp. 69--83.
-
-%13
-\bibitem{Ganai2006}
-Ganai, M., Gupta, A. (2006), ``{Accelerating high-level bounded model checking},'' In: Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design, pp. 794-–801.
-
-%14
-\bibitem{Ramalho2013}
-Ramalho, M., Freitas, M., Souza, F., Marques, H., Cordeiro, L. (2013), ``{SMT-Based Bounded Model Checking of C++ Programs.},'' In: Intl. Conf. and Workshops on the Engineering of Computer-Based Systems, pp. 147--156.
-
-%15
-\bibitem{DeMoura2008}
-De Moura, L., Bjorner, N. (2008), ``{Z3: An Efficient SMT Solver},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 4963, pp. 337–-340.
-
-%16
-\bibitem{Brummayer2009}
-Brummayer, R., Biere, A. (2009), ``{Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays.},'' In: Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems, LNCS 5505, pp. 174-–177.
-
-%17
-\bibitem{Barrett2011}
-Barrett, C., Conway, C. Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A., Tinelli, C. (2011), ``{CVC4},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 6806, pp. 171--177.
-
-%18
-\bibitem{Bozzano2005}
-Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S., Sebastiani, R. (2005), ``{MathSAT: Tight integration of SAT and mathematical decision procedures},'' In: Journal of Automated Reasoning, v. 35, n. 1-3, pp. 265--293.
-
-%19
-\bibitem{Dutertre2014}
-Dutertre, B. (2014), ``{Yices 2.2. In: Proc. of the Intl. Conf. on Computer-Aided Verification},'' LNCS 8559, pp. 737–-744.
-
-%20
-\bibitem{Wu2014}
-Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J., Yuan, N. (2014), ``{Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP},'' In: Proc. of the Intl. Conf. on Software Engineering and Service Science, pp. 921--924.
-
-%21
-\bibitem{Bjorner2014}
-Bjorner, N. and Phan, A. D. (2014), ``{$\nu$Z - Maximal Satisfaction with Z3},'' In: Proc. of the Intl. Symp. on Symbolic Computation in Software Science, pp. 1--10.
-
-%22
-\bibitem{Federica2008}
-Federica, P., Rodolfo, F., Yuqing , S., Elisa, B. (2008), {``Authorization and User Failure Resiliency for WS-BPEL business processes''}, In: Proc. of the Intl. Conf. on Service-Oriented Computing, LNCS 5364, pp. 116--131
-
-%23
-\bibitem{NarodytskaN}
-Narodytska, N., Bacchus, F. (2014), {``Maximum Satisfiability Using Core-Guided MAXSAT Resolution},'' In: Proc. of the AAAI Conf. on Artificial Intelligence, pp. 2717--2723.
-
-%24
-\bibitem{Barth1995}
-Barth, P., Davis-Putnam, A. (1995), {``Enumeration Algorithm for Linear
-Pseudo-Boolean Optimization.''}, Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science.
-
-%25
-\bibitem{Vasco2005}
-Vasco, M., Marques-Silva, J. (2005), {``Effective Lower Bounding Techniques for Pseudo-Boolean Optimization''}, IST/INESC-ID, Technical University of Lisbon, Portugal.
-
-%26
-\bibitem{Z3API}
-Magellan, ``{Source code and documentation},''
-  \url{https://github.com/Z3Prover/z3}, Accessed 18th August 2015.
-  
-%27
-\bibitem{Cormem}
-Cormen, T., Leiserson, C., Rivest, R., Stein, C. (2009), {``Introduction to Algorithms''}, MIT Press, pp. I-XIX, pp. 1--1292.
-
-%28
-\bibitem{Dagum1998}
-Dagum, L., Menon, R. (1998), ``{OpenMP: An Industry-Standard API for Shared-Memory Programming.},'' In: Proc. of the Intl. Conf. on Computational Science \& Engineering, v. 5, n. 1, pp. 46--55.
-
-%29
-\bibitem{TheMathWorks2013}
-The MathWorks, Inc. (2013), ``{MATLAB (version R2013a)}'', Natick, MA.
-
-%30
-\bibitem{Tranquillo2011}
-Tranquillo, J. (2011), ``{Matlab for Engineering and the Life Sciences}'', Synthesis Lectures on Engineering. Morgan \& Claypool.
-
-%31
-\bibitem{Hong2010}
-Hong, L., Cai, J. (2010), ``{The application guide of mixed programming between MATLAB and other programming languages},'' In: Proc. of the Intl. Conf. on Computer and Automation Engineering, pp. 185--189.
-
-%32
-\bibitem{Cordeiro2011}
-Cordeiro, L., Fischer, B. (2011), ``{Verifying multi-threaded software using SMT-based context-bounded model checking.},'' In: Proc. of the Intl. Conf. on Software Engineering, pp. 331--340.
-
-%33
-\bibitem{Teich2012}
-Teich, J. (2012), ``{Hardware/Software Codesign: The Past, the Present, and Predicting the Future},'' In: Proc. of the IEEE, Special Centennial Issue, v. 100, pp. 1411--1430.
-
-%34
-\bibitem{Guthaus2001}
-Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T., Brown, R. (2001), ``{MiBench: a free, commercially representative embedded benchmark suite},'' In: Proc. of the annual workshop on workload characterization, pp. 3--14.
-
-%35
-\bibitem{Arato2005}
-Arat\'o, P., Mann, Z.A., Orb\'an, A. (2005), ``{Algorithmic aspects of hardware/software partitioning.},'' Transactions on Design Automation of Electronic Systems, v. 1, pp. 136–-156.
-
-%36
-\bibitem{Holzmann2011}
-Holzmann, G.J., Joshi, R., Groce, A. (2011), ``{Swarm Verification Techniques},'' In: IEEE Transactions on Software Engineering, v. 37, n. 6, pp. 845--857.
-
-%37
-\bibitem{Holzmann2012}
-Holzmann, G. (2012), ``{Parallelizing the spin model checker. In: Proc. of the Intl. Symp. on Model Checking Software},'' LNCS 7385, pp. 155--171.
-
-%38
-\bibitem{Wintersteiger2009}
-Wintersteiger, C., Hamadi, Y., De Moura, L. (2009), ``{A Concurrent Portfolio Approach to SMT Solving.},'' In: Proc. of the Intl. Conf. on Computer-Aided Verification, LNCS 5643, pp. 715--720.
-
-%39
-\bibitem{Qawasmeh2014}
-Qawasmeh, A., Malik, A., Chapman, B. (2014), ``{OpenMP task scheduling analysis via OpenMP runtime API and tool visualization.},'' In: Proc. of the Intl. Symp. on Parallel \& Distributed processing, pp. 1049--1058.
-
-%40
-\bibitem{Pavlinovic2015}
-Pavlinovic, Z., King, T., Wies, T. (2015),{``Practical SMT-Based Type Error Localization''}, In: Proc. of the Intl. Conf. on Functional Programming, pp. 412--423.
-
-%41
-\bibitem{Patrick2015}
-Sebastiani, R., Trentin, T. (2015), {``OptiMathSAT: A Tool for Optimization Modulo Theories''}, In: Proc. of the Intl. Conf. on Computer Aided Verification, LNCS 9206, pp. 447--454.
-
-%42
-\bibitem{Holzmann11}
-Gerard J. Holzmann, Rajeev Joshi, Alex Groce (2011), {``Swarm Verification Techniques''}, In: IEEE Trans. Software Eng. v. 37, n. 6, pp. 845--857.
-
-\end{thebibliography}
-
-% Appendix
-%\appendix
-%\section*{APPENDIX}
-%\setcounter{section}{1}
-%In this appendix, we measure
-%the channel switching time of Micaz [CROSSBOW] sensor devices.
-%In our experiments, one mote alternatingly switches between Channels
-%11 and 12. Every time after the node switches to a channel, it sends
-%%out a packet immediately and then changes to a new channel as soon
-%as the transmission is finished. We measure the
-%number of packets the test mote can send in 10 seconds, denoted as
-%$%N_{1}$. In contrast, we also measure the same value of the test
-%mote without switching channels, denoted as $N_{2}$. We calculate
-%the channel-switching time $s$ as
-%\begin{eqnarray}%
-%s=\frac{10}{N_{1}}-\frac{10}{N_{2}}. \nonumber
-%\end{eqnarray}%
-%By repeating the experiments 100 times, we get the average
-%channel-switching time of Micaz motes: 24.3$\mu$s.
-
-%\appendixhead{ZHOU}
-
-% Acknowledgments
-%\begin{acks}
-%The authors would like to thank Dr. Maura Turolla of Telecom
-%Italia for providing specifications about the application scenario.
-%\end{acks}
-
-% Bibliography
-% Bibliography
-%\bibliographystyle{ACM-Reference-Format-Journals}
-%\bibliography{acmsmall-sample-bibfile}
-                             % Sample .bib file with references that match those in
-                             % the 'Specifications Document (V1.5)' as well containing
-                             % 'legacy' bibs and bibs with 'alternate codings'.
-                             % Gerry Murray - March 2012
-
-
-% History dates
-%\received{February 2007}{March 2009}{June 2009}
-
-% Electronic Appendix
-%\elecappendix
-
-%\medskip
-
-%\section{This is an example of Appendix section head}
-
-%Channel-switching time is measured as the time length it takes for
-%motes to successfully switch from one channel to another. This
-%parameter impacts the maximum network throughput, because motes
-%cannot receive or send any packet during this period of time, and it
-%also affects the efficiency of toggle snooping in MMSN, where motes
-%need to sense through channels rapidly.
-
-%By repeating experiments 100 times, we get the average
-%channel-switching time of Micaz motes: 24.3 $\mu$s. We then conduct
-%the same experiments with different Micaz motes, as well as
-%experiments with the transmitter switching from Channel 11 to other
-%channels. In both scenarios, the channel-switching time does not have
-%obvious changes. (In our experiments, all values are in the range of
-%23.6 $\mu$s to 24.9 $\mu$s.)
-
-%\section{Appendix section head}
-
-%The primary consumer of energy in WSNs is idle listening. The key to
-%reduce idle listening is executing low duty-cycle on nodes. Two
-%primary approaches are considered in controlling duty-cycles in the
-%MAC layer.
+\bibliography{Ref.bib}
 
 \end{document}
-% End of v2-acmsmall-sample.tex (March 2012) - Gerry Murray, ACM
-
-

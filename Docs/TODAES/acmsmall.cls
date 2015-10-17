@@ -4182,5 +4182,3 @@ Online Appendix to:\par\@title\par{}}}\vskip 12\p@
 \endinput
 
 % End of file `acmsmall.cls' Version 1.4
-
-

@@ -1,43 +1,439 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: paper.aux
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: paper.aux
 The style file: ACM-Reference-Format-Journals.bst
-I found no \bibdata command---while reading file paper.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: Ref.bib.bib
+You're missing a field name---line 227 of file Ref.bib.bib
+ : OPTmonth = {•},
+ :                  ,
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Arato2003"
-Warning--I didn't find a database entry for "Mann2007"
-Warning--I didn't find a database entry for "Trindade2015"
-Warning--I didn't find a database entry for "Trindade2016"
-Warning--I didn't find a database entry for "Bjorner2015"
-Warning--I didn't find a database entry for "Tang2009"
-Warning--I didn't find a database entry for "OpenMP1998"
-Warning--I didn't find a database entry for "Cordeiro2012"
-Warning--I didn't find a database entry for "Rao2009"
-Warning--I didn't find a database entry for "Biere2009"
-Warning--I didn't find a database entry for "Clarke2001"
-Warning--I didn't find a database entry for "Armando2009"
-Warning--I didn't find a database entry for "Ganai2006"
-Warning--I didn't find a database entry for "Ramalho2013"
-Warning--I didn't find a database entry for "DeMoura2008"
-Warning--I didn't find a database entry for "Brummayer2009"
-Warning--I didn't find a database entry for "Barrett2011"
-Warning--I didn't find a database entry for "Bozzano2005"
-Warning--I didn't find a database entry for "Dutertre2014"
-Warning--I didn't find a database entry for "Wu2014"
-Warning--I didn't find a database entry for "Bjorner2014"
-Warning--I didn't find a database entry for "Federica2008"
-Warning--I didn't find a database entry for "NarodytskaN"
-Warning--I didn't find a database entry for "Barth1995"
-Warning--I didn't find a database entry for "Vasco2005"
-Warning--I didn't find a database entry for "Z3API"
-Warning--I didn't find a database entry for "Teich2012"
-Warning--I didn't find a database entry for "Cormem"
-Warning--I didn't find a database entry for "TheMathWorks2013"
-Warning--I didn't find a database entry for "Dagum1998"
-Warning--I didn't find a database entry for "Tranquillo2011"
-Warning--I didn't find a database entry for "Hong2010"
-Warning--I didn't find a database entry for "Guthaus2001"
-Warning--I didn't find a database entry for "Arato2005"
-Warning--I didn't find a database entry for "Holzmann2011"
-Warning--I didn't find a database entry for "Holzmann2012"
-Warning--I didn't find a database entry for "Wintersteiger2009"
-Warning--I didn't find a database entry for "Pavlinovic2015"
-Warning--I didn't find a database entry for "Patrick2015"
-(There was 1 error message)
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3199 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3245 of file ACM-Reference-Format-Journals.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no number and no volume in Biere2009
+Warning--page numbers missing in both pages and numpages fields in Biere2009
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Barrett C., Conway C. Deters M., Hadarean L., Jovanovic D., King T., Reynolds A., Tinelli C." for entry Barrett2011
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bjorner N., Phan A-D., Fleckenstein,L." for entry Bjorner2015
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Bozzano M., Bruttomesso R., Cimatti A., Junttila T., Rossum P., Schulz S., Sebastiani R." for entry Bozzano2005
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Cormen T., Leiserson C., Rivest R., Stein C." for entry Cormem
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "E. Clarke, A. Biere, R. Raimi, Y. Zhu" for entry Clarke2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Federica P., Rodolfo F., Yuqing S., Elisa B." for entry Federica2008
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Guthaus M., Ringenberg J., Ernst D., Austin T., Mudge T., Brown R." for entry Guthaus2001
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Name 2 in "Mann Z.A. , Orban A. and Arato P.," has a comma at the end for entry Mann2007
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--no number and no volume in OpenMP1998
+Warning--page numbers missing in both pages and numpages fields in OpenMP1998
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Ramalho M., Freitas M., Souza F., Marques H., Cordeiro L." for entry Ramalho2013
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Warning--no number and no volume in Trindade2016
+Warning--page numbers missing in both pages and numpages fields in Trindade2016
+Warning--unrecognized DOI value [•]
+Warning--unrecognized DOI value [•]
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Too many commas in name 1 of "Wu M., Wu W., Tai N., Zhao H., Fan J., Yuan N." for entry Wu2014
+while executing---line 3337 of file ACM-Reference-Format-Journals.bst
+Warning--unrecognized DOI value [•]
+You've used 38 entries,
+            5290 wiz_defined-function locations,
+            1658 strings with 22940 characters,
+and the built_in function-call counts, 39654 in all, are:
+= -- 6953
+> -- 796
+< -- 0
++ -- 172
+- -- 323
+* -- 1942
+:= -- 3623
+add.period$ -- 225
+call.type$ -- 38
+change.case$ -- 192
+chr.to.int$ -- 38
+cite$ -- 44
+duplicate$ -- 3211
+empty$ -- 2298
+format.name$ -- 328
+if$ -- 10732
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 152
+newline$ -- 478
+num.names$ -- 304
+pop$ -- 829
+preamble$ -- 1
+purify$ -- 382
+quote$ -- 0
+skip$ -- 1013
+stack$ -- 0
+substring$ -- 3375
+swap$ -- 419
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 532
+warning$ -- 40
+while$ -- 390
+width$ -- 0
+write$ -- 816
+(There were 173 error messages)
