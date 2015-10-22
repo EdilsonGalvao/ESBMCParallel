@@ -287,7 +287,7 @@ The most basic directive of OpenMP is the ``\textit{\#pragma omp parallel for}''
 int i;
 #pragma omp parallel for
 for (i = 0; i < 10; i++)
-a[i] = 2 * i;
+  a[i] = 2 * i;
 \end{minted}
 \caption{OpenMP basic Example.}
 \label{lst:example}
@@ -295,7 +295,7 @@ a[i] = 2 * i;
 
 
 \vspace{3 mm}
-In the above example, the for loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\textit{\#pragma omp critical}'' directive is routinely used.
+In the above example, the {\it for} loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\textit{\#pragma omp critical}'' directive is routinely used.
 
 %----------------------------------------------
 \subsection{Solving Optimization Problems with $\nu$Z}
@@ -558,7 +558,6 @@ Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized b
 \label{Steps-Calculation-using-Intervals}
 \end{listing}
 
-\vspace{3 mm}
 Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
@@ -580,7 +579,6 @@ From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line
 \label{worker-sample}
 \end{listing}
 
-\vspace{3 mm}
 Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
 %----------------------------------------------
@@ -635,7 +633,7 @@ This section is split into three parts. The setup is described in Section~\ref{E
 
 ESBMC $1$.$24$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system was used. A parallel approach of the ESBMC-SS, ESBMC-PS, ESBMC-PB were implemented in C$++$11. Version $2$.$0$.$1$ of Boolector SMT-solver~\cite{Brummayer2009} (freely available) was used as the default solver for ESBMC. ESBMC-$\nu$Z as a built-in tool to Z3 was also used~\cite{Bjorner2014}.  For ILP and GA formulations, MATLAB R$2013$a from MathWorks with Parallel Computing Toolbox was used~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language, known as the state-of-the-art mathematical software~\cite{Tranquillo2011} and is widely used by the engineering community~\cite{Hong2010}.
 
-All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $15$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times (average taken). \textcolor{red}{Based on standard deviation and tolerance interval to each set of time sample, it was obtained a statistical confidence of $91.7$\% to ESBMC (pure, SS, PB and $\nu$Z), $95.9$\% to ESBMC-PS, and $92.0$\% to ILP and GA}. A time out condition (TO) is reached when the verification time is longer than $3600$ seconds. A memory out (MO) occurs when the tool reaches $15$GB of memory. 
+All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $15$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times (average taken). Based on standard deviation and tolerance interval to each set of time sample, it was obtained a statistical confidence of $91.7$\% to ESBMC (sequential, SS, PB and $\nu$Z), $95.9$\% to ESBMC-PS, and $92.0$\% to ILP and GA. A time out condition (TO) is reached when the verification time is longer than $3600$ seconds. A memory out (MO) occurs when the tool reaches $15$GB of memory. 
 
 %----------------------------------------------
 \subsection{Description of Benchmarks}
@@ -821,7 +819,7 @@ In terms of SMT-based verification, most related studies are restricted to prese
 Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}. In particular, 
 $\nu$Z tool offers substantial performance improvement in optimization problems~\cite{Bjorner2014,Bjorner2015}. As an application example, Pavlinovic {\it et al.}~\cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed functional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program. The approach described by Pavlinovic {\it et al.}, which uses MaxSMT solver $\nu$Z, shows a significant performance improvement if compared to previous SMT encodings and localization algorithms.
 
-The problem addressed in this present paper uses a single objective function for minimization. In Partrick {\it et al.}~\cite{Patrick2015},  OptiMathSAT and $\nu$Z are compared for software optimization problems. OptiMathSAT, using multiple objective functions, works better than $\nu$Z; however, for problems with a single objective function, the performance of $\nu$Z is better than OptiMathSAT.
+The problem addressed in this present paper uses a single objective function for minimization. In~\cite{Patrick2015}, OptiMathSAT and $\nu$Z are compared for software optimization problems. OptiMathSAT, using multiple objective functions, works better than $\nu$Z; however, for problems with a single objective function, the performance of $\nu$Z is better than OptiMathSAT.
 
 %----------------------------------------------
 \section{Conclusions}
