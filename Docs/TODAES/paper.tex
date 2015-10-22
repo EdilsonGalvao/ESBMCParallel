@@ -197,7 +197,7 @@ Starting at the 1990s, intensive research was performed in HW-SW partitioning, a
 
 %Multi-core processors have been used in all segments of industry to implement high-performance computing~\cite{Wu2014}. In particular, hardware platforms, together with multi-processing platforms, have allowed verification algorithms to distribute tasks executions across multiple processors, which generate an increase in performance if compared to single-core solution~\cite{Holzmann11}. However, most algorithms for software verification still disregard the limitations of the CMOS technology and focus their solution on a single-core approach~\cite{Cordeiro2012,Clarke2004,Armando2009,Ganai2006}.
 
-Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods are applied to the HW-SW partition problem in three different ways using a multi-core ESBMC approach with OpenMP~\cite{Tang2009}: ESBMC-SS using a sequential-search (SS), ESBMC-PS using a parallel-search (PS), and ESBMC-PB using a binary-search (BS). Experimental results are compared to ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and also to $\nu$Z, which supports only a single-core approach~\cite{Bjorner2015}. The ILP and GA algorithms are implemented with the optimization toolbox of Matlab~\cite{OpenMP1998}, while $\nu$Z is a built-in tool to the SMT solver Z3. All multi-core ESBMC approaches, together with $\nu$Z, are implemented with the ESBMC tool~\cite{Cordeiro2012}. 
+Here, we exploit the availability of multi-core processors; in particular, SMT-based verification methods are applied to the HW-SW partition problem in three different ways using a multi-core ESBMC approach with OpenMP~\cite{Tang2009}: ESBMC-SS using a sequential-search (SS), ESBMC-PS using a parallel-search (PS), and ESBMC-PB using a binary-search (BS). Experimental results are compared to ILP (integral linear programming), GA (generic algorithms) in a multi-core version, and also to $\nu$Z, which supports only a single-core approach~\cite{Bjorner2015}. The ILP and GA algorithms are implemented with the optimization toolbox of Matlab~\cite{TheMathWorks2013}, while $\nu$Z is a built-in tool to the SMT solver Z3. All multi-core ESBMC approaches, together with $\nu$Z, are implemented with the ESBMC tool~\cite{Cordeiro2012}. 
 
 % in which its main function is to check the satisfiability of logical formulas based on objective functions
 
@@ -649,7 +649,7 @@ To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{
 \small
 \sffamily\small
 \tabulinesep=6pt
-\captionof{table}{Description of Benchmarks.} \label{tab:Description-of-Benchmarks} 
+\captionof{table}{Description of Benchmarks.} 
 \begin{tabular}[c]{m{1.8cm}m{0.9cm}m{0.9cm}m{8.2cm}}
 \\
 \toprule[1.5pt]
@@ -683,6 +683,7 @@ To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{
 \verb|Mars| & \verb|417| & \verb|600| & \rmfamily MARS cipher from IBM algorithm\\
 \\
 \bottomrule[1.5pt]
+\label{tab:Description-of-Benchmarks} 
 \end{tabular}\par
 \bigskip
 \end{minipage}
