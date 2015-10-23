@@ -371,13 +371,13 @@ The informal model can be described by five characteristics. First, there is onl
 \label{Formal-Model}
 %----------------------------------------------
 
-The inputs of the problem are: a directed simple graph $ G = (V,E) $, called the task graph of the system, is necessary. The vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(s_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).
+The inputs of the problem are: a directed simple graph $ G = (V,E) $, called the task graph of the system, is necessary. The vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(V_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).
 
-Based on~\cite{Arato2003}, is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $v_i \in V_h, v_j \in V_s $. The hardware cost of $P$ is given by Eq.~\ref{hardware-costs}
+Based on~\cite{Arato2003}, is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $. The hardware cost of $P$ is given by Eq.~\ref{hardware-costs}
 
 \begin{align}
 \label{hardware-costs}
-H_p  &= \Sigma_{v_i \in V_H} h_i
+H_p  &= \Sigma_{V_i \in V_h} h_i
 \end{align}
 
 \vspace{3 mm}
@@ -386,7 +386,7 @@ H_p  &= \Sigma_{v_i \in V_H} h_i
 %  S_p &= \Sigma_{\left(v_i \;\in\; V_s\right)} s_i + \Sigma_{(v_i,v_j) \in\; %E_p}\; c(V_i, V_j).
 \begin{align}
 \label{software-communication-costs}
-  S_p &= \Sigma_{v_i \in V_s}\:s_i + \Sigma_{(v_i,v_j)\in\:E_p} c(V_i,V_j)
+  S_p &= \Sigma_{V_i \in V_s}\:s_i + \Sigma_{(V_i,V_j)\in\:E_p} c(V_i,V_j)
 \end{align}
 
 \vspace{3 mm}
@@ -394,7 +394,7 @@ Three different optimization and decision problems can be defined. In this paper
 
 \begin{align}
 \label{hw-sw-partitioning}
-s\left(1-x\right) + c|E_x| \leq S_0, 
+s\left(1-x\right) + c|EX| \leq S_0, 
 \end{align}
 
 \vspace{3 mm}
