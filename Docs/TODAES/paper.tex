@@ -398,7 +398,7 @@ s\left(1-x\right) + c|EX| \leq S_0,
 \end{align}
 
 \vspace{3 mm}
-\noindent where $x$ represents the decision variable. Concerning the complexity of this problem, Arat\'o {\it et al.}~\cite{Arato2003} demonstrate that it is NP-Hard~\cite{Cormem}.
+\noindent where $x$ represents the decision variable. Concerning the complexity of this problem, \cite{Arato2003} demonstrate that it is NP-Hard~\cite{Cormem}.
 
 
 %----------------------------------------------
@@ -642,7 +642,7 @@ All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-
 \label{Benchmarks-Description}
 %----------------------------------------------
 
-To perform the experiments, some benchmarks provided by Mann {\it et al.}~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from Mann {\it et al.}~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
+To perform the experiments, some benchmarks provided by~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
 \begin{minipage}{\linewidth}
 \centering
@@ -819,7 +819,7 @@ Finally, there are approaches that mixes heuristics with exact solution tools. T
 In terms of SMT-based verification, most related studies are restricted to present the model, its modification to programming languages ({\it e.g.}, C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and~\cite{Cordeiro2012} uses ESBMC for embedded ANSI-C software. In~\cite{Trindade2015} and~\cite{Trindade2016} it was proven that it is possible to use ESBMC to solve HW-SW partitioning in a single- and multi-core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to add support for parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. 
 
 Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}. In particular, 
-$\nu$Z tool offers substantial performance improvement in optimization problems~\cite{Bjorner2014,Bjorner2015}. As an application example, Pavlinovic {\it et al.}~\cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed functional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program. The approach described by Pavlinovic {\it et al.}, which uses MaxSMT solver $\nu$Z, shows a significant performance improvement if compared to previous SMT encodings and localization algorithms.
+$\nu$Z tool offers substantial performance improvement in optimization problems~\cite{Bjorner2014,Bjorner2015}. As an application example, \cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed functional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program. The approach described by \cite{Pavlinovic2015}, which uses MaxSMT solver $\nu$Z, shows a significant performance improvement if compared to previous SMT encodings and localization algorithms.
 
 The problem addressed in this present paper uses a single objective function for minimization. In~\cite{Patrick2015}, OptiMathSAT and $\nu$Z are compared for software optimization problems. OptiMathSAT, using multiple objective functions, works better than $\nu$Z; however, for problems with a single objective function, the performance of $\nu$Z is better than OptiMathSAT.
 
