@@ -31,7 +31,6 @@
 \usepackage{graphicx} %Imagens
 
 \usepackage{minted}
-\usemintedstyle{bw}
 
 \newcolumntype{C}[1]{>{\Centering}m{#1}}
 \renewcommand\tabularxcolumn[1]{C{#1}}
