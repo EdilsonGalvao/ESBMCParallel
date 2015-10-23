@@ -1751,8 +1751,8 @@
   \global\@acmtsasfalse
   \global\@acmtompecsfalse
   \global\@acmtcpsfalse
-  \def\@journalName{ACM Transactions on Reconfigurable Technology and Systems}
-  \def\@journalNameShort{ACM Trans. Reconfig. Technol. Syst.}
+  \def\@journalName{ACM Transactions on Design Automation of Electronic Systems}
+  \def\@journalNameShort{ACM Trans. Des. Automat. El.}
   \def\@journalCode{trets}
   \def\@permissionCodeOne{1936-7406} 
 }
