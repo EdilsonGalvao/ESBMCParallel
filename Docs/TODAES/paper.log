@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  22 OCT 2015 21:15
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.8.14)  22 OCT 2015 22:34
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -662,6 +662,8 @@ LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <8> not available
 (Font)              Font shape `OT1/pnc/b/n' tried instead on input line 186.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <9> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 190.
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 
 Underfull \vbox (badness 1194) has occurred while \output is active []
 
@@ -672,6 +674,8 @@ Overfull \vbox (72.27pt too high) has occurred while \output is active []
 Non-PDF special ignored!
 
 ]
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 LaTeX Font Info:    Font shape `OT1/pnc/bx/n' in size <10> not available
 (Font)              Font shape `OT1/pnc/b/n' tried instead on input line 206.
  [2]
@@ -702,6 +706,10 @@ runsystem(rm paper.out.pyg)...executed.
 runsystem(rm paper.pyg)...executed.
 
  [4 <./figures/esbmc-arch-new.pdf>]
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 \openout4 = `paper.pyg'.
 
 runsystem(pygmentize -l c++ -f latex -F tokenmerge  -F gobble:n=0    -P mathesc
@@ -714,27 +722,17 @@ runsystem(rm paper.out.pyg)...executed.
 runsystem(rm paper.pyg)...executed.
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 343--344
-[]\OT1/pnc/m/n/10 Fig. 2[] shows the $\OML/cmm/m/it/10 ^^W$\OT1/pnc/m/n/10 Z ar
--chi-tec-ture. Ini-tially, the SMT for-mula with ob-jec-tives
- []
-
 <figures/vzArch.png, id=53, 1191.45125pt x 403.5075pt>
 File: figures/vzArch.png Graphic file (type png)
 
 <use figures/vzArch.png>
 Package pdftex.def Info: figures/vzArch.png used on input line 348.
 (pdftex.def)             Requested size: 357.43813pt x 121.05318pt.
-
-Underfull \hbox (badness 3557) in paragraph at lines 360--361
-\OT1/pnc/m/n/10 The mathe-matical mod-el-ing of the HW-SW par-ti-tion-ing prob-
-lem was taken
- []
-
-[5]
-Underfull \vbox (badness 2790) has occurred while \output is active []
-
- [6 <./figures/vzArch.png>] [7]
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
+ [5] [6 <./figures/vzArch.png>] [7]
 \openout4 = `paper.pyg'.
 
 runsystem(pygmentize -l c++ -f latex -F tokenmerge  -F gobble:n=0    -P mathesc
@@ -768,15 +766,27 @@ File: figures/esbmc-pb.pdf Graphic file (type pdf)
 Package pdftex.def Info: figures/esbmc-pb.pdf used on input line 515.
 (pdftex.def)             Requested size: 283.65704pt x 230.35838pt.
  [9 <./figures/esbmc-ss.pdf>]
-<figures/Fig4.png, id=104, 1447.4075pt x 286.06876pt>
+Underfull \vbox (badness 1107) has occurred while \output is active []
+
+ [10 <./figures/esbmc-ps.pdf> <./figures/esbmc-pb.pdf>]
+<figures/Fig4.png, id=150, 1447.4075pt x 286.06876pt>
 File: figures/Fig4.png Graphic file (type png)
  <use figures/Fig4.png>
 Package pdftex.def Info: figures/Fig4.png used on input line 524.
 (pdftex.def)             Requested size: 1447.40399pt x 286.06805pt.
+\openout4 = `paper.pyg'.
 
-Underfull \vbox (badness 2875) has occurred while \output is active []
+runsystem(pygmentize -l c++ -f latex -F tokenmerge  -F gobble:n=0    -P mathesc
+ape      -P linenos -P "verboptions= ,numbersep=7pt,frame=lines,framesep=2mm" -
+o paper.out.pyg paper.pyg)...executed.
 
- [10 <./figures/esbmc-ps.pdf> <./figures/esbmc-pb.pdf>]
+
+(./paper.out.pyg)
+runsystem(rm paper.out.pyg)...executed.
+
+runsystem(rm paper.pyg)...executed.
+
+ [11 <./figures/Fig4.png>]
 \openout4 = `paper.pyg'.
 
 runsystem(pygmentize -l c++ -f latex -F tokenmerge  -F gobble:n=0    -P mathesc
@@ -788,18 +798,8 @@ runsystem(rm paper.out.pyg)...executed.
 
 runsystem(rm paper.pyg)...executed.
 
-\openout4 = `paper.pyg'.
-
-runsystem(pygmentize -l c++ -f latex -F tokenmerge  -F gobble:n=0    -P mathesc
-ape      -P linenos -P "verboptions= ,numbersep=7pt,frame=lines,framesep=2mm" -
-o paper.out.pyg paper.pyg)...executed.
-
- (./paper.out.pyg)
-runsystem(rm paper.out.pyg)...executed.
-
-runsystem(rm paper.pyg)...executed.
-
-[11 <./figures/Fig4.png>]
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 \openout4 = `paper.pyg'.
 
 runsystem(pygmentize -l c++ -f latex -F tokenmerge  -F gobble:n=0    -P mathesc
@@ -815,6 +815,9 @@ runsystem(rm paper.pyg)...executed.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [12]
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
+
 [13]
 Overfull \hbox (1.8965pt too wide) in paragraph at lines 656--656
 []|\OT1/phv/b/n/9 Nodes| 
@@ -838,6 +841,10 @@ Overfull \hbox (20.2064pt too wide) in paragraph at lines 727--805
  [][] 
  []
 
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 [15]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -847,12 +854,18 @@ Missing character: There is no â in font pncr7t!
 Missing character: There is no € in font pncr7t!
 Missing character: There is no “ in font pncr7t!
  [17]
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 Missing character: There is no â in font pncr7t!
 Missing character: There is no € in font pncr7t!
 Missing character: There is no “ in font pncr7t!
 Missing character: There is no â in font pncr7t!
 Missing character: There is no € in font pncr7t!
 Missing character: There is no “ in font pncr7t!
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
+Missing character: There is no Ã in font pncr7t!
+Missing character: There is no ¸ in font pncr7t!
 Missing character: There is no â in font pncr7t!
 Missing character: There is no € in font pncr7t!
 Missing character: There is no “ in font pncr7t!
@@ -863,37 +876,41 @@ Missing character: There is no “ in font pncr7t!
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18])
-[19] (./paper.aux) ) 
+[19] (./paper.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  10171 strings out of 494985
  147286 string characters out of 6180356
- 576946 words of memory out of 5000000
+ 578307 words of memory out of 5000000
  13121 multiletter control sequences out of 15000+600000
  30857 words of font info for 68 fonts, out of 8000000 for 9000
  75 hyphenation exceptions out of 8191
  53i,13n,92p,1333b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/helvetic/uhvro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/u
-ncb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncri8a.pfb>
-Output written on paper.pdf (19 pages, 1926927 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
+6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/latxfont/lcircle1.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helve
+tic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncb8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/ncntrsbk/uncr8a.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/urw/ncntrsbk/uncri8a.pfb>
+Output written on paper.pdf (19 pages, 1927317 bytes).
 PDF statistics:
  252 PDF objects out of 1000 (max. 8388607)
  179 compressed objects within 2 object streams
