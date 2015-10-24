@@ -43,3 +43,6 @@ Docs/Paper/LaTex/template.synctex.gz
 *.bbl
 *.blg
 *.tex.bak
+*.aux
+*.log
+*.synctex.gz
