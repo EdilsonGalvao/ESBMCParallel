@@ -1,4 +1,4 @@
-\documentclass[prodmode,acmtrets]{acmsmall} % Aptara syntax
+\documentclass[prodmode,acmtodaes]{acmsmall} % Aptara syntax
 
 \usepackage{listings} % Codes
 %\lstset{
@@ -295,15 +295,14 @@ The most basic directive of OpenMP is the ``\textit{\#pragma omp parallel for}''
 %\label{lst:example}
 %\end{listing}
 
-\vspace{3 mm}
-\begin{lstlisting}[language=C,caption={OpenMP basic Example.},label={lst:example},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
+\vspace{2 mm}
+\begin{lstlisting}[basicstyle=\small,language=C,caption={OpenMP basic Example.},label={lst:example},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
 int k;
 #pragma omp parallel for
 for (k = 0; k < 10; k++)
   a[k] = 2*k;
 \end{lstlisting}
 
-\vspace{1.5 mm}
 In the above example, the {\it for} loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\textit{\#pragma omp critical}'' directive is routinely used.
 
 %----------------------------------------------
@@ -346,8 +345,8 @@ As an example, one can optimize $\left(K + W\right)$, which is subject to restri
 %\label{vZ}
 %\end{listing}
 
-\vspace{3 mm}
-\begin{lstlisting}[language=C,caption={OpenMP basic Example.},label={vZ},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
+\vspace{2 mm}
+\begin{lstlisting}[basicstyle=\small,language=C,caption={OpenMP basic Example.},label={vZ},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
 (Declare-Const K Int) 
 (Declare-Const W Int)
 (assert (< K 2)) 
@@ -356,7 +355,6 @@ As an example, one can optimize $\left(K + W\right)$, which is subject to restri
 (check-sat)
 \end{lstlisting}
 
-\vspace{1.5 mm}
 Fig.~\ref{vZ-Architecture} shows the $\nu$Z architecture. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, $\nu$Z invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, $\nu$Z combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', $\nu$Z invokes MaxSAT using multiple calls for its engine.
 
 \begin{figure}[ht]
@@ -419,7 +417,6 @@ s\left(1-x\right) + c|EX| \leq S_0,
 \vspace{2 mm}
 \noindent where $x$ represents the decision variable. Concerning the complexity of this problem, \cite{Arato2003} demonstrate that it is NP-Hard~\cite{Cormem}.
 
-
 %----------------------------------------------
 \section{Analysis of the partitioning problem}
 \label{Analysis-of-the-partitioning-problem-using-ESBMC}
@@ -480,15 +477,15 @@ In the ESBMC algorithm, which is shown below, it is not necessary to add slack v
 %\label{Pseudocode-describing-ESBMC}
 %\end{listing}
 
-\vspace{1.5 mm}
-\begin{lstlisting}[caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
+\vspace{2 mm}
+\begin{lstlisting}[basicstyle=\small,caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
 Initialize variables 
 Declare number of nodes and edges
 Declare hardware cost of each node as array (h)
 Declare software cost of each node as array (s)
 Declare communication cost of each edge (c)
 Declare the initial software cost of ($S_0$)
-Declare transposed incidence matrix graph G (E)
+Declare transposed incidence matrix graph G(E)
 Define the solutions variable ($X_i$) as Boolean
 main {
   For TipH = 0 to Hmax Do {
@@ -599,7 +596,7 @@ Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized b
 %\label{Steps-Calculation-using-Intervals}
 %\end{listing}
 \vspace {2 mm}
-\begin{lstlisting}[caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
+\begin{lstlisting}[basicstyle=\small,caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
 GetNextStep(){
   int largestChunk = -1;
   chunk largest;
@@ -610,7 +607,7 @@ GetNextStep(){
     }
   }	
   chunks.remove(largest);	
-  int median = largest.left + floor((largest.right-largest.left)/2)
+  int median = largest.left + floor((largest.right - largest.left) / 2)
   if(median > 0){
     if(largest.right - largest.left > 1)
       chunks.add(new chunk(largest.left, median - 1));	
@@ -693,7 +690,7 @@ The arithmetic expressions from lines $10$ to $12$ represent the constraints des
 %\end{listing}
 
 \vspace {2 mm}
-\begin{lstlisting}[caption={Pseudocode describing ESBMC-$\nu$Z.},label={vZ-pseudocode},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
+\begin{lstlisting}[basicstyle=\small,caption={Pseudocode describing ESBMC-$\nu$Z.},label={vZ-pseudocode},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
 --Initialize Variables
   Create vZ context 
   Create binary vector (x)
@@ -925,7 +922,6 @@ We presented five approaches to solve the HW-SW partitioning problem and compare
 If considering off-the-shelf tools, as MATLAB to ILP and GA, the coding is simpler. However, ESBMC and $\nu$Z have BSD-Style and MIT licenses, respectively and can be downloaded and used for free. Experimental results also pointed to an improvement of ESBMC, when using a parallel approach. In particular, all three parallel approaches described in this paper produced expressive results. The fastest ESBMC approaches is ESBMC-PB, which produces good results for an intermediate amount of edges and nodes. Thus, considering that nowadays processors have more and more cores, when modeling the problem, it is possible to consider multi-core model checking as an alternative to solve the HW-SW partitioning problem. 
 
 Finally, there is an issue about $150$ nodes problem, since it seems to be the limit of multi-core ESBMC. However, it really depends on the modeling granularity of the problem. Some researchers propose fine-grained models, in which each instruction can be mapped to either HW or SW. This may lead to thousands of nodes or even more. Others defend coarse-grained models, where decisions are made for larger components, thus even complex systems may consist of just some dozens of nodes to partition. In principle, a fine-grained approach may allow to obtain better partitions, but at the cost of an exponential increase of the search space size. In future work, we will address improvements in ESBMC to remove the parallel layer on top of ESBMC and implement it during symbolic execution so that we can optimize the overall verification time.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % ---- Bibliography ---- %
