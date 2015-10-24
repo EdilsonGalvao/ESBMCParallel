@@ -29,9 +29,9 @@
 \usepackage{amsmath,array}  
 \usepackage{tabularx} % in the preamble
 \usepackage{graphicx} %Imagens
-
-\usepackage{minted}
-\usemintedstyle{bw}
+\renewcommand{\lstlistingname}{Algorithm}
+%\usepackage{minted}
+%\usemintedstyle{bw}
 
 \newcolumntype{C}[1]{>{\Centering}m{#1}}
 \renewcommand\tabularxcolumn[1]{C{#1}}
@@ -146,10 +146,10 @@ We present an alternative approach to solve the hardware and software partitioni
 </ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Hardware~Hardware-software codesign}
-\ccsdesc[500]{Hardware~Software tools for EDA}
-\ccsdesc[500]{Software and its engineering~Model checking}
-\ccsdesc[500]{Software and its engineering~Software verification}
+\ccsdesc[500]{Hardware~ Hardware-software codesign}
+\ccsdesc[500]{Hardware~ Software tools for EDA}
+\ccsdesc[500]{Software and its engineering~ Model checking}
+\ccsdesc[500]{Software and its engineering~ Software verification}
 
 %
 % End generated code
@@ -157,7 +157,7 @@ We present an alternative approach to solve the hardware and software partitioni
 
 %\terms{Design, Algorithms, Performance}
 
-\keywords{hardware-software co-design, hardware-software partitioning, optimization, model checking, multi-core, OpenMP. }
+\keywords{hardware-software co-design, hardware-software partitioning, optimization, model checking, multi-core, OpenMP.}
 
 %\acmformat{Gang Zhou, Yafeng Wu, Ting Yan, Tian He, Chengdu Huang, John A. Stankovic,
 %and Tarek F. Abdelzaher, 2010. A multifrequency MAC specially
@@ -174,13 +174,13 @@ We present an alternative approach to solve the hardware and software partitioni
 % The remaining information (journal title, volume, article number, date, etc.) is 'auto-generated'.
 
 \begin{bottomstuff}
-A. Trindade, H. Ismail, R. Degelo, E. Galv\~ao \\
+A. Trindade, H. Ismail, R. Degelo, and E. Galv\~ao \\
 Graduate Program in Electrical Engineering, Federal University of Amazonas, Brazil \\
-\{alessandro.b.trindade, hussamaismail, rdegelo, esj.galvao\}@gmail.com \\ \\
-\and\\ \\
-H. Silva and L. Cordeiro \\
+\{alessandro.b.trindade, hussamaismail, rdegelo, esj.galvao\}@gmail.com \\ 
+\\
+H. Silva, and L. Cordeiro \\
 Federal University of Amazonas, Brazil\\
-prhsilva2012@gmail.com lucascordeiro@ufam.edu.br      \\
+prhsilva2012@gmail.com, lucascordeiro@ufam.edu.br      \\
 \end{bottomstuff}
 
 \maketitle
@@ -237,7 +237,7 @@ There is no single method available for efficiently solving all optimization pro
   \end{cases}
 \end{equation}
 
-\vspace{5 mm}
+\vspace{3 mm}
 In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, {\it e.g.}, those used in the GA~\cite{Rao2009}. The only drawback is that the found solution may not be the global minimum or maximum. Alternatively, tools such as ESBMC and $\nu$Z can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of ESBMC and $\nu$Z tools.
 
 %----------------------------------------------
@@ -279,24 +279,31 @@ In particular, OpenMP uses the \textit{fork-join} model of parallel execution~\c
 
 The most basic directive of OpenMP is the ``\textit{\#pragma omp parallel for}'', which parallelizes the enclosing loop; a basic OpenMP example is shown below:
 
-\begin{listing}[H]
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=7pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{matlab}
+%\begin{listing}[H]
+%\begin{minted}[mathescape,
+%               linenos,
+%               numbersep=7pt,
+%               gobble=0,
+%               frame=lines,
+%               framesep=2mm]{matlab}
+%int k;
+%#pragma omp parallel for
+%for (k = 0; k < 10; k++)
+%  a[k] = 2*k;
+%\end{minted}
+%\caption{OpenMP basic Example.}
+%\label{lst:example}
+%\end{listing}
+
+\vspace{3 mm}
+\begin{lstlisting}[language=C,caption={OpenMP basic Example.},label={lst:example},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
 int k;
 #pragma omp parallel for
 for (k = 0; k < 10; k++)
   a[k] = 2*k;
-\end{minted}
-\caption{OpenMP basic Example.}
-\label{lst:example}
-\end{listing}
+\end{lstlisting}
 
-
-\vspace{3 mm}
+\vspace{1.5 mm}
 In the above example, the {\it for} loop is executed in parallel. Each iteration of the loop is executed in a separated thread; and each thread may use an idle processor. There is also a way to specify critical regions, which is a code block that is guaranteed to be executed by a single thread at a time. To create a critical region, the ``\textit{\#pragma omp critical}'' directive is routinely used.
 
 %----------------------------------------------
@@ -321,27 +328,36 @@ the function \textit{assert-soft} adds a restriction to $F$, which can also add 
 
 As an example, one can optimize $\left(K + W\right)$, which is subject to restrictions in $\left(K < 2\right)$ and $\left(W - K < 1\right)$. The expected result of this optimization problem described in the code below is $2$. In fact, the model generated by $\nu$Z shows that $K = 1$ and $W = 1$.
 
-\begin{listing}[H]
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=7pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{c++}
+%\begin{listing}[H]
+%\begin{minted}[mathescape,
+%               linenos,
+%               numbersep=7pt,
+%               gobble=0,
+%               frame=lines,
+%              framesep=2mm]{c++}
+%(Declare-Const K Int) 
+%(Declare-Const W Int)
+%(assert (< K 2)) 
+%(assert (< (- W K) 1))
+%(maximize (+ K W)) 
+%(check-sat)
+%\end{minted}
+%\caption{Example of SMT formula using $\nu$Z.}
+%\label{vZ}
+%\end{listing}
+
+\vspace{3 mm}
+\begin{lstlisting}[language=C,caption={OpenMP basic Example.},label={vZ},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
 (Declare-Const K Int) 
 (Declare-Const W Int)
 (assert (< K 2)) 
 (assert (< (- W K) 1))
 (maximize (+ K W)) 
 (check-sat)
-\end{minted}
-\caption{Example of SMT formula using $\nu$Z.}
-\label{vZ}
-\end{listing}
+\end{lstlisting}
 
-\vspace{3 mm}
+\vspace{1.5 mm}
 Fig.~\ref{vZ-Architecture} shows the $\nu$Z architecture. Initially, the SMT formula with objectives is converted to $0-1$ constraints, which leads to a Pseudo-Boolean Optimization (PBO)~\cite{Barth1995,Vasco2005}. If there are many objective functions, $\nu$Z invokes OptSAT for arithmetic or MaxSAT for soft constraints. For constraints using real values, $\nu$Z combines linear arithmetic objectives and uses only one instance of OptSMT. When ``soft constrains'' is used in the mode `` lexicographic'', $\nu$Z invokes MaxSAT using multiple calls for its engine.
-
 
 \begin{figure}[ht]
 	\centering
@@ -374,30 +390,32 @@ The informal model can be described by five characteristics. First, there is onl
 The inputs of the problem are: a directed simple graph $ G = (V,E) $, called the task graph of the system, is necessary. The vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(V_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).
 
 Based on~\cite{Arato2003}, is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $. The hardware cost of $P$ is given by Eq.~\ref{hardware-costs}
-
+%
 \begin{align}
 \label{hardware-costs}
-H_p  &= \Sigma_{V_i \in V_h} h_i
+H_p  &= \Sigma_{V_i \in V_h} h_i,
 \end{align}
-
-\vspace{3 mm}
+%
+\vspace{2 mm}
 \noindent and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given by Eq.~\ref{software-communication-costs}
-
+%
+%
 %  S_p &= \Sigma_{\left(v_i \;\in\; V_s\right)} s_i + \Sigma_{(v_i,v_j) \in\; %E_p}\; c(V_i, V_j).
 \begin{align}
 \label{software-communication-costs}
-  S_p &= \Sigma_{V_i \in V_s}\:s_i + \Sigma_{(V_i,V_j)\in\:E_p} c(V_i,V_j)
+  S_p &= \Sigma_{V_i \in V_s}\:s_i + \Sigma_{(V_i,V_j)\in\:E_p} c(V_i,V_j).
 \end{align}
 
-\vspace{3 mm}
+\vspace{2 mm}
 Three different optimization and decision problems can be defined. In this paper, the focus is on the case that $ S_0 $ is given, {\it i.e.}, to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related to system with hard real-time constraints. Based on Eq.~\ref{linear-programming-problem} and~\ref{software-communication-costs}, the constraints can be reformulated as 
-
+%
+\vspace{1 mm}
 \begin{align}
 \label{hw-sw-partitioning}
 s\left(1-x\right) + c|EX| \leq S_0, 
 \end{align}
 
-\vspace{3 mm}
+\vspace{2 mm}
 \noindent where $x$ represents the decision variable. Concerning the complexity of this problem, \cite{Arato2003} demonstrate that it is NP-Hard~\cite{Cormem}.
 
 
@@ -432,35 +450,55 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 
 In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
-\begin{listing}[H]
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=7pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{c++}
- Initialize Variables 
- Declare number of nodes and edges
- Declare hardware cost of each node as array (h)
- Declare software cost of each node as array (s)
- Declare communication cost of each edge (c)
- Declare the initial software cost of (S0)
- Declare transposed incidence matrix graph G (E)
- Define the solutions variable (Xi) as Boolean
- main {
-  For TipH = 0 to Hmax Do {
-   populate Xi with nondeterministic/test values
-   Calculate s(1-x)+c|Ex| and store at variable
-   Requirement isued by Assume (Variable <= S0)
-   Calculate Hp cost Based on value tested of Xi
-   Violation check with Assert(Hp > TipH)
-  }
- }
-\end{minted}
-\caption{Pseudocode describing sequential ESBMC}
-\label{Pseudocode-describing-ESBMC}
-\end{listing}
+%\begin{listing}[H]
+%\begin{minted}[mathescape,
+%               linenos,
+%               numbersep=7pt,
+%               gobble=0,
+%               frame=lines,
+%               framesep=2mm]{c++}
+% Initialize Variables 
+% Declare number of nodes and edges
+% Declare hardware cost of each node as array (h)
+% Declare software cost of each node as array (s)
+% Declare communication cost of each edge (c)
+% Declare the initial software cost of (S0)
+% Declare transposed incidence matrix graph G (E)
+% Define the solutions variable (Xi) as Boolean
+% main {
+%  For TipH = 0 to Hmax Do {
+%   populate Xi with nondeterministic/test values
+%   Calculate s(1-x)+c|Ex| and store at variable
+%   Requirement isued by Assume (Variable <= S0)
+%   Calculate Hp cost Based on value tested of Xi
+%   Violation check with Assert(Hp > TipH)
+%  }
+% }
+%\end{minted}
+%\caption{Pseudocode describing sequential ESBMC}
+%\label{Pseudocode-describing-ESBMC}
+%\end{listing}
 
+\vspace{1.5 mm}
+\begin{lstlisting}[caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
+Initialize variables 
+Declare number of nodes and edges
+Declare hardware cost of each node as array (h)
+Declare software cost of each node as array (s)
+Declare communication cost of each edge (c)
+Declare the initial software cost of ($S_0$)
+Declare transposed incidence matrix graph G (E)
+Define the solutions variable ($X_i$) as Boolean
+main {
+  For TipH = 0 to Hmax Do {
+    Populate $X_i$ with nondeterministic / test values
+    Calculate s(1-x)+c|Ex| and store at variable
+    Requirement isued by Assume (Variable <= $S_0$)
+    Calculate Hp cost Based on value tested of $X_i$
+    Violation check with Assert(Hp > TipH)
+  }
+}
+\end{lstlisting}
 
 %In the multi-core ESBMC algorithm, the only difference is the fact that the value of $ TipH $ and its range is not declared in the algorithm, %as shown in ESBMC Pseudocode. The proposed approach is invoked for each test problem, as follows:
 %$ esbmc-parallel <Filename.c> \; <hminvalue> \; <Hmax> $
@@ -477,8 +515,7 @@ In the ESBMC algorithm, which is shown below, it is not necessary to add slack v
 Typically, ESBMC verification runs are performed only in a single-core. If the processor provides $8$ processing cores, only one is used for the verification and the others remain idle. Thus, there is a significant unused hardware resource during this process. 
 
 To optimize the CPU resources utilization without modifying the underlying SMT solver, the Open Multi-Processing (OpenMP) library~\cite{Dagum1998} is used in this present work as a front-end for ESBMC. Fig.~\ref{ESBMC-Multi-core} shows our first approach called ESBMC sequential-search ``ESBMC-SS''.
-
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
   \includegraphics[scale=0.9]{figures/esbmc-ss.pdf} 
 	\caption{ESBMC-SS approach.}
@@ -494,7 +531,7 @@ ESBMC-SS obtains the problem specification represented by a ANSI-C program. The 
 
 The previous parallelization is implemented by continuously forking ESBMC instances in a sequential manner until the first violation is found. However, since OpenMP only returns from a parallelized loop, when every forked thread finishes, some processing cores could remain idle for some period of time.
 
-\begin{figure}[ht]
+\begin{figure}[h]
 	\centering
   \includegraphics[scale=0.9]{figures/esbmc-ps.pdf} 
 	\caption{ESBMC-PS approach.}
@@ -529,57 +566,90 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 Note that there might gaps between steps, which are produced by the customized binary-search. For instance, in the example shown in Fig.~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
-\begin{listing}[H]
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=7pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{c++}
-  GetNextStep(){
+
+%\begin{listing}[H]
+%\begin{minted}[mathescape,
+%               linenos,
+%               numbersep=7pt,
+%               gobble=0,
+%               frame=lines,
+%               framesep=2mm]{c++}
+%  GetNextStep(){
+%  int largestChunk = -1;
+%  chunk largest;
+%  for each(chunk in chunks){
+%     if(chunk.right - chunk.left > largestChunk){
+%           largestChunk = chunk.right - chunk.left;
+%           largest = chunk;
+%     }
+%   }	
+%   chunks.remove(largest);	
+%   int median = largest.left + floor((largest.right - largest.left) / 2)
+%   if(median > 0){
+%      if(largest.right - largest.left > 1)
+%         chunks.add(new chunk(largest.left, median - 1));	
+%      if(largest.right != largest.left)
+%         chunks.add(new chunk(median + 1, largest.right);
+%    }
+%   return median;
+% }
+%\end{minted}
+%\caption{Steps calculation using intervals.}
+%\label{Steps-Calculation-using-Intervals}
+%\end{listing}
+\vspace {2 mm}
+\begin{lstlisting}[caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
+GetNextStep(){
   int largestChunk = -1;
   chunk largest;
   for each(chunk in chunks){
-     if(chunk.right - chunk.left > largestChunk){
-           largestChunk = chunk.right - chunk.left;
-           largest = chunk;
-     }
-   }	
-   chunks.remove(largest);	
-   int median = largest.left + floor((largest.right - largest.left) / 2)
-   if(median > 0){
-      if(largest.right - largest.left > 1)
-         chunks.add(new chunk(largest.left, median - 1));	
-      if(largest.right != largest.left)
-         chunks.add(new chunk(median + 1, largest.right);
+    if(chunk.right - chunk.left > largestChunk){
+      largestChunk = chunk.right - chunk.left;
+      largest = chunk;
     }
-   return median;
- }
-\end{minted}
-\caption{Steps calculation using intervals.}
-\label{Steps-Calculation-using-Intervals}
-\end{listing}
+  }	
+  chunks.remove(largest);	
+  int median = largest.left + floor((largest.right-largest.left)/2)
+  if(median > 0){
+    if(largest.right - largest.left > 1)
+      chunks.add(new chunk(largest.left, median - 1));	
+    if(largest.right != largest.left)
+      chunks.add(new chunk(median + 1, largest.right);
+  }
+  return median;
+}
+\end{lstlisting}
 
 Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
 
-\begin{listing}[H]
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=7pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{c++}
- step = controller.GetNextStep();
- int pid = ExecuteStep(step);
- while(isRunning(pid)){
-   if(!controller.isNeeded(step))
+%\begin{listing}[H]
+%\begin{minted}[mathescape,
+%               linenos,
+%               numbersep=7pt,
+%               gobble=0,
+%               frame=lines,
+%               framesep=2mm]{c++}
+% step = controller.GetNextStep();
+% int pid = ExecuteStep(step);
+% while(isRunning(pid)){
+%   if(!controller.isNeeded(step))
+%    kill(pid);
+% }
+%\end{minted}
+%\caption{Worker sample.}
+%\label{worker-sample}
+%\end{listing}
+
+\vspace {2 mm}
+\begin{lstlisting}[caption={Worker sample.},label={worker-sample},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
+step = controller.GetNextStep();
+int pid = ExecuteStep(step);
+while(isRunning(pid)){
+  if(!controller.isNeeded(step))
     kill(pid);
- }
-\end{minted}
-\caption{Worker sample.}
-\label{worker-sample}
-\end{listing}
+}
+\end{lstlisting}
 
 Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
@@ -592,34 +662,55 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
 
 The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
-\begin{listing}[H]
-\begin{minted}[mathescape,
-               linenos,
-               numbersep=7pt,
-               gobble=0,
-               frame=lines,
-               framesep=2mm]{c++}
+%\begin{listing}[H]
+%\begin{minted}[mathescape,
+%               linenos,
+%               numbersep=7pt,
+%               gobble=0,
+%               frame=lines,
+%               framesep=2mm]{c++}
+%--Initialize Variables
+%  Create vZ context 
+%  Create binary vector (x)
+%  Declare number of nodes, edges and S0
+%  Declare hardware cost of each node as array (h) 
+%  Declare software cost of each node as array (s)
+%  Declare communication cost of each edge (c)
+%  Declare transposed incidence matrix graph G (E)
+%--Arithmetic Expressions
+%  SC = s(1-x)
+%  CMC = c*|EX|
+%  Fobj =  x[i] * h[i]
+%--Assert Constraints
+%  Add constraints (SF + CMC <= S0)
+%  Add constraints to minimize Fobj
+%  Check Model
+%  Print Result
+%\end{minted}
+%\caption{Pseudocode describing ESBMC-$\nu$Z.}
+%\label{vZ-pseudocode}
+%\end{listing}
+
+\vspace {2 mm}
+\begin{lstlisting}[caption={Pseudocode describing ESBMC-$\nu$Z.},label={vZ-pseudocode},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
 --Initialize Variables
   Create vZ context 
   Create binary vector (x)
-  Declare number of nodes, edges and S0
+  Declare number of nodes, edges and $S_0$
   Declare hardware cost of each node as array (h) 
   Declare software cost of each node as array (s)
   Declare communication cost of each edge (c)
-  Declare transposed incidence matrix graph G (E)
+  Declare transposed incidence matrix graph G(E)
 --Arithmetic Expressions
   SC = s(1-x)
   CMC = c*|EX|
   Fobj =  x[i] * h[i]
 --Assert Constraints
-  Add constraints (SF + CMC <= S0)
+  Add constraints (SF + CMC <= $S_0$)
   Add constraints to minimize Fobj
   Check Model
   Print Result
-\end{minted}
-\caption{Pseudocode describing ESBMC-$\nu$Z.}
-\label{vZ-pseudocode}
-\end{listing}
+\end{lstlisting}
 
 %----------------------------------------------
 \section{Experimental Evaluation}
@@ -642,15 +733,14 @@ All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-
 \label{Benchmarks-Description}
 %----------------------------------------------
 
-To perform the experiments, some benchmarks provided by~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
-
+\vspace{1.5 mm}
 \begin{minipage}{\linewidth}
 \centering
 \small
 \sffamily\small
-\tabulinesep=6pt
+\tabulinesep=4pt
 \captionof{table}{Description of Benchmarks.} 
-\begin{tabular}[c]{m{1.8cm}m{0.9cm}m{0.9cm}m{8.2cm}}
+\begin{tabular}[c]{m{1.5cm}m{0.7cm}m{0.7cm}m{8.9cm}}
 \\
 \toprule[1.5pt]
 \textbf{Name} & \textbf{Nodes} & \textbf{Edges} & \textbf{Description}\\
@@ -660,7 +750,7 @@ To perform the experiments, some benchmarks provided by~\cite{Mann2007} were use
 \\
 \hline
 \\
-\verb|Patricia| & \verb|21| & \verb|48| & \rmfamily Routine to insert values in Patricia Tree ~\cite{Guthaus2001}\\
+\verb|Patricia| & \verb|21| & \verb|48| & \rmfamily Routine to insert values in Patricia Tree \cite{Guthaus2001}\\
 \\
 \hline
 \\
@@ -688,6 +778,7 @@ To perform the experiments, some benchmarks provided by~\cite{Mann2007} were use
 \bigskip
 \end{minipage}
 
+To perform the experiments, some benchmarks provided by~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
 %\begin{table}[h]
 %\centering
@@ -704,24 +795,8 @@ To perform the experiments, some benchmarks provided by~\cite{Mann2007} were use
 \subsection{Experimental Results}
 \label{Experimental-Results}
 %----------------------------------------------
-
-Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using Matlab (ILP and GA) and ESBMC (ESBMC\hyp{}SS, ESBMC\hyp{}PS, ESBMC\hyp{}PB, ESBMC\hyp{}$\nu$Z) tools.
-
-There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, the best (proposed) solution is ESBMC-$\nu$Z, which solves $4$ out of $7$ benchmarks; ESBMC-$\nu$Z is faster than ILP in all supported benchmarks ({\it i.e.}, CRC$32$, Patricia, Dijkstra, Clustering), but it returns three TOs (timeouts) related to RC6, Fuzzy and Mars benchmarks.
-
-In contrast to ESBMC-$\nu$Z, ILP solves $5$ out of $7$ benchmarks. When ILP produces a result, it provides the optimal solution. On the one hand, ILP execution time is slower than $\nu$Z in all benchmarks, which are supported by ESBMC-$\nu$Z. On the other hand, ILP is faster than ESBMC-SS, ESBMC-PS, and ESBMC-PB in all benchmarks, except for the clustering.
-
-Note further that all multi-core ESBMC implementations produce better results than the sequential one. In particular, ESBMC-PB implementation outperforms all other multi-core ESBMC approaches, where its performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$ times faster than ILP and $2$.$5$ times slower than ESBMC-$\nu$Z. However, when the amount of nodes is around $30$, ESBMC-PB does not outperform ESBMC-$\nu$Z and ILP tools. When analyzing all benchmarks, ESBMC-PB produces TO for RC$6$, Fuzzy, and Mars; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
-
-%When ESBMC-$\nu$Z explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$8$ ({\it e.g.}, Clustering). 
-
-The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
-
-Note that RC$6$ produced timeouts for all implementations of ESBMC; GA did not produce the correct answer, and ILP solves correctly most benchmarks, except for Mars and Fuzzy, which produced timeouts and memory-outs in all tools that aim to find the exact solution. No tool was capable to solve Mars in less than $3600$ seconds, while GA solved all benchmarks, but mostly incorrectly.
-
-The clustering benchmark seems to be the limit to test the ESBMC (described) implementations; note, however, that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high number of nodes and edges, but limited to $329$ nodes.
-
-\begin{table*}[t]
+%
+\begin{table*}[h]
   \centering
   \caption{Experimental results of the HW-SW partitioning benchmarks.}  
   \begin{tabular}{*{9}{cc|c|c|c|c|c|c|c}}
@@ -803,6 +878,22 @@ The clustering benchmark seems to be the limit to test the ESBMC (described) imp
 \end{tabular}
 \label{Experimental-results-of-the-complex-benchmarks}
 \end{table*}
+
+Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using Matlab (ILP and GA) and ESBMC (ESBMC\hyp{}SS, ESBMC\hyp{}PS, ESBMC\hyp{}PB, ESBMC\hyp{}$\nu$Z) tools.
+
+There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, the best (proposed) solution is ESBMC-$\nu$Z, which solves $4$ out of $7$ benchmarks; ESBMC-$\nu$Z is faster than ILP in all supported benchmarks ({\it i.e.}, CRC$32$, Patricia, Dijkstra, Clustering), but it returns three TOs (timeouts) related to RC6, Fuzzy and Mars benchmarks.
+
+In contrast to ESBMC-$\nu$Z, ILP solves $5$ out of $7$ benchmarks. When ILP produces a result, it provides the optimal solution. On the one hand, ILP execution time is slower than $\nu$Z in all benchmarks, which are supported by ESBMC-$\nu$Z. On the other hand, ILP is faster than ESBMC-SS, ESBMC-PS, and ESBMC-PB in all benchmarks, except for the clustering.
+
+Note further that all multi-core ESBMC implementations produce better results than the sequential one. In particular, ESBMC-PB implementation outperforms all other multi-core ESBMC approaches, where its performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$ times faster than ILP and $2$.$5$ times slower than ESBMC-$\nu$Z. However, when the amount of nodes is around $30$, ESBMC-PB does not outperform ESBMC-$\nu$Z and ILP tools. When analyzing all benchmarks, ESBMC-PB produces TO for RC$6$, Fuzzy, and Mars; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
+
+%When ESBMC-$\nu$Z explores a small amount of nodes, it is typically $30$ times faster ({\it e.g.}, CRC$32$) than ESBMC-PB and for intermediate nodes (around $150$ nodes), this performance improvement decreases to $1$.$8$ ({\it e.g.}, Clustering). 
+
+The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
+
+Note that RC$6$ produced timeouts for all implementations of ESBMC; GA did not produce the correct answer, and ILP solves correctly most benchmarks, except for Mars and Fuzzy, which produced timeouts and memory-outs in all tools that aim to find the exact solution. No tool was capable to solve Mars in less than $3600$ seconds, while GA solved all benchmarks, but mostly incorrectly.
+
+The clustering benchmark seems to be the limit to test the ESBMC (described) implementations; note, however, that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high number of nodes and edges, but limited to $329$ nodes.
 
 %----------------------------------------------
 \section{Related Work}

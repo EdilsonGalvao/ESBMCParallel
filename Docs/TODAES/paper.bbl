@@ -32,9 +32,32 @@
 \ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
 \ifx \showURL      \undefined \def \showURL       #1{#1}          \fi
 
-\bibitem[\protect\citeauthoryear{Alessandro~Armando}{Alessandro~Armando}{2009}]%
+\bibitem[\protect\citeauthoryear{Arato, Juhasz, Mann, Orban, and Papp}{Arato
+  et~al\mbox{.}}{2003}]%
+        {Arato2003}
+{Arato}, {Juhasz}, {Mann}, {Orban}, {and} {Papp}. 2003.
+\newblock \showarticletitle{Hardware/software partitioning in embedded system
+  design}.
+\newblock {\em Intl. Symp. on Intelligent Signal Processing\/} (2003),
+  192--202.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Arato, Mann, and Orban}{Arato
+  et~al\mbox{.}}{2005}]%
+        {Arato2005}
+{Arato}, {Mann}, {and} {Orban}. 2005.
+\newblock \showarticletitle{Algorithmic aspects of hardware/software
+  partitioning}.
+\newblock {\em ACM Transactions on Design Automation of Electronic Systems\/}
+  {10}, 1 (2005), 136--156.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Armando, Mantovani, and Platania}{Armando
+  et~al\mbox{.}}{2009}]%
         {Armando2009}
-{Lorenzo~Platania Alessandro~Armando, Jacopo~Mantovani}. 2009.
+{Armando}, {Mantovani}, {and} {Platania}. 2009.
 \newblock \showarticletitle{Bounded model checking of software using SMT
   solvers instead of SAT solvers}.
 \newblock {\em Intl. Journal on Software Tools for Technology Transfer\/} {11},
@@ -42,92 +65,139 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Alessandro~Trindade}{Alessandro~Trindade}{2015a}]%
-        {Trindade2015}
-{Lucas~Cordeiro Alessandro~Trindade}. 2015a.
-\newblock \showarticletitle{Applying SMT-based verification to
-  hardware/software partitioning in embedded systems}.
-\newblock {\em Design Automation for Embedded Systems (to appear)\/} (2015).
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Alessandro~Trindade}{Alessandro~Trindade}{2015b}]%
-        {Trindade2016}
-{Lucas~Cordeiro Alessandro~Trindade, Hussama~Ismail}. 2015b.
-\newblock \showarticletitle{Multi-Core Model Checking to Hardware-Software
-  Partitioning in Embedded Systems (short paper)}.
-\newblock {\em V Brazilian Symp. on Computing Systems Engineering (to
-  appear)\/} (2015).
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Armin~Biere}{Armin~Biere}{2009}]%
-        {Biere2009}
-{Hans van Maaren Toby~Walsh Armin~Biere, Marijn~Heule}. 2009.
-\newblock \showarticletitle{Bounded Model Checking.}
-\newblock {\em Handbook of Satisfiability\/} (2009).
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Christoph~Wintersteiger}{Christoph~Wintersteiger}{2009}]%
-        {Wintersteiger2009}
-{Leonardo de~Moura Christoph~Wintersteiger, Youssef~Hamadi}. 2009.
-\newblock \showarticletitle{A Concurrent Portfolio Approach to SMT Solving.}
-\newblock {\em Proc. of the Intl. Conf. on Computer-Aided Verification\/}
-  (2009), 715--720.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Clark~Barrett}{Clark~Barrett}{2011}]%
+\bibitem[\protect\citeauthoryear{Barrett, Conway, Deters, Hadarean, Jovanovic,
+  King, Reynolds, and Tinelli}{Barrett et~al\mbox{.}}{2011}]%
         {Barrett2011}
-{Morgan Deters Liana Hadarean Dejan Jovanovic Tim King Andrew Reynolds
-  Cesare~Tinelli Clark~Barrett, Christopher~Conway}. 2011.
+{Barrett}, {Conway}, {Deters}, {Hadarean}, {Jovanovic}, {King}, {Reynolds},
+  {and} {Tinelli}. 2011.
 \newblock \showarticletitle{CVC4}.
 \newblock {\em Proc. of the Intl. Conf. on Computer-Aided Verification\/}
   {6806} (2011), 171--177.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Dutertre}{Dutertre}{2014}]%
-        {Dutertre2014}
-{Bruno Dutertre}. 2014.
-\newblock \showarticletitle{Yices 2.2}.
-\newblock {\em Proc. of the Intl. Conf. on Computer-Aided Verification\/}
-  {8559} (2014), 737–--744.
+\bibitem[\protect\citeauthoryear{Barth and Putnam}{Barth and Putnam}{1995}]%
+        {Barth1995}
+{Barth} {and} {Putnam}. 1995.
+\newblock \showarticletitle{Enumeration Algorithm for Linear Pseudo-Boolean
+  Optimization.}
+\newblock {\em Technical Report MPI-I-95-2-003, Max Plank Institute for
+  Computer Science\/} (1995).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Edmund~Clarke}{Edmund~Clarke}{2001}]%
+\bibitem[\protect\citeauthoryear{Biere, Heule, Maaren, and Walsh}{Biere
+  et~al\mbox{.}}{2009}]%
+        {Biere2009}
+{Biere}, {Heule}, {Maaren}, {and} {Walsh}. 2009.
+\newblock \showarticletitle{Bounded Model Checking.}
+\newblock {\em Handbook of Satisfiability\/} (2009).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bjorner and Phan}{Bjorner and Phan}{2014}]%
+        {Bjorner2014}
+{Bjorner} {and} {Phan}. 2014.
+\newblock \showarticletitle{vZ - Maximal Satisfaction with Z3}.
+\newblock {\em Proc. of the Intl. Symp. on Symbolic Computation in Software
+  Science\/} (2014), 1--10.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bjorner, Phan, and Fleckenstein}{Bjorner
+  et~al\mbox{.}}{2015}]%
+        {Bjorner2015}
+{Bjorner}, {Phan}, {and} {Fleckenstein}. 2015.
+\newblock \showarticletitle{vZ - An Optimizing SMT Solver}.
+\newblock {\em Proc. of the Intl. Conf. on Tools and Algorithms for the
+  Construction and Analysis of Systems\/}  {9035} (2015), 194--199.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Bozzano, Bruttomesso, Cimatti, Junttila,
+  Rossum, Schulz, and Sebastiani}{Bozzano et~al\mbox{.}}{2005}]%
+        {Bozzano2005}
+{Bozzano}, {Bruttomesso}, {Cimatti}, {Junttila}, {Rossum}, {Schulz}, {and}
+  {Sebastiani}. 2005.
+\newblock \showarticletitle{MathSAT: Tight integration of SAT and mathematical
+  decision procedures}.
+\newblock {\em Journal of Automated Reasoning\/} {35}, 1-3 (2005), 265--293.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Brummayer and Biere}{Brummayer and
+  Biere}{2009}]%
+        {Brummayer2009}
+{Brummayer} {and} {Biere}. 2009.
+\newblock \showarticletitle{Boolector: An Efficient SMT Solver for Bit-Vectors
+  and Arrays}.
+\newblock {\em Proc. of the Intl. Conf. on Tools and Algorithms for the
+  Construction and Analysis of Systems\/}  {5505} (2009), 174--177.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Clarke, Biere, Raimi, and Zhu}{Clarke
+  et~al\mbox{.}}{2001}]%
         {Clarke2001}
-{Richard Raimi Yunshan~Zhu Edmund~Clarke, Armin~Biere}. 2001.
+{Clarke}, {Biere}, {Raimi}, {and} {Zhu}. 2001.
 \newblock \showarticletitle{Bounded model checking using satisfiability
   solving}.
 \newblock {\em Formal Methods in System Design\/} {19}, 1 (2001), 7--34.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Federica~Paci}{Federica~Paci}{2008}]%
-        {Federica2008}
-{Yuqing Sun Elisa~Bertino Federica~Paci, Rodolfo~Ferrini}. 2008.
-\newblock \showarticletitle{Authorization and User Failure Resiliency for
-  WS-BPEL business processes}.
-\newblock {\em Proc. of the Intl. Conf. on Service-Oriented Computing\/}
-  (2008), 116--131.
+\bibitem[\protect\citeauthoryear{Cordeiro, Fischer, and Marques-Silva}{Cordeiro
+  et~al\mbox{.}}{2012}]%
+        {Cordeiro2012}
+{Cordeiro}, {Fischer}, {and} {Marques-Silva}. 2012.
+\newblock \showarticletitle{SMT-based Bounded Model Checking for Embedded
+  ANSI-C Software}.
+\newblock {\em IEEE Transactions on Software Engineering\/} {38}, 4 (2012),
+  957--974.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Gerard~Holzmann}{Gerard~Holzmann}{2011}]%
-        {Holzmann2011}
-{Alex~Groce Gerard~Holzmann, Rajeev~Joshi}. 2011.
-\newblock \showarticletitle{Swarm Verification Techniques}.
-\newblock {\em IEEE Transactions on Software Engineering\/} {37}, 6 (2011),
-  845--857.
+\bibitem[\protect\citeauthoryear{Cormen, Leiserson, Rivest, and Stein}{Cormen
+  et~al\mbox{.}}{2009}]%
+        {Cormem}
+{Cormen}, {Leiserson}, {Rivest}, {and} {Stein}. 2009.
+\newblock \showarticletitle{Introduction to Algorithms}.
+\newblock {\em MIT Press\/}  {I-XIX} (2009), 1--1292.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Guthaus~M.}{Guthaus~M.}{2001}]%
+\bibitem[\protect\citeauthoryear{Dagum and Menon}{Dagum and Menon}{1998}]%
+        {Dagum1998}
+{Dagum} {and} {Menon}. 1998.
+\newblock \showarticletitle{OpenMP: An Industry-Standard API for Shared-Memory
+  Programming.}
+\newblock {\em Proc. of the Intl. Conf. on Computational Science Engineering\/}
+  (1998), 46--55.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Dutertre}{Dutertre}{2014}]%
+        {Dutertre2014}
+{Dutertre}. 2014.
+\newblock \showarticletitle{Yices 2.2}.
+\newblock {\em Proc. of the Intl. Conf. on Computer-Aided Verification\/}
+  {8559} (2014), 737--744.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Ganai and Gupta}{Ganai and Gupta}{2006}]%
+        {Ganai2006}
+{Ganai} {and} {Gupta}. 2006.
+\newblock \showarticletitle{Accelerating high-level bounded model checking}.
+\newblock {\em Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design\/}
+  (2006), 794--801.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Guthaus, Ringenberg, Ernst, Austin, Mudge, and
+  Brown}{Guthaus et~al\mbox{.}}{2001}]%
         {Guthaus2001}
-{Ernst D. Austin T. Mudge T. Brown~R. Guthaus~M., Ringenberg~J.} 2001.
+{Guthaus}, {Ringenberg}, {Ernst}, {Austin}, {Mudge}, {and} {Brown}. 2001.
 \newblock \showarticletitle{Matthew Guthaus, Jeffrey Ringenberg, Dan Ernst,
   Todd Austin, Trevor Mudge, Richard Brown}.
 \newblock {\em Proc. of the annual workshop on workload characterization\/}
@@ -137,45 +207,26 @@
 
 \bibitem[\protect\citeauthoryear{Holzmann}{Holzmann}{2012}]%
         {Holzmann2012}
-{Gerard Holzmann}. 2012.
+{Holzmann}. 2012.
 \newblock \showarticletitle{Parallelizing the spin model checker}.
 \newblock {\em Proc. of the Intl. Symp. on Model Checking Software\/}  {7385}
   (2012), 155--171.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Leonardo~Dagum}{Leonardo~Dagum}{1998}]%
-        {Dagum1998}
-{Ramesh~Menon Leonardo~Dagum}. 1998.
-\newblock \showarticletitle{OpenMP: An Industry-Standard API for Shared-Memory
-  Programming.}
-\newblock {\em Proc. of the Intl. Conf. on Computational Science Engineering\/}
-  (1998), 46--55.
+\bibitem[\protect\citeauthoryear{Holzmann, Joshi, and Groce}{Holzmann
+  et~al\mbox{.}}{2011}]%
+        {Holzmann2011}
+{Holzmann}, {Joshi}, {and} {Groce}. 2011.
+\newblock \showarticletitle{Swarm Verification Techniques}.
+\newblock {\em IEEE Transactions on Software Engineering\/} {37}, 6 (2011),
+  845--857.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Leonardo De~Moura}{Leonardo De~Moura}{2008}]%
-        {DeMoura2008}
-{Nikolaj~Bjørner Leonardo De~Moura}. 2008.
-\newblock \showarticletitle{Z3: An Efficient SMT Solver}.
-\newblock {\em Proc. of the Intl. Conf. on Tools and Algorithms for the
-  Construction and Analysis of Systems\/} (2008), 337–--340.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Lucas~Cordeiro}{Lucas~Cordeiro}{2012}]%
-        {Cordeiro2012}
-{Joao Marques-Silva Lucas~Cordeiro, Bernd~Fischer}. 2012.
-\newblock \showarticletitle{SMT-based Bounded Model Checking for Embedded
-  ANSI-C Software}.
-\newblock {\em IEEE Transactions on Software Engineering\/} {38}, 4 (2012),
-  957--974.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Luhe~Hong}{Luhe~Hong}{2010}]%
+\bibitem[\protect\citeauthoryear{Hong and Cai}{Hong and Cai}{2010}]%
         {Hong2010}
-{Jianli~Cai Luhe~Hong}. 2010.
+{Hong} {and} {Cai}. 2010.
 \newblock \showarticletitle{The application guide of mixed programming between
   MATLAB and other programming languages}.
 \newblock {\em Proc. of the Intl. Conf. on Computer and Automation
@@ -191,75 +242,57 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Malay~Ganai}{Malay~Ganai}{2006}]%
-        {Ganai2006}
-{Aarti~Gupta Malay~Ganai}. 2006.
-\newblock \showarticletitle{Accelerating high-level bounded model checking}.
-\newblock {\em Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design\/}
-  (2006), 794--–801.
+\bibitem[\protect\citeauthoryear{Mann, Orban, and Arato}{Mann
+  et~al\mbox{.}}{2007}]%
+        {Mann2007}
+{Mann}, {Orban}, {and} {Arato}. 2007.
+\newblock \showarticletitle{Finding optimal hardware/software partitions}.
+\newblock {\em Formal Methods in System Design\/} {31}, 3 (2007), 241--263.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Marco~Bozzano}{Marco~Bozzano}{2005}]%
-        {Bozzano2005}
-{Alessandro Cimatti1-Tommi Junttila Peter Van Rossum Stephan Schulz
-  Roberto~Sebastiani Marco~Bozzano, Roberto~Bruttomesso}. 2005.
-\newblock \showarticletitle{MathSAT: Tight integration of SAT and mathematical
-  decision procedures}.
-\newblock {\em Journal of Automated Reasoning\/} {35}, 1-3 (2005), 265--293.
+\bibitem[\protect\citeauthoryear{Manquinho and Marques-Silva}{Manquinho and
+  Marques-Silva}{2005}]%
+        {Vasco2005}
+{Manquinho} {and} {Marques-Silva}. 2005.
+\newblock \showarticletitle{Effective Lower Bounding Techniques for
+  Pseudo-Boolean Optimization}.
+\newblock {\em IST/INESC-ID, Technical University of Lisbon, Portugal\/}
+  (2005).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Mikhail~Ramalho}{Mikhail~Ramalho}{2013}]%
-        {Ramalho2013}
-{Felipe Sousa-Hendrio Marques Lucas Cordeiro Bernd~Fischer Mikhail~Ramalho,
-  Mauro~Freitas1}. 2013.
-\newblock \showarticletitle{SMT-Based Bounded Model Checking of C++ Programs.}
-\newblock {\em Intl. Conf. and Workshops on the Engineering of Computer-Based
-  Systems\/} (2013), 147--156.
+\bibitem[\protect\citeauthoryear{MathWorks and Inc.}{MathWorks and
+  Inc.}{2013}]%
+        {TheMathWorks2013}
+{MathWorks} {and} {Inc.} 2013.
+\newblock \showarticletitle{MATLAB (version R2013a)}.
+\newblock  (2013).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Minjie~Wu}{Minjie~Wu}{2014}]%
-        {Wu2014}
-{Ning Tai-Hongyu Zhao Jiawu Fan Naichang~Yuan Minjie~Wu, Weiwei~Wu}. 2014.
-\newblock \showarticletitle{Research on OpenMP model of the parallel
-  programming technology for homogeneous multicore DSP}.
-\newblock {\em Proc. of the Intl. Conf. on Software Engineering and Service
-  Science\/} (2014), 921--924.
+\bibitem[\protect\citeauthoryear{Moura and Bjorner}{Moura and Bjorner}{2008}]%
+        {DeMoura2008}
+{Moura} {and} {Bjorner}. 2008.
+\newblock \showarticletitle{Z3: An Efficient SMT Solver}.
+\newblock {\em Proc. of the Intl. Conf. on Tools and Algorithms for the
+  Construction and Analysis of Systems\/} (2008), 337--340.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Muller}{Muller}{2002}]%
         {OpenMP1998}
-{Matthias Muller}. 2002.
+{Muller}. 2002.
 \newblock \showarticletitle{OpenMP Architecture Review Board, OpenMP C and C++
   Application Program Interface, Version 2.0}.
 \newblock {\em OpenMP Architecture Review Board\/} (2002).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Nikolaj~Bjørner}{Nikolaj~Bjørner}{2014}]%
-        {Bjorner2014}
-{Anh-Dung~Phan Nikolaj~Bjørner}. 2014.
-\newblock \showarticletitle{vZ - Maximal Satisfaction with Z3}.
-\newblock {\em Proc. of the Intl. Symp. on Symbolic Computation in Software
-  Science\/} (2014), 1--10.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Nikolaj~Bjørner}{Nikolaj~Bjørner}{2015}]%
-        {Bjorner2015}
-{Lars~Fleckenstein Nikolaj~Bjørner, Anh-Dung~Phan}. 2015.
-\newblock \showarticletitle{vZ - An Optimizing SMT Solver}.
-\newblock {\em Proc. of the Intl. Conf. on Tools and Algorithms for the
-  Construction and Analysis of Systems\/}  {9035} (2015), 194--199.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Nina~Narodytska}{Nina~Narodytska}{2014}]%
+\bibitem[\protect\citeauthoryear{Narodytska and Bacchus}{Narodytska and
+  Bacchus}{2014}]%
         {NarodytskaN}
-{Fahiem~Bacchus Nina~Narodytska}. 2014.
+{Narodytska} {and} {Bacchus}. 2014.
 \newblock \showarticletitle{Maximum Satisfiability Using Core-Guided MAXSAT
   Resolution}.
 \newblock {\em Proc. of the Conf. on Artificial Intelligence\/} (2014),
@@ -267,58 +300,50 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Peter~Arato}{Peter~Arato}{2005}]%
-        {Arato2005}
-{Andras~Orban Peter~Arato, Zoltan Adam~Mann}. 2005.
-\newblock \showarticletitle{Algorithmic aspects of hardware/software
-  partitioning}.
-\newblock {\em ACM Transactions on Design Automation of Electronic Systems\/}
-  {10}, 1 (2005), 136–--156.
+\bibitem[\protect\citeauthoryear{Paci, Ferrini, Sun, and Bertino}{Paci
+  et~al\mbox{.}}{2008}]%
+        {Federica2008}
+{Paci}, {Ferrini}, {Sun}, {and} {Bertino}. 2008.
+\newblock \showarticletitle{Authorization and User Failure Resiliency for
+  WS-BPEL business processes}.
+\newblock {\em Proc. of the Intl. Conf. on Service-Oriented Computing\/}
+  (2008), 116--131.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Peter~Arato}{Peter~Arato}{2003}]%
-        {Arato2003}
-{Zoltan Adam Mann Andras Orban David~Papp Peter~Arato, Sandor~Juhasz}. 2003.
-\newblock \showarticletitle{Hardware/software partitioning in embedded system
-  design}.
-\newblock {\em Intl. Symp. on Intelligent Signal Processing\/} (2003),
-  192--202.
+\bibitem[\protect\citeauthoryear{Pavlinovi, King, and Wies}{Pavlinovi
+  et~al\mbox{.}}{2015}]%
+        {Pavlinovic2015}
+{Pavlinovi}, {King}, {and} {Wies}. 2015.
+\newblock \showarticletitle{Practical SMT-Based Type Error Localization}.
+\newblock {\em Proc. of the Intl. Conf. on Functional Programming\/} (2015),
+  412--423.
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Peter~Barth}{Peter~Barth}{1995}]%
-        {Barth1995}
-{Davis~Putnam Peter~Barth}. 1995.
-\newblock \showarticletitle{Enumeration Algorithm for Linear Pseudo-Boolean
-  Optimization.}
-\newblock {\em Technical Report MPI-I-95-2-003, Max Plank Institute for
-  Computer Science\/} (1995).
+\bibitem[\protect\citeauthoryear{Ramalho, Freitas1, Sousa, Marques, Cordeiro,
+  and Fischer}{Ramalho et~al\mbox{.}}{2013}]%
+        {Ramalho2013}
+{Ramalho}, {Freitas1}, {Sousa}, {Marques}, {Cordeiro}, {and} {Fischer}. 2013.
+\newblock \showarticletitle{SMT-Based Bounded Model Checking of C++ Programs.}
+\newblock {\em Intl. Conf. and Workshops on the Engineering of Computer-Based
+  Systems\/} (2013), 147--156.
 \newblock
 
 
 \bibitem[\protect\citeauthoryear{Rao}{Rao}{2009}]%
         {Rao2009}
-{Singiresu Rao}. 2009.
+{Rao}. 2009.
 \newblock \showarticletitle{Engineering Optimization: Theory and Practice. 4th
   edition}.
 \newblock  (2009).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Robert~Brummayer}{Robert~Brummayer}{2009}]%
-        {Brummayer2009}
-{Armin~Biere Robert~Brummayer}. 2009.
-\newblock \showarticletitle{Boolector: An Efficient SMT Solver for Bit-Vectors
-  and Arrays}.
-\newblock {\em Proc. of the Intl. Conf. on Tools and Algorithms for the
-  Construction and Analysis of Systems\/}  {5505} (2009), 174--–177.
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Roberto~Sebastiani}{Roberto~Sebastiani}{2015}]%
+\bibitem[\protect\citeauthoryear{Sebastiani and Trentin}{Sebastiani and
+  Trentin}{2015}]%
         {Patrick2015}
-{Patrick~Trentin Roberto~Sebastiani}. 2015.
+{Sebastiani} {and} {Trentin}. 2015.
 \newblock \showarticletitle{OptiMathSAT: A Tool for Optimization Modulo
   Theories}.
 \newblock {\em Proc. of the Intl. Conf. on Computer Aided Verification\/}
@@ -326,9 +351,10 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Tao~Tang}{Tao~Tang}{2010}]%
+\bibitem[\protect\citeauthoryear{Tang, Lin, and Ren}{Tang
+  et~al\mbox{.}}{2010}]%
         {Tang2009}
-{Xiaoguang~Ren Tao~Tang, Yisong~Lin}. 2010.
+{Tang}, {Lin}, {and} {Ren}. 2010.
 \newblock \showarticletitle{Mapping OpenMP concepts to the stream programming
   model}.
 \newblock {\em Proc. of the Intl. Conf. on Computer Science Education\/}
@@ -338,7 +364,7 @@
 
 \bibitem[\protect\citeauthoryear{Teich}{Teich}{2012}]%
         {Teich2012}
-{Jurgen Teich}. 2012.
+{Teich}. 2012.
 \newblock \showarticletitle{Hardware/Software Codesign: The Past, the Present,
   and Predicting the Future}.
 \newblock {\em Proc. of the IEEE, Special Centennial Issue\/}  {100} (2012),
@@ -346,54 +372,53 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{The~MathWorks}{The~MathWorks}{2013}]%
-        {TheMathWorks2013}
-{Inc. The~MathWorks}. 2013.
-\newblock \showarticletitle{MATLAB (version R2013a)}.
-\newblock  (2013).
-\newblock
-
-
-\bibitem[\protect\citeauthoryear{Thomas~Cormen}{Thomas~Cormen}{2009}]%
-        {Cormem}
-{Ronald Rivest Clifford~Stein Thomas~Cormen, Charles~Leiserson}. 2009.
-\newblock \showarticletitle{Introduction to Algorithms}.
-\newblock {\em MIT Press\/}  {I-XIX} (2009), 1--1292.
-\newblock
-
-
 \bibitem[\protect\citeauthoryear{Tranquillo}{Tranquillo}{2011}]%
         {Tranquillo2011}
-{Joseph Tranquillo}. 2011.
+{Tranquillo}. 2011.
 \newblock \showarticletitle{Matlab for Engineering and the Life Sciences}.
 \newblock {\em Synthesis Lectures on Engineering. Morgan Claypool\/} (2011).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Vasco~Manquinho}{Vasco~Manquinho}{2005}]%
-        {Vasco2005}
-{Joao Marques-Silva Vasco~Manquinho}. 2005.
-\newblock \showarticletitle{Effective Lower Bounding Techniques for
-  Pseudo-Boolean Optimization}.
-\newblock {\em IST/INESC-ID, Technical University of Lisbon, Portugal\/}
-  (2005).
+\bibitem[\protect\citeauthoryear{Trindade and Cordeiro}{Trindade and
+  Cordeiro}{2015}]%
+        {Trindade2015}
+{Trindade} {and} {Cordeiro}. 2015.
+\newblock \showarticletitle{Applying SMT-based verification to
+  hardware/software partitioning in embedded systems}.
+\newblock {\em Design Automation for Embedded Systems (to appear)\/} (2015).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Zoltan Adam~Mann}{Zoltan Adam~Mann}{2007}]%
-        {Mann2007}
-{Peter~Arato Zoltan Adam~Mann, Andras~Orban}. 2007.
-\newblock \showarticletitle{Finding optimal hardware/software partitions}.
-\newblock {\em Formal Methods in System Design\/} {31}, 3 (2007), 241--263.
+\bibitem[\protect\citeauthoryear{Trindade, Ismail, and Cordeiro}{Trindade
+  et~al\mbox{.}}{2015}]%
+        {Trindade2016}
+{Trindade}, {Ismail}, {and} {Cordeiro}. 2015.
+\newblock \showarticletitle{Multi-Core Model Checking to Hardware-Software
+  Partitioning in Embedded Systems (short paper)}.
+\newblock {\em V Brazilian Symp. on Computing Systems Engineering (to
+  appear)\/} (2015).
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Zvonimir~Pavlinovi}{Zvonimir~Pavlinovi}{2015}]%
-        {Pavlinovic2015}
-{Thomas~Wies Zvonimir~Pavlinovi, Tim~King}. 2015.
-\newblock \showarticletitle{Practical SMT-Based Type Error Localization}.
-\newblock {\em Proc. of the Intl. Conf. on Functional Programming\/} (2015),
-  412--423.
+\bibitem[\protect\citeauthoryear{Wintersteiger, Hamadi, and
+  Moura}{Wintersteiger et~al\mbox{.}}{2009}]%
+        {Wintersteiger2009}
+{Wintersteiger}, {Hamadi}, {and} {Moura}. 2009.
+\newblock \showarticletitle{A Concurrent Portfolio Approach to SMT Solving.}
+\newblock {\em Proc. of the Intl. Conf. on Computer-Aided Verification\/}
+  (2009), 715--720.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Wu, Wu, Tai, Zhao, Fan, and Yuan}{Wu
+  et~al\mbox{.}}{2014}]%
+        {Wu2014}
+{Wu}, {Wu}, {Tai}, {Zhao}, {Fan}, {and} {Yuan}. 2014.
+\newblock \showarticletitle{Research on OpenMP model of the parallel
+  programming technology for homogeneous multicore DSP}.
+\newblock {\em Proc. of the Intl. Conf. on Software Engineering and Service
+  Science\/} (2014), 921--924.
 \newblock
 
 
