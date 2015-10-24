@@ -1,21 +1,12 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: paper.aux
+This is BibTeX, Version 0.99dThe top-level auxiliary file: paper.aux
 The style file: ACM-Reference-Format-Journals.bst
-Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Database file #1: Ref.bib.bib
-You're missing a field name---line 227 of file Ref.bib.bib
- : OPTmonth = {•},
- :                  ,
-I'm skipping whatever remains of this entry
-Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: Ref.bib
 Warning--no number and no volume in Arato2003
 Warning--no number and no volume in Barth1995
 Warning--page numbers missing in both pages and numpages fields in Barth1995
 Warning--no number and no volume in Biere2009
 Warning--page numbers missing in both pages and numpages fields in Biere2009
-Warning--no number and no volume in Bjorner2014
+Warning--empty booktitle in Bjorner2014
 Warning--no number and no volume in Dagum1998
 Warning--no number and no volume in Ganai2006
 Warning--no number and no volume in Guthaus2001
@@ -44,46 +35,6 @@ Warning--no number and no volume in Trindade2015
 Warning--no number and no volume in Trindade2016
 Warning--page numbers missing in both pages and numpages fields in Trindade2016
 Warning--no number and no volume in Wintersteiger2009
+Warning--empty booktitle in Wu2014
 Warning--no number and no volume in Wu2014
-You've used 39 entries,
-            5290 wiz_defined-function locations,
-            1671 strings with 23062 characters,
-and the built_in function-call counts, 43226 in all, are:
-= -- 6911
-> -- 1680
-< -- 0
-+ -- 512
-- -- 584
-* -- 2625
-:= -- 4463
-add.period$ -- 195
-call.type$ -- 39
-change.case$ -- 271
-chr.to.int$ -- 39
-cite$ -- 74
-duplicate$ -- 3117
-empty$ -- 2270
-format.name$ -- 712
-if$ -- 11406
-int.to.chr$ -- 1
-int.to.str$ -- 0
-missing$ -- 156
-newline$ -- 346
-num.names$ -- 312
-pop$ -- 1112
-preamble$ -- 1
-purify$ -- 466
-quote$ -- 0
-skip$ -- 987
-stack$ -- 0
-substring$ -- 3022
-swap$ -- 340
-text.length$ -- 0
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 546
-warning$ -- 35
-while$ -- 318
-width$ -- 0
-write$ -- 686
-(There was 1 error message)
+(There were 36 warnings)

@@ -98,9 +98,9 @@
 \bibitem[\protect\citeauthoryear{Bjorner and Phan}{Bjorner and Phan}{2014}]%
         {Bjorner2014}
 {Bjorner} {and} {Phan}. 2014.
-\newblock \showarticletitle{vZ - Maximal Satisfaction with Z3}.
-\newblock {\em Proc. of the Intl. Symp. on Symbolic Computation in Software
-  Science\/} (2014), 1--10.
+\newblock \showarticletitle{vZ - Maximal Satisfaction with Z3}. {\em Proc. of
+  the Intl. Symp. on Symbolic Computation in Software Science\/}  {30} (2014),
+  1--9.
 \newblock
 
 
@@ -321,10 +321,10 @@
 \newblock
 
 
-\bibitem[\protect\citeauthoryear{Ramalho, Freitas1, Sousa, Marques, Cordeiro,
+\bibitem[\protect\citeauthoryear{Ramalho, Freitas, Sousa, Marques, Cordeiro,
   and Fischer}{Ramalho et~al\mbox{.}}{2013}]%
         {Ramalho2013}
-{Ramalho}, {Freitas1}, {Sousa}, {Marques}, {Cordeiro}, {and} {Fischer}. 2013.
+{Ramalho}, {Freitas}, {Sousa}, {Marques}, {Cordeiro}, {and} {Fischer}. 2013.
 \newblock \showarticletitle{SMT-Based Bounded Model Checking of C++ Programs.}
 \newblock {\em Intl. Conf. and Workshops on the Engineering of Computer-Based
   Systems\/} (2013), 147--156.
@@ -416,9 +416,8 @@
         {Wu2014}
 {Wu}, {Wu}, {Tai}, {Zhao}, {Fan}, {and} {Yuan}. 2014.
 \newblock \showarticletitle{Research on OpenMP model of the parallel
-  programming technology for homogeneous multicore DSP}.
-\newblock {\em Proc. of the Intl. Conf. on Software Engineering and Service
-  Science\/} (2014), 921--924.
+  programming technology for homogeneous multicore DSP}. {\em Proc. of the
+  Intl. Conf. on Software Engineering and Service Science\/} (2014), 921--924.
 \newblock
 
 
