@@ -38,3 +38,8 @@ Docs/Paper/LaTex/template.aux
 Docs/Paper/LaTex/template.log
 Docs/Paper/LaTex/template.pdf
 Docs/Paper/LaTex/template.synctex.gz
+
+*.bak
+*.bbl
+*.blg
+*.tex.bak
