@@ -607,7 +607,7 @@ GetNextStep(){
     }
   }	
   chunks.remove(largest);	
-  int median = largest.left + floor((largest.right - largest.left) / 2)
+  int median = largest.left + floor((largest.right - largest.left) / 2);
   if(median > 0){
     if(largest.right - largest.left > 1)
       chunks.add(new chunk(largest.left, median - 1));	
