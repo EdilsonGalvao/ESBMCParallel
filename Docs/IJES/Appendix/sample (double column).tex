@@ -1,0 +1,161 @@
+%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{doublecol-new}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{natbib,stfloats}
+\usepackage{mathrsfs,amsmath,upgreek}
+
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\nn}{\nonumber}
+
+\theoremstyle{TH}{
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corrolary}[lemma]{Corrolary}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{claim}[lemma]{Claim}
+\newtheorem{stheorem}[lemma]{Wrong Theorem}
+\newtheorem{algorithm}{Algorithm}
+}
+
+\theoremstyle{THrm}{
+\newtheorem{definition}{Definition}
+\newtheorem{question}{Question}
+\newtheorem{remark}{Remark}
+\newtheorem{scheme}{Scheme}
+}
+
+\theoremstyle{THhit}{
+\newtheorem{case}{Case}[section]
+}
+
+\makeatletter
+
+\def\Reals{\mathbb{R}}
+\def\Ints{\mathbb{Z}}
+\def\Nats{\mathbb{N}}
+
+\def\theequation{\arabic{equation}}
+
+\def\tc{\textcolor{red}}
+
+\def\BottomCatch{%
+\vskip -10pt
+\thispagestyle{empty}%
+\begin{table}[b]%
+\NINE\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lcr@{}}%
+\\[-12pt]
+Copyright \copyright\ 2012 Inderscience Enterprises Ltd. & &%
+\end{tabular*}%
+\vskip -30pt%
+%%\vskip -35pt%
+\end{table}%
+%\def\tc{\textcolor}{red}
+} \makeatother
+
+%%%%%%%%%%%%%%%%%
+\begin{document}%
+%%%%%%%%%%%%%%%%%
+
+\thispagestyle{plain}
+
+\setcounter{page}{1}
+
+\LRH{xxxx}
+
+\RRH{xxxx}
+
+\VOL{x}
+
+\ISSUE{x}
+
+\PUBYEAR{xxxx}
+
+%\BottomCatch
+
+%\CLline
+
+%\subtitle{}
+
+\title{xxxx}
+
+\authorA{xxxx}
+
+\affA{xxxx*\\
+*Corresponding author}
+
+\authorB{xxxx}
+\affB{xxxx}
+
+\begin{abstract}
+xxxxx
+\end{abstract}
+
+\KEYWORD{xxxx}
+
+\REF{to this paper should be made as follows: xxxx (xxxx) `xxxx',
+{\it xxxx}, Vol.~x, No.~x, pp.xxx--xxx.}
+
+\begin{bio}
+\tc{AUTHOR PLEASE SUPPLY CAREER HISTORY OF NO MORE THAN 100 WORDS
+FOR EACH AUTHOR.}
+\end{bio}
+
+\maketitle
+
+\section{Introduction}
+\label{sec-introduction}
+
+\section{Performance evaluation}
+\label{sec-performance}
+
+
+\section{Related work}
+\label{sec-related}
+
+
+\section{Conclusions}
+\label{sec-conclusion}
+
+
+\section*{Acknowledgements}
+
+
+
+\begin{thebibliography}{99}
+
+\bibitem[\protect\citeauthoryear{xxxx}{2011}]{Zhang11}
+xxxx (2011) `Reliable packets delivery over segment-based multi-path
+in wireless ad hoc networks', {\it Pervasive Computing and
+Applications (ICPCA), 2011 6th International Conference on},
+pp.300-–306. \tc{AUTHOR PLEASE SUPPLY LOCATION.}
+
+\end{thebibliography}
+
+
+\section*{Appendx}
+
+We have proposed the CSD scheme that makes use of multiple bridge
+nodes within the close neighbourhood of the source and insecure
+neighbours. These bridge nodes cooperatively help to deliver secret
+link key information from the source towards the insecure
+neighbours. In the delivery process, no secret information is
+disclosed to any node en route. These routers simply forward the
+encrypted data. Even the bridge nodes only get to know partial
+information about the secrets that they help to deliver.
+
+\end{document}
+
+%\def\notesname{Note}
+%
+%\theendnotes
+
+%\section*{Query}
+%
+%\tc{AQ1: AUTHOR PLEASE CITE FIGURE 8 IN TEXT.}
+
+\end{document}
