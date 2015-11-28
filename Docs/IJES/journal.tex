@@ -681,7 +681,7 @@ Finally, there are approaches that mixes heuristics with exact solution tools. T
 In terms of SMT-based verification, most related studies are restricted to present the model, its modification to programming languages ({\it e.g.}, C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs and~\cite{Cordeiro2012} uses ESBMC for embedded ANSI-C software. In~\cite{Trindade2015} and~\cite{Trindade2016} it was proven that it is possible to use ESBMC to solve HW-SW partitioning in a single- and multi-core way. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification ~\cite{Holzmann2011}, and modifications of internal search engines to add support for parallelism ~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solvers ~\cite{Wintersteiger2009}. 
 
 Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories ~\cite{Bjorner2015}. In particular, 
-$\nu$Z tool offers substantial performance improvement in optimization problems~\cite{Bjorner2014,Bjorner2015}. As an application example, \cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed functional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program. The approach described by \cite{Pavlinovic2015}, which uses MaxSMT solver $\nu$Z, shows a significant performance improvement if compared to previous SMT encodings and localization algorithms.
+$\nu$Z tool offers substantial performance improvement in optimization problems~\cite{Bjorner2014,Bjorner2015}. As an application example, \cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed fu	nctional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program. The approach described by \cite{Pavlinovic2015}, which uses MaxSMT solver $\nu$Z, shows a significant performance improvement if compared to previous SMT encodings and localization algorithms.
 
 The problem addressed in this present paper uses a single objective function for minimization. In~\cite{Patrick2015}, OptiMathSAT and $\nu$Z are compared for software optimization problems. OptiMathSAT, using multiple objective functions, works better than $\nu$Z; however, for problems with a single objective function, the performance of $\nu$Z is better than OptiMathSAT.
 
@@ -698,32 +698,76 @@ Finally, there is an issue about $150$ nodes problem, since it seems to be the l
 
 \begin{thebibliography}{10}
 
-\bibitem[\protect\citeauthoryear{Myneni and Patel}{2010}]{myneni10col}
-Myneni, S. and  Patel, V.L. (2010) 'Organization of biomedical data
-for collaborative scientific research: a research information
-management system', {\it International Journal of Information
-Management}, Vol. 30, No. 3, pp.256--264
+\bibitem[\protect\citeauthoryear{Arato et al.}{2003}]{Arato2003}
+Arato, P., Juhasz, S., Mann, A., Orban, A. and Papp, D. (2003) 'Hardware/software partitioning in embedded system design', {\it Intl. Symp. on Intelligent Signal Processing}, pp.192--202
 
-\bibitem[\protect\citeauthoryear{Bekelman et al.}{2003}]{bekelman03}
-Bekelman, J.E., Li, Y. and Gross, C.P. (2003) 'Scope and impact of
-financial conflicts of interest in biomedical research: a systematic
-review', {\it JAMA}, Vol. 289, No. 19, pp.454--65
+\bibitem[\protect\citeauthoryear{Mann et al.}{2007}]{Mann2007}
+Mann, A., Orban, A. and Arato, P. (2007) 'Finding optimal hardware/software partitions', {\it Formal Methods in System Design}, Vol. 31, No. 3, pp.241--263
 
-\bibitem[\protect\citeauthoryear{Stein}{2008}]{stein08}
-Stein, L.D. {2008} 'Towards a cyberinfrastructure for the biological
-sciences: progress, visions and challenges', {\it Nature Reviews
-Genetics}, Vol. 9, No. 9, pp.678--688.
+\bibitem[\protect\citeauthoryear{Trindade and Cordeiro}{2015}]{Trindade2015}
+Trindade, A. and Cordeiro, L. (2015) 'Applying SMT-based verification to hardware/software partitioning in embedded systems', {\it Design Automation for Embedded Systems (to appear)}
 
-\bibitem[\protect\citeauthoryear{NIH Statement on Sharing Scientific Research
-Data}{http://grants.nih.gov/grants/policy/data\_sharing/}]{nih03datasharing}
-NIH Statement on Sharing Scientific Research Data,
-http://grants.nih.gov/grants/policy/data\_sharing/
+\bibitem[\protect\citeauthoryear{Trindade et al.}{2016}]{Trindade2016}
+Trindade, A., Ismail, H. and Cordeiro, L. (2016) 'Applying Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems (short paper)', {\it V Brazilian Symp. on Computing Systems Engineering (to appear)}
 
-\bibitem[\protect\citeauthoryear{Policy for sharing of data obtained in NIH supported or conducted
-genome-wide association studies}{2008}]{nih08policy} Policy for
-sharing of data obtained in NIH supported or conducted genome-wide
-association studies,
-http://grants.nih.gov/grants/guide/notice-files/not-od-07-088.html
+\bibitem[\protect\citeauthoryear{Bjorner et al.}{2015}]{Bjorner2015}
+Bjorner, N., Phan, A. and Fleckenstein, L. (2015) 'vZ - An Optimizing SMT Solver', {\it Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems}, Vol. 9035, pp.194--199
+
+\bibitem[\protect\citeauthoryear{Tang et al.}{2010}]{Tang2009}
+Tang, T., Lin, Y. and Ren, X. (2010) 'Mapping OpenMP concepts to the stream programming model', {\it Proc. of the Intl. Conf. on Computer Science Education}, pp.1900--1905
+
+\bibitem[\protect\citeauthoryear{Muller}{2002}]{OpenMP1998}
+Muller, M. (2002) 'OpenMP Architecture Review Board, OpenMP C and C++ Application Program Interface, Version 2.0', {\it OpenMP Architecture Review Board}
+
+\bibitem[\protect\citeauthoryear{Cordeiro et al.}{2012}]{Cordeiro2012}
+Cordeiro, L. Fischer, B. and Marques-Silva, J. (2012) 'SMT-based Bounded Model Checking for Embedded ANSI-C Software', {\it IEEE Transactions on Software Engineering}, Vol. 38, No. 4, pp.957--974
+
+\bibitem[\protect\citeauthoryear{Rao}{2009}]{Rao2009}
+Rao, S. (2009) 'Engineering Optimization: Theory and Practice. 4th edition'
+
+\bibitem[\protect\citeauthoryear{Biere et al.}{2009}]{Biere2009}
+Biere, A., Heule, M., Maaren, H. and Walsh, T. {2009} 'Bounded Model Checking', {\it Handbook of Satisfiability}
+
+\bibitem[\protect\citeauthoryear{Clarke et al.}{2001}]{Clarke2001}
+Clarke, E., Biere, A., Raimi, R. and Zhu, Y. (2001) 'Bounded model checking using satisfiability solving', {\it Formal Methods in System Design}, Vol. 19, No. 1, pp.7--34
+
+\bibitem[\protect\citeauthoryear{Armando et al.}{2009}]{Armando2009}
+Armando, A., Mantovani, J. and Platania, L. (2009) 'Bounded model checking of software using SMT solvers instead of SAT solvers', {\it Intl. Journal on Software Tools for Technology Transfer}, Vol. 11, No. 1, pp.69--83
+
+\bibitem[\protect\citeauthoryear{Ganai and Gupta}{2006}]{Ganai2006}
+Ganai, M. K. and Gupta, A. (2006) 'Accelerating high-level bounded model checking', {\it Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design}, pp.794--801
+
+\bibitem[\protect\citeauthoryear{Ramalho et al.}{2013}]{Ramalho2013}
+Ramalho, M., Freitas, M., Sousa, F., Marques, H., Cordeiro, L. and Fischer, B. (2013) 'SMT-Based Bounded Model Checking of C++ Programs', {\it Intl. Conf. and Workshops on the Engineering of Computer-Based Systems}, pp.147--156
+
+\bibitem[\protect\citeauthoryear{Moura and Bjorner}{2008}]{DeMoura2008}
+Moura, L. and Bjorner, N. (2008) 'Z3: An Efficient SMT Solver', {\it Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems}, pp.337--340
+
+\bibitem[\protect\citeauthoryear{Brummayer and Biere}{2009}]{Brummayer2009}
+Brummayer, R. and Biere, A. (2009) 'Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays', {\it Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems}, Vol. 5505, pp.174--177
+
+\bibitem[\protect\citeauthoryear{Barrett et al.}{2011}]{Barrett2011}
+Barrett, C., Conway, C., Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A. and Tinelli, C. (2011) 'CVC4', {\it Proc. of the Intl. Conf. on Computer-Aided Verification}, Vol. 6806, pp.171--177
+
+\bibitem[\protect\citeauthoryear{Bozzano et al.}{2005}]{Bozzano2005}
+Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S. and Sebastiani, R. (2005) 'MathSAT: Tight integration of SAT and mathematical decision procedures', {\it Journal of Automated Reasoning}, Vol. 35, No. 1-3, pp.265--293
+
+\bibitem[\protect\citeauthoryear{Dutertre}{2014}]{Dutertre2014}
+Dutertre, B. (2014) 'Yices 2.2', {\it Proc. of the Intl. Conf. on Computer-Aided Verification}, Vol. 8559, pp.737--744
+
+\bibitem[\protect\citeauthoryear{Wu et al.}{2014}]{Wu2014}
+Wu M., Wu, W., Tai, N., Zhao, H., Fan, J. and Yuan, N. (2014) 'Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP', {\it Proc. of the Intl. Conf. on Software Engineering and Service Science}, pp.921--924
+
+\bibitem[\protect\citeauthoryear{Bjorner and Phan}{2014}]{Bjorner2014}
+Bjorner, N. and Phan, A (2014) 'vZ - Maximal Satisfaction with Z3', {\it Proc. of the Intl. Symp. on Symbolic Computation in Software Science}, pp.1--10
+
+
+\bibitem[\protect\citeauthoryear{Paci et al}{2008}]{Federica2008}
+Paci, F., Ferrini, R., Sun, Y. and Bertino, E. (2008) 'Authorization and User Failure Resiliency for WS-BPEL business processes', {\it Proc. of the Intl. Conf. on Service-Oriented Computing}, pp.116--131
+
+\bibitem[\protect\citeauthoryear{Narodytska and Bacchus}{2014}]{NarodytskaN}
+Narodytska, N. and Bacchus, F. (2014) 'Maximum Satisfiability Using Core-Guided MAXSAT Resolution', {\it Proc. of the Conf. on Artificial Intelligence}, pp.2717--2723
+
 
 \bibitem[\protect\citeauthoryear{Network for Translational Research (NTR): Optical Imaging in
 Multimodality
