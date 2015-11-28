@@ -7,7 +7,11 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{tabu}
 \usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
 \renewcommand{\lstlistingname}{Algorithm}
 
 \def\newblock{\hskip .11em plus .33em minus .07em}
@@ -523,6 +527,144 @@ ESBMC v$2$.$0$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system w
 
 All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $24$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times (average taken). Based on standard deviation and tolerance interval to each set of time sample, it was obtained a statistical confidence of $91.7$\% to ESBMC (sequential, SS, PB and $\nu$Z), $95.9$\% to ESBMC-PS, and $92.0$\% to ILP and GA. A timeout condition (TO) is reached when the verification time is longer than $3600$ seconds. A memory-out (MO) occurs when the tool reaches $15$ GB of memory. 
 
+%----------------------------------------------
+\subsection{Description of Benchmarks}
+\label{Benchmarks-Description}
+%----------------------------------------------
+To perform the experiments, some benchmarks provided by~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
+
+\hspace{-5 mm}
+\begin{minipage}{\linewidth}
+\centering
+\small
+\sffamily\small
+\tabulinesep=4pt
+\captionof{table}{Description of Benchmarks.} 
+\begin{tabular}[c]{m{1.5cm}m{0.7cm}m{0.7cm}m{4.0 cm}}
+\toprule[1.5pt]
+\textbf{Name} & \textbf{Nodes} & \textbf{Edges} & \textbf{Description}\\
+\midrule
+\verb|CRC32| & \verb|25| & \verb|32| & \rmfamily 32-bit cyclic redundancy check ~\cite{Guthaus2001}\\
+\hline
+\verb|Patricia| & \verb|21| & \verb|48| & \rmfamily
+\vspace{0.8 mm} Routine to insert values in Patricia Tree \cite{Guthaus2001}\\
+\hline
+\verb|Dijkstra| & \verb|26| & \verb|69| & \rmfamily \vspace{0.8 mm} Computer shortest paths in a graph ~\cite{Guthaus2001}\\
+\hline
+\verb|Clustering| & \verb|150| & \verb|331| & \rmfamily \vspace{0.8 mm} Image segmentation algorithm in a medical application\\
+\hline
+\verb|RC6| & \verb|329| & \verb|448| & \rmfamily \vspace{0.8 mm} RC6 cryptography graph algorithm\\
+\hline
+\verb|Fuzzy| & \verb|261| & \verb|422| & \rmfamily \vspace{0.8 mm} Clustering algorithm based on fuzzy logic\\
+\hline
+\verb|Mars| & \verb|417| & \verb|600| & \rmfamily 
+\vspace{1 mm} MARS cipher from IBM algorithm\\
+\bottomrule[1.5pt]
+\label{tab:Description-of-Benchmarks} 
+\end{tabular}\par
+\bigskip
+\end{minipage}
+
+%----------------------------------------------
+\subsection{Experimental Results}
+\label{Experimental-Results}
+%----------------------------------------------
+
+Table~\ref{Experimental-results-of-the-complex-benchmarks} shows the experimental results using Matlab (ILP and GA) and ESBMC (ESBMC-SS, ESBMC-PS, ESBMC-PB, ESBMC-$\nu$Z) tools.
+
+There is no single tool for efficiently solving all HW-SW partitioning benchmarks. In particular, the best (proposed) solution is ESBMC-$\nu$Z, which solves $4$ out of $7$ benchmarks; ESBMC-$\nu$Z is faster than ILP in all supported benchmarks ({\it i.e.}, CRC$32$, Patricia, Dijkstra, Clustering), but it returns three TOs (timeouts) related to RC6, Fuzzy and Mars benchmarks.
+
+In contrast to ESBMC-$\nu$Z, ILP solves $5$ out of $7$ benchmarks. When ILP produces a result, it provides the optimal solution. On the one hand, ILP execution time is slower than $\nu$Z in all benchmarks, which are supported by ESBMC-$\nu$Z. On the other hand, ILP is faster than ESBMC-SS, ESBMC-PS, and ESBMC-PB in all benchmarks, except for the clustering.
+
+Note further that all multi-core ESBMC implementations produce better results than the sequential one. In particular, ESBMC-PB implementation outperforms all other multi-core ESBMC approaches, where its performance improves as the number of nodes and edges increase. One notable case is the clustering benchmark, when verified by ESBMC-PB, it executes $3$ times faster than ILP and $2$.$5$ times slower than ESBMC-$\nu$Z. However, when the amount of nodes is around $30$, ESBMC-PB does not outperform ESBMC-$\nu$Z and ILP tools. When analyzing all benchmarks, ESBMC-PB produces TO for RC$6$, Fuzzy, and Mars; however, the results are still promising if we take into consideration that $\nu$Z and Matlab are state-of-the-art tools with respect to optimization problems.
+
+\begin{table*}[ht]
+  \centering
+  \caption{Experimental results of the HW-SW partitioning benchmarks.}  
+  \begin{tabular}{*{9}{cc|c|c|c|c|c|c|c}}
+\\
+ &  & \rotatebox{90}{\textbf{\normalsize{CRC32}}} & \rotatebox{90}{\textbf{\normalsize{Patricia}}} & \rotatebox{90}{\textbf{\normalsize{Dijkstra}}} & \rotatebox{90}{\textbf{\normalsize{Clustering}}} & \rotatebox{90}{\textbf{\normalsize{RC6}}} & \rotatebox{90}{\textbf{\normalsize{Fuzzy}}} & \rotatebox{90}{\textbf{\normalsize{Mars}}} \\[0.15cm]
+\cmidrule(r){3-9}
+
+&\textbf{\normalsize{Nodes}} &\normalsize{25} & \normalsize{21} & \normalsize{26} & \normalsize{150} & \normalsize{329} & \normalsize{261} & \normalsize{417}\\
+&\textbf{\normalsize{Edges}} &\normalsize{32} & \normalsize{48} & \normalsize{69} & \normalsize{331} & \normalsize{448} & \normalsize{442} & \normalsize{600}\\
+&\textbf{\normalsize{S0}} &\normalsize{20} & \normalsize{10} & \normalsize{20} & \normalsize{50} & \normalsize{600} & \normalsize{4578} & \normalsize{300} \\
+
+\bottomrule[1.5pt]
+\rowcolors{1}{}{lightgray}
+
+\multirow{4}{*}{\textbf{\normalsize{Solution}}}
+& & & & & & & & & \\
+&  \normalsize{Hp}   &  \normalsize{15}   &  \normalsize{47}   &  \normalsize{31}   &  \normalsize{241} &  \normalsize{692} &  \normalsize{13820}   &  \normalsize{876} \\
+&  \normalsize{Sp}   &  \normalsize{19}   &  \normalsize{4}   &  \normalsize{19}   &  \normalsize{46}   &  \normalsize{533}    &  \normalsize{4231}   &  \normalsize{297}  \\
+& & & & & & & & & \\
+
+\bottomrule[1.5pt]
+%ILP
+\multirow{4}{*}{\textbf{\normalsize{ILP}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)}   &  \normalsize{1.6}   &  \normalsize{1.3}  &  \normalsize{1.6}   &  \normalsize{648.9}   &  \normalsize{1806.2}    &  \normalsize{TO}   &  \normalsize{TO}  \\
+&  \normalsize{Hp}   &  \normalsize{15}  &  \normalsize{47}   &  \normalsize{31}   &  \normalsize{241}   &  \normalsize{692}    &  -   &  -  \\
+& & & & & & & & & \\
+\hline
+
+%GA
+\multirow{4}{*}{\textbf{\normalsize{{GA}}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)}   &  \normalsize{6.7}   &  \normalsize{7.4}   &  \normalsize{8.8}   &  \normalsize{340.4}   &  \normalsize{2050.0}    &  \normalsize{1371.9}   &  \normalsize{TO}  \\
+&  \normalsize{Error \%}   &  \normalsize{13.3}   &  \normalsize{0.0}   &  \normalsize{29.0}   &  \normalsize{1.7}   &  \normalsize{-6.5}    &  \normalsize{-37.6}   &  -  \\
+& & & & & & & & & \\
+\hline
+
+%ESBMC
+\multirow{4}{*}{\textbf{\normalsize{{ESBMC}}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)}   & \normalsize{30.3}   &  \normalsize{313.7}   &  \normalsize{324.7}   &  \normalsize{MO}   & \normalsize{MO}    &  \normalsize{MO}   &  \normalsize{MO } \\
+&  \normalsize{Hp}   &  \normalsize{15}   &  \normalsize{47}   &  \normalsize{31}   &  -   &  -    &  -   &  -  \\
+& & & & & & & & & \\
+\hline
+
+%MultiCore ESBMC
+\multirow{4}{*}{\textbf{\normalsize{{ESBMC-SS}}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)}   & \normalsize{2.2}  &  \normalsize{5.8}   &  \normalsize{7.0}  &  \normalsize{1609.3}   &  \normalsize{TO}    &  \normalsize{TO}   &  \normalsize{TO}  \\
+&  \normalsize{Hp}   &  \normalsize{15}   &  \normalsize{47}   &  \normalsize{31 }  &  \normalsize{241 }  &  -    &  -   &  -  \\
+& & & & & & & & & \\
+\hline
+
+%ESBMC Parallel sequential
+\multirow{4}{*}{\textbf{\normalsize{ESBMC-PS}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)} &  \normalsize{3.7} &  \normalsize{10.0}   &  \normalsize{12.0}   &  \normalsize{2468.0}   &  \normalsize{TO}    &  \normalsize{TO}   &  \normalsize{TO}  \\
+&  \normalsize{Hp}   &  \normalsize{15}   &  \normalsize{47}   &  \normalsize{31}   &  \normalsize{241}   &  -    &  -   &  -  \\
+& & & & & & & & & \\
+\hline
+
+%ESBMC Parallel Binary
+\multirow{4}{*}{\textbf{\normalsize{{ESBMC-PB}}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)}   &  \normalsize{4.3}   & \normalsize{4.7}   &  \normalsize{6.3}   &  \normalsize{218.7}   &  \normalsize{TO}    & \normalsize{TO}   & \normalsize{TO} \\
+&  \normalsize{Hp}   &  \normalsize{15}   &  \normalsize{47}   &  \normalsize{38}   &  \normalsize{241}   &  -    &  -   &  -  \\
+& & & & & & & & & \\
+\hline
+
+%vZ
+\multirow{4}{*}{\textbf{\normalsize{{ESBMC-$\nu$Z}}}}
+& & & & & & & & & \\
+&  \normalsize{T(s)}   &  \normalsize{0.3}   & \normalsize{0.3}   &  \normalsize{0.7}   &  \normalsize{86.4}   &  \normalsize{TO}    &  \normalsize{TO}   &  \normalsize{TO } \\
+&  \normalsize{Hp}   &  \normalsize{15}   &  \normalsize{47}   &  \normalsize{31}   &  \normalsize{241}   &  -    &  -   &  -  \\
+& & & & & & & & & \\
+
+\bottomrule[1.5pt]
+\end{tabular}
+\label{Experimental-results-of-the-complex-benchmarks}
+\end{table*}
+
+The only technique that is able to solve all benchmarks is GA; however, its precision is not satisfactory since it produces an error rate between $-37.6$\% and $29.0$\%.
+
+Note that RC$6$ produced timeouts for all implementations of ESBMC; GA did not produce the correct answer, and ILP solves correctly most benchmarks, except for Mars and Fuzzy, which produced timeouts and memory-outs in all tools that aim to find the exact solution. No tool was capable to solve Mars in less than $3600$ seconds, while GA solved all benchmarks, but mostly incorrectly.
+
+The clustering benchmark seems to be the limit to test the ESBMC (described) implementations; note, however, that more than $150$ nodes lead to TO and MO. ILP shows robustness and produces results even for a high number of nodes and edges, but limited to $329$ nodes.
 
 %----------------------------------------------
 \section{Related Work}
