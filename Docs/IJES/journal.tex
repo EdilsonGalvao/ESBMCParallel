@@ -41,9 +41,11 @@
 \makeatletter
 \def\theequation{\arabic{equation}}
 
-%\JOURNALNAME{\TEN{\it Int. J. System Control and Information
-%Processing,
-%Vol. \theVOL, No. \theISSUE, \thePUBYEAR\hfill\thepage}}%
+\JOURNALNAME{\TEN{\it International Journal of Embedded Systems,
+Vol. \theVOL, No. \theISSUE, \thePUBYEAR\hfill\thepage}
+}
+
+%
 %
 %\def\BottomCatch{%
 %\vskip -10pt
@@ -57,6 +59,7 @@
 %%%\vskip -35pt%
 %\end{table}%
 %}
+
 \makeatother
 
 %%%%%%%%%%%%%%%%%
@@ -297,7 +300,7 @@ The inputs of the problem are: a directed simple graph $ G = (V,E) $, called the
 
 Based on~\cite{Arato2003}, is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $. The hardware cost of $P$ is given by Eq.~\ref{hardware-costs}
 
-\vspace{-2 mm}
+\vspace{-5 mm}
 \begin{align}
 \label{hardware-costs}
 H_p  &= \Sigma_{V_i \in V_h} h_i,
@@ -348,14 +351,6 @@ Algorithm~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same
 
 The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix and the identity matrix, as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
-It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of those constrains (\textit{i.e.}, $A.x \leq b$).
-
-A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware. To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
-
-The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if \textit{ASSERT} returns a \textit{true} condition, {\it i.e.}, the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the \textit{ASSERT} generates a \textit{false} condition. When the \textit{false} condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
-
-In the ESBMC algorithm, which is shown below, it is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
-
 \vspace{2 mm}
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
 Initialize variables 
@@ -376,6 +371,14 @@ main {
  }
 }
 \end{lstlisting}
+
+It is possible to inform to ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of those constrains (\textit{i.e.}, $A.x \leq b$).
+
+A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware. To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
+
+The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if \textit{ASSERT} returns a \textit{true} condition, {\it i.e.}, the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the \textit{ASSERT} generates a \textit{false} condition. When the \textit{false} condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
+
+In the ESBMC algorithm is not necessary to add slack variables, because the modulus operation is kept, which reduces the number of variables to be solved. 
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP (ESBMC-SS)}
@@ -438,6 +441,9 @@ Note that there might gaps between steps, which are produced by the customized b
 
 Algorithm~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
+Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
+From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
+
 \vspace {2 mm}
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
 GetNextStep(){
@@ -466,8 +472,7 @@ GetNextStep(){
 }
 \end{lstlisting}
 
-Note that Algorithm~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
-From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
+Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
 \vspace {2 mm}
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Worker sample.},label={worker-sample},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny]
@@ -479,14 +484,15 @@ while(isRunning(pid)){
 }
 \end{lstlisting}
 
-Algorithm~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
-
 %----------------------------------------------
 \subsection{Analysis of the partitioning problem using $\nu$Z (ESBMC-$\nu$Z)}
 \label{Analysis-of-the-partitioning-problem-using-vZ}
 %----------------------------------------------
 
 Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $2$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
+
+The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that 
+meets the constraints, then the \textit{Fobj} value is provided.
 
 \vspace {2 mm}
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing ESBMC-$\nu$Z.},label={vZ-pseudocode},numbersep=7pt,frame=tb,captionpos=b,numbers=left,numberstyle=\tiny,mathescape=true]
@@ -508,8 +514,6 @@ Algorithm~\ref{vZ-pseudocode} encodes the objective function and constraints rel
  Check Model
  Print Result
 \end{lstlisting}
-
-The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one informs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that meets the constraints, then the \textit{Fobj} value is provided.
 
 %----------------------------------------------
 \section{Experimental Evaluation}
@@ -701,43 +705,43 @@ Finally, there is an issue about $150$ nodes problem, since it seems to be the l
 \bibitem[\protect\citeauthoryear{Arato et al.}{2003}]{Arato2003}
 Arato, P., Juhasz, S., Mann, A., Orban, A. and Papp, D. (2003) 'Hardware/software partitioning in embedded system design', {\it Intl. Symp. on Intelligent Signal Processing}, pp.192--202
 
-\bibitem[\protect\citeauthoryear{Mann et al.}{2007}]{Mann2007}
+\bibitem[\protect\citeauthoryear{Mann \textit{et al.}}{2007}]{Mann2007}
 Mann, A., Orban, A. and Arato, P. (2007) 'Finding optimal hardware/software partitions', {\it Formal Methods in System Design}, Vol. 31, No. 3, pp.241--263
 
 \bibitem[\protect\citeauthoryear{Trindade and Cordeiro}{2015}]{Trindade2015}
 Trindade, A. and Cordeiro, L. (2015) 'Applying SMT-based verification to hardware/software partitioning in embedded systems', {\it Design Automation for Embedded Systems (to appear)}
 
-\bibitem[\protect\citeauthoryear{Trindade et al.}{2016}]{Trindade2016}
+\bibitem[\protect\citeauthoryear{Trindade \textit{et al.}}{2016}]{Trindade2016}
 Trindade, A., Ismail, H. and Cordeiro, L. (2016) 'Applying Multi-Core Model Checking to Hardware-Software Partitioning in Embedded Systems (short paper)', {\it V Brazilian Symp. on Computing Systems Engineering (to appear)}
 
-\bibitem[\protect\citeauthoryear{Bjorner et al.}{2015}]{Bjorner2015}
+\bibitem[\protect\citeauthoryear{Bjorner \textit{et al.}}{2015}]{Bjorner2015}
 Bjorner, N., Phan, A. and Fleckenstein, L. (2015) 'vZ - An Optimizing SMT Solver', {\it Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems}, Vol. 9035, pp.194--199
 
-\bibitem[\protect\citeauthoryear{Tang et al.}{2010}]{Tang2009}
+\bibitem[\protect\citeauthoryear{Tang \textit{et al.}}{2010}]{Tang2009}
 Tang, T., Lin, Y. and Ren, X. (2010) 'Mapping OpenMP concepts to the stream programming model', {\it Proc. of the Intl. Conf. on Computer Science Education}, pp.1900--1905
 
 \bibitem[\protect\citeauthoryear{Muller}{2002}]{OpenMP1998}
 Muller, M. (2002) 'OpenMP Architecture Review Board, OpenMP C and C++ Application Program Interface, Version 2.0', {\it OpenMP Architecture Review Board}
 
-\bibitem[\protect\citeauthoryear{Cordeiro et al.}{2012}]{Cordeiro2012}
+\bibitem[\protect\citeauthoryear{Cordeiro \textit{et al.}}{2012}]{Cordeiro2012}
 Cordeiro, L. Fischer, B. and Marques-Silva, J. (2012) 'SMT-based Bounded Model Checking for Embedded ANSI-C Software', {\it IEEE Transactions on Software Engineering}, Vol. 38, No. 4, pp.957--974
 
 \bibitem[\protect\citeauthoryear{Rao}{2009}]{Rao2009}
 Rao, S. (2009) 'Engineering Optimization: Theory and Practice. 4th edition'
 
-\bibitem[\protect\citeauthoryear{Biere et al.}{2009}]{Biere2009}
+\bibitem[\protect\citeauthoryear{Biere \textit{et al.}}{2009}]{Biere2009}
 Biere, A., Heule, M., Maaren, H. and Walsh, T. {2009} 'Bounded Model Checking', {\it Handbook of Satisfiability}
 
-\bibitem[\protect\citeauthoryear{Clarke et al.}{2001}]{Clarke2001}
+\bibitem[\protect\citeauthoryear{Clarke \textit{et al.}}{2001}]{Clarke2001}
 Clarke, E., Biere, A., Raimi, R. and Zhu, Y. (2001) 'Bounded model checking using satisfiability solving', {\it Formal Methods in System Design}, Vol. 19, No. 1, pp.7--34
 
-\bibitem[\protect\citeauthoryear{Armando et al.}{2009}]{Armando2009}
+\bibitem[\protect\citeauthoryear{Armando \textit{et al.}}{2009}]{Armando2009}
 Armando, A., Mantovani, J. and Platania, L. (2009) 'Bounded model checking of software using SMT solvers instead of SAT solvers', {\it Intl. Journal on Software Tools for Technology Transfer}, Vol. 11, No. 1, pp.69--83
 
 \bibitem[\protect\citeauthoryear{Ganai and Gupta}{2006}]{Ganai2006}
 Ganai, M. K. and Gupta, A. (2006) 'Accelerating high-level bounded model checking', {\it Proc. of the IEEE/ACM Intl. Conf. on Computer-Aided Design}, pp.794--801
 
-\bibitem[\protect\citeauthoryear{Ramalho et al.}{2013}]{Ramalho2013}
+\bibitem[\protect\citeauthoryear{Ramalho \textit{et al.}}{2013}]{Ramalho2013}
 Ramalho, M., Freitas, M., Sousa, F., Marques, H., Cordeiro, L. and Fischer, B. (2013) 'SMT-Based Bounded Model Checking of C++ Programs', {\it Intl. Conf. and Workshops on the Engineering of Computer-Based Systems}, pp.147--156
 
 \bibitem[\protect\citeauthoryear{Moura and Bjorner}{2008}]{DeMoura2008}
@@ -746,16 +750,16 @@ Moura, L. and Bjorner, N. (2008) 'Z3: An Efficient SMT Solver', {\it Proc. of th
 \bibitem[\protect\citeauthoryear{Brummayer and Biere}{2009}]{Brummayer2009}
 Brummayer, R. and Biere, A. (2009) 'Boolector: An Efficient SMT Solver for Bit-Vectors and Arrays', {\it Proc. of the Intl. Conf. on Tools and Algorithms for the Construction and Analysis of Systems}, Vol. 5505, pp.174--177
 
-\bibitem[\protect\citeauthoryear{Barrett et al.}{2011}]{Barrett2011}
+\bibitem[\protect\citeauthoryear{Barrett \textit{et al.}}{2011}]{Barrett2011}
 Barrett, C., Conway, C., Deters, M., Hadarean, L., Jovanovic, D., King, T., Reynolds, A. and Tinelli, C. (2011) 'CVC4', {\it Proc. of the Intl. Conf. on Computer-Aided Verification}, Vol. 6806, pp.171--177
 
-\bibitem[\protect\citeauthoryear{Bozzano et al.}{2005}]{Bozzano2005}
+\bibitem[\protect\citeauthoryear{Bozzano \textit{et al.}}{2005}]{Bozzano2005}
 Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S. and Sebastiani, R. (2005) 'MathSAT: Tight integration of SAT and mathematical decision procedures', {\it Journal of Automated Reasoning}, Vol. 35, No. 1-3, pp.265--293
 
 \bibitem[\protect\citeauthoryear{Dutertre}{2014}]{Dutertre2014}
 Dutertre, B. (2014) 'Yices 2.2', {\it Proc. of the Intl. Conf. on Computer-Aided Verification}, Vol. 8559, pp.737--744
 
-\bibitem[\protect\citeauthoryear{Wu et al.}{2014}]{Wu2014}
+\bibitem[\protect\citeauthoryear{Wu \textit{et al.}}{2014}]{Wu2014}
 Wu M., Wu, W., Tai, N., Zhao, H., Fan, J. and Yuan, N. (2014) 'Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP', {\it Proc. of the Intl. Conf. on Software Engineering and Service Science}, pp.921--924
 
 \bibitem[\protect\citeauthoryear{Bjorner and Phan}{2014}]{Bjorner2014}
@@ -777,7 +781,7 @@ Manquinho, V. and Marques-Silva, J. (1995) 'Effective Lower Bounding Techniques 
 \bibitem[\protect\citeauthoryear{Microsoft Research}{2015}]{Z3API}
 Microsoft Research (2015) 'Z3 API - Source code and documentation', {\it https://z3.codeplex.com/}, Accessed in 18th August 2015
 
-\bibitem[\protect\citeauthoryear{Cormen et al.}{2009}]{Cormem}
+\bibitem[\protect\citeauthoryear{Cormen \textit{et al.}}{2009}]{Cormem}
 Cormen, T., Leiserson, C., Rivest, R. and Stein, C. (2009) 'Introduction to Algorithms', {\it MIT Press}, Vol. I-XIX, pp.1--1292
 
 \bibitem[\protect\citeauthoryear{Dagum and Menon}{1998}]{Dagum1998}
@@ -798,29 +802,30 @@ Cordeiro, L. and Fischer, B. (2011) 'Verifying multi-threaded software using SMT
 \bibitem[\protect\citeauthoryear{Teich}{2012}]{Teich2012}
 Teich, J. (2012) 'Hardware/Software Codesign: The Past, the Present, and Predicting the Future', {\it Proc. of the IEEE, Special Centennial Issue}, Vol. 100, pp.1411--1430
 
-\bibitem[\protect\citeauthoryear{Guthaus et al.}{2011}]{Guthaus2001}
+\bibitem[\protect\citeauthoryear{Guthaus \textit{et al.}}{2011}]{Guthaus2001}
 Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T. and Brown, R. (2011) 'MiBench: A free, commercially representative embedded benchmark suite', {\it Proc. of the annual workshop on workload characterization}, pp.3--14
 
-\bibitem[\protect\citeauthoryear{Arato et al.}{2005}]{Arato2005}
+\bibitem[\protect\citeauthoryear{Arato \textit{et al.}}{2005}]{Arato2005}
 Arato, P., Mann, A., Orban, A. (2005) 'Algorithmic aspects of hardware/software partitioning', {\it ACM Transactions on Design Automation of Electronic Systems}, Vol. 1, No. 1, pp.136--156
 
-\bibitem[\protect\citeauthoryear{Holzmann et al.}{2011}]{Holzmann2011}
+\bibitem[\protect\citeauthoryear{Holzmann \textit{et al.}}{2011}]{Holzmann2011}
 Holzmann, G., Joshi, R. and Groce, A. (2011) 'Swarm Verification Techniques', {\it IEEE Transactions on Software Engineering}, Vol. 37, No. 6, pp.845--857
 
-\bibitem[\protect\citeauthoryear{Wintersteiger et al.}{2009}]{Wintersteiger2009}
+\bibitem[\protect\citeauthoryear{Wintersteiger \textit{et al.}}{2009}]{Wintersteiger2009}
 Wintersteiger, C., Hamadi, Y. and Moura, L. (2009) 'A Concurrent Portfolio Approach to SMT Solving', {\it Proc. of the Intl. Conf. on Computer-Aided Verification}, Vol. 5643, pp.715--720
 
-\bibitem[\protect\citeauthoryear{Qawasmeh et al.}{2014}]{Qawasmeh2014}
+\bibitem[\protect\citeauthoryear{Qawasmeh \textit{et al.}}{2014}]{Qawasmeh2014}
 Qawasmeh, A., Malik, A. and Chapman, B. (2014) 'OpenMP task scheduling analysis via OpenMP runtime API and tool visualization', {\it Proc. of the Intl. Symp. on Parallel Distributed processing}, pp.1049--1058
 
-\bibitem[\protect\citeauthoryear{Pavlinovi et al.}{2015}]{Pavlinovic2015}
+\bibitem[\protect\citeauthoryear{Pavlinovi \textit{et al.}}{2015}]{Pavlinovic2015}
 Pavlinovi, Z., King, T. and Wies, T. (2015) 'Practical SMT-Based Type Error Localization', {\it Proc. of the Intl. Conf. on Functional Programming}, pp.412--423
 
 \bibitem[\protect\citeauthoryear{Sebastiani and Trentin}{2015}]{Patrick2015}
 Sebastiani, R. and Trentin, P. (2015) 'OptiMathSAT: A Tool for Optimization Modulo Theories', {\it Proc. of the Intl. Conf. on Computer Aided Verification}, Vol. 9206, pp.447--454
 
-\bibitem[\protect\citeauthoryear{Holzmann et al.}{2011}]{Holzmann11}
+\bibitem[\protect\citeauthoryear{Holzmann \textit{et al.}}{2011}]{Holzmann11}
 Holzmann, G., Joshi, R. and Groce, A. (2011) 'Swarm Verification Techniques', {\it IEEE Transactions Software Engineering}, Vol. 9206, pp.845--857
 
- \end{thebibliography}
+\end{thebibliography}
+
 \end{document}
