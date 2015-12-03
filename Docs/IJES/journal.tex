@@ -148,6 +148,7 @@ no no no.\vs{9}}
 \end{bio}
 
 \maketitle
+\clearpage
 
 \section{Introduction}
 
@@ -425,6 +426,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
 
+\vspace{-5 mm}
 Consequently, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available, as shown in Fig.~\ref{ESBMC-Multi-core-Optimized-Sequential-Approach}. This approach could potentially lead to great performance improvements, but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
 
 %----------------------------------------------
@@ -441,6 +443,7 @@ The most optimized approach applies a parallelized binary-search to reduce the a
 	\label{ESBMC-Binary-Approach}
 \end{figure}
 
+\vspace{-5 mm}
 As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-Step-Calculation}), we firstly create an initial interval from $1$ to $20$. When the next available core requests a step to be executed, the controller obtains the largest interval, {\it i.e.}, $\left[1,20\right]$, divides it by two, which creates two new intervals ({\it i.e.}, $\left[1,9\right]$ and $\left[11,20\right]$), and returns the middle of the original interval ({\it i.e.}, $10$). The controller also checks whether an interval has less than two elements to avoid creating empty or invalid intervals.
 
 \begin{figure}[h!]
@@ -450,6 +453,7 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 	\label{Binary-Step-Calculation}
 \end{figure}
 
+\vspace{-4 mm}
 Note that there might gaps between steps, which are produced by the customized binary-search. For instance, in the example shown in Fig.~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
 Algorithm in Figure~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
@@ -457,6 +461,7 @@ Algorithm in Figure~\ref{Steps-Calculation-using-Intervals} describes how the cu
 Note that algorithm of Figure~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $18$). At the end, the median is returned.
 
+\vspace{-1.5 mm}
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny]
 GetNextStep(){
  int largestChunk = -1;
@@ -484,7 +489,7 @@ GetNextStep(){
 }
 \end{lstlisting}
 
-\vspace {2 mm}
+\vspace {-1.5 mm}
 Algorithm of Figure~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Worker sample.},label={worker-sample},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny]
@@ -526,6 +531,7 @@ meets the constraints, then the \textit{Fobj} value is provided.
  Print Result
 \end{lstlisting}
 
+\vspace {-2 mm}
 %----------------------------------------------
 \section{Experimental Evaluation}
 \label{Experimental-Evaluation}
@@ -546,10 +552,8 @@ All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-
 \subsection{Description of Benchmarks}
 \label{Benchmarks-Description}
 %----------------------------------------------
-To perform the experiments, some benchmarks provided by~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench, as shown in~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
-\vspace{5 mm}
-\hspace{-5 mm}
+
 \begin{minipage}{\linewidth}
 \centering
 \small
@@ -580,6 +584,9 @@ To perform the experiments, some benchmarks provided by~\cite{Mann2007} were use
 \end{tabular}\par
 \bigskip
 \end{minipage}
+
+\vspace{-3 mm}
+To perform the experiments, some benchmarks provided by~\cite{Mann2007} were used, as shown in Table~\ref{tab:Description-of-Benchmarks}. The nodes in the graphs correspond to high-level language instructions. Software and communication costs are time dimensional, and hardware costs represent the occupied area. The first three benchmarks are extracted from MiBench, as shown in~\cite{Guthaus2001}. The clustering and fuzzy benchmarks are designed from~\cite{Mann2007} and are significantly large benchmarks. From the same authors, very complex benchmarks to test the limits of the applicability of techniques were used (RC$6$ and Mars).
 
 %----------------------------------------------
 \subsection{Experimental Results}
@@ -700,6 +707,7 @@ Recently, the SMT solver Z3 has been extended to pose and solve optimization pro
 
 The problem addressed in this present paper uses a single objective function for minimization. In~\cite{Patrick2015}, OptiMathSAT and $\nu$Z are compared for software optimization problems. OptiMathSAT, using multiple objective functions, works better than $\nu$Z; however, for problems with a single objective function, the performance of $\nu$Z is better than OptiMathSAT.
 
+\vspace {-4 mm}
 %----------------------------------------------
 \section{Conclusions}
 \label{Conclusions}
