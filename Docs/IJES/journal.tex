@@ -76,6 +76,16 @@ Vol. \theVOL, No. \theISSUE, \thePUBYEAR\hfill\thepage}
 \begin{document}%
 %%%%%%%%%%%%%%%%%
 
+\lstset{language=C,basicstyle=\small}
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+\lstset{tabsize=2}
+\lstset{firstnumber=1}
+\lstset{frame=single}
+\lstset{
+  language={C},
+  morekeywords={assert,uchar}
+}
+
 \setcounter{page}{1}
 
 %\LRH{A. Trindade et~al.}
@@ -442,10 +452,10 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 
 Note that there might gaps between steps, which are produced by the customized binary-search. For instance, in the example shown in Fig.~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
-Algorithm at Figure~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
+Algorithm in Figure~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
 
 Note that algorithm of Figure~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
-From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $16$). At the end, the median is returned.
+From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $18$). At the end, the median is returned.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny]
 GetNextStep(){
