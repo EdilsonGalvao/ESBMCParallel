@@ -83,7 +83,7 @@ Vol. \theVOL, No. \theISSUE, \thePUBYEAR\hfill\thepage}
 \lstset{frame=single}
 \lstset{
   language={C},
-  morekeywords={assert,uchar}
+  morekeywords={assert,uchar,assume,For,do}
 }
 
 \setcounter{page}{1}
@@ -363,24 +363,27 @@ The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} an
 
 Figure~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same constraints and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section~\ref{Formal-Model}. The other is the halting condition (code violation) that stops the algorithm.
 
+\textcolor{red}{Conforme mencionado pelo revisor, falta definir o indice ``i''.}
+
 The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix (used in Eq.~\eqref{hw-sw-partitioning}) and the identity matrix (necessary to work with the matrices), as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny,mathescape=true]
 Initialize variables 
 Declare number of nodes and edges
-Declare hardware cost of each node as array (h)
-Declare software cost of each node as array (s)
-Declare communication cost of each edge (c)
+Declare the maximum hardware cost ($H_{max}$)
+Declare hardware cost of each node as array ($h$)
+Declare software cost of each node as array ($s$)
+Declare communication cost of each edge ($c$)
 Declare the initial sw cost of ($S_0$)
-Declare transposed incidence matrix graph G(E)
-Define the solutions ($x_i$) as Boolean
+Declare transposed incidence matrix graph $G(E)$
+Define the decision variables ($x_i$) as Boolean
 main {
- For TipH = 0 to Hmax Do {
-  Populate $x_i$ with nondet (the values of test)
-  Calculate s_i(1-x_i)+c|Ex_i| and store at variable
-  Requirement enforced by Assume (variable <= $S_0$)
-  Calculate Hp cost Based on value of $x_i$
-  Violation check with Assert(Hp > TipH)
+ For $TipH=0$ to $H_{max}$ do {
+  Populate $x_i$ with non-deterministic values
+  Calculate $s_i(1-x_i)+c|Ex_i|$ and store in variable
+  Requirement enforced by assume(variable $\leq$ $S_0$)
+  Calculate $H_p$ cost based on value of $x_i$
+  Violation check with assert($Hp > TipH$)
  }
 }
 \end{lstlisting}
@@ -388,11 +391,11 @@ main {
 \vspace{2 mm}
 It is possible to instruct ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. Those values that change for each test will generate a possible solution and obey the constraints. If this is achieved, then a feasible solution is found and the ASSUME directive is responsible for ensuring the compliance of those constrains (\textit{i.e.}, $A.x \leq b$).
 
-A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware (Hmax). To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
+A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware ($H_{max}$). To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
 
 The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if \textit{ASSERT} returns a \textit{true} condition, {\it i.e.}, the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the \textit{ASSERT} generates a \textit{false} condition. When the \textit{false} condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
 
-In the ESBMC algorithm is not necessary to add slack variables at Eq.~\eqref{hw-sw-partitioning}, which reduces the number of variables to be solved when compared to ILP and GA. 
+In the ESBMC algorithm, there is no need for adding slack variables in Eq.~\eqref{hw-sw-partitioning}, which reduces the number of variables to be solved if compared to ILP and GA. 
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP (ESBMC-SS)}
