@@ -185,7 +185,7 @@ The HW-SW partitioning problem is typically represented as a set of constraints 
 \label{Optimization}
 %----------------------------------------------
 
-Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances as defined in~\cite{Rao2009}. There is no single method available for efficiently solving all optimization problems, according to~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq.~\ref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors from the objective function, while $Aeq$ and $beq$ are matrices that describe the linear equality constraints
+Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances as defined in~\cite{Rao2009}. There is no single method available for efficiently solving all optimization problems, according to~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq.~\eqref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors from the objective function, while $Aeq$ and $beq$ are matrices that describe the linear equality constraints
 
 \vspace{2 mm}
 \begin{equation}
@@ -312,7 +312,7 @@ The informal model can be described by five characteristics. First, there is onl
 
 A directed simple graph $ G = (V,E) $, called the task graph of the system, is given. Where the vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(V_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).
 
-$P$ is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $, \cite{Arato2003}. The hardware cost of $P$ is given by Eq.~\ref{hardware-costs}
+$P$ is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $, \cite{Arato2003}. The hardware cost of $P$ is given by Eq.~\eqref{hardware-costs}
 
 \vspace{-5 mm}
 \begin{align}
@@ -322,7 +322,7 @@ H_p  &= \Sigma_{V_i \in V_h} h_i,
 
 \vspace{2 mm}
 \noindent
-and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given by Eq.~\ref{software-communication-costs}
+and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given by Eq.~\eqref{software-communication-costs}
 
 \vspace{-3 mm}
 \begin{align}
@@ -354,7 +354,7 @@ As computer hardware architecture moves from single- to multi-cores, parallel pr
 \label{ILPGA}
 %----------------------------------------------
 
-The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} and~\cite{Trindade2016}. Both use slack variables in order to eliminate the modulus operator of Eq.~\ref{hw-sw-partitioning} and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB, as shown in~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$.
+The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} and~\cite{Trindade2016}. Both use slack variables in order to eliminate the modulus operator of Eq.~\eqref{hw-sw-partitioning} and to use commercial tools. However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB, as shown in~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$.
 
 %----------------------------------------------
 \subsection{Verification Algorithm using Sequential ESBMC}
@@ -363,7 +363,7 @@ The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} an
 
 Figure~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same constraints and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section~\ref{Formal-Model}. The other is the halting condition (code violation) that stops the algorithm.
 
-The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix (used in Eq.~\ref{hw-sw-partitioning}) and the identity matrix (necessary to work with the matrices), as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
+The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix (used in Eq.~\eqref{hw-sw-partitioning}) and the identity matrix (necessary to work with the matrices), as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny,mathescape=true]
 Initialize variables 
@@ -392,7 +392,7 @@ A loop controls the cost of hardware hint, starting with zero and reaching the m
 
 The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if \textit{ASSERT} returns a \textit{true} condition, {\it i.e.}, the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the \textit{ASSERT} generates a \textit{false} condition. When the \textit{false} condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
 
-In the ESBMC algorithm is not necessary to add slack variables at Eq.~\ref{hw-sw-partitioning}, which reduces the number of variables to be solved when compared to ILP and GA. 
+In the ESBMC algorithm is not necessary to add slack variables at Eq.~\eqref{hw-sw-partitioning}, which reduces the number of variables to be solved when compared to ILP and GA. 
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP (ESBMC-SS)}
@@ -507,7 +507,7 @@ while(isRunning(pid)){
 
 Algorithm of Figure~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions, as seen in~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $2$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
 
-The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\ref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one instructs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that 
+The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\eqref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one instructs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that 
 meets the constraints, then the \textit{Fobj} value is provided.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing ESBMC-$\nu$Z.},label={vZ-pseudocode},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny,mathescape=true]
