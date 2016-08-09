@@ -363,7 +363,9 @@ The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} an
 
 Figure~\ref{Pseudocode-describing-ESBMC} shows ESBMC pseudocode with the same constraints and conditions placed on ILP and GA. Two values must be controlled to obtain the results and to perform the optimization. One is the initial software cost, as defined in Section~\ref{Formal-Model}. The other is the halting condition (code violation) that stops the algorithm.
 
-\textcolor{red}{Conforme mencionado pelo revisor, falta definir o indice ``i''.}
+Remembering that, as defined by formal model, there is a index of each decision variable, indicated by letter "i", which ranges from zero to the number of nodes of the problem to be solved. 
+
+%\textcolor{red}{Conforme mencionado pelo revisor, falta definir o indice ``i''.}
 
 The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix (used in Eq.~\eqref{hw-sw-partitioning}) and the identity matrix (necessary to work with the matrices), as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
@@ -548,7 +550,7 @@ This section is split into three parts. The setup is described in Section~\ref{E
 
 ESBMC v$2$.$0$ running on a $64$-bit Ubuntu $14$.$04$.$1$ LTS operating system was used. A parallel approach of the ESBMC-SS, ESBMC-PS, ESBMC-PB were implemented in C$++$11. Version $2$.$0$.$1$ of Boolector SMT-solver, as shown in~\cite{Brummayer2009} (freely available) was used as the default solver for ESBMC. ESBMC-$\nu$Z as a built-in tool to Z3 was also used, as shown in~\cite{Bjorner2014}.  For ILP and GA formulations, MATLAB R$2013$a from MathWorks with Parallel Computing Toolbox was used, as shown in~\cite{TheMathWorks2013}. MATLAB is a dynamically typed high-level language, known as the state-of-the-art mathematical software, as shown in~\cite{Tranquillo2011} and is widely used by the engineering community, as shown in~\cite{Hong2010}.
 
-All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $24$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times (average taken). Based on standard deviation and tolerance interval to each set of time sample, it was obtained a statistical confidence of $91.7$\% to ESBMC (sequential, SS, PB and $\nu$Z), $95.9$\% to ESBMC-PS, and $92.0$\% to ILP and GA. A timeout condition (TO) is reached when the verification time is longer than $3600$ seconds. A memory-out (MO) occurs when the tool reaches $15$ GB of memory. 
+All experiments were conducted on an otherwise idle Intel Core i$7$-$2600$ ($8$-cores), with $3$.$4$ GHz and $24$ GB of RAM, running Ubuntu $64$-bits. Each time was measured $3$ times (average taken). Based on standard deviation and tolerance interval to each set of time sample, it was obtained a statistical confidence of $91.7$\% to ESBMC (sequential, SS, PB and $\nu$Z), $95.9$\% to ESBMC-PS, and $92.0$\% to ILP and GA. A timeout condition (TO) is reached when the verification time is longer than $3600$ seconds. A memory-out (MO) occurs when the tool reaches $15$ GB of memory. The TO was defined based in previous empiric tests, where a bigger TO (5000 seconds, for example) do not caused difference in the results. 
 
 %----------------------------------------------
 \subsection{Description of Benchmarks}
@@ -637,6 +639,7 @@ Note further that all multi-core ESBMC implementations produce better results th
 \multirow{4}{*}{\textbf{\normalsize{{GA}}}}
 & & & & & & & & & \\
 &  \normalsize{T(s)}   &  \normalsize{6.7}   &  \normalsize{7.4}   &  \normalsize{8.8}   &  \normalsize{340.4}   &  \normalsize{2050.0}    &  \normalsize{1371.9}   &  \normalsize{TO}  \\
+&  \normalsize{Hp}   &  \normalsize{17}   &  \normalsize{47}   &  \normalsize{40}   &  \normalsize{245}   &  \normalsize{647}    &  \normalsize{8619}   &  -  \\
 &  \normalsize{Error \%}   &  \normalsize{13.3}   &  \normalsize{0.0}   &  \normalsize{29.0}   &  \normalsize{1.7}   &  \normalsize{-6.5}    &  \normalsize{-37.6}   &  -  \\
 & & & & & & & & & \\
 \hline
@@ -701,7 +704,7 @@ Since the second half of the first decade of 2000s, three main paths have been t
 In the first group, the exact solution to the HW-SW partitioning problem is found. The use of SMT-based verification presented in this paper can be grouped into this category, because the exact solution is found with the given algorithms. The difference is based only on the technique chosen to solve the problem.
 Another path followed in past initiatives and which has had more studies is the creation of heuristics to speed up the running time of the solution. The difference of this kind of solution to SMT-based verification and maximum satisfiability is based on two facts: all ESBMC implementations guarantee to find the exact solution, but heuristics are faster, when the complexity is greater.
 
-Finally, there are approaches that mixes heuristics with exact solution tools. The idea is to use a heuristic to speed up some phase of an exact solution tool. It worth mentioning that the final solution is not necessarily an optimal global solution. Only the SMT-based verification is guaranteed to find the exact solution, but hybrid algorithms are faster when complexity rises.
+Finally, there are approaches that mixes heuristics with exact solution tools. The idea is to use a heuristic to speed up some phase of an exact solution tool. It is worth mentioning that the final solution is not necessarily an optimal global solution. Only the SMT-based verification is guaranteed to find the exact solution, but hybrid algorithms are faster when complexity rises.
 
 In terms of SMT-based verification, most related studies are restricted to present the model, its modification to programming languages ({\it e.g.}, C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs, and~\cite{Cordeiro2012} uses ESBMC for embedded ANSI-C software. In~\cite{Trindade2015}, and~\cite{Trindade2016} it was proven that it is possible to use ESBMC to solve HW-SW partitioning in a single- and multi-core way, but the former has performance issues that were improved by the latter, which used only a sequential search to perform multi-core model checking. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification, as shown in~\cite{Holzmann2011}, and modifications of internal search engines to add support for parallelism, as shown in~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solver, according to~\cite{Wintersteiger2009}. 
 
