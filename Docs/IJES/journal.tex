@@ -447,7 +447,6 @@ The most optimized approach applies a parallelized binary-search to reduce the a
 	\label{ESBMC-Binary-Approach}
 \end{figure}
 
-\vspace{-5 mm}
 As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-Step-Calculation}), we firstly create an initial interval from $1$ to $20$. When the next available core requests a step to be executed, the controller obtains the largest interval, {\it i.e.}, $\left[1,20\right]$, divides it by two, which creates two new intervals ({\it i.e.}, $\left[1,9\right]$ and $\left[11,20\right]$), and returns the middle of the original interval ({\it i.e.}, $10$). The controller also checks whether an interval has less than two elements to avoid creating empty or invalid intervals.
 
 \begin{figure}[h!]
@@ -457,7 +456,6 @@ As an example, given a problem of domain from $1$ to $20$ (see Fig.~\ref{Binary-
 	\label{Binary-Step-Calculation}
 \end{figure}
 
-\vspace{-4 mm}
 Note that there might gaps between steps, which are produced by the customized binary-search. For instance, in the example shown in Fig.~\ref{Binary-Step-Calculation}, if step $10$ returns \textit{false}, then one can conclude that all steps after $10$ is \textit{false} as well. However, if the same step $10$ returns \textit{true}, we can assume that all steps before $10$ is \textit{true} as well. As a result, an auxiliary method to remove unnecessary steps is implemented in the controller by removing or shrinking existing intervals. This approach leads to a high impact in the verification time. However, if a step is running and is not needed anymore, the worker kills the forked process and starts a new one.
 
 Algorithm in Figure~\ref{Steps-Calculation-using-Intervals} describes how the customized binary search calculates and returns the step to be executed. 
@@ -465,7 +463,6 @@ Algorithm in Figure~\ref{Steps-Calculation-using-Intervals} describes how the cu
 Note that algorithm of Figure~\ref{Steps-Calculation-using-Intervals} is called from each worker in order to get the next step to execute if it exists; otherwise, either zero or a negative number is returned.
 From lines $4$ to $9$, the algorithm finds the largest interval. Then, from line $10$ the largest interval is removed and the median is calculated in line $11$. After that, two new intervals are created, the left side (in line $14$) and the right side (in line $18$). At the end, the median is returned.
 
-\vspace{-1.5 mm}
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Steps calculation using intervals.},label={Steps-Calculation-using-Intervals},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny]
 GetNextStep(){
  int largestChunk = -1;
@@ -493,7 +490,6 @@ GetNextStep(){
 }
 \end{lstlisting}
 
-\vspace {-1.5 mm}
 Algorithm of Figure~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$). If not, then the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Worker sample.},label={worker-sample},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny]
@@ -535,7 +531,6 @@ meets the constraints, then the \textit{Fobj} value is provided.
  Print Result
 \end{lstlisting}
 
-\vspace {-2 mm}
 %----------------------------------------------
 \section{Experimental Evaluation}
 \label{Experimental-Evaluation}
