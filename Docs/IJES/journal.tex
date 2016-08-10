@@ -185,7 +185,7 @@ The HW-SW partitioning problem is typically represented as a set of constraints 
 \label{Optimization}
 %----------------------------------------------
 
-Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances as defined in~\cite{Rao2009}. There is no single method available for efficiently solving all optimization problems, according to~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. Eq.~\eqref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors from the objective function, while $Aeq$ and $beq$ are matrices that describe the linear equality constraints
+Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances as defined in~\cite{Rao2009}. There is no single method available for efficiently solving all optimization problems, according to~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. \textcolor{blue}{Eq.~\eqref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors from the objective function, while $Aeq$ and $beq$ are matrices that describe the linear equality constraints}
 
 \vspace{2 mm}
 \begin{equation}
@@ -261,9 +261,9 @@ In $\nu$Z, MaxSAT is responsible for the restrictions, while OptSMT optimizes li
 
 \begin{itemize}
 \item{\textbf{maximize(T)}
-this function instructs the solver that a given variable $T$ should be maximized, which includes real, integer, or bit-vector variables.}
+\textcolor{blue}{this function instructs the solver that a given variable $T$ should be maximized, which includes real, integer, or bit-vector variables.}}
 \item{\textbf{minimize(T)}
-this function instructs the solver that a given variable $T$ should be minimized, the accepted types are the same as maximize function.}
+\textcolor{blue}{this function instructs the solver that a given variable $T$ should be minimized, the accepted types are the same as maximize function.}}
 \item{\textbf{Assert-Soft F : weight n}
 the function \textit{assert-soft} adds a restriction to $F$, which can also add a weight $n$; the default value is $1$.}
 \end{itemize}
@@ -310,7 +310,7 @@ The informal model can be described by five characteristics. First, there is onl
 \label{Formal-Model}
 %----------------------------------------------
 
-A directed simple graph $ G = (V,E) $, called the task graph of the system, is given. Where the vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(V_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).
+\textcolor{blue}{A directed simple graph $ G = (V,E) $, called the task graph of the system, is given. Where the vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(V_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).}
 
 $P$ is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $, \cite{Arato2003}. The hardware cost of $P$ is given by Eq.~\eqref{hardware-costs}
 
@@ -331,7 +331,7 @@ and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the com
 \end{align}
 
 \vspace{2 mm}
-In particular, different optimization (and decision) problems can be defined for partitioning HW-SW, as described by~\cite{Arato2003}. In this paper, however, the focus is on systems with hard real-time constraints: $ S_0 $ is given (initial cost of software), {\it i.e.}, the goal is to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related. Consequently, the constraints can be reformulated based on Equations~\eqref{linear-programming-problem} and~\eqref{software-communication-costs} as 
+\textcolor{blue}{In particular, different optimization (and decision) problems can be defined for partitioning HW-SW, as described by~\cite{Arato2003}. In this paper, however, the focus is on systems with hard real-time constraints: $ S_0 $ is given (initial cost of software), {\it i.e.}, the goal is to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related. Consequently, the constraints can be reformulated based on Equations~\eqref{linear-programming-problem} and~\eqref{software-communication-costs} as}
 
 \vspace{-2 mm}
 \begin{align}
@@ -340,7 +340,7 @@ s\left(1-x\right) + c|Ex| \leq S_0,
 \end{align}
 
 \vspace{2 mm}
-\noindent where $s$ and $c$ are the vectors representing the cost functions, $E$ is the transposed incidence matrix of $G$ (indicating which edges cross the boundary between the contexts of hardware and software), and $x$ represents the decision variable (a binary vector indicating the partition: $1$ if the node is realized in hardware and $0$ if the node is realized in software). Concerning the complexity of this problem, \cite{Arato2003} demonstrate that it is NP-Hard, as defined in~\cite{Cormem}.
+\noindent \textcolor{blue}{ where $s$ and $c$ are the vectors representing the cost functions, $E$ is the transposed incidence matrix of $G$ (indicating which edges cross the boundary between the contexts of hardware and software), and $x$ represents the decision variable (a binary vector indicating the partition: $1$ if the node is realized in hardware and $0$ if the node is realized in software)}. Concerning the complexity of this problem, \cite{Arato2003} demonstrate that it is NP-Hard, as defined in~\cite{Cormem}.
 
 %----------------------------------------------
 \section{Analysis of the partitioning problem}
@@ -367,7 +367,7 @@ Remembering that, as defined by formal model, there is a index of each decision 
 
 %\textcolor{red}{Conforme mencionado pelo revisor, falta definir o indice ``i''.}
 
-The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix (used in Eq.~\eqref{hw-sw-partitioning}) and the identity matrix (necessary to work with the matrices), as typically done in MATLAB. Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
+\textcolor{blue}{The ESBMC algorithm starts with the declarations of hardware, software, and communication costs. $S_0$ must also be defined, as the transposed incidence matrix (used in Eq.~\eqref{hw-sw-partitioning}) and the identity matrix (necessary to work with the matrices), as typically done in MATLAB.} Here, matrices $A$ and $b$ are generated. At that point, the ESBMC algorithm starts to differ from the ILP and GA presented in~\cite{Trindade2015}.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing sequential ESBMC.},label={Pseudocode-describing-ESBMC},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny,mathescape=true]
 Initialize variables 
@@ -391,13 +391,13 @@ main {
 \end{lstlisting}
 
 \vspace{2 mm}
-It is possible to instruct ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. \textcolor{blue}{As a result, the Boolean value that is assigned to each decision variable $x_i$ is actually selected by the SMT Solver, during its solving phase, which checks once all possible combinations to yield a feasible solution, {\it e.g.}, by handling the terms in the given background theory using a decision procedure~\cite{DeMoura2008,Brummayer2009}. If this is achieved, the ASSUME directive ensures the compliance of the constraint $A.x \leq b$}.
+\textcolor{blue}{It is possible to instruct ESBMC with which type of values the variables must be tested. Therefore, there is a declaration to populate all decision variables $x$ with non-deterministic Boolean values. As a result, the Boolean value that is assigned to each decision variable $x_i$ is actually selected by the SMT Solver, during its solving phase, which checks once all possible combinations to yield a feasible solution, {\it e.g.}, by handling the terms in the given background theory using a decision procedure~\cite{DeMoura2008,Brummayer2009}. If this is achieved, the ASSUME directive ensures the compliance of the constraint $A.x \leq b$}.
 
 A loop controls the cost of hardware hint, starting with zero and reaching the maximum value considering the case, where all nodes are partitioned to hardware ($H_{max}$). To every test performed, the hardware hint is compared to the feasible solution. This is accomplished by an \textit{ASSERT} statement at the end of the algorithm, a predicate that controls the halt condition (a \textit{true-false} statement). If the predicate is \textit{FALSE}, then the optimization is finished, {\it i.e.}, the solution is found. 
 
 The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hardware cost, and will stop if the hardware cost found is lower than or equal to the optimal solution. However, if \textit{ASSERT} returns a \textit{true} condition, {\it i.e.}, the hardware cost is higher than the optimal solution, then the model-checking algorithm restarts and a new possible solution is generated and tested until the \textit{ASSERT} generates a \textit{false} condition. When the \textit{false} condition happens at verification-time, the execution code is aborted and ESBMC presents the counterexample that caused the condition to be broken. That is the point in which the solution is presented (minimum HW cost).
 
-In the ESBMC algorithm, there is no need for adding slack variables in Eq.~\eqref{hw-sw-partitioning}, which reduces the number of variables to be solved if compared to ILP and GA. 
+\textcolor{blue}{In the ESBMC algorithm, there is no need for adding slack variables in Eq.~\eqref{hw-sw-partitioning}, which reduces the number of variables to be solved if compared to ILP and GA.}
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP (ESBMC-SS)}
