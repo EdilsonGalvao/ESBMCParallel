@@ -458,7 +458,9 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
 
-Consequently, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available, as shown in Fig.~\ref{ESBMC-Multi-core-Optimized-Sequential-Approach}. This approach could potentially lead to great performance improvements, but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
+\textcolor{blue}{In contrast to ESBMC-SS, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available, as shown in Fig.~\ref{ESBMC-Multi-core-Optimized-Sequential-Approach}. In addition, there is no communication among the workers, but each worker notifies the controller if a violation is found for its TipH value}.
+
+%This approach could potentially lead to great performance improvements, %but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP using Binary Search (ESBMC-PB)}
@@ -535,7 +537,7 @@ while(isRunning(pid)){
 
 Algorithm of Figure~\ref{vZ-pseudocode} encodes the objective function and constraints related to the HW-SW partitioning problem using $\nu$Z functions, as seen in~\cite{Bjorner2014}. A $\nu$Z logical context must firstly be created (line $2$), in order to add constraints and to check whether a given model exists to the set of constraints. Note that the number of nodes and edges, software, hardware, and communications costs as well as the incidence matrix E must also be declared.
 
-The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\eqref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textit{CC} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one instructs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that 
+The arithmetic expressions from lines $10$ to $12$ represent the constraints described in Eq.~\eqref{hw-sw-partitioning}. Here, variable \textit{SC} refers to the software cost, while \textcolor{blue}{\textit{CMC}} denotes the communication cost. In line $12$, the \textit{Fobj} (objective function) is declared, which denotes the product between the hardware cost and the decision variables vector, which contains only Boolean values. \textit{Fobj} should be minimized to obtain the optimal hardware solution. To achieve this, two constraints are imposed to ESBMC-$\nu$Z: the first one refers to the sum of the software and communication costs, where the result should be less than $S_0$; and the second one instructs to ESBMC-$\nu$Z that \textit{Fobj} should be minimized. Finally, the model is checked by ESBMC-$\nu$Z and if there is a solution that 
 meets the constraints, then the \textit{Fobj} value is provided.
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Pseudocode describing ESBMC-$\nu$Z.},label={vZ-pseudocode},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny,mathescape=true]
