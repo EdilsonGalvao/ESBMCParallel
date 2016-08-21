@@ -449,7 +449,7 @@ ESBMC-SS obtains the problem specification represented by a ANSI-C program. The 
 \label{Multi-core-ESBMC-with-OpenMP-using-workers}
 %----------------------------------------------
 
-The previous parallelization is implemented by continuously forking ESBMC instances in a sequential manner until the first violation is found. However, since OpenMP only returns from a parallelized loop, when every forked thread finishes, some processing cores could remain idle for some period of time.
+The previous parallelization is implemented by continuously forking ESBMC instances in a sequential manner until the first violation is found. However, since OpenMP only returns from a parallelized loop, when every forked thread finishes, some processing cores could remain idle for some time period.
 
 \begin{figure}[h]
 	\caption{ESBMC-PS approach.}
@@ -458,7 +458,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 	\label{ESBMC-Multi-core-Optimized-Sequential-Approach}
 \end{figure}
 
-\textcolor{blue}{In contrast to ESBMC-SS, the second approach aims to remove the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available, as shown in Fig.~\ref{ESBMC-Multi-core-Optimized-Sequential-Approach}. In addition, there is no communication among the workers, but each worker notifies the controller if a violation is found for its TipH value}.
+\textcolor{blue}{In contrast to ESBMC-SS, the second approach aims at removing the idle time from the parallel loops, by creating workers inside threads so that the next step is immediately executed if there is a processing core available, as shown in Fig.~\ref{ESBMC-Multi-core-Optimized-Sequential-Approach}. In addition, there is no communication among workers, but each worker notifies the controller if a violation is found for its TipH value}.
 
 %This approach could potentially lead to great performance improvements, %but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
 
