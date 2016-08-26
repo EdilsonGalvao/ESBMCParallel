@@ -441,7 +441,7 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 \label{Multi-core-ESBMC-with-OpenMP}
 %----------------------------------------------
 
-Typically, ESBMC verification runs are performed only in a single-core. If the processor provides $8$ processing cores, only one is used for the verification and the others remain idle. Thus, there is a significant unused hardware resource during this process. 
+Typically, ESBMC verification runs are performed only in a single-core. If the processor provides $n$ processing cores, only one is used for the verification and the others remain idle. Thus, there is a significant unused hardware resource during this process. 
 
 To optimize the CPU resources utilization without modifying the underlying SMT solver, the Open Multi-Processing (OpenMP) library, as described in~\cite{Dagum1998}, is used in this present work as a front-end for ESBMC. Fig.~\ref{ESBMC-Multi-core} shows our first approach called ESBMC sequential-search ``ESBMC-SS''.
 
@@ -452,7 +452,7 @@ To optimize the CPU resources utilization without modifying the underlying SMT s
 	\label{ESBMC-Multi-core}
 \end{figure}
 
-ESBMC-SS obtains the problem specification represented by a ANSI-C program. The HW-SW partitioning is violated, when the correct optimum value (\textit{TipH}) parameter is reached; ESBMC-SS starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among threads. In particular, different threads are managed by the OpenMP API, which is responsible for the thread life-cycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then ESBMC-SS starts new instances again; this represents a sequential-search on a multi-core environment. During the parallel region execution, if a violation is found in any running thread, then it presents a counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then ESBMC-SS finishes its execution.
+ESBMC-SS obtains the problem specification represented by an ANSI-C program. The HW-SW partitioning is violated, when the correct optimum value parameter (represented by $TipH \in \mathbb{N}$) is reached; ESBMC-SS starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among threads. In particular, different threads are managed by the OpenMP API, which is responsible for managing the thread life-cycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then ESBMC-SS starts new instances again; this represents a sequential-search on a multi-core environment. During the parallel region execution, if a violation is found in any running thread, then it presents a counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then ESBMC-SS finishes its execution.
 
 %----------------------------------------------
 \subsection{Multi-core ESBMC with OpenMP using Workers (ESBMC-PS)}
