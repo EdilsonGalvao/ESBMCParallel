@@ -384,14 +384,14 @@ x \in \{0,1\}^n,
 \label{Analysis-of-the-partitioning-problem-using-ESBMC}
 %----------------------------------------------
 
-As computer hardware architecture moves from single- to multi-cores, parallel programming environments should be exploited to take advantage of the ability to run several threads on different processing cores. This section describes the verification algorithm using sequential ESBMC, followed by three multi-core model checking algorithms and the integration of the MaxSMT solver $\nu$Z into ESBMC, in order to speed up the HW-SW partitioning verification. HW-SW partitioning using ILP-based and Genetic Algorithms are also explained.
+\noindent \textcolor{blue}{As computer hardware architecture moves from single- to multi-core, and more recently to heterogeneous computing as described by~\cite{Mittal2015}, parallel programming environments should be exploited to take advantage of the ability to run several threads on different processing cores}. This section describes the verification algorithm using sequential ESBMC, followed by three multi-core model checking algorithms and the integration of the MaxSMT solver $\nu$Z into ESBMC, in order to speed up the HW-SW partitioning verification. HW-SW partitioning using ILP-based and Genetic Algorithms are also explained.
 
 %----------------------------------------------
 \subsection{Partitioning problem using ILP-based,Genetic Algorithms}
 \label{ILPGA}
 %----------------------------------------------
 
-The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} and~\cite{Trindade2016}. \textcolor{blue}{Both use slack variables in order to eliminate the modulus operator of Eq.~\eqref{hw-sw-partitioning} and to use commercial tools.} However, GA had improvements from the parameters of related studies in order to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB, as \textcolor{blue}{mentioned} in~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$. \textcolor{blue}{All ILP and GA parameters were presented and discussed in~\cite{Trindade2015} and~\cite{Trindade2016}. In particular, the ILP and GA algorithms were chosen since they were also used in another related work, as~\cite{Arato2003} and~\cite{Mann2007}, thus facilitating the comparison to the present techniques (that we propose in this paper).}
+The ILP and GA were taken from our previous studies, from~\cite{Trindade2015} and~\cite{Trindade2016}. \textcolor{blue}{Both use slack variables in order to eliminate the modulus operator of Eq.~\eqref{hw-sw-partitioning} and consequently to use commercial tools.} However, GA had improvements from the parameters of related studies to increase the solution accuracy without producing timeout. The tuning was performed by empirical tests and resulted in changing of three parameters, which are passed to the function \textit{ga} of MATLAB, as \textcolor{blue}{mentioned} in~\cite{TheMathWorks2013}: the population size was set from $300$ to $500$, the Elite count changed from $2$ (default value) to $50$, and the number of generations changed from $100*NumberOfVariables$ (default) to $75$. \textcolor{blue}{All ILP and GA parameters were presented and discussed in~\cite{Trindade2015} and~\cite{Trindade2016}. In particular, the ILP and GA algorithms were chosen since they were also used in another related work, as~\cite{Arato2003} and~\cite{Mann2007}, thus facilitating the comparison to the present techniques (that we propose in this paper).}
 
 %----------------------------------------------
 \subsection{Verification Algorithm using Sequential ESBMC}
@@ -908,6 +908,9 @@ Wintersteiger, C., Hamadi, Y. and Moura, L. (2009) 'A Concurrent Portfolio Appro
 
 \bibitem[\protect\citeauthoryear{Wu \textit{et al.}}{2014}]{Wu2014}
 Wu M., Wu, W., Tai, N., Zhao, H., Fan, J. and Yuan, N. (2014) 'Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP', {\it Proceedings of the International Conference on Software Engineering and Service Science}, pp.921--924.
+
+\bibitem[\protect\citeauthoryear{Mittal \textit{et al.}}{2015}]{Mittal2015}
+Mittal S., Vetter J. (2015) 'A Survey of CPU-GPU Heterogeneous Computing Techniques', {\it ACM Comput. Surv. 47(4):}, pp. 69:1--69:35.
 
 \end{thebibliography}
 
