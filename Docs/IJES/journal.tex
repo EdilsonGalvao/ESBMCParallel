@@ -193,7 +193,7 @@ This article is organized as follows: Section~\ref{background} gives a backgroun
 Section~\ref{Mathematical-modeling} describes the informal and formal mathematical modeling. The SMT-based BMC method is presented in Section~\ref{Analysis-of-the-partitioning-problem-using-ESBMC}, and in particular, Section~\ref{Analysis-of-the-partitioning-problem-using-vZ} presents the partitioning model using $\nu$Z. In Section~\ref{Experimental-Evaluation}, we show the experimental results using several embedded systems applications. We conclude and describe future work in Section~\ref{Conclusions}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Background}
+\section{Preliminaries}
 \label{background}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -204,7 +204,7 @@ The HW-SW partitioning problem is typically represented as a set of constraints 
 \label{Optimization}
 %----------------------------------------------
 
-Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances as defined in~\cite{Rao2009}. There is no single method available for efficiently solving all optimization problems, as described by~\cite{Rao2009}. The most well-known technique is linear programming, which is an method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. \textcolor{blue}{Eq.~\eqref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors from the objective function, while $Aeq$ and $beq$ are matrices that describe the linear equality constraints}
+Optimization is the act of obtaining the best result ({\it i.e.}, the optimal solution) under given circumstances as defined in~\cite{Rao2009}. There is no single method available for efficiently solving all optimization problems, as described by~\cite{Rao2009}. The most well-known technique is linear programming, which is a method applicable for the solution of problems in which the objective function and the constraints appear as linear functions of the decision variables. A particular case of linear programming is ILP, in which the variables can assume just integer values. \textcolor{blue}{Eq.~\eqref{linear-programming-problem} shows a typical linear programming problem, where $A$ and $b$ are vectors from the objective function, while $Aeq$ and $beq$ are matrices that describe the linear equality constraints}
 
 \vspace{2 mm}
 \begin{equation}
@@ -218,11 +218,11 @@ Optimization is the act of obtaining the best result ({\it i.e.}, the optimal so
 \end{equation}
 
 \vspace{2 mm}
-\textcolor{blue}{Here can be cited the relevant work of ~\cite{Mann2007} in optimization, who modified a branch-and-bound algorithm to speed up the execution time. ~\cite{Sapienza2013} used multiple criteria decision analysis to solve the HW-SW partitioning problem.}
+\textcolor{blue}{Here, we refer to the relevant work of ~\cite{Mann2007} in optimization, who modified a branch-and-bound algorithm to speed up the execution time. ~\cite{Sapienza2013} used multiple criteria decision analysis to solve the HW-SW partitioning problem.}
 
-In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, as described by~\cite{Rao2009}, {\it e.g.}, those used in the GA. The only drawback is that the found solution may not be the global minimum or maximum. \textcolor{blue}{As relevant works, ~\cite{Jiang2012} used a GA mixed with simulated annealing. And~\cite{Huong2012} designed a Pareto optimization modified using GA.}
+In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, as described by~\cite{Rao2009}, {\it e.g.}, those used in the GA. The only drawback is that the found solution may not be the global minimum or maximum. \textcolor{blue}{As relevant studies, ~\cite{Jiang2012} used a GA mixed with simulated annealing and~\cite{Huong2012} designed a modified Pareto optimization using GA.}
 
-Alternatively, tools such as ESBMC and $\nu$Z can be used to solve optimization problems so that the global minimum or maximum solution is found. The following sections describe the main features of ESBMC and $\nu$Z tools.
+\textcolor{blue}{Alternatively, tools such as ESBMC and $\nu$Z can be used to solve optimization problems so that the global minimum or maximum solution is found, as described by~\cite{Trindade2015} and~\cite{Bjorner2015}}. The following sections describe the main features of ESBMC and $\nu$Z tools.
 
 %----------------------------------------------
 \subsection{Bounded Model Checking with ESBMC}
