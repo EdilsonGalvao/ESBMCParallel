@@ -335,7 +335,7 @@ The informal model can be described by five characteristics. First, there is onl
 
 \textcolor{blue}{A directed simple graph $ G = (V,E) $, called the task graph of the system, is given. Where the vertices $V = \{V_1,V_2,\dotso,V_n\}$ represent the nodes that are the components of the system that will be partitioned. The edges $E$ represent communication between components. Additionally, each node  $V_i$ has a cost $h(V_i)$ (or $h_i$) of hardware if implemented in hardware and a cost $s(V_i)$ (or $ s_i $) of software if implemented in software. Finally, $c(V_i,V_j)$ represents the communication cost between $V_i$ and $V_j$ if they are implemented in different contexts (hardware or software).}
 
-$P$ is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $, \cite{Arato2003}. The hardware cost of $P$ is given by Eq.~\eqref{hardware-costs}
+$P$ is called a hardware-software partition if it is a bipartition of $V:P = (V_h, V_s)$, where $V_h \cup V_s = V$  and $V_h \cap V_s = 0$. The crossing edges are $E_p = \{(V_i,V_j):V_i \in V_s, V_j \in V_h$ or $V_i \in V_h, V_j \in V_s $, \cite{Arato2003}. The hardware cost of $P$ is given in Eq.~\eqref{hardware-costs}
 
 \vspace{-5 mm}
 \begin{align}
@@ -345,7 +345,7 @@ H_p  &= \Sigma_{V_i \in V_h} h_i,
 
 \vspace{2 mm}
 \noindent
-and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given by Eq.~\eqref{software-communication-costs}
+and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the communication cost) is given in Eq.~\eqref{software-communication-costs}
 
 \vspace{-3 mm}
 \begin{align}
@@ -354,7 +354,7 @@ and the software cost of $P$ ({\it i.e.}, software cost of the nodes and the com
 \end{align}
 
 \vspace{2 mm}
-\textcolor{blue}{In particular, different optimization (and decision) problems can be defined for partitioning HW-SW, as described by~\cite{Arato2003}. In this paper, however, the focus is on systems with hard real-time constraints: $ S_0 $ is given (initial cost of software), {\it i.e.}, the goal is to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related. Therefore, the objective function is:} 
+\textcolor{blue}{In particular, different optimization (and decision) problems can be defined for partitioning HW-SW, as described by~\cite{Arato2003}. In this paper, however, the focus is on systems with hard real-time constraints: $ S_0 $ is given (initial cost of software), {\it i.e.}, the objective is to find a $P$ HW-SW partitioning so that $ S_p \leq S_0 $ and $ H_p $ is minimal, which is thus related. Therefore, the objective function is:} 
 
 \vspace{-2 mm}
 \begin{align}
