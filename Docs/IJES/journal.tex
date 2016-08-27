@@ -572,6 +572,8 @@ meets the constraints, then the \textit{Fobj} value is provided.
  Print Result
 \end{lstlisting}
 
+\textcolor{blue}{In general, it is worth mentioning that the complexity for ESBMC-SS, ESBMC-PS, and ESBMC-PB in a sequential time are linear (\textit{i.e.}, O(n)), that is because each algorithm runs all the possible solutions once. However, each execution runs an optimization problem, which is solved by the model checker, that is NP-Hard as described by Arato et al. (2003). Thus, even a parallel time being considered, including possible overheads in OpenMP, the general complexity is simplified by NP-Hard.}
+
 %----------------------------------------------
 \section{Experimental Evaluation}
 \label{Experimental-Evaluation}
