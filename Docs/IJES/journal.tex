@@ -530,7 +530,7 @@ GetNextStep(){
 }
 \end{lstlisting}
 
-Algorithm of Figure~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$); otherwise, the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.  \textcolor{blue}{It is worth mentioning that there is no interchange communication among the workers, but they are responsible to notify the controller if a violation is found.}
+Algorithm of Figure~\ref{worker-sample} describes how the worker starts and monitors ESBMC instances. The algorithm starts by retrieving the step to be executed from the controller (line $1$), then initiates the ESBMC instance and obtains the process \textit{id} from the forked process (line $2$). While the step is being executed, the controller checks whether this step is still needed (line $4$); otherwise, the ESBMC instance is killed (line $5$) and the worker is free to initiate another step.  \textcolor{blue}{Note that there is no interchange communication among workers, but they are responsible for notifying the controller if a given violation is found.}
 
 
 \begin{lstlisting}[basicstyle=\footnotesize,caption={Worker sample.},label={worker-sample},numbersep=7pt,frame=tb,captionpos=t,numberstyle=\tiny]
@@ -541,6 +541,13 @@ while(isRunning(pid)){
    kill(pid);
 }
 \end{lstlisting}
+
+%----------------------------------------------
+\subsection{\textcolor{blue}{Time Complexity of ESBMC-SS, ESBMC-PS, and ESBMC-PB}}
+\label{complexity}
+%----------------------------------------------
+
+\textcolor{blue}{With respect to the time complexity of ESBMC-SS, ESBMC-PS, and ESBMC-PB algorithms, they can all be described in two parts, which include the parallelism and the optimization solving. In the first part, the ESBMC-SS, ESBMC-PS, and ESBMC-PB time complexity is considered to be linear ({\it i.e.}, they are denoted by $O(n)$), taking into account a sequential time since each algorithm runs all possible solutions at once. However, each execution instance of ESBMC-SS, ESBMC-PS, and ESBMC-PB solves a specific optimization problem that is considered to be NP-Hard, as described by~\cite{Arato2003}. Thus, even a parallel execution being implemented, including (possible) overheads due to the use of the OpenMP library, the time complexity of ESBMC-SS, ESBMC-PS, and ESBMC-PB is still NP-Hard.}
 
 %----------------------------------------------
 \subsection{Analysis of the partitioning problem using $\nu$Z (ESBMC-$\nu$Z)}
