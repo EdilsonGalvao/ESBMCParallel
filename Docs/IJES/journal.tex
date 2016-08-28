@@ -437,7 +437,12 @@ The \textit{ASSERT} statement tests the objective function, {\it i.e.}, the hard
 \textcolor{blue}{In the ESBMC algorithm, there is no need for adding slack variables in Eq.~\eqref{hw-sw-partitioning}, which reduces the number of variables to be solved if compared to ILP and GA.}
 
 %----------------------------------------------
-\subsection{Multi-core ESBMC with OpenMP (ESBMC-SS)}
+\subsection{Multi-core ESBMC}
+\label{Multi-core-ESBMC}
+%----------------------------------------------
+
+%----------------------------------------------
+\subsubsection{Multi-core ESBMC with OpenMP (ESBMC-SS)}
 \label{Multi-core-ESBMC-with-OpenMP}
 %----------------------------------------------
 
@@ -455,7 +460,7 @@ To optimize the CPU resources utilization without modifying the underlying SMT s
 ESBMC-SS obtains the problem specification represented by an ANSI-C program. The HW-SW partitioning is violated, when the correct optimum value parameter (represented by $TipH \in \mathbb{N}$) is reached; ESBMC-SS starts a parallel region with different instances of ESBMC, based on the number of available processing cores. All these ESBMC instances run independently of each other, as shown in Fig.~\ref{ESBMC-Multi-core}. Note that there is no shared-memory (or message-passing) mechanism among threads. In particular, different threads are managed by the OpenMP API, which is responsible for managing the thread life-cycle: start, running, and dead states, using different values as condition. After executing $N$ instances, if there is no code violation, then ESBMC-SS starts new instances again; this represents a sequential-search on a multi-core environment. During the parallel region execution, if a violation is found in any running thread, then it presents a counterexample with the violation condition and the verification time. If all threads of the batch processing are terminated, then ESBMC-SS finishes its execution.
 
 %----------------------------------------------
-\subsection{Multi-core ESBMC with OpenMP using Workers (ESBMC-PS)}
+\subsubsection{Multi-core ESBMC with OpenMP using Workers (ESBMC-PS)}
 \label{Multi-core-ESBMC-with-OpenMP-using-workers}
 %----------------------------------------------
 
@@ -475,7 +480,7 @@ The previous parallelization is implemented by continuously forking ESBMC instan
 %This approach could potentially lead to great performance improvements, %but as ESBMC checks for each step almost at the same rate, the processor does not remain idle for a longer period and thus there is almost no optimization.
 
 %----------------------------------------------
-\subsection{Multi-core ESBMC with OpenMP using Binary Search (ESBMC-PB)}
+\subsubsection{Multi-core ESBMC with OpenMP using Binary Search (ESBMC-PB)}
 \label{Multi-core-ESBMC-with-OpenMP-using-Binary-Search}
 %----------------------------------------------
 
@@ -543,7 +548,7 @@ while(isRunning(pid)){
 \end{lstlisting}
 
 %----------------------------------------------
-\subsection{\textcolor{blue}{Time Complexity of ESBMC-SS, ESBMC-PS, and ESBMC-PB}}
+\subsubsection{\textcolor{blue}{Time Complexity of ESBMC-SS, ESBMC-PS, and ESBMC-PB}}
 \label{complexity}
 %----------------------------------------------
 
