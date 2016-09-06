@@ -159,6 +159,8 @@ Nowadays, with the tight development time of embedded systems, the design phase 
 %-----------------related work came to here and was rewriten
 \textcolor{blue}{Since the first decade of 2000s, two main paths have been tracked to solve the HW-SW partitioning problem: to find the exact solution of a optimization problem, as presented by~\cite{Mann2007}; and to use heuristics to speed up performance time, as presented by~\cite{Arato2003} and~\cite{Arato2005}. It is worth mentioning that using heuristics the final solution is not necessarily an optimal global solution.} 
 
+\textcolor{blue}{There is also the effort to create a hardware-software (HW/SW) co-simulation environment in order to help designers obtain an appropriate HW/SW partitioning that satisfy specified tradeoffs, as described by~\cite{Jan2005} and by~\cite{Hau2009}.}
+
 \textcolor{blue}{In terms of SMT-based verification, most related studies are restricted to present the model, its modification to specific programming languages ({\it e.g.}, C/C++ and Java), and the application to multi-thread algorithms or to embedded systems to check for program correctness. In~\cite{Ramalho2013} it presents a bounded model checker for C++ programs, which is an evolution of dealing with C programs, and~\cite{Cordeiro2012} use ESBMC for embedded ANSI-C software. In~\cite{Trindade2015}, and~\cite{Trindade2016} it was proven that it is possible to use ESBMC to solve HW-SW partitioning in a single- and multi-core way, but the former has performance issues that were improved by the latter, which used only a sequential search to perform multi-core model checking. There are related studies focused on decreasing the verification time of model checkers by applying Swarm Verification, as mentioned in~\cite{Holzmann2011}, and modifications of internal search engines to add support for parallelism, as presented by~\cite{Holzmann2012}, but there is still the need for initiatives related to parallel SMT solving, as described by~\cite{Wintersteiger2009}.} 
 
 \textcolor{blue}{Recently, the SMT solver Z3 has been extended to pose and solve optimization problems modulo theories, as presented by~\cite{Bjorner2015}. In particular, $\nu$Z tool offers substantial performance improvement in optimization problems, as described by~\cite{Bjorner2014}. Additionally, as an application example, \cite{Pavlinovic2015} propose an approach which considers all possible compiler error sources for statically typed functional programming languages and reports the most useful one subject to some usefulness criterion. The authors formulate this alternative single-core approach as an optimization problem related to SMT and use $\nu$Z to compute an optimal error source in a given ill-typed program.}
@@ -220,7 +222,7 @@ Optimization is the act of obtaining the best result ({\it i.e.}, the optimal so
 \vspace{2 mm}
 \textcolor{blue}{Here, we refer to the relevant work of ~\cite{Mann2007} in optimization, who modified a branch-and-bound algorithm to speed up the execution time. ~\cite{Sapienza2013} used multiple criteria decision analysis to solve the HW-SW partitioning problem.}
 
-In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, as described by~\cite{Rao2009}, {\it e.g.}, those used in the GA. The only drawback is that the found solution may not be the global minimum or maximum. \textcolor{blue}{As relevant studies, ~\cite{Jiang2012} used a GA mixed with simulated annealing and~\cite{Huong2012} designed a modified Pareto optimization using GA.}
+In some cases, the time to find a solution using ILP is impractical. Even with the use of powerful computers, a problem can take hours before an optimal solution is reached. If the optimization problem is complex, some heuristics can be used to solve the same problem faster, as described by~\cite{Rao2009}, {\it e.g.}, those used in the GA. The only drawback is that the found solution may not be the global minimum or maximum. \textcolor{blue}{As relevant studies, ~\cite{Jiang2012} used a GA mixed with simulated annealing and~\cite{Huong2012} designed a modified Pareto optimization using GA. In the other hand, there is some research done to reduce the complexity of computation in order to improve the performance of some techniques, as described by~\cite{Boucheneb2006}.}
 
 \textcolor{blue}{Alternatively, tools such as ESBMC and $\nu$Z can be used to solve optimization problems so that the global minimum or maximum solution is found, as described by~\cite{Trindade2015} and~\cite{Bjorner2015}}. The following sections describe the main features of ESBMC and $\nu$Z tools.
 
@@ -801,13 +803,16 @@ Barrett, C., Conway, C., Deters, M., Hadarean, L., Jovanovic, D., King, T., Reyn
 Barth, P. and Putnam, D. (1995) 'Enumeration Algorithm for Linear Pseudo-Boolean Optimization', {\it Technical Report MPI-I-95-2-003, Max Plank Institute for Computer Science}.
 
 \bibitem[\protect\citeauthoryear{Biere \textit{et al.}}{2009}]{Biere2009}
-Biere, A., Heule, M., Maaren, H. and Walsh, T. {2009} 'Bounded Model Checking', {\it Handbook of Satisfiability}.
+Biere, A., Heule, M., Maaren, H. and Walsh, T. (2009) 'Bounded Model Checking', {\it Handbook of Satisfiability}, ISBN 978-1-58603-929-5.
 
 \bibitem[\protect\citeauthoryear{Bjorner and Phan}{2014}]{Bjorner2014}
 Bjorner, N. and Phan, A (2014) 'vZ - Maximal Satisfaction with Z3', {\it Proceedings of the International Symposium on Symbolic Computation in Software Science}, pp.1--10.
 
 \bibitem[\protect\citeauthoryear{Bjorner \textit{et al.}}{2015}]{Bjorner2015}
 Bjorner, N., Phan, A. and Fleckenstein, L. (2015) 'vZ - An Optimizing SMT Solver', {\it Proceedings of the International Conference on Tools and Algorithms for the Construction and Analysis of Systems}, Vol. 9035, pp.194--199.
+
+\bibitem[\protect\citeauthoryear{Boucheneb and Hadjidj}{2006}]{Boucheneb2006}
+\textcolor{blue}{Boucheneb, H. and Hadjidj, R. (2006) 'Using inclusion abstraction to construct Atomic State Class Graphs for Time Petri Nets', {\it Int. J. of Embedded Systems}, Vol. 2, N. 1/2, pp.128--139.}
 
 \bibitem[\protect\citeauthoryear{Bozzano \textit{et al.}}{2005}]{Bozzano2005}
 Bozzano, M., Bruttomesso, R., Cimatti, A., Junttila, T., Rossum, P., Schulz, S. and Sebastiani, R. (2005) 'MathSAT: Tight integration of SAT and mathematical decision procedures', {\it Journal of Automated Reasoning}, Vol. 35, No. 1-3, pp.265--293.
@@ -824,7 +829,6 @@ Cordeiro, L. and Fischer, B. (2011) 'Verifying multi-threaded software using SMT
 \bibitem[\protect\citeauthoryear{Cordeiro \textit{et al.}}{2012}]{Cordeiro2012}
 Cordeiro, L. Fischer, B. and Marques-Silva, J. (2012) 'SMT-based Bounded Model Checking for Embedded ANSI-C Software', {\it IEEE Transactions on Software Engineering}, Vol. 38, No. 4, pp.957--974.
 
-
 \bibitem[\protect\citeauthoryear{Cormen \textit{et al.}}{2009}]{Cormem}
 Cormen, T., Leiserson, C., Rivest, R. and Stein, C. (2009) 'Introduction to Algorithms', {\it MIT Press}, Vol. I-XIX, pp.1--1292.
 
@@ -840,6 +844,9 @@ Ganai, M. K. and Gupta, A. (2006) 'Accelerating high-level bounded model checkin
 \bibitem[\protect\citeauthoryear{Guthaus \textit{et al.}}{2011}]{Guthaus2001}
 Guthaus, M., Ringenberg, J., Ernst, D., Austin, T., Mudge, T. and Brown, R. (2011) 'MiBench: A free, commercially representative embedded benchmark suite', {\it Proceedings of the annual workshop on workload characterization}, pp.3--14.
 
+\bibitem[\protect\citeauthoryear{Hau and Khalil-Hani}{2009}]{Hau2009}
+\textcolor{blue}{Hau, Y.W. and Khalil-Hani, M. (2009) 'SystemC-based HW/SW co-simulation platform for system-on-chip (SoC) design space exploration', {\it Int. J. of Information and Communication Technology}, 2009, Vol.2, N. 1/2, pp.108--119.}
+
 \bibitem[\protect\citeauthoryear{Holzmann \textit{et al.}}{2011}]{Holzmann2011}
 Holzmann, G., Joshi, R. and Groce, A. (2011) 'Swarm Verification Techniques', {\it IEEE Transactions on Software Engineering}, Vol. 37, No. 6, pp.845--857.
 
@@ -853,6 +860,9 @@ Hong, L. and Cai, J. (2010) 'The application guide of mixed programming between 
 Huong, P. and Binh, N. (2012) 'An approach to design embedded systems by multi-objective optimization', {\it
 Proceedings of the International Conference on Advanced Technologies for Communications}, pp.165--169.
 
+\bibitem[\protect\citeauthoryear{Jan \textit{et al.}}{2005}]{Jan2005}
+\textcolor{blue}{Jan, K. Y., Fan, C. B., Kuo, A. C., Yen, W. C., and Lin, Y. L. (2005) 'A platform based SOC design methodology and its application in image compression', {\it Int. J. of Embedded Systems}, Vol.1, N. 1/2, pp. 23--32.}
+
 \bibitem[\protect\citeauthoryear{Jiang\textit{et al.}}{2010}]{Jiang2012}
 Jiang, Y., Zhang, H., Jiao, X., Song, X., Hung, W., Gu, M. and Sun, J. (2012) 'Uncertain model and algorithm for
 hardware/software partitioning', {\it Proceedings of the IEEE Computer Society Annual Symposium on VLSI}, pp.243--248.
@@ -864,16 +874,19 @@ Mann, A., Orban, A. and Arato, P. (2007) 'Finding optimal hardware/software part
 Manquinho, V. and Marques-Silva, J. (1995) 'Effective Lower Bounding Techniques for Pseudo-Boolean Optimization', {\it IST/INESC-ID, Technical University of Lisbon, Portugal}.
 
 \bibitem[\protect\citeauthoryear{MathWorks}{2013}]{TheMathWorks2013}
-MathWorks Inc. (2013) 'MATLAB (version R2013a)'.
+MathWorks Inc. (2013) 'MATLAB (version R2013a)', ISBN 9780982583883.
 
 \bibitem[\protect\citeauthoryear{Microsoft Research}{2015}]{Z3API}
 Microsoft Research (2015) 'Z3 API - Source code and documentation' [online] {\it https://z3.codeplex.com/} (Accessed 18 August 2015).
+
+\bibitem[\protect\citeauthoryear{Mittal \textit{et al.}}{2015}]{Mittal2015}
+\textcolor{blue}{Mittal, S., and Vetter, J. (2015) 'A Survey of CPU-GPU Heterogeneous Computing Techniques', {\it ACM Computing Surveys}, Vol. 47, Issue 4, pp. 69:1--69:35.}
 
 \bibitem[\protect\citeauthoryear{Moura and Bjorner}{2008}]{DeMoura2008}
 Moura, L. and Bjorner, N. (2008) 'Z3: An Efficient SMT Solver', {\it Proceedings of the International Conference on Tools and Algorithms for the Construction and Analysis of Systems}, pp.337--340.
 
 \bibitem[\protect\citeauthoryear{Muller}{2002}]{OpenMP1998}
-Muller, M. (2002) 'OpenMP Architecture Review Board, OpenMP C and C++ Application Program Interface, Version 2.0', {\it OpenMP Architecture Review Board}.
+Muller, M. (2002) 'OpenMP C and C++ Application Program Interface, Version 2.0', {\it OpenMP Architecture Review Board}.
 
 \bibitem[\protect\citeauthoryear{Narodytska and Bacchus}{2014}]{NarodytskaN}
 Narodytska, N. and Bacchus, F. (2014) 'Maximum Satisfiability Using Core-Guided MAXSAT Resolution', {\it Proceedings of the Conference on Artificial Intelligence}, pp.2717--2723.
@@ -891,7 +904,7 @@ Qawasmeh, A., Malik, A. and Chapman, B. (2014) 'OpenMP task scheduling analysis 
 Ramalho, M., Freitas, M., Sousa, F., Marques, H., Cordeiro, L. and Fischer, B. (2013) 'SMT-Based Bounded Model Checking of C++ Programs', {\it International Conference and Workshops on the Engineering of Computer-Based Systems}, pp.147--156.
 
 \bibitem[\protect\citeauthoryear{Rao}{2009}]{Rao2009}
-Rao, S. (2009) 'Engineering Optimization: Theory and Practice. 4th edition'.
+Rao, S. (2009) 'Engineering Optimization: Theory and Practice. 4th edition', ISBN 978-0-470-18352-6.
 
 \bibitem[\protect\citeauthoryear{Sapienza \textit{et al.}}{2013}]{Sapienza2013}
 Sapienza, G., Seceleanu, T. and Crnknovic, I. (2013) 'Partitioning decision process for embedded hardware and
@@ -908,7 +921,7 @@ Tang, T., Lin, Y. and Ren, X. (2010) 'Mapping OpenMP concepts to the stream prog
 Teich, J. (2012) 'Hardware/Software Codesign: The Past, the Present, and Predicting the Future', {\it Proceedings of the IEEE, Special Centennial Issue}, Vol. 100, pp.1411--1430.
 
 \bibitem[\protect\citeauthoryear{Tranquillo}{2011}]{Tranquillo2011}
-Tranquillo, J. (2011) 'Matlab for Engineering and the Life Sciences', {\it Synthesis Lectures on Engineering. Morgan Claypool}.
+Tranquillo, J. (2011) 'Matlab for Engineering and the Life Sciences', {\it Synthesis Lectures on Engineering. Morgan Claypool}, ISBN 9781608457113.
 
 \bibitem[\protect\citeauthoryear{Trindade and Cordeiro}{2015}]{Trindade2015}
 Trindade, A. and Cordeiro, L. (2015) 'Applying SMT-based verification to hardware/software partitioning in embedded systems', {\it Design Automation for Embedded Systems}, Vol. 20, No. 1, pp. 1--19.
@@ -920,10 +933,7 @@ Trindade, A., Ismail, H. and Cordeiro, L. (2015) 'Applying Multi-Core Model Chec
 Wintersteiger, C., Hamadi, Y. and Moura, L. (2009) 'A Concurrent Portfolio Approach to SMT Solving', {\it Proceedings of the International Conference on Computer-Aided Verification}, Vol. 5643, pp.715--720.
 
 \bibitem[\protect\citeauthoryear{Wu \textit{et al.}}{2014}]{Wu2014}
-Wu M., Wu, W., Tai, N., Zhao, H., Fan, J. and Yuan, N. (2014) 'Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP', {\it Proceedings of the International Conference on Software Engineering and Service Science}, pp.921--924.
-
-\bibitem[\protect\citeauthoryear{Mittal \textit{et al.}}{2015}]{Mittal2015}
-Mittal S., Vetter J. (2015) 'A Survey of CPU-GPU Heterogeneous Computing Techniques', {\it ACM Comput. Surv. 47(4):}, pp. 69:1--69:35.
+Wu, M., Wu, W., Tai, N., Zhao, H., Fan, J. and Yuan, N. (2014) 'Research on OpenMP model of the parallel programming technology for homogeneous multicore DSP', {\it Proceedings of the International Conference on Software Engineering and Service Science}, pp.921--924.
 
 \end{thebibliography}
 
